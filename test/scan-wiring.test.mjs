@@ -46,3 +46,8 @@ test('GameStop global unavailability never creates a verified restock baseline',
  assert.match(source,/record\.diagnostic\.status='unscoped-unavailability'/);
  assert.doesNotMatch(source,/record\.unavailable=true/);
 });
+
+test('public Actions logs never print raw browser exception details',()=>{
+ assert.doesNotMatch(source,/scanNote:String\(e\)/);
+ assert.match(source,/scanNote:'navigation-or-product-unreadable'/);
+});
