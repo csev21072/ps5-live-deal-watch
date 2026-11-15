@@ -41,7 +41,7 @@ jobs:
         run: npm install --no-audit --no-fund
       - name: Install Chromium
         run: npx playwright install --with-deps chromium
-      - name: Scan live retailer pages (fail closed)
+      - name: Scan live retailer pages (zero-spend; fail closed)
         run: npm run scan
       - name: Restore durable alert history (fail if missing)
         run: |
