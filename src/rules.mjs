@@ -29,6 +29,21 @@ export function evaluate(record, now = Date.now()) {
   const f=record.fulfillment;
   if (!f || f.confirmed!==true || !validMethods.has(f.method) || f.zip!==ZIP || !f.text || !f.locationText || !f.locationText.includes(ZIP) || !f.cartOrCheckoutConfirmed) reject('Phoenix fulfillment not confirmed in live orderable flow');
   if (f && (invalidFulfillment.test(f.text ?? '') || invalidFulfillment.test(f.locationText ?? ''))) reject('retailer shows unavailable fulfillment');
+  const checkout=record.checkoutEvidence;
+  if (!checkout || checkout.orderable!==true || checkout.skuOrBundle!==record.skuOrBundle
+      || checkout.zip!==ZIP || priceFromText(checkout.priceText)!==record.price
+      || !checkout.fulfillmentText || !checkout.fulfillmentText.includes(ZIP)
+      || !Number.isFinite(Date.parse(checkout.observedAt))
+      || Math.abs(now-Date.parse(checkout.observedAt))>MAX_AGE_MS) {
+    reject('matching live retailer cart/checkout SKU, price and Phoenix orderability not proven');
+  }
+  let checkoutUrl;
+  try{checkoutUrl=new URL(checkout?.url);}catch{}
+  if(!checkoutUrl || checkoutUrl.protocol!=='https:' || checkoutUrl.hostname!==record.host
+      || !/(cart|checkout|purchase)/i.test(checkoutUrl.pathname))
+    reject('retailer-owned cart/checkout URL not verified');
+  if(checkout && invalidFulfillment.test(checkout.fulfillmentText??''))
+    reject('cart/checkout shows unavailable fulfillment');
   if (record.conflictingEvidence===true) reject('unresolved contradictory evidence');
   if (record.requiresLogin===true || record.blocked===true) reject('login/CAPTCHA/blocked');
   const gameCredit = record.gameCredit ?? 0;
