@@ -1,7 +1,7 @@
 import {readFile,writeFile} from 'node:fs/promises';
-import {createHash} from 'node:crypto';
 import {evaluate} from './rules.mjs';
-import {processRecords,offerSignature} from './alerts/state.mjs';
+import {processRecords} from './alerts/state.mjs';
+import {buildVerifiedIssue} from './alerts/issue.mjs';
 
 const {records}=JSON.parse(await readFile('out/evidence.json','utf8'));
 let previous={};
@@ -43,44 +43,15 @@ const previousIssues=alerts.length?await issueBodies():[];
 for(const record of alerts){
   const decision=decisions.find(x=>x.id===record.id);
   const old=previous[record.id]??{};
-  const signature=offerSignature(record);
-  const keyInput=[
-    record.id,decision.reason,signature,record.price,
-    decision.reason==='verified-restock'?old.lastUnavailableAt??'':''
-  ].join('|');
-  const eventKey=createHash('sha256').update(keyInput).digest('hex');
-  if(previousIssues.some(x=>x.body?.includes(`Alert event key: ${eventKey}`))){
-    console.log(`Already notified for verified event ${record.id}; not repeating.`);
-    continue;
-  }
   const verdict=evaluate(record);
   if(!verdict.qualifies)throw new Error('Offer became stale or invalid before publishing');
-  const title=`[PS5 VERIFIED ${record.id}] $${record.price.toFixed(2)} ${record.exactModel}`;
-  const body=[
-    '**Verified retailer-owned purchase evidence**',
-    `- Retailer: ${record.retailer}`,
-    `- Product: ${record.exactModel} / ${record.skuOrBundle}`,
-    `- Price: $${record.price.toFixed(2)} (${record.priceText})`,
-    `- Seller / shipper: ${record.seller} / ${record.shipper}`,
-    `- Condition: NEW (${record.conditionText})`,
-    `- Storage: ${record.storage}`,
-    `- Disc drive: ${record.discDrive?'Yes':'No'}`,
-    `- Controllers: ${record.controllers}`,
-    `- Fulfillment: ${record.fulfillment.method} in ZIP ${record.fulfillment.zip}`,
-    `- Exact fulfillment evidence: ${record.fulfillment.text}`,
-    `- Location evidence: ${record.fulfillment.locationText}`,
-    `- Conditions: ${record.conditions??'None observed'}`,
-    `- Effective price: $${verdict.effectivePrice.toFixed(2)} = $${record.price.toFixed(2)} - $${verdict.extraControllerCredit} extra-controller allowance - $${verdict.gameCredit} documented game allowance`,
-    `- Previous sufficiently verified alerted price: ${old.lastAlert ? '$'+old.lastAlert.price.toFixed(2) : 'none recorded'}`,
-    `- Checked at: ${record.checkedAt}`,
-    `- Retailer URL: ${record.url}`,
-    `- Alert reason: ${decision.reason}`,
-    `- Alert event key: ${eventKey}`
-  ].join('\n');
-  // Assign a verified offer to the repository owner so GitHub can notify
-  // them even if they are not watching every issue (subject to GitHub settings).
-  const owner=repo?.split('/')[0];
-  const payload={title,body,assignees:owner?[owner]:[]};
+  const issue=buildVerifiedIssue(record,verdict,decision,previous,repo);
+  const {eventKey,body,title}=issue;
+  if(previousIssues.some(x=>x.body?.includes('Alert event key: '+eventKey))){
+    console.log('Already notified for verified event '+record.id+'; not repeating.');
+    continue;
+  }
+  const payload={title,body,assignees:issue.assignees};
   try{
     await github('/issues',{method:'POST',body:JSON.stringify(payload)});
   }catch(e){
