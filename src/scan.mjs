@@ -12,6 +12,7 @@ import {parseSonyPriceEvidence} from './evidence/sony-price.mjs';
 import {publicRetailerUrl} from './evidence/url.mjs';
 import {summarizeCoverage} from './coverage.mjs';
 import {inspectProductControls} from './probes/product-controls.mjs';
+import {validateRetailerOrigin} from './checkout/origin.mjs';
 const outdir='out';
 await mkdir(outdir,{recursive:true});
 const browser=await chromium.launch({headless:true});
@@ -75,6 +76,8 @@ try {
     let record;
     try {
       await page.goto(product.url,{waitUntil:'domcontentloaded',timeout:25000});
+      const origin=validateRetailerOrigin(page.url(),product);
+      if(!origin.valid)throw new Error(origin.reason);
       await page.waitForTimeout(1800);
       record=await extractCandidate(page,product);
       if(product.retailer==='PlayStation Direct'){
