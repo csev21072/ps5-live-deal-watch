@@ -9,7 +9,7 @@ export async function probeGameStop(page, product, diagnostic) {
   if(!/playstation|ps5/i.test(title))
     return {status:'product-not-confirmed'};
   const before=(await page.locator('body').innerText({timeout:5000}).catch(()=>''))||'';
-  const shippingUnavailable=/ship to home\s*[:\-]?\s*not available|same day delivery\s*[:\-]?\s*not available/i.test(before);
+  const shippingUnavailable=/ship to home\s*[:\-]?\s*not available/i.test(before);
   const pickupUnavailable=/(?:pick up in.store|pickup)\s*[:\-]?\s*not available/i.test(before);
   if(shippingUnavailable && pickupUnavailable)
     return {status:'all-fulfillment-unavailable'};
