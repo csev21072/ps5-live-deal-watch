@@ -1,10 +1,12 @@
 // Read-only purchase-control diagnostics for retailers without a cart adapter.
 // Never clicks, logs in, reserves stock, or produces verified purchase evidence.
-const purchaseLabel=/\b(add to cart|buy now|add to bag|check availability|pick up|pickup|ship to home)\b/i;
+const cartActionLabel=/\b(add to cart|buy now|add to bag)\b/i;
+const fulfillmentNavigationLabel=/\b(check availability|pick up|pickup|ship to home|shipping|delivery)\b/i;
 const blockedLabel=/\b(sold out|out of stock|unavailable|not available)\b/i;
 export function classifyProductControls(observation={},product={}) {
   const controls=Array.isArray(observation.controls)?observation.controls:[];
-  const buttons=controls.filter(x=>purchaseLabel.test(x.label??''));
+  const buttons=controls.filter(x=>cartActionLabel.test(x.label??''));
+  const fulfillmentControls=controls.filter(x=>fulfillmentNavigationLabel.test(x.label??'')&&!cartActionLabel.test(x.label??''));
   const available=buttons.filter(x=>x.disabled===false && !blockedLabel.test(x.label??''));
   const conditionControls=controls.filter(x=>/\b(new|used|pre.?owned|refurbished|open.?box)\b/i.test(x.label??''));
   const selected=conditionControls.filter(x=>x.selected===true);
@@ -12,14 +14,15 @@ export function classifyProductControls(observation={},product={}) {
   const editionConfirmed=observation.editionHint===product.kind;
   return {
     status:!editionConfirmed?'edition-not-confirmed':
-      buttons.length===0?'purchase-controls-not-found':
-      available.length===0?'purchase-controls-disabled':
-      'purchase-control-observed-not-checkout',
+      buttons.length===0?(fulfillmentControls.length?'fulfillment-controls-only':'cart-action-not-found'):
+      available.length===0?'cart-action-disabled':
+      'cart-action-enabled-unverified',
     retailer:product.retailer??null,
     productId:product.id??null,
     editionConfirmed,
-    purchaseControlCount:buttons.length,
-    enabledPurchaseControls:available.length,
+    cartActionCount:buttons.length,
+    enabledCartActions:available.length,
+    fulfillmentNavigationCount:fulfillmentControls.length,
     newConditionSelected:selectedNew,
     // Never persist raw labels: purchase widgets can include account details.
     verifiedPurchase:false,
