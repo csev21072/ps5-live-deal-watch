@@ -16,6 +16,12 @@ async function extractCandidate(page,product) {
     return {title:document.title,body:(document.body?.innerText||'').slice(0,50000),priceText};
   },priceSelectors[product.retailer]||[]);
   const diagnostic=extractVisibleSignals(observed,product);
+  // PlayStation Direct URL is a multi-SKU catalog. An unavailable badge may
+  // belong to another product, so it is not evidence that this SKU is sold out.
+  if(product.retailer==='PlayStation Direct' && !diagnostic.blocked){
+    diagnostic.status='multi-product-page-unverified';
+    diagnostic.unavailable=false;
+  }
   const {blocked,unavailable}=diagnostic;
   const price=priceFromText(observed.priceText);
   // Diagnostic observations are NOT purchase evidence. Fulfillment is always
@@ -43,6 +49,11 @@ try {
         record.probe=record.price!==null && record.price<=probeLimit
           ? await probeGameStop(page,product,record.diagnostic)
           : {status:'skipped',reason:'price unknown or outside bounded probe range'};
+        if(record.probe.status==='shipping-unavailable'){
+          record.unavailable=true;
+          record.diagnostic.status='unavailable';
+          record.scanNote='shipping-unavailable-confirmed-by-guest-cart-probe';
+        }
       }
     }catch(e){record={id:product.id,retailer:product.retailer,url:product.url,host:product.host,kind:product.kind,checkedAt:new Date().toISOString(),source:'unreadable',blocked:true,diagnostic:{status:'unreadable',evidence:[]},scanNote:String(e).slice(0,400)};}
     record.verdict=evaluate(record);
