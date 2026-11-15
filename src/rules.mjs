@@ -3,7 +3,7 @@ const invalidFulfillment = /\b(not available|unavailable|out of stock|sold out|s
 const validMethods = new Set(['ship-to-home','local-pickup']);
 const money = /\$\s*([\d,]+(?:\.\d{2})?)/;
 export function priceFromText(value) {
-  const matches = [...String(value ?? '').matchAll(/\\$\\s*([\\d,]+(?:\\.\\d{2})?)/g)];
+  const matches = [...String(value ?? '').matchAll(/\$\s*([\d,]+(?:\.\d{2})?)/g)];
   return matches.length === 1 ? Number(matches[0][1].replaceAll(',','')) : null;
 }
 export function evaluate(record, now = Date.now()) {
