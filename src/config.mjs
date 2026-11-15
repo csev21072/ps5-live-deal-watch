@@ -3,8 +3,8 @@
 export const ZIP = '85001';
 export const MAX_AGE_MS = 10 * 60 * 1000;
 export const products = [
-  {id:'psdirect-disc',retailer:'PlayStation Direct',kind:'disc',url:'https://direct.playstation.com/en-us/hardware/ps5',host:'direct.playstation.com'},
-  {id:'psdirect-digital',retailer:'PlayStation Direct',kind:'digital',url:'https://direct.playstation.com/en-us/hardware/ps5',host:'direct.playstation.com'},
+  {id:'psdirect-disc',retailer:'PlayStation Direct',kind:'disc',url:'https://direct.playstation.com/en-us/buy-consoles/playstation5-console-1-tb',host:'direct.playstation.com'},
+  {id:'psdirect-digital',retailer:'PlayStation Direct',kind:'digital',url:'https://direct.playstation.com/en-us/buy-consoles/playstation5-digital-edition-console-825-gb',host:'direct.playstation.com'},
   {id:'bestbuy-disc',retailer:'Best Buy',kind:'disc',url:'https://www.bestbuy.com/product/playstation-5-slim-console/JXHQ3CCTYR/sku/6566039',host:'www.bestbuy.com'},
   {id:'bestbuy-digital',retailer:'Best Buy',kind:'digital',url:'https://www.bestbuy.com/product/playstation-5-slim-console-digital-edition-825gb/JXHQ37TYYL',host:'www.bestbuy.com'},
   {id:'target-disc-bundle',retailer:'Target',kind:'disc',url:'https://www.target.com/p/playstation-5-nba-2k26-disc-bundle-console/-/A-94907150',host:'www.target.com'},
