@@ -37,3 +37,12 @@ test('widget does not prove fulfillment or stock',()=>{
  assert.equal('fulfillment' in r,false);
  assert.equal('verifiedCheckout' in r,false);
 });
+
+test('integer widget cannot reinterpret $649.99 as $649.00',()=>{
+ const r=parseSonyPriceEvidence({...widget,priceContext:'$649.99'});
+ assert.equal(r.price,null);
+});
+test('fractional widget requires matching fractional currency context',()=>{
+ const r=parseSonyPriceEvidence({...widget,priceText:'449.99',priceContext:'$449.00'});
+ assert.equal(r.price,null);
+});
