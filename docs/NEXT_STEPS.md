@@ -71,3 +71,17 @@ Do not remove fail-closed gates to force alerts. Do not equate 'Add to Cart' or 
 - Added publisher subprocess integration tests: no-alert state writing, invalid-history fail-closed, and no GitHub credential/no notification behavior.
 - Extended the GameStop probe to inspect the guest cart only when a cart action is observed, capturing bounded research evidence. It **always** marks `verifiedPurchase:false` until a separately validated full checkout adapter exists.
 - Independent hosted safety suite: **67/67 passed**. GitHub Actions browser workflow remains hourly/manual-only. ChatGPT hourly task also remains enabled with a strict zero-spend override.
+
+## November 15 follow-on: evidence quality, Phoenix pickup and bundle priority
+
+- Added bounded visible product evidence collection in `src/evidence/product.mjs` and the scanner. This records product headings, selected-price text, SKU/storage/extra-controller **hints**, and relevant purchase controls without ever asserting seller, condition, or Phoenix checkout verification. Main-content filtering reduces navigation noise.
+- Added `src/evidence/cart.mjs` to match a GameStop cart item to the exact product URL SKU and product heading, distinguish item price from unrelated cart items/subtotals, check shipping-context ZIP, and reject CAPTCHA/wrong-host evidence. **It never sets verifiedCheckout=true**.
+- Added `src/probes/gamestop-pickup.mjs` for free Phoenix ZIP 85001 store-finder research when GameStop shipping is unavailable or the cart is disabled. Store listings are NOT a confirmed orderable reservation and always have `verifiedPickup:false`.
+- Strengthened the purchase gate: explicitly reject PS5 Pro/unverified Slim, conflicting seller/shipper text, and unapproved Amazon/Walmart marketplace sellers. Two-controller credits require evidence of a genuine extra Sony DualSense; game credits require recent actual sale-price evidence and are capped at $40.
+- Strengthened restock state: even a retailer-owned unavailability indication is not a verified restock baseline without exact SKU and Phoenix context. CAPTCHA or pickup-unknown never triggers a restock re-alert.
+- Free discovery now prioritizes likely two-controller bundle URLs before limiting each retailer to two newly discovered products, while never treating titles as verified contents.
+- Latest hosted CI after these changes: **106/106 passed**, 0 failed (run `43768335633`). The hourly GitHub Actions scanner remains enabled; the temporary push trigger was removed.
+- The last inspected hosted browser audit completed successfully and attempted 14 product URLs across all seven retailers. No complete positive checkout verification was observed. **No verified purchase alert has been issued.**
+
+### Next development focus
+Use future hourly audits to identify a genuinely orderable product whose retailer-owned cart shows exact SKU, price, NEW condition, seller, and Phoenix ZIP-specific shipping or reservable pickup. Then implement a narrow retailer-specific positive adapter and validate it with real evidence and adversarial regression fixtures. Never synthesize positive checkout evidence from search, product titles, generic Add to Cart, store lists, or a browser's geolocation.
