@@ -23,3 +23,12 @@ test('does not attempt on other retailers',async()=>{
  const r=await probeGameStop(null,{retailer:'Amazon'},{status:'candidate-needs-fulfillment-verification'});
  assert.equal(r.status,'not-applicable');
 });
+
+test('both shipping and pickup explicitly unavailable establish full unavailability',async()=>{
+ const r=await probeGameStop(page('Ship to Home: Not Available. Pick up in-store: Not Available.'),product,{status:'candidate-needs-fulfillment-verification'});
+ assert.equal(r.status,'all-fulfillment-unavailable');
+});
+test('generic Not Available elsewhere is not proof shipping or pickup failed',async()=>{
+ const r=await probeGameStop(page('Extended warranty: Not Available. Ship to Home. Find a Store.'),product,{status:'candidate-needs-fulfillment-verification'});
+ assert.equal(r.status,'cart-not-orderable');
+});
