@@ -21,6 +21,13 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Check JavaScript syntax before executing
+        run: |
+          node --check src/publish.mjs
+          node --check src/scan.mjs
+          node --check src/discovery.mjs
+          node --check src/alerts/state.mjs
+          node --check src/probes/gamestop.mjs
       - name: Unit tests
         run: npm test
       - name: Install pinned Playwright
