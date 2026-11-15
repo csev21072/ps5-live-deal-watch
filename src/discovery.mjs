@@ -57,6 +57,14 @@ export function discoverFromLinks(searchPage,links,existingUrls=[],limit=2){
 function canonical(value){
   try{const u=new URL(value);u.search='';u.hash='';return u.href;}catch{return null;}
 }
+export function classifyDiscoveryPage({title='',body='',links=[]}={}) {
+  const visible=String(title)+' '+String(body).slice(0,2500);
+  if(/captcha|verify you are human|press\s*&\s*hold|access denied|robot or human/i.test(visible))
+    return 'blocked';
+  if(!Array.isArray(links)||links.length===0)
+    return 'no-readable-links';
+  return 'inspected';
+}
 export async function discoverProducts(browser,existing,timeoutMs=9000){
   const candidates=[],coverage=[];
   const existingUrls=existing.map(x=>x.url);
@@ -64,12 +72,19 @@ export async function discoverProducts(browser,existing,timeoutMs=9000){
     const page=await browser.newPage({locale:'en-US'});
     try{
       await page.goto(searchPage.url,{waitUntil:'domcontentloaded',timeout:timeoutMs});
-      const links=await page.evaluate(()=>[...document.querySelectorAll('a[href]')].slice(0,350).map(a=>({
-        href:a.href,text:(a.innerText||a.getAttribute('aria-label')||'').slice(0,250)
-      })));
-      const matches=discoverFromLinks(searchPage,links,[...existingUrls,...candidates.map(x=>x.url)]);
+      const observed=await page.evaluate(()=>({
+        title:document.title,
+        body:(document.body?.innerText||'').slice(0,2500),
+        links:[...document.querySelectorAll('a[href]')].slice(0,350).map(a=>({
+          href:a.href,text:(a.innerText||a.getAttribute('aria-label')||'').slice(0,250)
+        }))
+      }));
+      const pageStatus=classifyDiscoveryPage(observed);
+      const matches=pageStatus==='inspected'
+        ? discoverFromLinks(searchPage,observed.links,[...existingUrls,...candidates.map(x=>x.url)])
+        : [];
       candidates.push(...matches);
-      coverage.push({retailer:searchPage.retailer,status:'attempted',found:matches.length});
+      coverage.push({retailer:searchPage.retailer,status:pageStatus==='inspected'&&matches.length===0?'inspected-no-matching-products':pageStatus,found:matches.length});
     }catch(e){
       coverage.push({retailer:searchPage.retailer,status:'unreadable',reason:String(e).slice(0,160),found:0});
     }finally{await page.close();}
