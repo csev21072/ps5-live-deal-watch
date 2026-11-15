@@ -48,7 +48,7 @@ test('fully verified offer cannot notify without GitHub credentials',async()=>{
    seller:'GameStop',sellerText:'Sold by GameStop',shipper:'GameStop',shipperText:'Shipped by GameStop',
    controllers:1,storage:'1TB',discDrive:true,price:449,priceText:'$449.00',
    fulfillment:{confirmed:true,method:'ship-to-home',zip:'85001',text:'Shipping to Phoenix 85001, orderable',locationText:'Phoenix 85001',cartOrCheckoutConfirmed:true},
-   checkoutEvidence:{url:'https://www.gamestop.com/cart',observedAt:t,skuOrBundle:'SKU-1',priceText:'$449.00',zip:'85001',fulfillmentText:'Shipping to Phoenix 85001, orderable',orderable:true}
+   checkoutEvidence:{url:'https://www.gamestop.com/cart',observedAt:t,skuOrBundle:'SKU-1',priceText:'$449.00',zip:'85001',fulfillmentText:'Shipping to Phoenix 85001, orderable',orderable:true,itemText:'Sony PS5 Slim Disc SKU-1',selectedCondition:'NEW',selectedSeller:'GameStop',selectedFulfillmentMethod:'ship-to-home',checkoutControlEnabled:true}
  };
  const x=await run([r]);
  try{
