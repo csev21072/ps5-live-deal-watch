@@ -40,3 +40,9 @@ test('off-retailer redirects are rejected before product extraction',()=>{
  assert.match(source,/validateRetailerOrigin\(page\.url\(\),product\)/);
  assert.match(source,/if\(!origin\.valid\)throw new Error\(origin\.reason\)/);
 });
+
+test('GameStop global unavailability never creates a verified restock baseline',()=>{
+ assert.match(source,/all-fulfillment-unavailable-unscoped/);
+ assert.match(source,/record\.diagnostic\.status='unscoped-unavailability'/);
+ assert.doesNotMatch(source,/record\.unavailable=true/);
+});
