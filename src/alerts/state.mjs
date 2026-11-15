@@ -31,7 +31,7 @@ export function transition(previous,record,verdict) {
     const last=before.lastAlert;
     const newOffer=!last;
     const changedIdentity=!!last && last.signature!==sig;
-    const changedPrice=!!last && Math.abs(record.price-last.price)>=MATERIAL_PRICE_CHANGE_DOLLARS;
+    const changedPrice=!!last && (last.price-record.price)>=MATERIAL_PRICE_CHANGE_DOLLARS;
     const restocked=!!last && before.status==='confirmed-unavailable';
     const shouldAlert=newOffer||changedIdentity||changedPrice||restocked;
     next.status='verified-orderable';
