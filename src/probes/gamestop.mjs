@@ -1,4 +1,4 @@
-import {inspectGameStopControls} from './gamestop-controls.mjs';
+import {inspectGameStopControls,selectExplicitNewCondition} from './gamestop-controls.mjs';
 import {inspectPickupFinder} from './gamestop-pickup.mjs';
 import {inspectCartText} from '../evidence/cart.mjs';
 // GameStop guest-cart research probe. It never authorizes a purchase alert.
@@ -24,7 +24,7 @@ export async function probeGameStop(page, product, diagnostic, candidatePriceTex
     return {status:'product-not-confirmed'};
   const before=(await page.locator('body').innerText({timeout:5000}).catch(()=>''))||'';
   const observedFulfillment=fulfillmentEvidence(before);
-  const controls=await inspectGameStopControls(page);
+  let controls=await inspectGameStopControls(page);
   const shippingUnavailable=/ship to home\s*[:\-]?\s*not available/i.test(before);
   const pickupUnavailable=/(?:pick up in.store|pickup)\s*[:\-]?\s*not available/i.test(before);
   if(shippingUnavailable && pickupUnavailable)
@@ -35,6 +35,8 @@ export async function probeGameStop(page, product, diagnostic, candidatePriceTex
   }
   if(/\bout of stock\b/i.test(before))
     return {status:'stock-unavailable-pickup-unverified',observedFulfillment,controls,verifiedPurchase:false};
+  const conditionSelection=await selectExplicitNewCondition(page,controls);
+  controls=conditionSelection.controls??controls;
   // A location selector may be absent or require a full address/sign-in.
   // Never assume a browser's geo setting proves Phoenix shipping.
   const zipField=page.locator('input[placeholder*="ZIP" i],input[aria-label*="zip" i],input[name*="postal" i]');
@@ -53,10 +55,10 @@ export async function probeGameStop(page, product, diagnostic, candidatePriceTex
   const add=page.getByRole('button',{name:/^add to cart$/i}).first();
   if(!(await add.isVisible().catch(()=>false)) || !(await add.isEnabled().catch(()=>false))){
     const pickupResearch=await inspectPickupFinder(page);
-    return {status:'cart-not-orderable',location,observedFulfillment,pickupResearch,controls,verifiedPurchase:false};
+    return {status:'cart-not-orderable',location,observedFulfillment,pickupResearch,controls,conditionSelection:conditionSelection.status,verifiedPurchase:false};
   }
   if(controls.newConditionSelected!==true){
-    return {status:'selected-new-condition-not-confirmed',location,observedFulfillment,controls,verifiedPurchase:false};
+    return {status:'selected-new-condition-not-confirmed',location,observedFulfillment,controls,conditionSelection:conditionSelection.status,verifiedPurchase:false};
   }
   try {
     await add.click({timeout:5000});
