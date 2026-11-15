@@ -1,3 +1,4 @@
+import {publicRetailerUrl} from '../evidence/url.mjs';
 import {inspectGameStopControls,selectExplicitNewCondition} from './gamestop-controls.mjs';
 import {inspectPickupFinder} from './gamestop-pickup.mjs';
 import {inspectCartText} from '../evidence/cart.mjs';
@@ -84,7 +85,7 @@ export async function probeGameStop(page, product, diagnostic, candidatePriceTex
       if(/captcha|robot or human|press\s*&\s*hold|access denied/i.test(cartBody))
         return {status:'cart-blocked',location,verifiedPurchase:false};
       const cartEvidence={
-        url:cartUrl,
+        url:publicRetailerUrl(cartUrl,'www.gamestop.com'),
         checkedAt:new Date().toISOString(),
         phoenixZipVisible:/\b85001\b/.test(cartBody),
         productMentioned:/playstation\s*5|ps5/i.test(cartBody),
