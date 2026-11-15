@@ -55,7 +55,7 @@ async function extractCandidate(page,product) {
   // Diagnostic observations are NOT purchase evidence. Fulfillment is always
   // unconfirmed until a separately validated retailer checkout adapter exists.
   return {
-    id:product.id,retailer:product.retailer,url:page.url(),host:product.host,
+    id:product.id,retailer:product.retailer,url:publicRetailerUrl(page.url(),product.host)||product.url,host:product.host,
     kind:product.kind,checkedAt:new Date().toISOString(),source:'live-retailer-purchase-surface',
     title:observed.title,price,priceText:selectedPriceText,priceSelector:observed.priceSelector,priceContext:observed.priceContext,sonyPrice,
     blocked,unavailable,diagnostic,productEvidence,sonyFacts,locationRequested:ZIP,
