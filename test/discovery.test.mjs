@@ -49,3 +49,15 @@ test('rejects http and unrelated domains',()=>{
  ]);
  assert.equal(r.length,0);
 });
+
+test('two-controller bundle URLs outrank ordinary console URLs',()=>{
+ const r=discoverFromLinks(store('Walmart'),[
+  {href:'https://www.walmart.com/ip/111111',text:'PS5 Disc Console'},
+  {href:'https://www.walmart.com/ip/222222',text:'PS5 Disc Console'},
+  {href:'https://www.walmart.com/ip/333333',text:'PS5 Disc Console Bundle with extra controller'}
+ ],[],2);
+ assert.equal(r.length,2);
+ assert.equal(r[0].url,'https://www.walmart.com/ip/333333');
+ assert.equal(r[0].discoveryPriority,2);
+ assert.equal(r[0].discoveryOnly,true);
+});
