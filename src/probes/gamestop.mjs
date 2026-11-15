@@ -1,3 +1,4 @@
+import {inspectCartText} from '../evidence/cart.mjs';
 // GameStop guest-cart research probe. It never authorizes a purchase alert.
 // A cart confirmation without verified NEW condition, seller, exact SKU, price,
 // and Phoenix fulfillment is still UNKNOWN. No login or checkout is attempted.
@@ -12,7 +13,7 @@ export function fulfillmentEvidence(text) {
   }
   return found;
 }
-export async function probeGameStop(page, product, diagnostic) {
+export async function probeGameStop(page, product, diagnostic, candidatePriceText=null) {
   if(product.retailer!=='GameStop')return {status:'not-applicable'};
   if(diagnostic.status!=='candidate-needs-fulfillment-verification')
     return {status:'skipped',reason:diagnostic.status};
@@ -75,7 +76,7 @@ export async function probeGameStop(page, product, diagnostic) {
         checkedAt:new Date().toISOString(),
         phoenixZipVisible:/\b85001\b/.test(cartBody),
         productMentioned:/playstation\s*5|ps5/i.test(cartBody),
-        priceMentions:[...cartBody.matchAll(/\$\s*[\d,]+(?:\.\d{2})?/g)].slice(0,4).map(x=>x[0]),
+        itemMatch:inspectCartText({cartUrl,cartText:cartBody,productUrl:product.url,productHeading:title,priceText:candidatePriceText}),
         fulfillmentText:fulfillmentEvidence(cartBody)
       };
       return {status:'cart-inspected-unverified',location,observedFulfillment,cartEvidence,verifiedPurchase:false};
