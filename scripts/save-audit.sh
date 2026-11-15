@@ -22,9 +22,10 @@ else
   printf '[]\n' > "${RUNNER_TEMP:-/tmp}/ps5-previous-history.json"
 fi
 node src/audit-history.mjs "${RUNNER_TEMP:-/tmp}/ps5-previous-history.json" "${RUNNER_TEMP:-/tmp}/ps5-evidence.json" "${RUNNER_TEMP:-/tmp}/ps5-history.json"
+node src/public-audit.mjs "${RUNNER_TEMP:-/tmp}/ps5-evidence.json" "${RUNNER_TEMP:-/tmp}/ps5-public-evidence.json"
 git switch -C audit origin/audit
 mkdir -p evidence
-cp "${RUNNER_TEMP:-/tmp}/ps5-evidence.json" evidence/latest.json
+cp "${RUNNER_TEMP:-/tmp}/ps5-public-evidence.json" evidence/latest.json
 cp "${RUNNER_TEMP:-/tmp}/ps5-history.json" evidence/history.json
 if [[ -s "${RUNNER_TEMP:-/tmp}/ps5-alert-state.json" ]]; then
   cp "${RUNNER_TEMP:-/tmp}/ps5-alert-state.json" evidence/alert-state.json
