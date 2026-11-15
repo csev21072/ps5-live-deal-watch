@@ -49,10 +49,13 @@ try {
         record.probe=record.price!==null && record.price<=probeLimit
           ? await probeGameStop(page,product,record.diagnostic)
           : {status:'skipped',reason:'price unknown or outside bounded probe range'};
-        if(record.probe.status==='shipping-unavailable'){
+        if(record.probe.status==='all-fulfillment-unavailable'){
           record.unavailable=true;
           record.diagnostic.status='unavailable';
-          record.scanNote='shipping-unavailable-confirmed-by-guest-cart-probe';
+          record.scanNote='shipping-and-pickup-unavailable-confirmed';
+        }else if(record.probe.status==='shipping-unavailable-pickup-unverified'){
+          record.diagnostic.status='shipping-unavailable-pickup-unknown';
+          record.scanNote='shipping-unavailable-pickup-unknown';
         }
       }
     }catch(e){record={id:product.id,retailer:product.retailer,url:product.url,host:product.host,kind:product.kind,checkedAt:new Date().toISOString(),source:'unreadable',blocked:true,diagnostic:{status:'unreadable',evidence:[]},scanNote:String(e).slice(0,400)};}
