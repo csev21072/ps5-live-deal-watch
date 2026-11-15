@@ -94,3 +94,10 @@ test('unavailable page for wrong ZIP does not create a restock baseline',()=>{
  const d=transition(first.next,r,unknown);
  assert.equal(d.reason,'incomplete-or-unverified');
 });
+
+test('price increases do not create repeated deal alerts',()=>{
+ const first=transition(null,offer(440),verified);
+ const d=transition(first.next,offer(448),verified);
+ assert.equal(d.alert,false);
+ assert.equal(d.reason,'unchanged-verified-offer');
+});
