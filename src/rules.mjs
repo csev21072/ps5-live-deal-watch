@@ -59,6 +59,7 @@ export function evaluate(record, now = Date.now()) {
   const validGameValue=gameEvidence && typeof gameEvidence==='object'
     && Number.isFinite(gameEvidence.currentSalePrice)
     && gameEvidence.currentSalePrice>=gameCredit
+    && gameCredit<=40 // Conservative cap for included game value; never use MSRP.
     && gameEvidence.currentSalePrice>0
     && Number.isFinite(Date.parse(gameEvidence.observedAt))
     && Math.abs(now-Date.parse(gameEvidence.observedAt))<=7*24*60*60*1000
