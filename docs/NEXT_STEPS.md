@@ -131,3 +131,20 @@ Use future hourly audits to identify a genuinely orderable product whose retaile
 
 ### Remaining material blocker
 A real positive purchase verification has **not** been demonstrated. The system must still prove matching NEW condition, SKU, seller, current price and Phoenix-specific orderable cart/checkout for at least one genuinely qualifying offer before sending alerts. Do not enable alerts from price-widget evidence alone.
+
+## November 15 — verified coverage accounting and seven-day history
+
+- Added `src/coverage.mjs` and regression tests. The scan now records each retailer's attempted pages, blocked/unreadable pages, observed product headings, guest-cart research, and fully verified orderable offers. An attempted page or green workflow never counts as complete retailer verification. Overlapping blocked/unreadable statuses are correctly deduplicated.
+- Added `src/audit-history.mjs` and updated `scripts/save-audit.sh` to persist a bounded seven-day hourly history in `audit:evidence/history.json`. It stores only timestamps and coarse coverage counts, not prices, personal data, cart contents or notifications. It tracks gaps between actual completed scans, without inferring their cause.
+- GitHub-hosted scan `43772362259` **completed successfully** with the new history pipeline. The first history entry was saved at `2026-11-15T23:02:01Z`: 14 pages attempted across seven retailers, eight readable product pages, three blocked, two unreadable, and zero fully verified orderable offers. These categories can overlap; they are not additive.
+- Added an exact approved retailer-domain allowlist to the purchase gate. Spoofed hosts, cross-retailer mismatches and unknown sellers cannot qualify by supplying self-declared host fields.
+- Discovery pages now distinguish CAPTCHA-blocked, no readable links, and inspected pages; a loaded search page is not automatically a successful discovery.
+- Strengthened Sony guest-cart safety: it requires matching independently observed Sony price-widget evidence before any cart interaction. GameStop cart research now requires an independently identified matching Disc/Digital edition.
+- GitHub-hosted CI at commit `9b2cc2b`: **186/186 tests passed** with no failures. Temporary push-triggered browser scans have been removed; hourly/manual-only operation remains configured.
+- **Remaining blocker:** No positive, independently verified retailer-owned checkout with exact NEW SKU, seller, price and Phoenix orderability has been observed. Do not alert from price-only or research-only evidence.
+
+### Next steps
+1. Inspect subsequent hourly history entries to distinguish genuinely missed/delayed scheduled runs from unreadable retailers. Do not send no-deal notifications.
+2. Validate a real retailer-specific positive checkout path on a qualifying offer without purchasing, logging in with payment details, or bypassing anti-bot protections.
+3. Test the verified-offer GitHub Issue notification and dedup against a real positive checkout event, never a fabricated live deal.
+4. Continue with zero paid services and conservative bundle math.
