@@ -1,4 +1,5 @@
 import {ZIP, MAX_AGE_MS, RETAILER_HOSTS} from './config.mjs';
+import {exactSkuInText,exactZipInText,selectedFulfillmentMatches} from './checkout/evidence-checks.mjs';
 const invalidFulfillment = /\b(not available|unavailable|out of stock|sold out|select condition for availability|shipping unavailable|delivery unavailable|ship to home unavailable|cannot be shipped|currently unavailable)\b/i;
 const validMethods = new Set(['ship-to-home','local-pickup']);
 const money = /\$\s*([\d,]+(?:\.\d{2})?)/;
@@ -36,12 +37,12 @@ export function evaluate(record, now = Date.now()) {
   if (typeof record.discDrive !== 'boolean' || (record.kind==='disc')!==record.discDrive) reject('disc drive not verified or inconsistent');
   if (!Number.isFinite(record.price) || record.price<=0 || !record.priceText || priceFromText(record.priceText)!==record.price) reject('exact current displayed price not verified');
   const f=record.fulfillment;
-  if (!f || f.confirmed!==true || !validMethods.has(f.method) || f.zip!==ZIP || !f.text || !f.locationText || !f.locationText.includes(ZIP) || !f.cartOrCheckoutConfirmed) reject('Phoenix fulfillment not confirmed in live orderable flow');
+  if (!f || f.confirmed!==true || !validMethods.has(f.method) || f.zip!==ZIP || !selectedFulfillmentMatches(f.text,ZIP) || !exactZipInText(f.locationText,ZIP) || !f.cartOrCheckoutConfirmed) reject('Phoenix fulfillment not confirmed in live orderable flow');
   if (f && (invalidFulfillment.test(f.text ?? '') || invalidFulfillment.test(f.locationText ?? ''))) reject('retailer shows unavailable fulfillment');
   const checkout=record.checkoutEvidence;
   if (!checkout || checkout.orderable!==true || checkout.skuOrBundle!==record.skuOrBundle
       || checkout.zip!==ZIP || priceFromText(checkout.priceText)!==record.price
-      || !checkout.fulfillmentText || !checkout.fulfillmentText.includes(ZIP)
+      || !selectedFulfillmentMatches(checkout.fulfillmentText,ZIP)
       || !Number.isFinite(Date.parse(checkout.observedAt))
       || Math.abs(now-Date.parse(checkout.observedAt))>MAX_AGE_MS) {
     reject('matching live retailer cart/checkout SKU, price and Phoenix orderability not proven');
@@ -49,7 +50,7 @@ export function evaluate(record, now = Date.now()) {
   // A generic cart, global price, or enabled button is insufficient.
   // The adapter must capture the selected item and selected fulfillment.
   if (!checkout || typeof checkout.itemText!=='string'
-      || !checkout.itemText.includes(record.skuOrBundle)
+      || !exactSkuInText(checkout.itemText,record.skuOrBundle)
       || !/\b(PS5|PlayStation\s*5)\b/i.test(checkout.itemText)
       || checkout.selectedCondition!=='NEW'
       || checkout.selectedSeller!==record.seller
