@@ -61,6 +61,6 @@ jobs:
           name: ps5-scan-evidence
           path: out/
           retention-days: 7
-      - name: Publish non-alerting audit to separate branch
+      - name: Publish non-alerting audit and seven-day coverage history
         if: always()
         run: bash scripts/save-audit.sh
