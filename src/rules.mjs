@@ -30,7 +30,7 @@ export function evaluate(record, now = Date.now()) {
       reject('third-party marketplace offer not independently approved and reputation-verified');
   }
   if (!Number.isInteger(record.controllers) || record.controllers<1) reject('controller count not verified');
-  if (record.controllers>1 && !/dualSense/i.test(record.extraControllerEvidence ?? '')) reject('extra genuine DualSense not explicitly verified');
+  if (record.controllers>1 && (!/dualSense/i.test(record.extraControllerEvidence ?? '') || !/(extra|additional|second|two|2)/i.test(record.extraControllerEvidence ?? '') || !/(Sony|genuine)/i.test(record.extraControllerEvidence ?? ''))) reject('extra genuine DualSense count and identity not explicitly verified');
   if (!record.storage || !/\b(825\s*gb|1\s*tb|2\s*tb)\b/i.test(record.storage)) reject('storage not verified');
   if (typeof record.discDrive !== 'boolean' || (record.kind==='disc')!==record.discDrive) reject('disc drive not verified or inconsistent');
   if (!Number.isFinite(record.price) || record.price<=0 || !record.priceText || priceFromText(record.priceText)!==record.price) reject('exact current displayed price not verified');
@@ -55,7 +55,16 @@ export function evaluate(record, now = Date.now()) {
   if (record.conflictingEvidence===true) reject('unresolved contradictory evidence');
   if (record.requiresLogin===true || record.blocked===true) reject('login/CAPTCHA/blocked');
   const gameCredit = record.gameCredit ?? 0;
-  if (!Number.isFinite(gameCredit) || gameCredit<0 || (gameCredit>0 && !record.gameCreditEvidence)) reject('unsubstantiated game/accessory valuation');
+  const gameEvidence=record.gameCreditEvidence;
+  const validGameValue=gameEvidence && typeof gameEvidence==='object'
+    && Number.isFinite(gameEvidence.currentSalePrice)
+    && gameEvidence.currentSalePrice>=gameCredit
+    && gameEvidence.currentSalePrice>0
+    && Number.isFinite(Date.parse(gameEvidence.observedAt))
+    && Math.abs(now-Date.parse(gameEvidence.observedAt))<=7*24*60*60*1000
+    && /^https:\/\//i.test(gameEvidence.sourceUrl??'')
+    && gameEvidence.saleType==='current-retail-sale';
+  if (!Number.isFinite(gameCredit) || gameCredit<0 || (gameCredit>0 && !validGameValue)) reject('unsubstantiated or stale game/accessory sale valuation');
   const extraControllerCredit = Math.max(0,(record.controllers ?? 1)-1)*55;
   const effective = Number.isFinite(record.price) ? record.price-extraControllerCredit-gameCredit : null;
   if (effective!==null && effective>(record.kind==='disc'?500:450)) reject('effective price above target');
