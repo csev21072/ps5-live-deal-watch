@@ -41,7 +41,7 @@ export function runFictionalSimulation(now=Date.now()){
   }));
   step('fictional verified restock',fictionalOffer(now));
   const lower=fictionalOffer(now,{price:439,priceText:'$439.00',
-    checkoutEvidence:{...original.checkoutEvidence,priceText:'$439.00'}});
+    checkoutEvidence:{...original.checkoutEvidence,priceText:'$439.00',itemText:'Sony PS5 Slim Disc 1TB SKU 422135 $439.00'}});
   step('verified material price drop',lower);
   step('unchanged lower price',lower);
   return {label:'FICTIONAL OFFLINE SIMULATION — NOT A REAL DEAL OR NOTIFICATION',
