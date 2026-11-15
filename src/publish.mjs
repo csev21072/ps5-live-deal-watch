@@ -77,7 +77,18 @@ for(const record of alerts){
     `- Alert reason: ${decision.reason}`,
     `- Alert event key: ${eventKey}`
   ].join('\n');
-  await github('/issues',{method:'POST',body:JSON.stringify({title,body})});
+  // Assign a verified offer to the repository owner so GitHub can notify
+  // them even if they are not watching every issue (subject to GitHub settings).
+  const owner=repo?.split('/')[0];
+  const payload={title,body,assignees:owner?[owner]:[]};
+  try{
+    await github('/issues',{method:'POST',body:JSON.stringify(payload)});
+  }catch(e){
+    // Some repositories restrict assignee changes. Retry only on a definite
+    // validation rejection, never on network/unknown failures (duplicates).
+    if(!String(e).includes('GitHub API 422'))throw e;
+    await github('/issues',{method:'POST',body:JSON.stringify({title,body})});
+  }
   previousIssues.push({body});
   console.log(`Created independently verified purchase alert for ${record.id}`);
 }
