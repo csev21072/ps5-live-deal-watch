@@ -1,24 +1,24 @@
 {
-  "checkedAt": "2026-11-15T21:59:40.403Z",
+  "checkedAt": "2026-11-15T22:02:03.385Z",
   "zip": "85001",
   "discovery": {
     "candidates": [
       {
-        "id": "discovered-amazon-cb373efc6c",
+        "id": "discovered-amazon-b11a5fefec",
         "retailer": "Amazon",
         "kind": "digital",
-        "url": "https://www.amazon.com/Sony-Playstation-Digital-Wireless-Controller/dp/B09CYLL41S/ref=sr_1_5",
+        "url": "https://www.amazon.com/PlayStation-Digital-Marvels-Spider-Man-Bundle-5/dp/B0CV4J3TS7/ref=sr_1_5",
         "host": "www.amazon.com",
-        "discoveryText": "PS5 PlayStation 5 Digital Edition Gaming Console + 1 Wireless Controller - 16GB GDDR6 Memory, 825GB SSD Storage, WiFi 6, Bluetooth 5.1 - iPuzzle 32GB Green USB Flash Drive + USB Ex",
+        "discoveryText": "PlayStation 5 Digital Edition – Marvel’s Spider-Man 2 Bundle (Slim)",
         "discoveryOnly": true
       },
       {
-        "id": "discovered-amazon-cbe886f176",
+        "id": "discovered-amazon-ea7397ad66",
         "retailer": "Amazon",
-        "kind": "disc",
-        "url": "https://www.amazon.com/Mcbazel-Anti-Scratch-Replacement-Compatible-PlayStation/dp/B0CV7F1ZW1/ref=sr_1_7",
+        "kind": "digital",
+        "url": "https://www.amazon.com/Sony-Playstation-Digital-Wireless-Controller/dp/B09CYLL41S/ref=sr_1_6",
         "host": "www.amazon.com",
-        "discoveryText": "Face Plates for PS5 Slim Disc Edition Only, Anti-Scratch Replacement Panels Cover Plates Shell Case with Cooling Vent Compatible with PlayStation 5 Slim Disc Edition Console - Blac",
+        "discoveryText": "PS5 PlayStation 5 Digital Edition Gaming Console + 1 Wireless Controller - 16GB GDDR6 Memory, 825GB SSD Storage, WiFi 6, Bluetooth 5.1 - iPuzzle 32GB Green USB Flash Drive + USB Ex",
         "discoveryOnly": true
       }
     ],
@@ -68,7 +68,7 @@
       "url": "https://direct.playstation.com/en-us/hardware/ps5",
       "host": "direct.playstation.com",
       "kind": "disc",
-      "checkedAt": "2026-11-15T21:59:06.263Z",
+      "checkedAt": "2026-11-15T22:01:30.908Z",
       "source": "live-retailer-purchase-surface",
       "title": "Buy PS5 Consoles | PlayStation®",
       "price": null,
@@ -112,7 +112,9 @@
           "storage not verified",
           "disc drive not verified or inconsistent",
           "exact current displayed price not verified",
-          "Phoenix fulfillment not confirmed in live orderable flow"
+          "Phoenix fulfillment not confirmed in live orderable flow",
+          "matching live retailer cart/checkout SKU, price and Phoenix orderability not proven",
+          "retailer-owned cart/checkout URL not verified"
         ],
         "effectivePrice": null,
         "extraControllerCredit": 0,
@@ -125,7 +127,7 @@
       "url": "https://direct.playstation.com/en-us/hardware/ps5",
       "host": "direct.playstation.com",
       "kind": "digital",
-      "checkedAt": "2026-11-15T21:59:08.592Z",
+      "checkedAt": "2026-11-15T22:01:33.258Z",
       "source": "live-retailer-purchase-surface",
       "title": "Buy PS5 Consoles | PlayStation®",
       "price": null,
@@ -169,7 +171,9 @@
           "storage not verified",
           "disc drive not verified or inconsistent",
           "exact current displayed price not verified",
-          "Phoenix fulfillment not confirmed in live orderable flow"
+          "Phoenix fulfillment not confirmed in live orderable flow",
+          "matching live retailer cart/checkout SKU, price and Phoenix orderability not proven",
+          "retailer-owned cart/checkout URL not verified"
         ],
         "effectivePrice": null,
         "extraControllerCredit": 0,
@@ -182,7 +186,7 @@
       "url": "https://www.bestbuy.com/product/playstation-5-slim-console/JXHQ3CCTYR/sku/6566039",
       "host": "www.bestbuy.com",
       "kind": "disc",
-      "checkedAt": "2026-11-15T21:59:08.670Z",
+      "checkedAt": "2026-11-15T22:01:33.352Z",
       "source": "unreadable",
       "blocked": true,
       "diagnostic": {
@@ -202,6 +206,8 @@
           "disc drive not verified or inconsistent",
           "exact current displayed price not verified",
           "Phoenix fulfillment not confirmed in live orderable flow",
+          "matching live retailer cart/checkout SKU, price and Phoenix orderability not proven",
+          "retailer-owned cart/checkout URL not verified",
           "login/CAPTCHA/blocked"
         ],
         "effectivePrice": null,
@@ -215,7 +221,7 @@
       "url": "https://www.bestbuy.com/product/playstation-5-slim-console-digital-edition-825gb/JXHQ37TYYL",
       "host": "www.bestbuy.com",
       "kind": "digital",
-      "checkedAt": "2026-11-15T21:59:08.768Z",
+      "checkedAt": "2026-11-15T22:01:33.454Z",
       "source": "unreadable",
       "blocked": true,
       "diagnostic": {
@@ -235,6 +241,8 @@
           "disc drive not verified or inconsistent",
           "exact current displayed price not verified",
           "Phoenix fulfillment not confirmed in live orderable flow",
+          "matching live retailer cart/checkout SKU, price and Phoenix orderability not proven",
+          "retailer-owned cart/checkout URL not verified",
           "login/CAPTCHA/blocked"
         ],
         "effectivePrice": null,
@@ -248,7 +256,7 @@
       "url": "https://www.target.com/p/playstation-5-nba-2k26-disc-bundle-console/-/A-94907150",
       "host": "www.target.com",
       "kind": "disc",
-      "checkedAt": "2026-11-15T21:59:11.814Z",
+      "checkedAt": "2026-11-15T22:01:36.598Z",
       "source": "live-retailer-purchase-surface",
       "title": "PlayStation 5 NBA 2K26 Disc Bundle Console : Target",
       "price": null,
@@ -290,7 +298,9 @@
           "storage not verified",
           "disc drive not verified or inconsistent",
           "exact current displayed price not verified",
-          "Phoenix fulfillment not confirmed in live orderable flow"
+          "Phoenix fulfillment not confirmed in live orderable flow",
+          "matching live retailer cart/checkout SKU, price and Phoenix orderability not proven",
+          "retailer-owned cart/checkout URL not verified"
         ],
         "effectivePrice": null,
         "extraControllerCredit": 0,
@@ -303,7 +313,7 @@
       "url": "https://www.target.com/p/-/A-93150909",
       "host": "www.target.com",
       "kind": "digital",
-      "checkedAt": "2026-11-15T21:59:14.939Z",
+      "checkedAt": "2026-11-15T22:01:39.619Z",
       "source": "live-retailer-purchase-surface",
       "title": "PlayStation 5 Digital Console Slim NBA 2K25 Bundle : Target",
       "price": null,
@@ -345,7 +355,9 @@
           "storage not verified",
           "disc drive not verified or inconsistent",
           "exact current displayed price not verified",
-          "Phoenix fulfillment not confirmed in live orderable flow"
+          "Phoenix fulfillment not confirmed in live orderable flow",
+          "matching live retailer cart/checkout SKU, price and Phoenix orderability not proven",
+          "retailer-owned cart/checkout URL not verified"
         ],
         "effectivePrice": null,
         "extraControllerCredit": 0,
@@ -355,10 +367,10 @@
     {
       "id": "walmart-disc",
       "retailer": "Walmart",
-      "url": "https://www.walmart.com/blocked?url=L2lwLzE3ODE2NjAxOTg1&uuid=cc641df9-e13f-11f1-8c28-2fb0da9a0f12&vid=&g=b",
+      "url": "https://www.walmart.com/blocked?url=L2lwLzE3ODE2NjAxOTg1&uuid=228ac181-e140-11f1-a418-ac9733d39483&vid=&g=b",
       "host": "www.walmart.com",
       "kind": "disc",
-      "checkedAt": "2026-11-15T21:59:18.011Z",
+      "checkedAt": "2026-11-15T22:01:42.116Z",
       "source": "live-retailer-purchase-surface",
       "title": "Robot or human?",
       "price": null,
@@ -404,6 +416,8 @@
           "disc drive not verified or inconsistent",
           "exact current displayed price not verified",
           "Phoenix fulfillment not confirmed in live orderable flow",
+          "matching live retailer cart/checkout SKU, price and Phoenix orderability not proven",
+          "retailer-owned cart/checkout URL not verified",
           "login/CAPTCHA/blocked"
         ],
         "effectivePrice": null,
@@ -417,19 +431,19 @@
       "url": "https://www.amazon.com/dp/B0FRGTYSL5?th=1",
       "host": "www.amazon.com",
       "kind": "disc",
-      "checkedAt": "2026-11-15T21:59:21.673Z",
+      "checkedAt": "2026-11-15T22:01:45.751Z",
       "source": "live-retailer-purchase-surface",
       "title": "Amazon.com: PlayStation®5 console – 1TB : Video Games",
-      "price": null,
-      "priceText": "",
+      "price": 610.06,
+      "priceText": "$610.06",
       "blocked": false,
       "unavailable": false,
       "diagnostic": {
-        "status": "price-unreadable",
+        "status": "candidate-needs-fulfillment-verification",
         "blocked": false,
         "unavailable": false,
         "matchedBrand": true,
-        "priceVisible": false,
+        "priceVisible": true,
         "evidence": [],
         "productId": "amazon-disc"
       },
@@ -448,7 +462,7 @@
         "locationText": null,
         "cartOrCheckoutConfirmed": false
       },
-      "scanNote": "price-unreadable",
+      "scanNote": "candidate-needs-fulfillment-verification",
       "verdict": {
         "qualifies": false,
         "reasons": [
@@ -459,10 +473,12 @@
           "controller count not verified",
           "storage not verified",
           "disc drive not verified or inconsistent",
-          "exact current displayed price not verified",
-          "Phoenix fulfillment not confirmed in live orderable flow"
+          "Phoenix fulfillment not confirmed in live orderable flow",
+          "matching live retailer cart/checkout SKU, price and Phoenix orderability not proven",
+          "retailer-owned cart/checkout URL not verified",
+          "effective price above target"
         ],
-        "effectivePrice": null,
+        "effectivePrice": 610.06,
         "extraControllerCredit": 0,
         "gameCredit": 0
       }
@@ -473,7 +489,7 @@
       "url": "https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/sony-playstation-5-console-1tb-disc-edition---astro-bot-bundle/422135.html",
       "host": "www.gamestop.com",
       "kind": "disc",
-      "checkedAt": "2026-11-15T21:59:24.362Z",
+      "checkedAt": "2026-11-15T22:01:48.178Z",
       "source": "live-retailer-purchase-surface",
       "title": "Sony PlayStation 5 Console 1TB Disc Edition - ASTRO BOT Bundle | GameStop",
       "price": 449.99,
@@ -507,7 +523,8 @@
       "scanNote": "candidate-needs-fulfillment-verification",
       "probe": {
         "status": "cart-not-orderable",
-        "location": "unconfirmed"
+        "location": "unconfirmed",
+        "observedFulfillment": []
       },
       "verdict": {
         "qualifies": false,
@@ -518,7 +535,9 @@
           "controller count not verified",
           "storage not verified",
           "disc drive not verified or inconsistent",
-          "Phoenix fulfillment not confirmed in live orderable flow"
+          "Phoenix fulfillment not confirmed in live orderable flow",
+          "matching live retailer cart/checkout SKU, price and Phoenix orderability not proven",
+          "retailer-owned cart/checkout URL not verified"
         ],
         "effectivePrice": 449.99,
         "extraControllerCredit": 0,
@@ -531,7 +550,7 @@
       "url": "https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/sony-playstation-5-slim-digital-edition---fortnite-cobalt-star-bundle/20016240.html",
       "host": "www.gamestop.com",
       "kind": "digital",
-      "checkedAt": "2026-11-15T21:59:27.040Z",
+      "checkedAt": "2026-11-15T22:01:50.921Z",
       "source": "live-retailer-purchase-surface",
       "title": "Sony PlayStation 5 Slim Digital Edition - Fortnite Cobalt Star Bundle | GameStop",
       "price": 374.99,
@@ -565,7 +584,8 @@
       "scanNote": "candidate-needs-fulfillment-verification",
       "probe": {
         "status": "cart-not-orderable",
-        "location": "unconfirmed"
+        "location": "unconfirmed",
+        "observedFulfillment": []
       },
       "verdict": {
         "qualifies": false,
@@ -576,7 +596,9 @@
           "controller count not verified",
           "storage not verified",
           "disc drive not verified or inconsistent",
-          "Phoenix fulfillment not confirmed in live orderable flow"
+          "Phoenix fulfillment not confirmed in live orderable flow",
+          "matching live retailer cart/checkout SKU, price and Phoenix orderability not proven",
+          "retailer-owned cart/checkout URL not verified"
         ],
         "effectivePrice": 374.99,
         "extraControllerCredit": 0,
@@ -589,7 +611,7 @@
       "url": "https://sameday.costco.com/?next=%2Fstore%2Fcostco%2Fproducts%2F83457876-sony-playstation-5-slim-disc-console-dualsense-controller-bundle",
       "host": "sameday.costco.com",
       "kind": "disc",
-      "checkedAt": "2026-11-15T21:59:29.957Z",
+      "checkedAt": "2026-11-15T22:01:53.712Z",
       "source": "live-retailer-purchase-surface",
       "title": "Costco Same-Day",
       "price": null,
@@ -631,7 +653,9 @@
           "storage not verified",
           "disc drive not verified or inconsistent",
           "exact current displayed price not verified",
-          "Phoenix fulfillment not confirmed in live orderable flow"
+          "Phoenix fulfillment not confirmed in live orderable flow",
+          "matching live retailer cart/checkout SKU, price and Phoenix orderability not proven",
+          "retailer-owned cart/checkout URL not verified"
         ],
         "effectivePrice": null,
         "extraControllerCredit": 0,
@@ -644,7 +668,7 @@
       "url": "https://sameday.costco.com/?next=%2Fstore%2Fcostco%2Fproducts%2F94684554-sony-playstation-5-digital-slim-console-dualsense-controller-bundle",
       "host": "sameday.costco.com",
       "kind": "digital",
-      "checkedAt": "2026-11-15T21:59:32.709Z",
+      "checkedAt": "2026-11-15T22:01:56.318Z",
       "source": "live-retailer-purchase-surface",
       "title": "Costco Same-Day",
       "price": null,
@@ -686,7 +710,9 @@
           "storage not verified",
           "disc drive not verified or inconsistent",
           "exact current displayed price not verified",
-          "Phoenix fulfillment not confirmed in live orderable flow"
+          "Phoenix fulfillment not confirmed in live orderable flow",
+          "matching live retailer cart/checkout SKU, price and Phoenix orderability not proven",
+          "retailer-owned cart/checkout URL not verified"
         ],
         "effectivePrice": null,
         "extraControllerCredit": 0,
@@ -694,12 +720,70 @@
       }
     },
     {
-      "id": "discovered-amazon-cb373efc6c",
+      "id": "discovered-amazon-b11a5fefec",
       "retailer": "Amazon",
-      "url": "https://www.amazon.com/Sony-Playstation-Digital-Wireless-Controller/dp/B09CYLL41S/ref=sr_1_5?th=1",
+      "url": "https://www.amazon.com/PlayStation-Digital-Marvels-Spider-Man-Bundle-5/dp/B0CV4J3TS7/ref=sr_1_5",
       "host": "www.amazon.com",
       "kind": "digital",
-      "checkedAt": "2026-11-15T21:59:36.583Z",
+      "checkedAt": "2026-11-15T22:01:59.755Z",
+      "source": "live-retailer-purchase-surface",
+      "title": "Amazon.com: PlayStation 5 Digital Edition – Marvel’s Spider-Man 2 Bundle (Slim) : Video Games",
+      "price": null,
+      "priceText": "",
+      "blocked": false,
+      "unavailable": false,
+      "diagnostic": {
+        "status": "price-unreadable",
+        "blocked": false,
+        "unavailable": false,
+        "matchedBrand": true,
+        "priceVisible": false,
+        "evidence": [],
+        "productId": "discovered-amazon-b11a5fefec"
+      },
+      "locationRequested": "85001",
+      "condition": null,
+      "seller": null,
+      "shipper": null,
+      "controllers": null,
+      "storage": null,
+      "discDrive": null,
+      "fulfillment": {
+        "confirmed": false,
+        "method": null,
+        "zip": null,
+        "text": null,
+        "locationText": null,
+        "cartOrCheckoutConfirmed": false
+      },
+      "scanNote": "price-unreadable",
+      "verdict": {
+        "qualifies": false,
+        "reasons": [
+          "exact model/SKU/bundle not identified",
+          "NEW condition not explicitly verified",
+          "seller and shipper not explicitly verified",
+          "marketplace seller/shipper not confirmed",
+          "controller count not verified",
+          "storage not verified",
+          "disc drive not verified or inconsistent",
+          "exact current displayed price not verified",
+          "Phoenix fulfillment not confirmed in live orderable flow",
+          "matching live retailer cart/checkout SKU, price and Phoenix orderability not proven",
+          "retailer-owned cart/checkout URL not verified"
+        ],
+        "effectivePrice": null,
+        "extraControllerCredit": 0,
+        "gameCredit": 0
+      }
+    },
+    {
+      "id": "discovered-amazon-ea7397ad66",
+      "retailer": "Amazon",
+      "url": "https://www.amazon.com/Sony-Playstation-Digital-Wireless-Controller/dp/B09CYLL41S/ref=sr_1_6?th=1",
+      "host": "www.amazon.com",
+      "kind": "digital",
+      "checkedAt": "2026-11-15T22:02:03.360Z",
       "source": "live-retailer-purchase-surface",
       "title": "Amazon.com: Sony PS5 PlayStation 5 Digital Edition Gaming Console + 1 Wireless Controller - 16GB GDDR6 Memory, 825GB SSD Storage, WiFi 6, Bluetooth 5.1 - iPuzzle 32GB Green USB Flash Drive + USB Extension Cable : Video Games",
       "price": 793.94,
@@ -713,7 +797,7 @@
         "matchedBrand": true,
         "priceVisible": true,
         "evidence": [],
-        "productId": "discovered-amazon-cb373efc6c"
+        "productId": "discovered-amazon-ea7397ad66"
       },
       "locationRequested": "85001",
       "condition": null,
@@ -742,64 +826,11 @@
           "storage not verified",
           "disc drive not verified or inconsistent",
           "Phoenix fulfillment not confirmed in live orderable flow",
+          "matching live retailer cart/checkout SKU, price and Phoenix orderability not proven",
+          "retailer-owned cart/checkout URL not verified",
           "effective price above target"
         ],
         "effectivePrice": 793.94,
-        "extraControllerCredit": 0,
-        "gameCredit": 0
-      }
-    },
-    {
-      "id": "discovered-amazon-cbe886f176",
-      "retailer": "Amazon",
-      "url": "https://www.amazon.com/Mcbazel-Anti-Scratch-Replacement-Compatible-PlayStation/dp/B0CV7F1ZW1/ref=sr_1_7?th=1",
-      "host": "www.amazon.com",
-      "kind": "disc",
-      "checkedAt": "2026-11-15T21:59:40.374Z",
-      "source": "live-retailer-purchase-surface",
-      "title": "Amazon.com: Mcbazel Face Plates for PS5 Slim Disc Edition Only, Anti-Scratch Replacement Panels Cover Plates Shell Case with Cooling Vent Compatible with PlayStation 5 Slim Disc Edition Console - Black : Office Products",
-      "price": 27.49,
-      "priceText": "$27.49",
-      "blocked": false,
-      "unavailable": false,
-      "diagnostic": {
-        "status": "candidate-needs-fulfillment-verification",
-        "blocked": false,
-        "unavailable": false,
-        "matchedBrand": true,
-        "priceVisible": true,
-        "evidence": [],
-        "productId": "discovered-amazon-cbe886f176"
-      },
-      "locationRequested": "85001",
-      "condition": null,
-      "seller": null,
-      "shipper": null,
-      "controllers": null,
-      "storage": null,
-      "discDrive": null,
-      "fulfillment": {
-        "confirmed": false,
-        "method": null,
-        "zip": null,
-        "text": null,
-        "locationText": null,
-        "cartOrCheckoutConfirmed": false
-      },
-      "scanNote": "candidate-needs-fulfillment-verification",
-      "verdict": {
-        "qualifies": false,
-        "reasons": [
-          "exact model/SKU/bundle not identified",
-          "NEW condition not explicitly verified",
-          "seller and shipper not explicitly verified",
-          "marketplace seller/shipper not confirmed",
-          "controller count not verified",
-          "storage not verified",
-          "disc drive not verified or inconsistent",
-          "Phoenix fulfillment not confirmed in live orderable flow"
-        ],
-        "effectivePrice": 27.49,
         "extraControllerCredit": 0,
         "gameCredit": 0
       }

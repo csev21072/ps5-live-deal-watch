@@ -14,10 +14,10 @@ A successful scan does **not** mean all retailers were readable or Phoenix check
 | Target | target-disc-bundle | No alert: price-unreadable |
 | Target | target-digital-bundle | No alert: price-unreadable |
 | Walmart | walmart-disc | No alert: blocked |
-| Amazon | amazon-disc | No alert: price-unreadable |
+| Amazon | amazon-disc | No alert: candidate-needs-fulfillment-verification |
 | GameStop | gamestop-disc-bundle | No alert: candidate-needs-fulfillment-verification |
 | GameStop | gamestop-digital-bundle | No alert: candidate-needs-fulfillment-verification |
 | Costco | costco-disc-two-controller | No alert: product-not-confirmed |
 | Costco | costco-digital-two-controller | No alert: product-not-confirmed |
-| Amazon | discovered-amazon-cb373efc6c | No alert: candidate-needs-fulfillment-verification |
-| Amazon | discovered-amazon-cbe886f176 | No alert: candidate-needs-fulfillment-verification |
+| Amazon | discovered-amazon-b11a5fefec | No alert: price-unreadable |
+| Amazon | discovered-amazon-ea7397ad66 | No alert: candidate-needs-fulfillment-verification |
