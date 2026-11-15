@@ -23,3 +23,7 @@ test('GameStop guest cart is guarded by independently confirmed Disc/Digital edi
 test('Sony guest cart requires independently parsed retailer price widget',()=>{
  assert.match(source,/probeSonyCart\(page,product,record\.sonyFacts,record\.priceText,record\.sonyPrice\)/);
 });
+
+test('production scanner never imports fictional checkout fixtures or mocked GitHub',()=>{
+ assert.doesNotMatch(source,/fictionalOffer|test\/fixtures|mock-github|simulate-offers/);
+});
