@@ -42,6 +42,7 @@ jobs:
           node --check src/coverage.mjs
           node --check src/audit-history.mjs
           node --check src/public-audit.mjs
+          node --check src/reliability.mjs
           node --check src/evidence/product.mjs
           node --check src/public-audit.mjs
       - name: Unit tests
