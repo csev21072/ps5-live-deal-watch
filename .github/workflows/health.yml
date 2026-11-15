@@ -36,6 +36,8 @@ jobs:
           node --check src/evidence/product.mjs
       - name: Run safety regression tests without paid services
         run: node --test
+      - name: Run fictional checkout and notification dry-run (zero network)
+        run: node scripts/simulate-offers.mjs
       - name: Record completed test run on ci-health branch
         if: success()
         env:
