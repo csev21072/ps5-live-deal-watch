@@ -21,6 +21,7 @@ export function evaluate(record, now = Date.now()) {
   if (/\b(ps5 pro|playstation\s*5\s*pro|ps4|playstation\s*4)\b/i.test(record.exactModel??'') || (!/\bslim\b/i.test(record.exactModel??'') && record.slimModelEvidence!==true)) reject('PS5 Slim model not independently confirmed');
   if (record.condition !== 'NEW' || !/\bnew\b/i.test(record.conditionText ?? '') || /\b(not\s+new|pre.?owned|refurbished|used|open.?box)\b/i.test(record.conditionText ?? '')) reject('NEW condition not explicitly verified');
   if (!record.seller || !record.sellerText || !record.shipper) reject('seller and shipper not explicitly verified');
+  if (!record.sellerText || !record.shipperText || !String(record.sellerText).toLowerCase().includes(String(record.seller??'').toLowerCase()) || !String(record.shipperText).toLowerCase().includes(String(record.shipper??'').toLowerCase())) reject('seller/shipper identities conflict with retailer-owned evidence text');
   if (['Amazon','Walmart'].includes(record.retailer) && (!record.sellerText || !record.shipperText)) reject('marketplace seller/shipper not confirmed');
   if (record.retailer==='Amazon' || record.retailer==='Walmart') {
     const expected=record.retailer==='Amazon'?/^(amazon\.com|amazon)$/i:/^(walmart|walmart\.com)$/i;
