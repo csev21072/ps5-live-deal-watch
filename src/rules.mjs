@@ -18,9 +18,16 @@ export function evaluate(record, now = Date.now()) {
   if (!Number.isFinite(Date.parse(record.checkedAt)) || Math.abs(now-Date.parse(record.checkedAt))>MAX_AGE_MS) reject('missing or stale verification timestamp');
   if (!['disc','digital'].includes(record.kind)) reject('unknown console edition');
   if (!record.exactModel || !record.skuOrBundle) reject('exact model/SKU/bundle not identified');
+  if (/\b(ps5 pro|playstation\s*5\s*pro|ps4|playstation\s*4)\b/i.test(record.exactModel??'') || (!/\bslim\b/i.test(record.exactModel??'') && record.slimModelEvidence!==true)) reject('PS5 Slim model not independently confirmed');
   if (record.condition !== 'NEW' || !/\bnew\b/i.test(record.conditionText ?? '') || /\b(not\s+new|pre.?owned|refurbished|used|open.?box)\b/i.test(record.conditionText ?? '')) reject('NEW condition not explicitly verified');
   if (!record.seller || !record.sellerText || !record.shipper) reject('seller and shipper not explicitly verified');
   if (['Amazon','Walmart'].includes(record.retailer) && (!record.sellerText || !record.shipperText)) reject('marketplace seller/shipper not confirmed');
+  if (record.retailer==='Amazon' || record.retailer==='Walmart') {
+    const expected=record.retailer==='Amazon'?/^(amazon\.com|amazon)$/i:/^(walmart|walmart\.com)$/i;
+    const firstParty=expected.test(String(record.seller??'').trim()) && expected.test(String(record.shipper??'').trim());
+    if(!firstParty && !(record.marketplaceSellerApproved===true && record.marketplaceReputationEvidence))
+      reject('third-party marketplace offer not independently approved and reputation-verified');
+  }
   if (!Number.isInteger(record.controllers) || record.controllers<1) reject('controller count not verified');
   if (record.controllers>1 && !/dualSense/i.test(record.extraControllerEvidence ?? '')) reject('extra genuine DualSense not explicitly verified');
   if (!record.storage || !/\b(825\s*gb|1\s*tb|2\s*tb)\b/i.test(record.storage)) reject('storage not verified');
