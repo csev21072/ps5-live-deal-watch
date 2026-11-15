@@ -7,7 +7,7 @@ This project is a **free GitHub Actions + Playwright browser-scanning prototype*
 - Attempts 12 known retailer-owned URLs plus up to two newly discovered product URLs per retailer across PlayStation Direct, Best Buy, Target, Walmart, Amazon, GameStop, and Costco once per hour (GitHub schedules may be delayed).
 - Uses a real headless Chromium browser, not shopping feeds or search snippets, and saves an audit artifact for each run.
 - Detects CAPTCHA blocks, explicitly unavailable shipping, missing prices, and mismatched pages; extracts candidate prices for internal review only.
-- Runs 62 hosted safety tests (latest confirmed), including wrong-ZIP, unavailable shipping, ambiguous prices, unverified controller credits, alert deduplication, and restock transitions.
+- Runs 66 hosted safety tests (latest confirmed), including wrong-ZIP, unavailable shipping, ambiguous prices, unverified controller credits, alert deduplication, and restock transitions.
 - Performs a bounded GameStop guest-cart research probe for potentially qualifying listings; **the probe does not generate alerts or assert checkout verification**.
 - Writes the latest non-alerting scanner audit to the separate `audit` branch when GitHub Actions runs successfully; the `ci-health` branch records a passing test-run witness. These branch files may be absent until hosted workflows complete.
 - Stores durable alert history in `audit:evidence/alert-state.json` and suppresses unchanged offers, small price fluctuations, and false restock signals from CAPTCHAs or unconfirmed pickup. The publisher is wired but **no scanner path currently produces verified checkout evidence**, so no issues/alerts should be generated.
@@ -48,3 +48,7 @@ The scanner visits retailer-owned search pages to **discover URLs only**. Candid
 ## Hosted smoke-test observations
 
 The first hosted discovery run reached all seven retailer search attempts and discovered two additional Amazon product URLs. It scanned 14 product URLs in total, but the notification step failed due to a JavaScript syntax error in the publisher. That error was fixed, and both CI and scan workflows now run `node --check` on key JavaScript files before executing. The latest hosted CI checkpoint passed **62/62 tests**, including the new independent cart-evidence requirements. A follow-up full browser scan is needed to verify the repaired publisher and persistent state flow. A green safety test alone does not prove live checkout availability.
+
+### Latest validated hosted checkpoint
+
+The follow-up GitHub-hosted Chromium smoke test completed successfully on November 15, 2026. It attempted seven retailer-owned discovery searches and 14 product pages (12 static plus two newly discovered Amazon URLs), restored the durable alert state, ran the notification gate without creating unverified alerts, and saved the audit. The audit now has 14 state entries. A successful hosted scan **does not** establish that all retailer pages were readable or that a purchasable deal exists. The workflow has been returned to hourly/manual triggers only. The latest independent CI checkpoint passed 66/66 tests, including a real subprocess test of the publisher's no-alert and invalid-history behavior.
