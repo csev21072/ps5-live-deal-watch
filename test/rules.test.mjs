@@ -10,9 +10,15 @@ test('Add to Cart alone never qualifies',()=>{const x=base();x.fulfillment.cartO
 test('wrong zip never qualifies',()=>{const x=base();x.fulfillment.zip='95123';assert.equal(evaluate(x,now).qualifies,false);});
 test('stale evidence never qualifies',()=>{const x=base();x.checkedAt=new Date(now-11*60_000).toISOString();assert.equal(evaluate(x,now).qualifies,false);});
 test('price over target rejected',()=>{const x=base();x.price=501;x.priceText='$501.00';assert.equal(evaluate(x,now).qualifies,false);});
-test('two controller bundle effective price credits $55',()=>{const x=base();x.controllers=2;x.price=550;x.priceText='$550.00';const r=evaluate(x,now);assert.equal(r.effectivePrice,495);assert.equal(r.qualifies,true);});
+test('two controller bundle effective price credits $55',()=>{const x=base();x.controllers=2;x.extraControllerEvidence='Extra genuine Sony DualSense Wireless Controller';x.price=550;x.priceText='$550.00';const r=evaluate(x,now);assert.equal(r.effectivePrice,495);assert.equal(r.qualifies,true);});
 test('unsupported game credit rejected',()=>{const x=base();x.price=540;x.priceText='$540.00';x.gameCredit=50;assert.equal(evaluate(x,now).qualifies,false);});
 test('marketplace seller missing shipper proof rejected',()=>{const x=base();x.retailer='Amazon';x.shipperText='';assert.equal(evaluate(x,now).qualifies,false);});
 test('CAPTCHA rejected',()=>{const x=base();x.blocked=true;assert.equal(evaluate(x,now).qualifies,false);});
 test('digital target enforced',()=>{const x=base();x.kind='digital';x.discDrive=false;assert.equal(evaluate(x,now).qualifies,false);});
 test('conflicting evidence rejected',()=>{const x=base();x.conflictingEvidence=true;assert.equal(evaluate(x,now).qualifies,false);});
+
+test('multiple prices in a price label are ambiguous',()=>assert.equal(priceFromText('$449.99 - $649.00'),null));
+test('retailer unavailable flag always rejects',()=>{const x=base();x.unavailable=true;assert.equal(evaluate(x,now).qualifies,false);});
+test('used condition with NEW token always rejects',()=>{const x=base();x.conditionText='Not new / used';assert.equal(evaluate(x,now).qualifies,false);});
+test('two controller credit requires actual DualSense evidence',()=>{const x=base();x.controllers=2;x.price=550;x.priceText='$550.00';assert.equal(evaluate(x,now).qualifies,false);});
+test('fulfillment location text must confirm Phoenix ZIP',()=>{const x=base();x.fulfillment.locationText='Shipping to San Jose';assert.equal(evaluate(x,now).qualifies,false);});
