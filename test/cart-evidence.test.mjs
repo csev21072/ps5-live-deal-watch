@@ -51,3 +51,18 @@ test('ambiguous multiple item prices do not count',()=>{
  const r=inspectCartText({...base,cartText:'Sony PlayStation 5 Disc Console\nSKU 422135\n$449.99\n$499.99\nShipping to Phoenix 85001'});
  assert.equal(r.productPriceMatched,false);
 });
+
+test('a larger SKU containing expected digits does not match',()=>{
+ const r=inspectCartText({...base,cartText:'Sony PlayStation 5 Disc Console\nSKU 1422135\n$449.99\nShipping to Phoenix 85001'});
+ assert.equal(r.skuFoundInCart,false);
+});
+test('shipping to a ZIP containing Phoenix digits is not Phoenix fulfillment',()=>{
+ const r=inspectCartText({...base,cartText:'Sony PlayStation 5 Disc Console\nSKU 422135\n$449.99\nShipping to Phoenix 185001'});
+ assert.equal(r.zipInShippingContext,false);
+});
+test('cart evidence does not publish personal details from cart text',()=>{
+ const r=inspectCartText({...base,cartText:base.cartText+'\nJane Example jane@example.org 123 Main Street'});
+ assert.ok(!JSON.stringify(r).includes('Jane'));
+ assert.ok(!JSON.stringify(r).includes('Main Street'));
+ assert.ok(!JSON.stringify(r).includes('example.org'));
+});
