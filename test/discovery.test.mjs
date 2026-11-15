@@ -61,3 +61,26 @@ test('two-controller bundle URLs outrank ordinary console URLs',()=>{
  assert.equal(r[0].discoveryPriority,2);
  assert.equal(r[0].discoveryOnly,true);
 });
+
+test('official PlayStation Direct buy-consoles product URL can be discovered',()=>{
+ const r=discoverFromLinks(store('PlayStation Direct'),[{
+  href:'https://direct.playstation.com/en-us/buy-consoles/playstation5-digital-edition-console-825-gb',
+  text:'PlayStation 5 Digital Edition Console 825GB'
+ }]);
+ assert.equal(r.length,1);
+ assert.equal(r[0].kind,'digital');
+});
+test('PS5-compatible face plates are not console candidates',()=>{
+ const r=discoverFromLinks(store('Amazon'),[{
+  href:'https://www.amazon.com/dp/B0FRGTYSL5',
+  text:'Face Plates for PS5 Slim Disc Edition Only, replacement cover compatible with PlayStation 5 Slim Disc Edition Consoles'
+ }]);
+ assert.equal(r.length,0);
+});
+test('PS5 cooling accessories cannot be mistaken for bundles',()=>{
+ const r=discoverFromLinks(store('Walmart'),[{
+  href:'https://www.walmart.com/ip/12345678',
+  text:'PS5 Digital Edition Console Cooling Fan Accessories Bundle'
+ }]);
+ assert.equal(r.length,0);
+});
