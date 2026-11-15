@@ -66,7 +66,10 @@ export function evaluate(record, now = Date.now()) {
     && /^https:\/\//i.test(gameEvidence.sourceUrl??'')
     && gameEvidence.saleType==='current-retail-sale';
   if (!Number.isFinite(gameCredit) || gameCredit<0 || (gameCredit>0 && !validGameValue)) reject('unsubstantiated or stale game/accessory sale valuation');
-  const extraControllerCredit = Math.max(0,(record.controllers ?? 1)-1)*55;
+  // Only one additional genuine DualSense may be credited by this policy.
+  // A larger count requires a separately reviewed valuation model.
+  if (record.controllers>2) reject('more than two controllers requires manual bundle valuation');
+  const extraControllerCredit = record.controllers===2?55:0;
   const effective = Number.isFinite(record.price) ? record.price-extraControllerCredit-gameCredit : null;
   if (effective!==null && effective>(record.kind==='disc'?500:450)) reject('effective price above target');
   return {qualifies:reasons.length===0,reasons,effectivePrice:effective,extraControllerCredit,gameCredit};
