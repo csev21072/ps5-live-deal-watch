@@ -118,3 +118,16 @@ Use future hourly audits to identify a genuinely orderable product whose retaile
 - The verified-offer GitHub issue publisher now requests assignment to the repository owner so the owner may receive free GitHub notifications, subject to GitHub settings. It retries without assignment only on a definite HTTP 422 validation rejection.
 - Latest hosted CI checkpoint on commit `6968017`: **157/157 passed**, 0 failures. A new one-time hosted browser run was triggered for the repaired scanner; confirm its outcome and return the workflow to hourly/manual-only.
 - **Still no verified positive checkout adapter or orderable deal alert.** Do not report one based on Sony product facts, a price widget, an Add to Cart button, or a cart research probe alone.
+
+## Hosted Sony price verification milestone (2026-11-15 22:47 UTC)
+
+- Repaired the scanner's missing Sony price/cart imports and public URL sanitizer wiring. A new scanner-wiring regression suite now checks those imports and the independent verification gate.
+- The hosted run `43771096368` completed successfully, including scan, alert-history restore, no-alert publisher, artifact, and audit push.
+- The audit at `2026-11-15T22:47:55Z` contains 14 product URLs across all seven retailers, zero verified qualifying offers. The Sony Disc 1TB and Digital 825GB pages now yield matching retailer-owned price widget and adjacent dollar context; both are above their respective qualifying thresholds, so the Sony cart probe correctly reports `price-above-target`.
+- A public audit URL sanitizer now removes query strings, fragments, embedded credentials and unexpected hosts from published URLs.
+- The Sony price parser was strengthened to distinguish separated cents (e.g., `$ 649 00` versus `$ 649 99`) so an integer widget cannot silently round a different displayed price.
+- The verified-offer GitHub issue publisher requests assignment to the repository owner for free notification delivery, subject to GitHub settings; no unverified deal issues were created.
+- Hosted CI after these changes: **160/160 tests passed**. The browser workflow is again hourly/manual-only. No metered tools or payments were used.
+
+### Remaining material blocker
+A real positive purchase verification has **not** been demonstrated. The system must still prove matching NEW condition, SKU, seller, current price and Phoenix-specific orderable cart/checkout for at least one genuinely qualifying offer before sending alerts. Do not enable alerts from price-widget evidence alone.
