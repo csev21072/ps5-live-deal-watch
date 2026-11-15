@@ -1,7 +1,8 @@
 import {publicRetailerUrl} from '../evidence/url.mjs';
 import {inspectGameStopControls,selectExplicitNewCondition} from './gamestop-controls.mjs';
 import {inspectPickupFinder} from './gamestop-pickup.mjs';
-import {inspectCartText} from '../evidence/cart.mjs';
+import {inspectCartText,expectedSkuFromProductUrl} from '../evidence/cart.mjs';
+import {captureCartControls} from '../checkout/cart-controls.mjs';
 // GameStop guest-cart research probe. It never authorizes a purchase alert.
 // A cart confirmation without verified NEW condition, seller, exact SKU, price,
 // and Phoenix fulfillment is still UNKNOWN. No login or checkout is attempted.
@@ -84,12 +85,14 @@ export async function probeGameStop(page, product, diagnostic, candidatePriceTex
         return {status:'cart-redirected-off-retailer',location,verifiedPurchase:false};
       if(/captcha|robot or human|press\s*&\s*hold|access denied/i.test(cartBody))
         return {status:'cart-blocked',location,verifiedPurchase:false};
+      const domControls=await captureCartControls(page,{sku:expectedSkuFromProductUrl(product.url),productName:productHeading||title});
       const cartEvidence={
         url:publicRetailerUrl(cartUrl,'www.gamestop.com'),
         checkedAt:new Date().toISOString(),
         phoenixZipVisible:/\b85001\b/.test(cartBody),
         productMentioned:/playstation\s*5|ps5/i.test(cartBody),
         itemMatch:inspectCartText({cartUrl,cartText:cartBody,productUrl:product.url,productHeading:productHeading||title,priceText:candidatePriceText}),
+        domControls,
         fulfillmentText:fulfillmentEvidence(cartBody)
       };
       return {status:'cart-inspected-unverified',location,observedFulfillment,cartEvidence,verifiedPurchase:false};
