@@ -2,7 +2,7 @@
 Checked 14 retailer-owned product URLs across 7 retailers.
 Discovery attempts: 7; newly found URLs: 2 (discovery alone is NEVER purchase evidence).
 Verified qualifying offers: 0.
-Readability: {"unscoped-availability-text":2,"unreadable":2,"price-unreadable":4,"blocked":1,"candidate-needs-fulfillment-verification":3,"product-not-confirmed":2}.
+Readability: {"unscoped-availability-text":2,"unreadable":2,"price-unreadable":3,"blocked":1,"candidate-needs-fulfillment-verification":4,"product-not-confirmed":2}.
 Retailer coverage: 7/7 attempted; 0 with a fully verified orderable offer.
 Incomplete retailers: PlayStation Direct: product-pages-inspected-checkout-unverified; Best Buy: all-pages-unreadable-or-blocked; Target: product-pages-inspected-checkout-unverified; Walmart: all-pages-unreadable-or-blocked; Amazon: product-pages-inspected-checkout-unverified; GameStop: product-pages-inspected-checkout-unverified; Costco: no-product-confirmed.
 A successful scan does **not** mean all retailers were readable or Phoenix checkout was confirmed.
@@ -22,4 +22,4 @@ A successful scan does **not** mean all retailers were readable or Phoenix check
 | Costco | costco-disc-two-controller | No alert: product-not-confirmed |
 | Costco | costco-digital-two-controller | No alert: product-not-confirmed |
 | Amazon | discovered-amazon-cb373efc6c | No alert: candidate-needs-fulfillment-verification |
-| Amazon | discovered-amazon-e2cce5b066 | No alert: price-unreadable |
+| Amazon | discovered-amazon-bafb6b957b | No alert: candidate-needs-fulfillment-verification |
