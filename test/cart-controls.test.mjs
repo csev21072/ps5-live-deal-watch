@@ -70,3 +70,19 @@ test('public cart diagnostics never retain names, emails or addresses',()=>{
  assert.ok(!JSON.stringify(r).includes('Main Street'));
  assert.ok(!JSON.stringify(r).includes('example.org'));
 });
+
+test('matching cart SKU with wrong item price is not sufficient',()=>{
+ const r=assessCartControls({...observation,rows:[{text:'Sony PlayStation 5 Slim Disc SKU 422135 Condition: New $499.00'}]},{...expected,price:449});
+ assert.equal(r.status,'incomplete-cart-controls');
+ assert.ok(r.missing.some(x=>x.includes('item-row price')));
+});
+test('correct cart row price can be observed without claiming checkout',()=>{
+ const r=assessCartControls(observation,{...expected,price:449});
+ assert.equal(r.status,'research-fields-observed-needs-live-review');
+ assert.equal(r.matchingRows[0].itemPriceMatched,true);
+ assert.equal(r.verifiedPurchase,false);
+});
+test('subtotal alongside item price is not exact item-row price evidence',()=>{
+ const r=assessCartControls({...observation,rows:[{text:'Sony PS5 Slim Disc SKU 422135 Condition New $449.00 Subtotal $899.00'}]},{...expected,price:449});
+ assert.equal(r.status,'incomplete-cart-controls');
+});
