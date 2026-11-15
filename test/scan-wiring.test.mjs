@@ -15,3 +15,11 @@ test('scanner still requires the independent fail-closed verdict',()=>{
  assert.match(source,/record\.verdict=evaluate\(record\)/);
  assert.match(source,/await writeFile\(.*evidence\.json/);
 });
+
+test('GameStop guest cart is guarded by independently confirmed Disc/Digital edition',()=>{
+ assert.match(source,/const editionConfirmed=record\.productEvidence\?\.editionHint===product\.kind/);
+ assert.match(source,/record\.price<=probeLimit && editionConfirmed/);
+});
+test('Sony guest cart requires independently parsed retailer price widget',()=>{
+ assert.match(source,/probeSonyCart\(page,product,record\.sonyFacts,record\.priceText,record\.sonyPrice\)/);
+});
