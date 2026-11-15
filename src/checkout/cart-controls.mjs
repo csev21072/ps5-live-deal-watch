@@ -1,3 +1,4 @@
+import {exactSkuInText,selectedFulfillmentMatches} from './evidence-checks.mjs';
 // Read-only cart DOM capture for retailer-specific adapter development.
 // Never enters personal information, clicks checkout, or marks an offer verified.
 export function assessCartControls(observation={},expected={}) {
@@ -6,22 +7,24 @@ export function assessCartControls(observation={},expected={}) {
   const name=String(expected.productName??'').replace(/\s+/g,' ').trim().toLowerCase();
   const matches=rows.filter(row=>{
     const text=String(row.text??'').replace(/\s+/g,' ').trim().toLowerCase();
-    return sku.length>=5?text.includes(sku.toLowerCase()):name.length>=15&&text.includes(name);
+    return sku.length>=5?exactSkuInText(text,sku):name.length>=15&&text.includes(name);
   });
   const selectedShipping=(observation.fulfillmentOptions??[]).filter(x=>x.selected===true);
   const missing=[];
   if(matches.length!==1)missing.push('exactly one selected console cart row');
   if(!observation.checkoutControl?.enabled)missing.push('enabled checkout control');
   if(selectedShipping.length!==1)missing.push('unambiguous selected shipping/pickup method');
-  if(!selectedShipping.some(x=>String(x.text??'').includes('85001')))
+  if(!selectedShipping.some(x=>selectedFulfillmentMatches(x.text,'85001')))
     missing.push('Phoenix 85001 explicitly shown in selected fulfillment');
   if(!matches.some(x=>/\bnew\b/i.test(x.text??'') && !/\b(used|pre.?owned|refurbished|open.?box)\b/i.test(x.text??'')))
     missing.push('selected NEW condition in matching item row');
   return {
     status:missing.length===0?'research-fields-observed-needs-live-review':'incomplete-cart-controls',
     missing,
-    matchingRows:matches.slice(0,2).map(x=>String(x.text??'').slice(0,280)),
-    selectedFulfillment:selectedShipping.slice(0,2).map(x=>String(x.text??'').slice(0,180)),
+    // Public audit may be visible to anyone: never persist cart row text,
+    // address fragments, account identifiers, phone numbers or email addresses.
+    matchingRows:matches.slice(0,2).map(x=>({skuMatched:sku.length>=5?exactSkuInText(x.text,sku):false,newCondition:/\bnew\b/i.test(x.text??'')&&!/\b(used|pre.?owned|refurbished|open.?box)\b/i.test(x.text??'')})),
+    selectedFulfillment:selectedShipping.slice(0,2).map(x=>({phoenixZipMatched:selectedFulfillmentMatches(x.text,'85001')})),
     checkoutControlEnabled:observation.checkoutControl?.enabled===true,
     verifiedPurchase:false
   };
