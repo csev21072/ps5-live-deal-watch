@@ -22,7 +22,7 @@ export function fictionalOffer(now=Date.now(),overrides={}) {
       observedAt:checkedAt,skuOrBundle:'422135',priceText:'$449.00',
       zip:'85001',fulfillmentText:'Shipping to Phoenix 85001, orderable',
       orderable:true,
-      itemText:'Sony PS5 Slim Disc 1TB SKU 422135',
+      itemText:'Sony PS5 Slim Disc 1TB SKU 422135 $449.00',
       selectedCondition:'NEW',selectedSeller:'GameStop',
       selectedFulfillmentMethod:'ship-to-home',checkoutControlEnabled:true
     },
