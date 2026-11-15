@@ -46,11 +46,12 @@ export function discoverFromLinks(searchPage,links,existingUrls=[],limit=2){
     found.push({
       id:'discovered-'+searchPage.retailer.toLowerCase().replace(/[^a-z0-9]+/g,'-')+'-'+createHash('sha256').update(url).digest('hex').slice(0,10),
       retailer:searchPage.retailer,kind,url,host:new URL(url).hostname,
-      discoveryText:text.slice(0,180),discoveryOnly:true
+      discoveryText:text.slice(0,180),discoveryOnly:true,
+      discoveryPriority:/\b(two controllers|2 controllers|extra controller|additional controller|dualSense bundle)\b/i.test(text)?2:1
     });
-    if(found.length>=limit)break;
   }
-  return found;
+  // Discovery priority is not evidence of actual bundle contents or value.
+  return found.sort((a,b)=>b.discoveryPriority-a.discoveryPriority).slice(0,limit);
 }
 function canonical(value){
   try{const u=new URL(value);u.search='';u.hash='';return u.href;}catch{return null;}
