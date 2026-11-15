@@ -12,7 +12,7 @@ const unknown={qualifies:false};
 const soldout=(id='gamestop-disc-bundle')=>({
  id,retailer:'GameStop',source:'live-retailer-purchase-surface',
  unavailable:true,blocked:false,diagnostic:{status:'unavailable'},
- probe:{status:'shipping-unavailable'},checkedAt:'2026-11-15T22:10:00Z'
+ probe:{status:'all-fulfillment-unavailable'},checkedAt:'2026-11-15T22:10:00Z'
 });
 test('first fully verified offer alerts',()=>{
  const d=transition(null,offer(),verified);
