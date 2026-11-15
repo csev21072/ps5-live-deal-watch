@@ -93,7 +93,7 @@ export async function probeGameStop(page, product, diagnostic, candidatePriceTex
         productMentioned:/playstation\s*5|ps5/i.test(cartBody),
         itemMatch:inspectCartText({cartUrl,cartText:cartBody,productUrl:product.url,productHeading:productHeading||title,priceText:candidatePriceText}),
         domControls,
-        fulfillmentText:fulfillmentEvidence(cartBody)
+        fulfillmentIndicators:{phoenixZipMentioned:/\b85001\b/.test(cartBody),shippingMentioned:/\b(ship|shipping|delivery)\b/i.test(cartBody),pickupMentioned:/\b(pickup|pick up)\b/i.test(cartBody)}
       };
       return {status:'cart-inspected-unverified',location,observedFulfillment,cartEvidence,verifiedPurchase:false};
     }catch(e){
