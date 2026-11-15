@@ -13,7 +13,7 @@ test('does not touch cart for unavailable GameStop offer',async()=>{
 });
 test('rejects shipping Not Available before trying cart',async()=>{
  const r=await probeGameStop(page('Ship to Home: Not Available'),product,{status:'candidate-needs-fulfillment-verification'});
- assert.equal(r.status,'shipping-unavailable');
+ assert.equal(r.status,'shipping-unavailable-pickup-unverified');
 });
 test('cannot infer purchase availability from product page alone',async()=>{
  const r=await probeGameStop(page('PlayStation 5 New, Ship to Home'),product,{status:'candidate-needs-fulfillment-verification'});
