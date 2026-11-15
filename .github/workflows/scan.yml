@@ -42,6 +42,7 @@ jobs:
           node --check src/coverage.mjs
           node --check src/audit-history.mjs
           node --check src/evidence/product.mjs
+          node --check src/public-audit.mjs
       - name: Unit tests
         run: npm test
       - name: Install pinned Playwright
@@ -58,12 +59,20 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npm run publish
+      - name: Build public-safe evidence artifact
+        if: always()
+        run: |
+          if [ -s out/evidence.json ]; then
+            node src/public-audit.mjs out/evidence.json out/public-evidence.json
+          fi
       - name: Save audit artifact
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: ps5-scan-evidence
-          path: out/
+          path: |
+            out/public-evidence.json
+            out/summary.md
           retention-days: 7
       - name: Publish non-alerting audit and seven-day coverage history
         if: always()
