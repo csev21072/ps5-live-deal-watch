@@ -18,7 +18,7 @@ export function evaluate(record, now = Date.now()) {
   if (!Number.isFinite(Date.parse(record.checkedAt)) || Math.abs(now-Date.parse(record.checkedAt))>MAX_AGE_MS) reject('missing or stale verification timestamp');
   if (!['disc','digital'].includes(record.kind)) reject('unknown console edition');
   if (!record.exactModel || !record.skuOrBundle) reject('exact model/SKU/bundle not identified');
-  if (record.condition !== 'NEW' || !/\bnew\b/i.test(record.conditionText ?? '')) reject('NEW condition not explicitly verified');
+  if (record.condition !== 'NEW' || !/\bnew\b/i.test(record.conditionText ?? '') || /\b(not\s+new|pre.?owned|refurbished|used|open.?box)\b/i.test(record.conditionText ?? '')) reject('NEW condition not explicitly verified');
   if (!record.seller || !record.sellerText || !record.shipper) reject('seller and shipper not explicitly verified');
   if (['Amazon','Walmart'].includes(record.retailer) && (!record.sellerText || !record.shipperText)) reject('marketplace seller/shipper not confirmed');
   if (!Number.isInteger(record.controllers) || record.controllers<1) reject('controller count not verified');
