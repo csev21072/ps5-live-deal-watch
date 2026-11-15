@@ -22,6 +22,13 @@ export function summarizeProductEvidence(observed,product) {
   const prices=[...priceText.matchAll(pricePattern)].map(m=>m[0]);
   const selectedOfferPrice=prices.length===1?prices[0]:null;
   const itemTitle=headings.find(h=>/playstation\s*5|\bps5\b/i.test(h))??null;
+  const headingLine=itemTitle?lines.findIndex(line=>line.includes(itemTitle)):-1;
+  const productLines=headingLine>=0?lines.slice(headingLine,headingLine+60):[];
+  const skuMatch=productLines.join(' | ').match(/\b(?:SKU|item\s*#|model\s*#)\s*[:#]?\s*([A-Za-z0-9-]{5,})\b/i);
+  const skuHint=skuMatch?skuMatch[1]:null;
+  const description=productLines.join(' ');
+  const extraControllerHint=/\b(?:2|two)\s+(?:genuine\s+Sony\s+)?(?:DualSense\s+)?(?:wireless\s+)?controllers\b|\b(?:extra|additional|second)\s+(?:Sony\s+)?DualSense\b/i.test(description);
+  const storageHint=(itemTitle??'').match(/\b(?:825\s*GB|1\s*TB|2\s*TB)\b/i)?.[0]??null;
   const modelConfirmed=!!itemTitle && /\b(playstation\s*5|ps5)\b/i.test(itemTitle);
   const digital=/\b(digital|all.digital)\b/i.test(itemTitle??'');
   const disc=/\b(disc|disk)\b/i.test(itemTitle??'');
@@ -31,6 +38,7 @@ export function summarizeProductEvidence(observed,product) {
     retailer:product.retailer,productId:product.id,
     pageTitle:title,productHeading:itemTitle,editionHint:edition,
     priceSelectorText:priceText,selectedOfferPrice,
+    skuHint,extraControllerHint,storageHint,
     visibleLabels:labels,highlights,
     containsUnscopedUnavailableText:highlights.some(x=>unavailable.test(x)),
     conditionVerified:false,sellerVerified:false,skuVerified:false,
