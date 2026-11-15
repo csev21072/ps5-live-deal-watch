@@ -166,3 +166,12 @@ A real positive purchase verification has **not** been demonstrated. The system 
 - Hardened `src/rules.mjs` so the final deal gate requires matching selected cart SKU/item text, NEW condition, seller, fulfillment method and enabled checkout control in addition to the existing product, price, seller, Phoenix and freshness evidence. This is still not sufficient to claim a real positive until a live adapter can produce the evidence.
 - Hosted safety CI run `43774396398`: **217/217 tests passed**. A one-time free hosted browser smoke scan was triggered to check that the new cart probes do not break unattended scans; check its outcome before claiming completion and remove the temporary push trigger.
 - The fictional end-to-end publisher test remains zero-network: it does not open real GitHub Issues or place orders.
+
+## Hosted end-to-end checkpoint — 2026-11-15 23:24 UTC
+
+- Real GitHub-hosted scanner run `43774418197` completed **successfully** after the read-only cart DOM changes: Chromium installation, live scan, alert-history restore, verified-only publisher, artifact upload and audit/history push all passed.
+- Latest audit timestamp `2026-11-15T23:23:52Z`: 14 product URLs attempted across all seven retailers, eight readable product pages, three blocked, two unreadable (categories overlap), zero independently verified orderable offers. Sony product-page prices were above target; GameStop product pages did not offer an orderable guest cart. No deal notification was generated.
+- The bounded seven-day audit history now has two entries. This establishes successful **runs**, not full retailer inventory verification or guaranteed hourly timing.
+- Hosted safety CI run `43774591192`: **218/218 tests passed**, including the real publisher with intercepted GitHub API, offline fictional scenario simulation, read-only cart DOM observations, and a regression guard against importing fictional fixtures into the production scanner.
+- The temporary push trigger was removed; the live scan remains hourly plus manual, and all added infrastructure uses free public GitHub Actions.
+- **Remaining external validation:** a genuinely qualifying NEW PS5 with real retailer-owned cart/checkout evidence for Phoenix ZIP 85001. No current adapter may assert that complete proof; do not turn research-only cart signals into a verified deal.
