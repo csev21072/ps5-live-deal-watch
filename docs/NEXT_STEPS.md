@@ -197,3 +197,16 @@ A real positive purchase verification has **not** been demonstrated. The system 
 - Hosted CI run `43775981395` passed **261/261 tests**, including checkout SKU/ZIP/price boundary tests, privacy redaction, redirect safety, Target metadata isolation, and generic purchase-control diagnostics.
 - The temporary browser push trigger was removed; GitHub Actions remains hourly/manual only, with zero paid services.
 - **Next engineering work:** pursue legitimate retailer-specific live checkout evidence when a truly orderable qualifying offer appears. No fabricated checkout evidence or unverified notifications.
+
+## November 15 — public audit privacy, reliability, and negative stock correction
+
+- Replaced public `audit:evidence/latest.json` with a strict status-only projection via `src/public-audit.mjs`. Raw product page snippets, cart rows, shipping addresses, account identifiers, browser exceptions, seller text and arbitrary status strings are omitted. Price and per-retailer status counts remain visible. Existing older Git commits are not rewritten; this protection applies to newly published audits.
+- Changed the GitHub Actions downloadable artifact to contain only `out/public-evidence.json` and `out/summary.md`, never raw `out/evidence.json` or alert-state files. The publisher still uses its in-run evidence, but the public artifact and branch receive only the sanitized projection.
+- Added `src/reliability.mjs` and `audit:evidence/reliability.json` to track actual completed scan counts, observed gaps, seven-retailer attempt coverage and verified offers. A gap is observational, not proof GitHub skipped a scheduled job.
+- Corrected GameStop negative stock diagnostics: both global "Not Available" labels are now `all-fulfillment-unavailable-unscoped`, not proof that the exact NEW SKU was unavailable in Phoenix. No false restock baseline can be created.
+- Suppressed raw Playwright exception strings from public Actions logs; unreadable product scans use a fixed status.
+- One-time hosted browser run `43776994660` completed **successfully**, including scan, verified-only publisher, public-safe artifact generation, and publishing the redacted audit plus reliability report. Audit `2026-11-15T23:52:21Z` attempted 14 product pages across all seven retailers; eight readable product pages, three blocked and two unreadable (categories overlap); zero verified orderable offers.
+- New `audit:evidence/history.json` has five observed entries; `audit:evidence/reliability.json` reports zero observed gaps over 1.5 hours among these development runs. This is **not** yet proof of unattended hourly scheduling.
+- Latest independently confirmed hosted CI run `43777137891`: **277/277 tests passed**; subsequent minor log-redaction tests need their own final CI confirmation.
+- The temporary push-triggered browser scan has been removed; hourly/manual-only remains configured. No paid or metered services used.
+- **Remaining actual blocker:** a genuinely qualifying NEW PS5 with independently verified retailer-owned checkout and selected orderable Phoenix ZIP 85001 fulfillment. Current probes remain research-only and cannot emit a verified purchase alert. Do not loosen this gate or manufacture a positive result.
