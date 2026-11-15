@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-15T21:52:26.398Z",
+  "checkedAt": "2026-11-15T21:56:27.455Z",
   "zip": "85001",
   "records": [
     {
@@ -8,7 +8,7 @@
       "url": "https://direct.playstation.com/en-us/hardware/ps5",
       "host": "direct.playstation.com",
       "kind": "disc",
-      "checkedAt": "2026-11-15T21:51:58.341Z",
+      "checkedAt": "2026-11-15T21:56:01.923Z",
       "source": "live-retailer-purchase-surface",
       "title": "Buy PS5 Consoles | PlayStation®",
       "price": null,
@@ -65,7 +65,7 @@
       "url": "https://direct.playstation.com/en-us/hardware/ps5",
       "host": "direct.playstation.com",
       "kind": "digital",
-      "checkedAt": "2026-11-15T21:52:00.896Z",
+      "checkedAt": "2026-11-15T21:56:04.490Z",
       "source": "live-retailer-purchase-surface",
       "title": "Buy PS5 Consoles | PlayStation®",
       "price": null,
@@ -122,7 +122,7 @@
       "url": "https://www.bestbuy.com/product/playstation-5-slim-console/JXHQ3CCTYR/sku/6566039",
       "host": "www.bestbuy.com",
       "kind": "disc",
-      "checkedAt": "2026-11-15T21:52:01.023Z",
+      "checkedAt": "2026-11-15T21:56:04.572Z",
       "source": "unreadable",
       "blocked": true,
       "diagnostic": {
@@ -155,7 +155,7 @@
       "url": "https://www.bestbuy.com/product/playstation-5-slim-console-digital-edition-825gb/JXHQ37TYYL",
       "host": "www.bestbuy.com",
       "kind": "digital",
-      "checkedAt": "2026-11-15T21:52:01.122Z",
+      "checkedAt": "2026-11-15T21:56:04.690Z",
       "source": "unreadable",
       "blocked": true,
       "diagnostic": {
@@ -188,7 +188,7 @@
       "url": "https://www.target.com/p/playstation-5-nba-2k26-disc-bundle-console/-/A-94907150",
       "host": "www.target.com",
       "kind": "disc",
-      "checkedAt": "2026-11-15T21:52:04.794Z",
+      "checkedAt": "2026-11-15T21:56:07.564Z",
       "source": "live-retailer-purchase-surface",
       "title": "PlayStation 5 NBA 2K26 Disc Bundle Console : Target",
       "price": null,
@@ -243,7 +243,7 @@
       "url": "https://www.target.com/p/-/A-93150909",
       "host": "www.target.com",
       "kind": "digital",
-      "checkedAt": "2026-11-15T21:52:08.437Z",
+      "checkedAt": "2026-11-15T21:56:10.750Z",
       "source": "live-retailer-purchase-surface",
       "title": "PlayStation 5 Digital Console Slim NBA 2K25 Bundle : Target",
       "price": null,
@@ -295,10 +295,10 @@
     {
       "id": "walmart-disc",
       "retailer": "Walmart",
-      "url": "https://www.walmart.com/blocked?url=L2lwLzE3ODE2NjAxOTg1&uuid=ce1bfff6-e13e-11f1-807a-3e779c88ea30&vid=&g=b",
+      "url": "https://www.walmart.com/blocked?url=L2lwLzE3ODE2NjAxOTg1&uuid=5e70cf98-e13f-11f1-ab64-9467c646fe72&vid=&g=b",
       "host": "www.walmart.com",
       "kind": "disc",
-      "checkedAt": "2026-11-15T21:52:11.100Z",
+      "checkedAt": "2026-11-15T21:56:13.159Z",
       "source": "live-retailer-purchase-surface",
       "title": "Robot or human?",
       "price": null,
@@ -357,7 +357,7 @@
       "url": "https://www.amazon.com/dp/B0FRGTYSL5?th=1",
       "host": "www.amazon.com",
       "kind": "disc",
-      "checkedAt": "2026-11-15T21:52:14.773Z",
+      "checkedAt": "2026-11-15T21:56:16.645Z",
       "source": "live-retailer-purchase-surface",
       "title": "Amazon.com: PlayStation®5 console – 1TB : Video Games",
       "price": null,
@@ -413,15 +413,15 @@
       "url": "https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/sony-playstation-5-console-1tb-disc-edition---astro-bot-bundle/422135.html",
       "host": "www.gamestop.com",
       "kind": "disc",
-      "checkedAt": "2026-11-15T21:52:17.881Z",
+      "checkedAt": "2026-11-15T21:56:19.155Z",
       "source": "live-retailer-purchase-surface",
       "title": "Sony PlayStation 5 Console 1TB Disc Edition - ASTRO BOT Bundle | GameStop",
       "price": 449.99,
       "priceText": "$449.99",
       "blocked": false,
-      "unavailable": true,
+      "unavailable": false,
       "diagnostic": {
-        "status": "unavailable",
+        "status": "candidate-needs-fulfillment-verification",
         "blocked": false,
         "unavailable": false,
         "matchedBrand": true,
@@ -444,14 +444,14 @@
         "locationText": null,
         "cartOrCheckoutConfirmed": false
       },
-      "scanNote": "shipping-unavailable-confirmed-by-guest-cart-probe",
+      "scanNote": "candidate-needs-fulfillment-verification",
       "probe": {
-        "status": "shipping-unavailable"
+        "status": "cart-not-orderable",
+        "location": "unconfirmed"
       },
       "verdict": {
         "qualifies": false,
         "reasons": [
-          "retailer reported unavailable",
           "exact model/SKU/bundle not identified",
           "NEW condition not explicitly verified",
           "seller and shipper not explicitly verified",
@@ -471,15 +471,15 @@
       "url": "https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/sony-playstation-5-slim-digital-edition---fortnite-cobalt-star-bundle/20016240.html",
       "host": "www.gamestop.com",
       "kind": "digital",
-      "checkedAt": "2026-11-15T21:52:20.719Z",
+      "checkedAt": "2026-11-15T21:56:21.847Z",
       "source": "live-retailer-purchase-surface",
       "title": "Sony PlayStation 5 Slim Digital Edition - Fortnite Cobalt Star Bundle | GameStop",
       "price": 374.99,
       "priceText": "$374.99",
       "blocked": false,
-      "unavailable": true,
+      "unavailable": false,
       "diagnostic": {
-        "status": "unavailable",
+        "status": "candidate-needs-fulfillment-verification",
         "blocked": false,
         "unavailable": false,
         "matchedBrand": true,
@@ -502,14 +502,14 @@
         "locationText": null,
         "cartOrCheckoutConfirmed": false
       },
-      "scanNote": "shipping-unavailable-confirmed-by-guest-cart-probe",
+      "scanNote": "candidate-needs-fulfillment-verification",
       "probe": {
-        "status": "shipping-unavailable"
+        "status": "cart-not-orderable",
+        "location": "unconfirmed"
       },
       "verdict": {
         "qualifies": false,
         "reasons": [
-          "retailer reported unavailable",
           "exact model/SKU/bundle not identified",
           "NEW condition not explicitly verified",
           "seller and shipper not explicitly verified",
@@ -529,7 +529,7 @@
       "url": "https://sameday.costco.com/?next=%2Fstore%2Fcostco%2Fproducts%2F83457876-sony-playstation-5-slim-disc-console-dualsense-controller-bundle",
       "host": "sameday.costco.com",
       "kind": "disc",
-      "checkedAt": "2026-11-15T21:52:23.561Z",
+      "checkedAt": "2026-11-15T21:56:24.858Z",
       "source": "live-retailer-purchase-surface",
       "title": "Costco Same-Day",
       "price": null,
@@ -584,7 +584,7 @@
       "url": "https://sameday.costco.com/?next=%2Fstore%2Fcostco%2Fproducts%2F94684554-sony-playstation-5-digital-slim-console-dualsense-controller-bundle",
       "host": "sameday.costco.com",
       "kind": "digital",
-      "checkedAt": "2026-11-15T21:52:26.365Z",
+      "checkedAt": "2026-11-15T21:56:27.428Z",
       "source": "live-retailer-purchase-surface",
       "title": "Costco Same-Day",
       "price": null,
