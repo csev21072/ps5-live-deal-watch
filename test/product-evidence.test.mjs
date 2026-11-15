@@ -41,3 +41,22 @@ test('price and condition are not verified from labels alone',()=>{
  assert.equal(r.sellerVerified,false);
  assert.equal(r.skuVerified,false);
 });
+
+test('SKU and two-controller hints remain explicitly unverified',()=>{
+ const r=summarizeProductEvidence({
+  headings:['Sony PlayStation 5 Slim Disc Console 1TB'],
+  body:'Sony PlayStation 5 Slim Disc Console 1TB\nSKU: 422135\nIncludes 2 DualSense wireless controllers'
+ },product);
+ assert.equal(r.skuHint,'422135');
+ assert.equal(r.extraControllerHint,true);
+ assert.equal(r.storageHint,'1TB');
+ assert.equal(r.skuVerified,false);
+ assert.equal(r.phoenixCheckoutVerified,false);
+});
+test('generic DualSense mention does not imply extra controller',()=>{
+ const r=summarizeProductEvidence({
+  headings:['Sony PlayStation 5 Slim Digital Edition 825GB'],
+  body:'Sony PlayStation 5 Slim Digital Edition 825GB\nIncludes DualSense wireless controller'
+ },product);
+ assert.equal(r.extraControllerHint,false);
+});
