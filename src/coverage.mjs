@@ -7,6 +7,7 @@ export function summarizeCoverage(records=[],discovery={coverage:[]},retailers=[
     const discoveryAttempt=(discovery.coverage??[]).find(x=>x.retailer===retailer);
     const unreadable=pages.filter(r=>r.source==='unreadable'||r.diagnostic?.status==='unreadable').length;
     const blocked=pages.filter(r=>r.blocked===true||r.diagnostic?.status==='blocked').length;
+    const unreadableOrBlocked=pages.filter(r=>r.source==='unreadable'||r.diagnostic?.status==='unreadable'||r.blocked===true||r.diagnostic?.status==='blocked').length;
     const productIdentified=pages.filter(r=>r.source==='live-retailer-purchase-surface' &&
       (r.productEvidence?.productHeading||r.sonyFacts?.officialProductPage) &&
       r.blocked!==true).length;
@@ -15,7 +16,7 @@ export function summarizeCoverage(records=[],discovery={coverage:[]},retailers=[
     const missing=pages.length===0;
     const status=missing?'not-checked':
       verified>0?'verified-offer-observed':
-      unreadable+blocked===pages.length?'all-pages-unreadable-or-blocked':
+      unreadableOrBlocked===pages.length?'all-pages-unreadable-or-blocked':
       unreadable>0||blocked>0?'partial-coverage':
       productIdentified===0?'no-product-confirmed':
       'product-pages-inspected-checkout-unverified';
