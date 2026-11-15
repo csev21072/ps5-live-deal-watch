@@ -5,6 +5,7 @@ import {priceFromText,evaluate} from './rules.mjs';
 import {extractVisibleSignals,summarize} from './diagnostics.mjs';
 import {probeGameStop} from './probes/gamestop.mjs';
 import {discoverProducts} from './discovery.mjs';
+import {summarizeProductEvidence} from './evidence/product.mjs';
 const outdir='out';
 await mkdir(outdir,{recursive:true});
 const browser=await chromium.launch({headless:true});
@@ -19,9 +20,12 @@ async function extractCandidate(page,product) {
     const visible=(el)=>{if(!el)return false;const s=getComputedStyle(el);return s.display!=='none'&&s.visibility!=='hidden'&&!!el.getClientRects().length;};
     let priceText='';
     for(const selector of selectors){try{const el=[...document.querySelectorAll(selector)].find(visible);if(el){priceText=(el.textContent||'').trim();if(priceText)break;}}catch{}}
-    return {title:document.title,body:(document.body?.innerText||'').slice(0,50000),priceText};
+    const headings=[...document.querySelectorAll('h1,h2')].filter(visible).slice(0,15).map(el=>(el.innerText||'').slice(0,180));
+    const labels=[...document.querySelectorAll('button,[role="button"],label')].filter(visible).slice(0,45).map(el=>(el.innerText||el.getAttribute('aria-label')||'').slice(0,120));
+    return {title:document.title,body:(document.body?.innerText||'').slice(0,50000),priceText,headings,labels};
   },priceSelectors[product.retailer]||[]);
   const diagnostic=extractVisibleSignals(observed,product);
+  const productEvidence=summarizeProductEvidence(observed,product);
   // PlayStation Direct URL is a multi-SKU catalog. An unavailable badge may
   // belong to another product, so it is not evidence that this SKU is sold out.
   if(product.retailer==='PlayStation Direct' && !diagnostic.blocked){
@@ -36,7 +40,7 @@ async function extractCandidate(page,product) {
     id:product.id,retailer:product.retailer,url:page.url(),host:product.host,
     kind:product.kind,checkedAt:new Date().toISOString(),source:'live-retailer-purchase-surface',
     title:observed.title,price,priceText:observed.priceText,
-    blocked,unavailable,diagnostic,locationRequested:ZIP,
+    blocked,unavailable,diagnostic,productEvidence,locationRequested:ZIP,
     condition:null,seller:null,shipper:null,controllers:null,storage:null,discDrive:null,
     fulfillment:{confirmed:false,method:null,zip:null,text:null,locationText:null,cartOrCheckoutConfirmed:false},
     scanNote:diagnostic.status
