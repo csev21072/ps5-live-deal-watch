@@ -27,3 +27,16 @@ test('Sony guest cart requires independently parsed retailer price widget',()=>{
 test('production scanner never imports fictional checkout fixtures or mocked GitHub',()=>{
  assert.doesNotMatch(source,/fictionalOffer|test\/fixtures|mock-github|simulate-offers/);
 });
+
+test('Target JSON-LD price remains a hint and is not assigned to verified offer price',()=>{
+ assert.match(source,/record\.priceHint=await inspectTargetPriceHint/);
+ assert.doesNotMatch(source,/record\.price\s*=\s*(?:record\.)?priceHint/);
+});
+test('five-retailer generic controls remain separate from the purchase verdict',()=>{
+ assert.match(source,/record\.probe=await inspectProductControls/);
+ assert.match(source,/record\.verdict=evaluate\(record\)/);
+});
+test('off-retailer redirects are rejected before product extraction',()=>{
+ assert.match(source,/validateRetailerOrigin\(page\.url\(\),product\)/);
+ assert.match(source,/if\(!origin\.valid\)throw new Error\(origin\.reason\)/);
+});
