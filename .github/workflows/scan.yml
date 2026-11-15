@@ -33,6 +33,8 @@ jobs:
           node --check src/evidence/sony-price.mjs
           node --check src/evidence/url.mjs
           node --check src/checkout/cart-controls.mjs
+          node --check src/checkout/evidence-checks.mjs
+          node --check src/probes/product-controls.mjs
           node --check src/alerts/issue.mjs
           node --check scripts/simulate-offers.mjs
           node --check src/coverage.mjs
