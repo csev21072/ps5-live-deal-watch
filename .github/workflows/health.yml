@@ -16,14 +16,14 @@ jobs:
           node-version: '22'
       - name: Run safety regression tests without paid services
         run: node --test
-      - name: Record completed test run on audit branch
+      - name: Record completed test run on ci-health branch
         if: success()
         env:
           SOURCE_SHA: ${{ github.sha }}
           SOURCE_RUN: ${{ github.run_id }}
         run: |
-          git fetch origin audit
-          git switch -C audit origin/audit
+          git fetch origin ci-health
+          git switch -C ci-health origin/ci-health
           mkdir -p evidence
           printf '{"source_commit":"%s","workflow_run":"%s","result":"unit-tests-passed","verified_live_checkout":false}\n' "$SOURCE_SHA" "$SOURCE_RUN" > evidence/ci-health.json
           git config user.name "github-actions[bot]"
@@ -31,5 +31,5 @@ jobs:
           git add evidence/ci-health.json
           if ! git diff --cached --quiet; then
             git commit -m "audit: record successful safety tests [skip ci]"
-            git push origin audit
+            git push origin ci-health
           fi
