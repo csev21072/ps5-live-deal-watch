@@ -7,7 +7,7 @@ This project is a **free GitHub Actions + Playwright browser-scanning prototype*
 - Attempts 12 known retailer-owned URLs plus up to two newly discovered product URLs per retailer across PlayStation Direct, Best Buy, Target, Walmart, Amazon, GameStop, and Costco once per hour (GitHub schedules may be delayed).
 - Uses a real headless Chromium browser, not shopping feeds or search snippets, and saves an audit artifact for each run.
 - Detects CAPTCHA blocks, explicitly unavailable shipping, missing prices, and mismatched pages; extracts candidate prices for internal review only.
-- Runs 53 hosted safety tests (latest confirmed), including wrong-ZIP, unavailable shipping, ambiguous prices, unverified controller credits, alert deduplication, and restock transitions.
+- Runs 62 hosted safety tests (latest confirmed), including wrong-ZIP, unavailable shipping, ambiguous prices, unverified controller credits, alert deduplication, and restock transitions.
 - Performs a bounded GameStop guest-cart research probe for potentially qualifying listings; **the probe does not generate alerts or assert checkout verification**.
 - Writes the latest non-alerting scanner audit to the separate `audit` branch when GitHub Actions runs successfully; the `ci-health` branch records a passing test-run witness. These branch files may be absent until hosted workflows complete.
 - Stores durable alert history in `audit:evidence/alert-state.json` and suppresses unchanged offers, small price fluctuations, and false restock signals from CAPTCHAs or unconfirmed pickup. The publisher is wired but **no scanner path currently produces verified checkout evidence**, so no issues/alerts should be generated.
@@ -44,3 +44,7 @@ An initial fully verified orderable offer can create a GitHub Issue. An unchange
 ## Free new-product discovery
 
 The scanner visits retailer-owned search pages to **discover URLs only**. Candidate titles must explicitly identify a PS5 console/bundle and its Disc or Digital edition. Host allowlists, product-path checks, duplicate suppression, and exclusion of used/refurbished/PS5 Pro reduce noise. Search-page prices, seller claims, stock indicators, and snippets are **never purchase evidence**. The browser must visit the actual retailer-owned product page and pass the independent checkout gate. Blocked search pages do not prevent attempts at the 12 static URLs. Discovery coverage and candidates are saved in the private-in-the-workflow/public-in-the-audit `audit/evidence/latest.json` file, containing only public product metadata and generic Phoenix ZIP 85001.
+
+## Hosted smoke-test observations
+
+The first hosted discovery run reached all seven retailer search attempts and discovered two additional Amazon product URLs. It scanned 14 product URLs in total, but the notification step failed due to a JavaScript syntax error in the publisher. That error was fixed, and both CI and scan workflows now run `node --check` on key JavaScript files before executing. The latest hosted CI checkpoint passed **62/62 tests**, including the new independent cart-evidence requirements. A follow-up full browser scan is needed to verify the repaired publisher and persistent state flow. A green safety test alone does not prove live checkout availability.
