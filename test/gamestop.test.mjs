@@ -45,3 +45,22 @@ test('captures only bounded fulfillment text, not entire page',()=>{
  assert.match(quotes[0],/Ship to Home/);
  assert.ok(quotes.every(x=>x.length<=220));
 });
+
+test('guest cart research never becomes purchase verification',async()=>{
+ let stage=0;
+ const mock={
+  title:async()=> 'Sony PlayStation 5 Slim',
+  locator:(selector)=>selector==='body'?{innerText:async()=>stage===0?'PlayStation 5 New. Ship to Home.':'Added to Cart. PS5 Disc Console. $449.99. Shipping to Phoenix 85001'}:{count:async()=>0},
+  getByRole:(role)=>({first:()=>role==='button'
+    ?{isVisible:async()=>true,isEnabled:async()=>true,click:async()=>{stage=1;}}
+    :{isVisible:async()=>false}}),
+  waitForTimeout:async()=>{},
+  goto:async()=>{stage=2;},
+  url:()=> 'https://www.gamestop.com/cart/'
+ };
+ const r=await probeGameStop(mock,product,{status:'candidate-needs-fulfillment-verification'});
+ assert.equal(r.status,'cart-inspected-unverified');
+ assert.equal(r.verifiedPurchase,false);
+ assert.equal(r.cartEvidence.phoenixZipVisible,true);
+ assert.equal(r.cartEvidence.productMentioned,true);
+});
