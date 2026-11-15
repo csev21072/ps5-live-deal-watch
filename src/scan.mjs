@@ -81,9 +81,10 @@ try {
       }
       if(product.retailer==='GameStop'){
         const probeLimit=product.kind==='disc'?550:500;
-        record.probe=record.price!==null && record.price<=probeLimit
+        const editionConfirmed=record.productEvidence?.editionHint===product.kind;
+        record.probe=record.price!==null && record.price<=probeLimit && editionConfirmed
           ? await probeGameStop(page,product,record.diagnostic,record.priceText,record.productEvidence?.productHeading)
-          : {status:'skipped',reason:'price unknown or outside bounded probe range'};
+          : {status:'skipped',reason:!editionConfirmed?'exact product edition not independently identified':'price unknown or outside bounded probe range'};
         if(record.probe.status==='all-fulfillment-unavailable'){
           record.unavailable=true;
           record.diagnostic.status='unavailable';
