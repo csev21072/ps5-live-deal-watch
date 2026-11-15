@@ -21,5 +21,5 @@ A successful scan does **not** mean all retailers were readable or Phoenix check
 | GameStop | gamestop-digital-bundle | No alert: candidate-needs-fulfillment-verification |
 | Costco | costco-disc-two-controller | No alert: product-not-confirmed |
 | Costco | costco-digital-two-controller | No alert: product-not-confirmed |
-| Amazon | discovered-amazon-7caa81ac0a | No alert: candidate-needs-fulfillment-verification |
-| Amazon | discovered-amazon-b11a5fefec | No alert: price-unreadable |
+| Amazon | discovered-amazon-cb373efc6c | No alert: candidate-needs-fulfillment-verification |
+| Amazon | discovered-amazon-e2cce5b066 | No alert: price-unreadable |

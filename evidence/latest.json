@@ -1,25 +1,25 @@
 {
-  "checkedAt": "2026-11-15T23:23:52.776Z",
+  "checkedAt": "2026-11-15T23:36:22.046Z",
   "zip": "85001",
   "discovery": {
     "candidates": [
       {
-        "id": "discovered-amazon-7caa81ac0a",
+        "id": "discovered-amazon-cb373efc6c",
         "retailer": "Amazon",
-        "kind": "disc",
-        "url": "https://www.amazon.com/PlayStation-Slim-Disc-Bundle-Last-Controller/dp/B0DFS41DT6/ref=sr_1_4",
+        "kind": "digital",
+        "url": "https://www.amazon.com/Sony-Playstation-Digital-Wireless-Controller/dp/B09CYLL41S/ref=sr_1_5",
         "host": "www.amazon.com",
-        "discoveryText": "PlayStation 5 Slim Disc 2TB SSD Edition Bundle with The Last of Us Part I and Controller Charger - PS5 with Upgraded 2TB U...",
+        "discoveryText": "Sony PS5 PlayStation 5 Digital Edition Gaming Console + 1 Wireless Controller - 16GB GDDR6 Memory, 825GB SSD Storage, WiFi...",
         "discoveryOnly": true,
         "discoveryPriority": 1
       },
       {
-        "id": "discovered-amazon-b11a5fefec",
+        "id": "discovered-amazon-e2cce5b066",
         "retailer": "Amazon",
-        "kind": "digital",
-        "url": "https://www.amazon.com/PlayStation-Digital-Marvels-Spider-Man-Bundle-5/dp/B0CV4J3TS7/ref=sr_1_5",
+        "kind": "disc",
+        "url": "https://www.amazon.com/PS5-Console-Fortnite-Cobalt-PlayStation-5/dp/B0DJHF6Q9Z/ref=sr_1_6",
         "host": "www.amazon.com",
-        "discoveryText": "PlayStation 5 Digital Edition – Marvel’s Spider-Man 2 Bundle (Slim)",
+        "discoveryText": "PlayStation PS5 Console - Fortnite Cobalt Star Disc Edition",
         "discoveryOnly": true,
         "discoveryPriority": 1
       }
@@ -64,7 +64,7 @@
     ]
   },
   "coverage": {
-    "checkedAt": "2026-11-15T23:23:52.776Z",
+    "checkedAt": "2026-11-15T23:36:22.046Z",
     "expectedRetailers": 7,
     "retailersAttempted": 7,
     "retailersWithVerifiedOffer": 0,
@@ -157,7 +157,7 @@
       "url": "https://direct.playstation.com/en-us/buy-consoles/playstation5-console-1-tb",
       "host": "direct.playstation.com",
       "kind": "disc",
-      "checkedAt": "2026-11-15T23:23:10.853Z",
+      "checkedAt": "2026-11-15T23:35:35.780Z",
       "source": "live-retailer-purchase-surface",
       "title": "PlayStation®5 Console - 1 TB (US) | See Price",
       "price": 649,
@@ -292,7 +292,7 @@
       "url": "https://direct.playstation.com/en-us/buy-consoles/playstation5-digital-edition-console-825-gb",
       "host": "direct.playstation.com",
       "kind": "digital",
-      "checkedAt": "2026-11-15T23:23:13.579Z",
+      "checkedAt": "2026-11-15T23:35:38.207Z",
       "source": "live-retailer-purchase-surface",
       "title": "PlayStation®5 Digital Edition Console - 825 GB (US) | See Price",
       "price": 599,
@@ -427,7 +427,7 @@
       "url": "https://www.bestbuy.com/product/playstation-5-slim-console/JXHQ3CCTYR/sku/6566039",
       "host": "www.bestbuy.com",
       "kind": "disc",
-      "checkedAt": "2026-11-15T23:23:13.659Z",
+      "checkedAt": "2026-11-15T23:35:38.289Z",
       "source": "unreadable",
       "blocked": true,
       "diagnostic": {
@@ -465,7 +465,7 @@
       "url": "https://www.bestbuy.com/product/playstation-5-slim-console-digital-edition-825gb/JXHQ37TYYL",
       "host": "www.bestbuy.com",
       "kind": "digital",
-      "checkedAt": "2026-11-15T23:23:13.729Z",
+      "checkedAt": "2026-11-15T23:35:38.368Z",
       "source": "unreadable",
       "blocked": true,
       "diagnostic": {
@@ -503,7 +503,7 @@
       "url": "https://www.target.com/p/playstation-5-nba-2k26-disc-bundle-console/-/A-94907150",
       "host": "www.target.com",
       "kind": "disc",
-      "checkedAt": "2026-11-15T23:23:16.936Z",
+      "checkedAt": "2026-11-15T23:35:41.577Z",
       "source": "live-retailer-purchase-surface",
       "title": "PlayStation 5 NBA 2K26 Disc Bundle Console : Target",
       "price": null,
@@ -537,7 +537,6 @@
           "Pickup",
           "Delivery",
           "Shipping",
-          "Add to cart",
           "Shipping & Returns"
         ],
         "highlights": [
@@ -570,6 +569,17 @@
         "cartOrCheckoutConfirmed": false
       },
       "scanNote": "price-unreadable",
+      "probe": {
+        "status": "purchase-control-observed-not-checkout",
+        "retailer": "Target",
+        "productId": "target-disc-bundle",
+        "editionConfirmed": true,
+        "purchaseControlCount": 1,
+        "enabledPurchaseControls": 1,
+        "newConditionSelected": false,
+        "verifiedPurchase": false,
+        "checkoutVerified": false
+      },
       "verdict": {
         "qualifies": false,
         "reasons": [
@@ -598,7 +608,7 @@
       "url": "https://www.target.com/p/-/A-93150909",
       "host": "www.target.com",
       "kind": "digital",
-      "checkedAt": "2026-11-15T23:23:19.940Z",
+      "checkedAt": "2026-11-15T23:35:45.734Z",
       "source": "live-retailer-purchase-surface",
       "title": "PlayStation 5 Digital Console Slim NBA 2K25 Bundle : Target",
       "price": null,
@@ -664,6 +674,17 @@
         "cartOrCheckoutConfirmed": false
       },
       "scanNote": "price-unreadable",
+      "probe": {
+        "status": "purchase-control-observed-not-checkout",
+        "retailer": "Target",
+        "productId": "target-digital-bundle",
+        "editionConfirmed": true,
+        "purchaseControlCount": 1,
+        "enabledPurchaseControls": 1,
+        "newConditionSelected": false,
+        "verifiedPurchase": false,
+        "checkoutVerified": false
+      },
       "verdict": {
         "qualifies": false,
         "reasons": [
@@ -692,7 +713,7 @@
       "url": "https://www.walmart.com/blocked",
       "host": "www.walmart.com",
       "kind": "disc",
-      "checkedAt": "2026-11-15T23:23:22.942Z",
+      "checkedAt": "2026-11-15T23:35:48.778Z",
       "source": "live-retailer-purchase-surface",
       "title": "Robot or human?",
       "price": null,
@@ -750,6 +771,17 @@
         "cartOrCheckoutConfirmed": false
       },
       "scanNote": "blocked",
+      "probe": {
+        "status": "edition-not-confirmed",
+        "retailer": "Walmart",
+        "productId": "walmart-disc",
+        "editionConfirmed": false,
+        "purchaseControlCount": 0,
+        "enabledPurchaseControls": 0,
+        "newConditionSelected": false,
+        "verifiedPurchase": false,
+        "checkoutVerified": false
+      },
       "verdict": {
         "qualifies": false,
         "reasons": [
@@ -781,7 +813,7 @@
       "url": "https://www.amazon.com/dp/B0FRGTYSL5",
       "host": "www.amazon.com",
       "kind": "disc",
-      "checkedAt": "2026-11-15T23:23:26.413Z",
+      "checkedAt": "2026-11-15T23:35:52.712Z",
       "source": "live-retailer-purchase-surface",
       "title": "Amazon.com: PlayStation®5 console – 1TB : Video Games",
       "price": null,
@@ -864,6 +896,17 @@
         "cartOrCheckoutConfirmed": false
       },
       "scanNote": "price-unreadable",
+      "probe": {
+        "status": "edition-not-confirmed",
+        "retailer": "Amazon",
+        "productId": "amazon-disc",
+        "editionConfirmed": false,
+        "purchaseControlCount": 0,
+        "enabledPurchaseControls": 0,
+        "newConditionSelected": false,
+        "verifiedPurchase": false,
+        "checkoutVerified": false
+      },
       "verdict": {
         "qualifies": false,
         "reasons": [
@@ -894,7 +937,7 @@
       "url": "https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/sony-playstation-5-console-1tb-disc-edition---astro-bot-bundle/422135.html",
       "host": "www.gamestop.com",
       "kind": "disc",
-      "checkedAt": "2026-11-15T23:23:28.917Z",
+      "checkedAt": "2026-11-15T23:35:55.466Z",
       "source": "live-retailer-purchase-surface",
       "title": "Sony PlayStation 5 Console 1TB Disc Edition - ASTRO BOT Bundle | GameStop",
       "price": 449.99,
@@ -1034,7 +1077,7 @@
       "url": "https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/sony-playstation-5-slim-digital-edition---fortnite-cobalt-star-bundle/20016240.html",
       "host": "www.gamestop.com",
       "kind": "digital",
-      "checkedAt": "2026-11-15T23:23:36.151Z",
+      "checkedAt": "2026-11-15T23:36:03.853Z",
       "source": "live-retailer-purchase-surface",
       "title": "Sony PlayStation 5 Slim Digital Edition - Fortnite Cobalt Star Bundle | GameStop",
       "price": 374.99,
@@ -1171,7 +1214,7 @@
       "url": "https://sameday.costco.com/",
       "host": "sameday.costco.com",
       "kind": "disc",
-      "checkedAt": "2026-11-15T23:23:43.516Z",
+      "checkedAt": "2026-11-15T23:36:11.553Z",
       "source": "live-retailer-purchase-surface",
       "title": "Costco Same-Day",
       "price": null,
@@ -1227,6 +1270,17 @@
         "cartOrCheckoutConfirmed": false
       },
       "scanNote": "product-not-confirmed",
+      "probe": {
+        "status": "edition-not-confirmed",
+        "retailer": "Costco",
+        "productId": "costco-disc-two-controller",
+        "editionConfirmed": false,
+        "purchaseControlCount": 0,
+        "enabledPurchaseControls": 0,
+        "newConditionSelected": false,
+        "verifiedPurchase": false,
+        "checkoutVerified": false
+      },
       "verdict": {
         "qualifies": false,
         "reasons": [
@@ -1255,7 +1309,7 @@
       "url": "https://sameday.costco.com/",
       "host": "sameday.costco.com",
       "kind": "digital",
-      "checkedAt": "2026-11-15T23:23:46.036Z",
+      "checkedAt": "2026-11-15T23:36:14.645Z",
       "source": "live-retailer-purchase-surface",
       "title": "Costco Same-Day",
       "price": null,
@@ -1311,6 +1365,17 @@
         "cartOrCheckoutConfirmed": false
       },
       "scanNote": "product-not-confirmed",
+      "probe": {
+        "status": "edition-not-confirmed",
+        "retailer": "Costco",
+        "productId": "costco-digital-two-controller",
+        "editionConfirmed": false,
+        "purchaseControlCount": 0,
+        "enabledPurchaseControls": 0,
+        "newConditionSelected": false,
+        "verifiedPurchase": false,
+        "checkoutVerified": false
+      },
       "verdict": {
         "qualifies": false,
         "reasons": [
@@ -1334,18 +1399,18 @@
       }
     },
     {
-      "id": "discovered-amazon-7caa81ac0a",
+      "id": "discovered-amazon-cb373efc6c",
       "retailer": "Amazon",
-      "url": "https://www.amazon.com/PlayStation-Slim-Disc-Bundle-Last-Controller/dp/B0DFS41DT6/ref=sr_1_4",
+      "url": "https://www.amazon.com/Sony-Playstation-Digital-Wireless-Controller/dp/B09CYLL41S/ref=sr_1_5",
       "host": "www.amazon.com",
-      "kind": "disc",
-      "checkedAt": "2026-11-15T23:23:49.363Z",
+      "kind": "digital",
+      "checkedAt": "2026-11-15T23:36:18.452Z",
       "source": "live-retailer-purchase-surface",
-      "title": "Amazon.com: PlayStation 5 Slim Disc 2TB SSD Edition Bundle with The Last of Us Part I and Controller Charger - PS5 with Upgraded 2TB Ultra Fast SSD, White [video game] [video game] [video game] [video game] : Video Games",
-      "price": 1109.99,
-      "priceText": "$1,109.99",
+      "title": "Amazon.com: Sony PS5 PlayStation 5 Digital Edition Gaming Console + 1 Wireless Controller - 16GB GDDR6 Memory, 825GB SSD Storage, WiFi 6, Bluetooth 5.1 - iPuzzle 32GB Green USB Flash Drive + USB Extension Cable : Video Games",
+      "price": 793.92,
+      "priceText": "$793.92",
       "priceSelector": "#corePrice_feature_div .a-price .a-offscreen",
-      "priceContext": "$1,109.99\n$1,109\n.\n99",
+      "priceContext": "$793.92\n$793\n.\n92",
       "sonyPrice": null,
       "blocked": false,
       "unavailable": false,
@@ -1356,45 +1421,48 @@
         "matchedBrand": true,
         "priceVisible": true,
         "evidence": [],
-        "productId": "discovered-amazon-7caa81ac0a"
+        "productId": "discovered-amazon-cb373efc6c"
       },
       "productEvidence": {
         "retailer": "Amazon",
-        "productId": "discovered-amazon-7caa81ac0a",
-        "pageTitle": "Amazon.com: PlayStation 5 Slim Disc 2TB SSD Edition Bundle with The Last of Us Part I and Controller Charger - PS5 with Upgraded 2TB Ultra Fast SSD, White [video game] [video game] [video game] [video",
-        "productHeading": "PlayStation 5 Slim Disc 2TB SSD Edition Bundle with The Last of Us Part I and Controller Charger - PS5 with Upgraded 2TB Ultra Fast SSD, White [video game] [video game] [video game",
-        "editionHint": "disc",
-        "priceSelectorText": "$1,109.99",
-        "selectedOfferPrice": "$1,109.99",
+        "productId": "discovered-amazon-cb373efc6c",
+        "pageTitle": "Amazon.com: Sony PS5 PlayStation 5 Digital Edition Gaming Console + 1 Wireless Controller - 16GB GDDR6 Memory, 825GB SSD Storage, WiFi 6, Bluetooth 5.1 - iPuzzle 32GB Green USB Flash Drive + USB Exten",
+        "productHeading": "Sony PS5 PlayStation 5 Digital Edition Gaming Console + 1 Wireless Controller - 16GB GDDR6 Memory, 825GB SSD Storage, WiFi 6, Bluetooth 5.1 - iPuzzle 32GB Green USB Flash Drive + U",
+        "editionHint": "digital",
+        "priceSelectorText": "$793.92",
+        "selectedOfferPrice": "$793.92",
         "skuHint": null,
         "extraControllerHint": false,
-        "storageHint": "2TB",
-        "visibleLabels": [],
+        "storageHint": "825GB",
+        "visibleLabels": [
+          "Used - Good $699.99 $699 . 99 $9.49 delivery Wednesday, November 25 Ships from: StarEdge Electronics Sold by: StarEdge E",
+          "New & Used (10) from $699.99 $699 . 99 + $9.49 shipping"
+        ],
         "highlights": [
-          "PS5 | Xbox Series X|S",
-          "PlayStation 5 | $1,109.99",
-          "Shipper / Seller | Prime Distributor Global",
-          "Seller Certifications: | Minority-Owned Business",
-          "PlayStation 5 Slim Disc 2TB SSD Edition Bundle with The Last of Us Part I and Controller Charger - PS5 with Upgraded 2TB Ultra Fast SSD, White [video game] [video game] [video game] [video game] | Brand: Sony",
-          "Platform : PlayStation 5 | 4.6",
-          "Upgraded 2TB Ultra Fast SSD - Triple the space than the standard model with the same ultra fast speed. Fast-travel across the map and get back into the game almost instantly with fast load times. | Stunning Visuals - Exp",
-          "Slim Design - More power and storage packed in the new slim and compact design. | Bundle comes with The Last of Us Part I and controller charger.",
+          "PlayStation 5 | ›",
+          "Shipper / Seller | Risingstars(Genuine Pro Gaming/Eletronics/Beauty)",
+          "Sold by: StarEdge Electronics | Add to List",
+          "Sony PS5 PlayStation 5 Digital Edition Gaming Console + 1 Wireless Controller - 16GB GDDR6 Memory, 825GB SSD Storage, WiFi 6, Bluetooth 5.1 - iPuzzle 32GB Green USB Flash Drive + USB Extension Cable | 4.6",
+          "Platform PlayStation 5 | Input Device Gamepad",
+          "16GB GDDR6/256-bit Memory; 825GB SSD Storage Capacity | Ethernet (10BASE-T, 100BASE-TX, 1000BASE-T), IEEE 802.11 a/b/g/n/ac/ax, Bluetooth 5.1",
+          "What's Included: Sony PlayStation 5 Digital Edition; DualSense; USB cable, HDMI cable. 32GB Green USB Flash Drive + USB Extension Cable | › See more product details",
           "Report an issue with this product or seller | Shop what you see on Prime Video",
-          "This item: PlayStation 5 Slim Disc 2TB SSD Edition Bundle with The Last of Us Part I and Controller Charger - PS5 with Upgraded 2TB Ultra Fast SSD, White [video game] [video game] [video game] [video game] | $1,109.99",
-          "PlayStation DualSense™ Wireless Controller - for PS5, PC, MAC & Mobile | $74.00",
-          "Grand Theft Auto VI - PlayStation 5 (Code in Box, Playable 11/19/26) | Rockstar Games",
+          "PlayStation®5 Digital Edition – 825GB | PlayStation",
           "PlayStation 5 | #1 Best Seller",
-          "#1 Best Seller | $79.99",
-          "PlayStation DualSense™ Wireless Controller - for PS5, PC, MAC & Mobile | PlayStation",
-          "#1 Best Seller | $74.00",
-          "The Last of Us Part II Remastered - PlayStation 5 | PlayStation",
-          "PlayStation 5 | MSRP",
-          "FREE Shipping on orders over $35 shipped by Amazon | Top",
-          "PlayStation 5 Slim Disc 2TB SSD Edition Bundle with The Last of Us Part I and Controller Charger - PS5 with Upgraded 2TB Ultra Fast SSD, White [video game] [video game] [video game] [video game] | What other items do cus",
-          "PlayStation®5 console – 1TB | PlayStation",
           "#1 Best Seller | MSRP",
-          "FREE Shipping on orders over $35 shipped by Amazon | PlayStation®5 Digital Edition – 825GB",
-          "PlayStation®5 Digital Edition – 825GB | PlayStation"
+          "FREE Shipping on orders over $35 shipped by Amazon | PS5 Disc Edition Gaming Console System Bundle – Includes: Extra PS5 Dualsense Controller and PS5 Media Remote – System Bundle, PS5 Controller, Accessories (Renewed)",
+          "PS5 Disc Edition Gaming Console System Bundle – Includes: Extra PS5 Dualsense Controller and PS5 Media Remote – System Bundle, PS5 Controller, Accessories (Renewed) | Amazon Renewed",
+          "PlayStation 5 Slim Disc 2TB SSD Edition Bundle with The Last of Us Part I and Controller Charger - PS5 with Upgraded 2TB Ultra Fast SSD, White [video game] [video game] [video game] [video game] | Sony",
+          "PlayStation 5 | $1,109.99",
+          "PlayStation 5 Console - Marvel’s Spider-Man 2 Bundle (slim) | PlayStation",
+          "PlayStation 5 | 7 offers from",
+          "PlayStation 5 Pro with 2TB SSD Storage, Wireless Dualsense Controller - PS5 Pro Gaming System, White (Renewed) | Amazon Renewed",
+          "PlayStation 5 | 2 offers from",
+          "PlayStation 5 Slim Disc 2TB SSD Edition Bundle with Spider-Man: Miles Morales and Controller Case - White, Upgraded 2TB Ultra Fast SSD PS5 Slim Disc Gaming Console Bundle with Haptic Feedback Wireless Controller and Case",
+          "PlayStation 5 | 1 offer from",
+          "FREE Shipping on orders over $35 shipped by Amazon | PlayStation®5 console – 1TB",
+          "PlayStation®5 console – 1TB | PlayStation",
+          "FREE Shipping on orders over $35 shipped by Amazon | PlayStation DualSense™ Wireless Controller - for PS5, PC, MAC & Mobile"
         ],
         "containsUnscopedUnavailableText": false,
         "conditionVerified": false,
@@ -1420,6 +1488,17 @@
         "cartOrCheckoutConfirmed": false
       },
       "scanNote": "candidate-needs-fulfillment-verification",
+      "probe": {
+        "status": "purchase-controls-not-found",
+        "retailer": "Amazon",
+        "productId": "discovered-amazon-cb373efc6c",
+        "editionConfirmed": true,
+        "purchaseControlCount": 0,
+        "enabledPurchaseControls": 0,
+        "newConditionSelected": false,
+        "verifiedPurchase": false,
+        "checkoutVerified": false
+      },
       "verdict": {
         "qualifies": false,
         "reasons": [
@@ -1439,20 +1518,20 @@
           "retailer-owned cart/checkout URL not verified",
           "effective price above target"
         ],
-        "effectivePrice": 1109.99,
+        "effectivePrice": 793.92,
         "extraControllerCredit": 0,
         "gameCredit": 0
       }
     },
     {
-      "id": "discovered-amazon-b11a5fefec",
+      "id": "discovered-amazon-e2cce5b066",
       "retailer": "Amazon",
-      "url": "https://www.amazon.com/PlayStation-Digital-Marvels-Spider-Man-Bundle-5/dp/B0CV4J3TS7/ref=sr_1_5",
+      "url": "https://www.amazon.com/PS5-Console-Fortnite-Cobalt-PlayStation-5/dp/B0DJHF6Q9Z/ref=sr_1_6",
       "host": "www.amazon.com",
-      "kind": "digital",
-      "checkedAt": "2026-11-15T23:23:52.752Z",
+      "kind": "disc",
+      "checkedAt": "2026-11-15T23:36:22.003Z",
       "source": "live-retailer-purchase-surface",
-      "title": "Amazon.com: PlayStation 5 Digital Edition – Marvel’s Spider-Man 2 Bundle (Slim) : Video Games",
+      "title": "Amazon.com: PlayStation PS5 Console - Fortnite Cobalt Star Disc Edition : Video Games",
       "price": null,
       "priceText": "",
       "priceSelector": "",
@@ -1467,47 +1546,47 @@
         "matchedBrand": true,
         "priceVisible": false,
         "evidence": [],
-        "productId": "discovered-amazon-b11a5fefec"
+        "productId": "discovered-amazon-e2cce5b066"
       },
       "productEvidence": {
         "retailer": "Amazon",
-        "productId": "discovered-amazon-b11a5fefec",
-        "pageTitle": "Amazon.com: PlayStation 5 Digital Edition – Marvel’s Spider-Man 2 Bundle (Slim) : Video Games",
-        "productHeading": "PlayStation 5 Digital Edition – Marvel’s Spider-Man 2 Bundle (Slim)",
-        "editionHint": "digital",
+        "productId": "discovered-amazon-e2cce5b066",
+        "pageTitle": "Amazon.com: PlayStation PS5 Console - Fortnite Cobalt Star Disc Edition : Video Games",
+        "productHeading": "PlayStation PS5 Console - Fortnite Cobalt Star Disc Edition",
+        "editionHint": "disc",
         "priceSelectorText": "",
         "selectedOfferPrice": null,
         "skuHint": null,
         "extraControllerHint": false,
         "storageHint": null,
         "visibleLabels": [
-          "Used (2) from $849.00 $849 . 00 & FREE Shipping"
+          "New & Used (16) from $788.92 $788 . 92 & FREE Shipping"
         ],
         "highlights": [
           "PS5 | Xbox Series X|S",
           "PlayStation 5 | ›",
-          "Sold by Holiday Prime Gift Store | Only 3 left in stock - order soon.",
-          "PlayStation 5 Digital Edition – Marvel’s Spider-Man 2 Bundle (Slim) | Platform : PlayStation 5",
+          "Sold by Tek Star (SN Recorded) | Only 3 left in stock - order soon.",
+          "PlayStation PS5 Console - Fortnite Cobalt Star Disc Edition | Platform : PlayStation 5",
           "Platform : PlayStation 5 | |",
-          "Includes DualSense Wireless Controller, 1TB SSD, 2 Horizontal Stand Feet, HDMI Cable, AC power cord, USB cable, printed materials, ASTRO’s PLAYROOM (Pre-installed game) | Slim Design - With PS5, players get powerful gami",
-          "Slim Design - With PS5, players get powerful gaming technology packed inside a sleek and compact console design. | PS5 Vertical Stand sold separately.",
-          "PS5 Vertical Stand sold separately. | › See more product details",
+          "PlayStation 5 Experience lightning fast loading with an ultra-high speed SSD, deeper immersion with support for haptic feedback, adaptive triggers, and 3D Audio2, and an all-new generation of incredible PlayStation games",
+          "Stunning Games Marvel at incredible graphics and experience new PS5 features. Play a back catalog of supported PS4 games. | Show more",
           "Report an issue with this product or seller | Shop what you see on Prime Video",
           "PlayStation DualSense® Wireless Controller - White | PlayStation",
           "PlayStation 5 | 32 offers from",
-          "Playstation 5 DualSense Wireless Controller - White (Renewed) | Amazon Renewed",
-          "#1 Best Seller | -10%",
-          "PlayStation 5 Digital Edition – Marvel’s Spider-Man 2 Bundle (Slim) | What other items do customers buy after viewing this item?",
-          "PlayStation®5 Digital Edition – 825GB | PlayStation",
-          "PlayStation 5 | #1 Best Seller",
-          "#1 Best Seller | MSRP",
-          "FREE Shipping on orders over $35 shipped by Amazon | PlayStation®5 console – 1TB",
-          "PlayStation®5 console – 1TB | PlayStation",
-          "FREE Shipping on orders over $35 shipped by Amazon | MARVEL’S SPIDER-MAN 2 – PS5 Standard Edition",
-          "MARVEL’S SPIDER-MAN 2 – PS5 Standard Edition | PlayStation",
-          "PlayStation 5 | MSRP",
-          "FREE Shipping on orders over $35 shipped by Amazon | PlayStation DualSense™ Wireless Controller - for PS5, PC, MAC & Mobile",
-          "PlayStation DualSense™ Wireless Controller - for PS5, PC, MAC & Mobile | PlayStation"
+          "Minecraft - PlayStation 5 | Microsoft",
+          "PlayStation 5 | $28.74",
+          "FREE Shipping on orders over $35 shipped by Amazon | IRIPLEZO Grand Theft Auto V",
+          "PlayStation 5 | $24.26",
+          "FREE Shipping on orders over $35 shipped by Amazon | PowerA Twin Charging Station for Dualsense Wireless Controllers, Dualsense Controller Charging, Charge, Sony PlayStation, PS5, Officially Licensed - PlayStation 5",
+          "PowerA Twin Charging Station for Dualsense Wireless Controllers, Dualsense Controller Charging, Charge, Sony PlayStation, PS5, Officially Licensed - PlayStation 5 | PowerA",
+          "PlayStation 5 | Amazon's Choice",
+          "FREE Shipping on orders over $35 shipped by Amazon | PS5/Slim/Pro Stand and Cooling Station with LED Controller Charging Station for PlayStation 5 Console, Controller Charger, Cooling Stand, PS5/Slim/Pro Skin Accessories",
+          "PS5/Slim/Pro Stand and Cooling Station with LED Controller Charging Station for PlayStation 5 Console, Controller Charger, Cooling Stand, PS5/Slim/Pro Skin Accessories Kit with 3 Level Cooler Fan | 4.5 out of 5 stars",
+          "#1 Best Seller | $39.99",
+          "DreamWorks All-Star Kart Racing - PlayStation 5 | Game Mill",
+          "PlayStation 5 | $33.50",
+          "FREE Shipping on orders over $35 shipped by Amazon | Top",
+          "PlayStation PS5 Console - Fortnite Cobalt Star Disc Edition | What other items do customers buy after viewing this item?"
         ],
         "containsUnscopedUnavailableText": false,
         "conditionVerified": false,
@@ -1533,6 +1612,17 @@
         "cartOrCheckoutConfirmed": false
       },
       "scanNote": "price-unreadable",
+      "probe": {
+        "status": "purchase-control-observed-not-checkout",
+        "retailer": "Amazon",
+        "productId": "discovered-amazon-e2cce5b066",
+        "editionConfirmed": true,
+        "purchaseControlCount": 1,
+        "enabledPurchaseControls": 1,
+        "newConditionSelected": false,
+        "verifiedPurchase": false,
+        "checkoutVerified": false
+      },
       "verdict": {
         "qualifies": false,
         "reasons": [

@@ -2,62 +2,62 @@
   "psdirect-disc": {
     "status": "unknown",
     "lastAlert": null,
-    "lastCheckedAt": "2026-11-15T23:23:10.853Z"
+    "lastCheckedAt": "2026-11-15T23:35:35.780Z"
   },
   "psdirect-digital": {
     "status": "unknown",
     "lastAlert": null,
-    "lastCheckedAt": "2026-11-15T23:23:13.579Z"
+    "lastCheckedAt": "2026-11-15T23:35:38.207Z"
   },
   "bestbuy-disc": {
     "status": "unknown",
     "lastAlert": null,
-    "lastCheckedAt": "2026-11-15T23:23:13.659Z"
+    "lastCheckedAt": "2026-11-15T23:35:38.289Z"
   },
   "bestbuy-digital": {
     "status": "unknown",
     "lastAlert": null,
-    "lastCheckedAt": "2026-11-15T23:23:13.729Z"
+    "lastCheckedAt": "2026-11-15T23:35:38.368Z"
   },
   "target-disc-bundle": {
     "status": "unknown",
     "lastAlert": null,
-    "lastCheckedAt": "2026-11-15T23:23:16.936Z"
+    "lastCheckedAt": "2026-11-15T23:35:41.577Z"
   },
   "target-digital-bundle": {
     "status": "unknown",
     "lastAlert": null,
-    "lastCheckedAt": "2026-11-15T23:23:19.940Z"
+    "lastCheckedAt": "2026-11-15T23:35:45.734Z"
   },
   "walmart-disc": {
     "status": "unknown",
     "lastAlert": null,
-    "lastCheckedAt": "2026-11-15T23:23:22.942Z"
+    "lastCheckedAt": "2026-11-15T23:35:48.778Z"
   },
   "amazon-disc": {
     "status": "unknown",
     "lastAlert": null,
-    "lastCheckedAt": "2026-11-15T23:23:26.413Z"
+    "lastCheckedAt": "2026-11-15T23:35:52.712Z"
   },
   "gamestop-disc-bundle": {
     "status": "unknown",
     "lastAlert": null,
-    "lastCheckedAt": "2026-11-15T23:23:28.917Z"
+    "lastCheckedAt": "2026-11-15T23:35:55.466Z"
   },
   "gamestop-digital-bundle": {
     "status": "unknown",
     "lastAlert": null,
-    "lastCheckedAt": "2026-11-15T23:23:36.151Z"
+    "lastCheckedAt": "2026-11-15T23:36:03.853Z"
   },
   "costco-disc-two-controller": {
     "status": "unknown",
     "lastAlert": null,
-    "lastCheckedAt": "2026-11-15T23:23:43.516Z"
+    "lastCheckedAt": "2026-11-15T23:36:11.553Z"
   },
   "costco-digital-two-controller": {
     "status": "unknown",
     "lastAlert": null,
-    "lastCheckedAt": "2026-11-15T23:23:46.036Z"
+    "lastCheckedAt": "2026-11-15T23:36:14.645Z"
   },
   "discovered-amazon-b11a5fefec": {
     "status": "unknown",
@@ -72,7 +72,7 @@
   "discovered-amazon-cb373efc6c": {
     "status": "unknown",
     "lastAlert": null,
-    "lastCheckedAt": "2026-11-15T23:01:58.443Z"
+    "lastCheckedAt": "2026-11-15T23:36:18.452Z"
   },
   "discovered-amazon-9b24174ba7": {
     "status": "unknown",
@@ -108,5 +108,10 @@
     "status": "unknown",
     "lastAlert": null,
     "lastCheckedAt": "2026-11-15T23:23:49.363Z"
+  },
+  "discovered-amazon-e2cce5b066": {
+    "status": "unknown",
+    "lastAlert": null,
+    "lastCheckedAt": "2026-11-15T23:36:22.003Z"
   }
 }
