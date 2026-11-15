@@ -17,7 +17,7 @@ export function confirmedUnavailable(r) {
     && r?.blocked!==true
     && r?.source==='live-retailer-purchase-surface'
     && r?.diagnostic?.status==='unavailable'
-    && r?.probe?.status==='shipping-unavailable'
+    && r?.probe?.status==='all-fulfillment-unavailable'
     && r?.retailer==='GameStop'
     && Boolean(r.id);
 }
