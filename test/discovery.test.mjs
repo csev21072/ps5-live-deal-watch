@@ -95,3 +95,13 @@ test('retailer search page with no readable links is not considered inspected',(
 test('ordinary retailer search page with links can be inspected',()=>{
  assert.equal(classifyDiscoveryPage({title:'PS5',body:'Search results',links:[{href:'https://www.amazon.com/dp/B0FRGTYSL5'}]}),'inspected');
 });
+
+test('two DualSense wireless controllers receive discovery priority without verified value',()=>{
+ const r=discoverFromLinks(store('Walmart'),[
+  {href:'https://www.walmart.com/ip/111111',text:'PS5 Disc Console'},
+  {href:'https://www.walmart.com/ip/222222',text:'PS5 Disc Console Bundle with 2 DualSense Wireless Controllers'}
+ ],[],1);
+ assert.equal(r.length,1);
+ assert.equal(r[0].url,'https://www.walmart.com/ip/222222');
+ assert.equal(r[0].discoveryOnly,true);
+});
