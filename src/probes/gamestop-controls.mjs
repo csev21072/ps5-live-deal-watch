@@ -42,3 +42,33 @@ export async function inspectGameStopControls(page) {
     return {status:'control-inspection-failed',reason:String(e).slice(0,140),verifiedCheckout:false};
   }
 }
+
+export async function selectExplicitNewCondition(page, current) {
+  if(current?.newConditionSelected===true)
+    return {status:'already-selected',controls:current};
+  // Only an unambiguous, exact "New" radio/condition control is allowed.
+  // Do not click navigation "New Arrivals", condition dropdowns with unknown
+  // options, or a button merely because the page text contains "New".
+  try{
+    for(const role of ['radio','button']){
+      const locator=page.getByRole(role,{name:/^new$/i});
+      if(await locator.count().catch(()=>0)!==1)continue;
+      const control=locator.first();
+      if(!(await control.isVisible().catch(()=>false)) || !(await control.isEnabled().catch(()=>false)))continue;
+      if(role==='button'){
+        const isConditionControl=await control.evaluate(el=>{
+          const parent=el.closest('[role="radiogroup"],[data-testid*="condition" i],[class*="condition" i]');
+          return !!parent || el.getAttribute('aria-pressed')!==null;
+        }).catch(()=>false);
+        if(!isConditionControl)continue;
+      }
+      await control.click({timeout:4500});
+      await page.waitForTimeout(450);
+      const after=await inspectGameStopControls(page);
+      return {status:after.newConditionSelected?'selected-new':'selection-not-confirmed',controls:after};
+    }
+    return {status:'no-unambiguous-new-option',controls:current};
+  }catch(e){
+    return {status:'selection-blocked',reason:String(e).slice(0,140),controls:current};
+  }
+}
