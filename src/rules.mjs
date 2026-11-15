@@ -1,5 +1,5 @@
 import {ZIP, MAX_AGE_MS, RETAILER_HOSTS} from './config.mjs';
-import {exactSkuInText,exactZipInText,selectedFulfillmentMatches} from './checkout/evidence-checks.mjs';
+import {exactSkuInText,exactZipInText,selectedFulfillmentMatches,exactItemPriceInText} from './checkout/evidence-checks.mjs';
 const invalidFulfillment = /\b(not available|unavailable|out of stock|sold out|select condition for availability|shipping unavailable|delivery unavailable|ship to home unavailable|cannot be shipped|currently unavailable)\b/i;
 const validMethods = new Set(['ship-to-home','local-pickup']);
 const money = /\$\s*([\d,]+(?:\.\d{2})?)/;
@@ -51,6 +51,7 @@ export function evaluate(record, now = Date.now()) {
   // The adapter must capture the selected item and selected fulfillment.
   if (!checkout || typeof checkout.itemText!=='string'
       || !exactSkuInText(checkout.itemText,record.skuOrBundle)
+      || !exactItemPriceInText(checkout.itemText,record.price)
       || !/\b(PS5|PlayStation\s*5)\b/i.test(checkout.itemText)
       || checkout.selectedCondition!=='NEW'
       || checkout.selectedSeller!==record.seller
