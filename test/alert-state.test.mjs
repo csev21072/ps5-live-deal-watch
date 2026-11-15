@@ -12,7 +12,7 @@ const unknown={qualifies:false};
 const soldout=(id='gamestop-disc-bundle')=>({
  id,retailer:'GameStop',source:'live-retailer-purchase-surface',
  unavailable:true,blocked:false,diagnostic:{status:'unavailable'},
- probe:{status:'all-fulfillment-unavailable'},checkedAt:'2026-11-15T22:10:00Z'
+ probe:{status:'all-fulfillment-unavailable',fulfillmentSkuVerified:true,fulfillmentContextZip:'85001'},checkedAt:'2026-11-15T22:10:00Z'
 });
 test('first fully verified offer alerts',()=>{
  const d=transition(null,offer(),verified);
@@ -79,4 +79,18 @@ test('signature changes when membership changes',()=>{
 test('missing product-specific evidence is not confirmed unavailable',()=>{
  const a={...soldout(),probe:null};
  assert.equal(confirmedUnavailable(a),false);
+});
+
+test('unavailable page without exact SKU does not create a restock baseline',()=>{
+ const first=transition(null,offer(),verified);
+ const r={...soldout(),probe:{status:'all-fulfillment-unavailable',fulfillmentSkuVerified:false,fulfillmentContextZip:'85001'}};
+ const d=transition(first.next,r,unknown);
+ assert.equal(d.reason,'incomplete-or-unverified');
+ assert.equal(transition(d.next,offer(),verified).alert,false);
+});
+test('unavailable page for wrong ZIP does not create a restock baseline',()=>{
+ const first=transition(null,offer(),verified);
+ const r={...soldout(),probe:{status:'all-fulfillment-unavailable',fulfillmentSkuVerified:true,fulfillmentContextZip:'95123'}};
+ const d=transition(first.next,r,unknown);
+ assert.equal(d.reason,'incomplete-or-unverified');
 });
