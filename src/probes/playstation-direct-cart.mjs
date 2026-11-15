@@ -1,3 +1,4 @@
+import {publicRetailerUrl} from '../evidence/url.mjs';
 import {priceFromText} from '../rules.mjs';
 import {inspectCartText} from '../evidence/cart.mjs';
 
@@ -44,7 +45,7 @@ export async function probeSonyCart(page,product,sonyFacts,priceText) {
     });
     return {...result,status:'cart-inspected-unverified',
       cartResearch:{
-        url:cartUrl,checkedAt:new Date().toISOString(),
+        url:publicRetailerUrl(cartUrl,'direct.playstation.com'),checkedAt:new Date().toISOString(),
         itemMatch:match,
         // Never expose cookies, account details, full cart text or addresses.
         productHeading:sonyFacts.productHeading,
