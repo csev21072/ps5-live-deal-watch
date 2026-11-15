@@ -7,6 +7,9 @@ import {probeGameStop} from './probes/gamestop.mjs';
 import {discoverProducts} from './discovery.mjs';
 import {summarizeProductEvidence} from './evidence/product.mjs';
 import {inspectSonyProductFacts} from './probes/playstation-direct.mjs';
+import {probeSonyCart} from './probes/playstation-direct-cart.mjs';
+import {parseSonyPriceEvidence} from './evidence/sony-price.mjs';
+import {publicRetailerUrl} from './evidence/url.mjs';
 const outdir='out';
 await mkdir(outdir,{recursive:true});
 const browser=await chromium.launch({headless:true});
@@ -72,6 +75,9 @@ try {
       await page.goto(product.url,{waitUntil:'domcontentloaded',timeout:25000});
       await page.waitForTimeout(1800);
       record=await extractCandidate(page,product);
+      if(product.retailer==='PlayStation Direct'){
+        record.probe=await probeSonyCart(page,product,record.sonyFacts,record.priceText);
+      }
       if(product.retailer==='GameStop'){
         const probeLimit=product.kind==='disc'?550:500;
         record.probe=record.price!==null && record.price<=probeLimit
