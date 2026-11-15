@@ -32,3 +32,8 @@ test('generic Not Available elsewhere is not proof shipping or pickup failed',as
  const r=await probeGameStop(page('Extended warranty: Not Available. Ship to Home. Find a Store.'),product,{status:'candidate-needs-fulfillment-verification'});
  assert.equal(r.status,'cart-not-orderable');
 });
+
+test('same-day unavailable is not proof ship-to-home is unavailable',async()=>{
+ const r=await probeGameStop(page('Same Day Delivery: Not Available. Pick up in-store: Not Available. Ship to Home: Available.'),product,{status:'candidate-needs-fulfillment-verification'});
+ assert.equal(r.status,'cart-not-orderable');
+});
