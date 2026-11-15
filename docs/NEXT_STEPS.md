@@ -186,3 +186,14 @@ A real positive purchase verification has **not** been demonstrated. The system 
 - Latest independently confirmed hosted CI run `43775838801`: **258/258 tests passed**, zero failures.
 - A one-time free hosted browser smoke run was requested for Target price hints and corrected cart-action status. Confirm the scan/audit outcome before declaring success; remove the temporary push trigger afterward.
 - **Remaining blocker:** No real retailer-owned positive checkout has yet established exact NEW console SKU, item price, seller, and selected orderable Phoenix fulfillment. Do not notify from metadata, generic buttons, or cart research alone.
+
+## Hosted verification checkpoint — 2026-11-15 23:40 UTC
+
+- Live browser run `43775856326` completed **successfully**: scanner, durable state restore, verified-only publisher, artifact upload, and seven-day audit/history push all passed.
+- Audit `2026-11-15T23:39:49Z`: 14 product URLs across all seven retailers, **zero fully verified orderable offers**. History now has four entries.
+- Corrected Target diagnostics: both Target console bundle pages expose **Pickup/Delivery/Shipping navigation**, not an actual Add to Cart control. The previous generic probe overcounted these as actionable. Both now correctly report `fulfillment-controls-only` with zero cart actions.
+- Target JSON-LD exact-heading USD price research found **no reliable product price hint** on either page; it did not modify the offer price or generate an alert.
+- Best Buy remains unreadable/blocked in hosted Chromium; Walmart and Costco product identification is incomplete; discovered Amazon offers are either too expensive or lack a verified cart action. Sony pages are above target; GameStop guest carts remain not orderable.
+- Hosted CI run `43775981395` passed **261/261 tests**, including checkout SKU/ZIP/price boundary tests, privacy redaction, redirect safety, Target metadata isolation, and generic purchase-control diagnostics.
+- The temporary browser push trigger was removed; GitHub Actions remains hourly/manual only, with zero paid services.
+- **Next engineering work:** pursue legitimate retailer-specific live checkout evidence when a truly orderable qualifying offer appears. No fabricated checkout evidence or unverified notifications.
