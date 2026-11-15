@@ -15,7 +15,7 @@ export function summarizeCoverage(records=[],discovery={coverage:[]},retailers=[
     const checkoutInspected=pages.filter(r=>r.probe?.cartEvidence||r.probe?.cartResearch).length;
     const missing=pages.length===0;
     const status=missing?'not-checked':
-      verified>0?'verified-offer-observed':
+      verified>0?(unreadableOrBlocked>0?'verified-offer-observed-partial-coverage':'verified-offer-observed'):
       unreadableOrBlocked===pages.length?'all-pages-unreadable-or-blocked':
       unreadable>0||blocked>0?'partial-coverage':
       productIdentified===0?'no-product-confirmed':
