@@ -48,3 +48,18 @@ test('contemporaneous verified game sale supports conservative credit',()=>{cons
 test('game MSRP-sized $50 credit rejected even with sale evidence',()=>{const x=base();x.price=540;x.priceText='$540.00';x.checkoutEvidence.priceText='$540.00';x.gameCredit=50;x.gameCreditEvidence={currentSalePrice:70,observedAt:new Date(now).toISOString(),sourceUrl:'https://www.example.com/game-sale',saleType:'current-retail-sale'};assert.equal(evaluate(x,now).qualifies,false);});
 test('stale game sale cannot justify bundle discount',()=>{const x=base();x.price=530;x.priceText='$530.00';x.checkoutEvidence.priceText='$530.00';x.gameCredit=35;x.gameCreditEvidence={currentSalePrice:39,observedAt:new Date(now-8*24*60*60*1000).toISOString(),sourceUrl:'https://www.example.com/game-sale',saleType:'current-retail-sale'};assert.equal(evaluate(x,now).qualifies,false);});
 test('generic DualSense mention does not establish second genuine controller',()=>{const x=base();x.controllers=2;x.price=550;x.priceText='$550.00';x.checkoutEvidence.priceText='$550.00';x.extraControllerEvidence='Includes DualSense controller';assert.equal(evaluate(x,now).qualifies,false);});
+
+test('implausible multi-controller count cannot manufacture an effective discount',()=>{
+ const x=base();x.controllers=100;x.extraControllerEvidence='2 extra genuine Sony DualSense controllers';
+ x.price=999;x.priceText='$999.00';x.checkoutEvidence.priceText='$999.00';
+ const v=evaluate(x,now);
+ assert.equal(v.qualifies,false);
+ assert.equal(v.extraControllerCredit,0);
+});
+test('three controllers require manual valuation instead of automatic $110 credit',()=>{
+ const x=base();x.controllers=3;x.extraControllerEvidence='2 extra genuine Sony DualSense controllers';
+ x.price=550;x.priceText='$550.00';x.checkoutEvidence.priceText='$550.00';
+ const v=evaluate(x,now);
+ assert.equal(v.qualifies,false);
+ assert.equal(v.extraControllerCredit,0);
+});
