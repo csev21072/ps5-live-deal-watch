@@ -77,7 +77,7 @@ try {
       await page.waitForTimeout(1800);
       record=await extractCandidate(page,product);
       if(product.retailer==='PlayStation Direct'){
-        record.probe=await probeSonyCart(page,product,record.sonyFacts,record.priceText);
+        record.probe=await probeSonyCart(page,product,record.sonyFacts,record.priceText,record.sonyPrice);
       }
       if(product.retailer==='GameStop'){
         const probeLimit=product.kind==='disc'?550:500;
