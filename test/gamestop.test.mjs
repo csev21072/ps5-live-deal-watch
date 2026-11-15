@@ -49,6 +49,7 @@ test('captures only bounded fulfillment text, not entire page',()=>{
 test('guest cart research never becomes purchase verification',async()=>{
  let stage=0;
  const mock={
+  evaluate:async()=>({controls:[{label:'New',selected:true,disabled:false},{label:'Add to Cart',selected:false,disabled:false}]}),
   title:async()=> 'Sony PlayStation 5 Slim',
   locator:(selector)=>selector==='body'?{innerText:async()=>stage===0?'PlayStation 5 New. Ship to Home.':'Added to Cart. PS5 Disc Console. $449.99. Shipping to Phoenix 85001'}:{count:async()=>0},
   getByRole:(role)=>({first:()=>role==='button'
@@ -84,4 +85,18 @@ test('disabled cart researches store finder but cannot claim Phoenix pickup',asy
  assert.equal(r.verifiedPurchase,false);
  assert.equal(searched,true);
  assert.equal(r.pickupResearch.verifiedPickup,false);
+});
+
+test('enabled cart with unselected NEW condition is not clicked',async()=>{
+ let clicks=0;
+ const mock={
+  title:async()=> 'Sony PlayStation 5 Slim',
+  evaluate:async()=>({controls:[{label:'New',selected:false,disabled:false},{label:'Add to Cart',selected:false,disabled:false}]}),
+  locator:selector=>selector==='body'?{innerText:async()=> 'PS5 Slim New\nShip to Home'}:{count:async()=>0},
+  getByRole:()=>({first:()=>({isVisible:async()=>true,isEnabled:async()=>true,click:async()=>{clicks++;}})})
+ };
+ const r=await probeGameStop(mock,product,{status:'candidate-needs-fulfillment-verification'});
+ assert.equal(r.status,'selected-new-condition-not-confirmed');
+ assert.equal(r.verifiedPurchase,false);
+ assert.equal(clicks,0);
 });
