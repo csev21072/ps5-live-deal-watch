@@ -57,7 +57,7 @@ try {
       if(product.retailer==='GameStop'){
         const probeLimit=product.kind==='disc'?550:500;
         record.probe=record.price!==null && record.price<=probeLimit
-          ? await probeGameStop(page,product,record.diagnostic)
+          ? await probeGameStop(page,product,record.diagnostic,record.priceText)
           : {status:'skipped',reason:'price unknown or outside bounded probe range'};
         if(record.probe.status==='all-fulfillment-unavailable'){
           record.unavailable=true;
