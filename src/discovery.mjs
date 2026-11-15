@@ -48,7 +48,7 @@ export function discoverFromLinks(searchPage,links,existingUrls=[],limit=2){
       id:'discovered-'+searchPage.retailer.toLowerCase().replace(/[^a-z0-9]+/g,'-')+'-'+createHash('sha256').update(url).digest('hex').slice(0,10),
       retailer:searchPage.retailer,kind,url,host:new URL(url).hostname,
       discoveryText:text.slice(0,180),discoveryOnly:true,
-      discoveryPriority:/\b(two controllers|2 controllers|extra controller|additional controller|dualSense bundle)\b/i.test(text)?2:1
+      discoveryPriority:/\b(two controllers|2 controllers|extra controller|additional controller|dualSense bundle|(?:2|two)\s+(?:sony\s+)?dualSense(?:\s+wireless)?\s+controllers)\b/i.test(text)?2:1
     });
   }
   // Discovery priority is not evidence of actual bundle contents or value.
