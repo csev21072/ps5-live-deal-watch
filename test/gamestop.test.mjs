@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {probeGameStop} from '../src/probes/gamestop.mjs';
+import {probeGameStop,fulfillmentEvidence} from '../src/probes/gamestop.mjs';
 const product={retailer:'GameStop',id:'gamestop-digital-bundle'};
 const page=(body,title='Sony PlayStation 5 Slim')=>({
  title:async()=>title,
@@ -36,4 +36,12 @@ test('generic Not Available elsewhere is not proof shipping or pickup failed',as
 test('same-day unavailable is not proof ship-to-home is unavailable',async()=>{
  const r=await probeGameStop(page('Same Day Delivery: Not Available. Pick up in-store: Not Available. Ship to Home: Available.'),product,{status:'candidate-needs-fulfillment-verification'});
  assert.equal(r.status,'cart-not-orderable');
+});
+
+test('captures only bounded fulfillment text, not entire page',()=>{
+ const text='Welcome to GameStop\nShip to Home\nNot Available\nFind a Store\nPick up in-store\nFind a Store\nFooter';
+ const quotes=fulfillmentEvidence(text);
+ assert.equal(quotes.length,2);
+ assert.match(quotes[0],/Ship to Home/);
+ assert.ok(quotes.every(x=>x.length<=220));
 });
