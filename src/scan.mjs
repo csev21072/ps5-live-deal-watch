@@ -104,7 +104,7 @@ try {
           record.scanNote='shipping-unavailable-pickup-unknown';
         }
       }
-    }catch(e){record={id:product.id,retailer:product.retailer,url:product.url,host:product.host,kind:product.kind,checkedAt:new Date().toISOString(),source:'unreadable',blocked:true,diagnostic:{status:'unreadable',evidence:[]},scanNote:String(e).slice(0,400)};}
+    }catch(e){record={id:product.id,retailer:product.retailer,url:product.url,host:product.host,kind:product.kind,checkedAt:new Date().toISOString(),source:'unreadable',blocked:true,diagnostic:{status:'unreadable',evidence:[]},scanNote:'navigation-or-product-unreadable'};}
     record.verdict=evaluate(record);
     records.push(record);
     console.log(`${product.id}: ${record.verdict.qualifies?'VERIFIED':'NO ALERT'} — ${record.scanNote}`);
