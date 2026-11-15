@@ -1,4 +1,4 @@
-import {ZIP, MAX_AGE_MS} from './config.mjs';
+import {ZIP, MAX_AGE_MS, RETAILER_HOSTS} from './config.mjs';
 const invalidFulfillment = /\b(not available|unavailable|out of stock|sold out|select condition for availability|shipping unavailable|delivery unavailable|ship to home unavailable|cannot be shipped|currently unavailable)\b/i;
 const validMethods = new Set(['ship-to-home','local-pickup']);
 const money = /\$\s*([\d,]+(?:\.\d{2})?)/;
@@ -13,6 +13,7 @@ export function evaluate(record, now = Date.now()) {
   let u;
   try {u=new URL(record.url);} catch {reject('invalid URL');}
   if (!u || u.protocol!=='https:' || u.hostname!==record.host) reject('not the exact HTTPS retailer-owned host');
+  if (!RETAILER_HOSTS[record.retailer]?.includes(record.host)) reject('retailer and host are not an approved exact retailer-owned pair');
   if (record.source !== 'live-retailer-purchase-surface') reject('not live retailer purchase evidence');
   if (record.unavailable===true) reject('retailer reported unavailable');
   if (!Number.isFinite(Date.parse(record.checkedAt)) || Math.abs(now-Date.parse(record.checkedAt))>MAX_AGE_MS) reject('missing or stale verification timestamp');
