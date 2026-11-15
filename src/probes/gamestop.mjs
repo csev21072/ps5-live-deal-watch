@@ -13,7 +13,7 @@ export function fulfillmentEvidence(text) {
   }
   return found;
 }
-export async function probeGameStop(page, product, diagnostic, candidatePriceText=null) {
+export async function probeGameStop(page, product, diagnostic, candidatePriceText=null, productHeading=null) {
   if(product.retailer!=='GameStop')return {status:'not-applicable'};
   if(diagnostic.status!=='candidate-needs-fulfillment-verification')
     return {status:'skipped',reason:diagnostic.status};
@@ -76,7 +76,7 @@ export async function probeGameStop(page, product, diagnostic, candidatePriceTex
         checkedAt:new Date().toISOString(),
         phoenixZipVisible:/\b85001\b/.test(cartBody),
         productMentioned:/playstation\s*5|ps5/i.test(cartBody),
-        itemMatch:inspectCartText({cartUrl,cartText:cartBody,productUrl:product.url,productHeading:title,priceText:candidatePriceText}),
+        itemMatch:inspectCartText({cartUrl,cartText:cartBody,productUrl:product.url,productHeading:productHeading||title,priceText:candidatePriceText}),
         fulfillmentText:fulfillmentEvidence(cartBody)
       };
       return {status:'cart-inspected-unverified',location,observedFulfillment,cartEvidence,verifiedPurchase:false};
