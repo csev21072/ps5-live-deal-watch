@@ -6,6 +6,7 @@ import {extractVisibleSignals,summarize} from './diagnostics.mjs';
 import {probeGameStop} from './probes/gamestop.mjs';
 import {discoverProducts} from './discovery.mjs';
 import {summarizeProductEvidence} from './evidence/product.mjs';
+import {inspectSonyProductFacts} from './probes/playstation-direct.mjs';
 const outdir='out';
 await mkdir(outdir,{recursive:true});
 const browser=await chromium.launch({headless:true});
@@ -27,6 +28,7 @@ async function extractCandidate(page,product) {
   },priceSelectors[product.retailer]||[]);
   const diagnostic=extractVisibleSignals(observed,product);
   const productEvidence=summarizeProductEvidence(observed,product);
+  const sonyFacts=product.retailer==='PlayStation Direct'?inspectSonyProductFacts({url:page.url(),...observed}):null;
   // PlayStation Direct static URLs now point to individual console pages.
   const {blocked,unavailable}=diagnostic;
   const price=priceFromText(observed.priceText);
@@ -36,7 +38,7 @@ async function extractCandidate(page,product) {
     id:product.id,retailer:product.retailer,url:page.url(),host:product.host,
     kind:product.kind,checkedAt:new Date().toISOString(),source:'live-retailer-purchase-surface',
     title:observed.title,price,priceText:observed.priceText,
-    blocked,unavailable,diagnostic,productEvidence,locationRequested:ZIP,
+    blocked,unavailable,diagnostic,productEvidence,sonyFacts,locationRequested:ZIP,
     condition:null,seller:null,shipper:null,controllers:null,storage:null,discDrive:null,
     fulfillment:{confirmed:false,method:null,zip:null,text:null,locationText:null,cartOrCheckoutConfirmed:false},
     scanNote:diagnostic.status
