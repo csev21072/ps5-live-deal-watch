@@ -46,6 +46,17 @@ export function evaluate(record, now = Date.now()) {
       || Math.abs(now-Date.parse(checkout.observedAt))>MAX_AGE_MS) {
     reject('matching live retailer cart/checkout SKU, price and Phoenix orderability not proven');
   }
+  // A generic cart, global price, or enabled button is insufficient.
+  // The adapter must capture the selected item and selected fulfillment.
+  if (!checkout || typeof checkout.itemText!=='string'
+      || !checkout.itemText.includes(record.skuOrBundle)
+      || !/\b(PS5|PlayStation\s*5)\b/i.test(checkout.itemText)
+      || checkout.selectedCondition!=='NEW'
+      || checkout.selectedSeller!==record.seller
+      || checkout.selectedFulfillmentMethod!==f?.method
+      || checkout.checkoutControlEnabled!==true) {
+    reject('exact cart item, NEW condition, seller and selected orderable fulfillment not independently corroborated');
+  }
   let checkoutUrl;
   try{checkoutUrl=new URL(checkout?.url);}catch{}
   if(!checkoutUrl || checkoutUrl.protocol!=='https:' || checkoutUrl.hostname!==record.host
