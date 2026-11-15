@@ -1,6 +1,6 @@
 // Shared, pure matching primitives. A substring is never enough to prove
 // exact SKU, ZIP, or a selected cart line. No I/O or browser interactions.
-const escapeRegex=value=>String(value).replace(/[|\\{}()[\]^$+*?.]/g,'\\$&');
+const escapeRegex=value=>[...String(value)].map(ch=>'\\^$.*+?()[]{}|'.includes(ch)?'\\'+ch:ch).join('');
 export function exactSkuInText(text,sku){
   if(typeof text!=='string'||typeof sku!=='string'||sku.trim().length<5)return false;
   const value=sku.trim();
