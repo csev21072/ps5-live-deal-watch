@@ -1,6 +1,7 @@
 import {publicRetailerUrl} from '../evidence/url.mjs';
 import {priceFromText} from '../rules.mjs';
 import {inspectCartText} from '../evidence/cart.mjs';
+import {captureCartControls} from '../checkout/cart-controls.mjs';
 
 // Research-only guest-cart probe for official NEW console product pages.
 // It never logs in, purchases, submits checkout, or marks fulfillment verified.
@@ -42,6 +43,7 @@ export async function probeSonyCart(page,product,sonyFacts,priceText,sonyPriceEv
     const cartText=(await page.locator('body').innerText({timeout:6000}).catch(()=>''));
     if(/captcha|verify you are human|access denied/i.test(cartText))
       return {...result,status:'cart-blocked'};
+    const domControls=await captureCartControls(page,{productName:sonyFacts.productHeading});
     const match=inspectCartText({
       cartUrl,cartText,productUrl:product.url,
       productHeading:sonyFacts.productHeading,priceText
@@ -50,6 +52,7 @@ export async function probeSonyCart(page,product,sonyFacts,priceText,sonyPriceEv
       cartResearch:{
         url:publicRetailerUrl(cartUrl,'direct.playstation.com'),checkedAt:new Date().toISOString(),
         itemMatch:match,
+        domControls,
         // Never expose cookies, account details, full cart text or addresses.
         productHeading:sonyFacts.productHeading,
         observedPrice:price
