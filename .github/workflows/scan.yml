@@ -31,6 +31,7 @@ jobs:
           node --check src/probes/playstation-direct.mjs
           node --check src/probes/playstation-direct-cart.mjs
           node --check src/evidence/sony-price.mjs
+          node --check src/evidence/url.mjs
           node --check src/evidence/product.mjs
       - name: Unit tests
         run: npm test
