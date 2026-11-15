@@ -14,8 +14,9 @@ export function parseSonyPriceEvidence({priceText='',priceSelector='',priceConte
     const integer=raw.split('.')[0];
     const cents=raw.includes('.')?raw.split('.')[1]:'00';
     // Require a visible dollar symbol adjacent to this precise price.
-    const re=new RegExp('\\$\\s*'+integer+'(?:\\s*\\.\\s*'+cents+')?(?!\\s*\\.\\s*\\d|\\d)');
-    if(re.test(context))amount=Number(raw);
+    const re=new RegExp('\\$\\s*'+integer+'(?!\\d)(?:\\s*\\.\\s*(\\d{2})|\\s+(\\d{2})(?!\\d))?');
+    const match=context.match(re);
+    if(match && (match[1]??match[2]??'00')===cents)amount=Number(raw);
   }
   if(!Number.isFinite(amount)||amount<100||amount>2000)
     return {...result,status:'currency-or-price-unconfirmed'};
