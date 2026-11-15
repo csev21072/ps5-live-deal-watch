@@ -1,0 +1,35 @@
+name: PS5 free CI safety tests
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  safety:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Run safety regression tests without paid services
+        run: node --test
+      - name: Record completed test run on audit branch
+        if: success()
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+          SOURCE_RUN: ${{ github.run_id }}
+        run: |
+          git fetch origin audit
+          git switch -C audit origin/audit
+          mkdir -p evidence
+          printf '{"source_commit":"%s","workflow_run":"%s","result":"unit-tests-passed","verified_live_checkout":false}\n' "$SOURCE_SHA" "$SOURCE_RUN" > evidence/ci-health.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add evidence/ci-health.json
+          if ! git diff --cached --quiet; then
+            git commit -m "audit: record successful safety tests [skip ci]"
+            git push origin audit
+          fi
