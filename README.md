@@ -91,3 +91,11 @@ The live checkout gate now also requires an exact selected cart-item SKU, select
 The Sony and GameStop guest-cart probes now attempt to inspect **the actual selected cart item, shipping/pickup radio selection, and checkout-button enabled state** when a potentially qualifying offer can be added to the cart. They do not click checkout, enter addresses, log in, pay, or mark an offer verified. A matching product row without exact NEW, selected Phoenix ZIP 85001 fulfillment, and a uniquely enabled checkout control is classified as incomplete. Even when those controls appear, the result is explicitly `research-fields-observed-needs-live-review`, never a verified deal. The latest hosted safety suite passed **217/217 tests**.
 
 **Latest hosted checkpoint (November 15, 2026):** 218/218 tests passed. The updated live scanner completed successfully, attempted 14 pages across all seven retailers, and persisted a second scan-history entry. No orderable offer was independently verified and no deal Issue was created. The production scanner is isolated from fictional fixtures, and the hourly/manual workflow remains enabled with no paid services.
+
+### November 15 verification-hardening checkpoint
+
+The purchase gate now requires exact SKU boundaries, the **console item-row price** (not a cart subtotal), exact Phoenix ZIP 85001 fulfillment, and an enabled selected checkout control. Raw cart rows and shipping text are not saved in the public audit. Off-retailer redirects, login and challenge pages fail closed before cart research.
+
+For Best Buy, Target, Walmart, Amazon and Costco, read-only diagnostics distinguish genuine Add to Cart/Buy Now controls from pickup/delivery/shipping navigation. Target JSON-LD prices are captured as **research hints only**, never substituted for a checkout price. This avoids mistaking a visible pickup button or structured-data price for a purchasable deal.
+
+Latest independently verified hosted safety suite: **261/261 passed**. A separate hosted live browser smoke run for Target research is still being evaluated. No real positive Phoenix checkout verification has been demonstrated; verified-deal notifications remain gated.
