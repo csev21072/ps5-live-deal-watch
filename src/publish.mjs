@@ -71,6 +71,19 @@ for(const record of alerts){
     `- Location evidence: ${record.fulfillment.locationText}`,
     `- Conditions: ${record.conditions??'None observed'}`,
     `- Effective price: $${verdict.effectivePrice.toFixed(2)} = $${record.price.toFixed(2)} - $${verdict.extraControllerCredit} extra-controller allowance - $${verdict.gameCredit} documented game allowance`,
+    `- Previous sufficiently verified alerted price: ${old.lastAlert ? '    `- Retailer URL: ${record.url}`,
+    `- Alert reason: ${decision.reason}`,
+    `- Alert event key: ${eventKey}`
+  ].join('\n');
+  await github('/issues',{method:'POST',body:JSON.stringify({title,body})});
+  previousIssues.push({body});
+  console.log(`Created independently verified purchase alert for ${record.id}`);
+}
+// State advances only after all required notifications succeeded.
+// Audit branch stores this, not the public main branch.
+await writeFile('out/alert-state.json',JSON.stringify(next,null,2));
+console.log(`Evaluated ${records.length} retailer candidates; ${alerts.length} verified alert events.`);
++old.lastAlert.price.toFixed(2) : 'none recorded'}`,
     `- Checked at: ${record.checkedAt}`,
     `- Retailer URL: ${record.url}`,
     `- Alert reason: ${decision.reason}`,
