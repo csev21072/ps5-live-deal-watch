@@ -67,3 +67,7 @@ The follow-up GitHub-hosted Chromium smoke test completed successfully on Novemb
 ### Official Sony console page improvements
 
 PlayStation Direct is now monitored through its exact individual Disc 1TB and Digital 825GB console product URLs, rather than two copies of the general catalog. A read-only Sony product probe confirms model/storage/disc/one-controller hints from the manufacturer-owned page, and a separate strict price-widget parser requires adjacent currency context. Accessory stock messages are not treated as console stock evidence. A bounded guest-cart probe can research a qualifying-price offer without login, payment or purchase; it still cannot assert verified Phoenix fulfillment. No positive checkout verification has been observed. The latest confirmed hosted CI checkpoint passed **149/149 tests**.
+
+### Verified-offer notification delivery
+
+When and only when an offer passes every retailer-owned checkout verification gate, the publisher opens a GitHub Issue and requests assignment to the repository owner. GitHub may then send its normal web/email/mobile issue notification according to the owner's GitHub notification preferences. If GitHub rejects assignment with HTTP 422, the issue is created without an assignee instead. This does **not** guarantee a push/email notification; enabling repository Issues notifications or watching the repository is still recommended. No notification issues are created for blocked, sold-out, price-only, or unverified offers.
