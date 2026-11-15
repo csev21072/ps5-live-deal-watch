@@ -14,7 +14,7 @@ export function expectedSkuFromProductUrl(url){
 }
 export function inspectCartText({cartUrl,cartText,productUrl,productHeading,priceText,zip='85001'}){
   const result={
-    status:'unverified',url:publicRetailerUrl(cartUrl,new URL(productUrl).hostname),
+    status:'unverified',url:null,
     skuExpected:expectedSkuFromProductUrl(productUrl),
     skuFoundInCart:false,exactProductTitleFound:false,
     productPriceMatched:false,zipInShippingContext:false,
@@ -27,6 +27,7 @@ export function inspectCartText({cartUrl,cartText,productUrl,productHeading,pric
   try{product=new URL(productUrl);}catch{return {...result,status:'invalid-product-url'};}
   if(cart.protocol!=='https:'||cart.hostname!==product.hostname||!/(?:cart|checkout)/i.test(cart.pathname))
     return {...result,status:'wrong-cart-origin'};
+  result.url=publicRetailerUrl(cartUrl,product.hostname);
   const text=String(cartText??'');
   if(/captcha|verify you are human|access denied|press\s*&\s*hold/i.test(text))
     return {...result,status:'blocked',blocked:true};
