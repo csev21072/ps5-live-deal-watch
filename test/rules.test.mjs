@@ -75,3 +75,16 @@ test('GameStop record cannot use a lookalike retailer hostname',()=>{
 test('retailer mismatch fails even if both domains are valid stores',()=>{
  const x=base();x.retailer='Amazon';assert.equal(evaluate(x,now).qualifies,false);
 });
+
+test('Costco official SameDay host is permitted only for Costco',()=>{
+ const x=base();x.retailer='Costco';x.host='sameday.costco.com';
+ x.url='https://sameday.costco.com/store/costco/products/123';
+ x.checkoutEvidence.url='https://sameday.costco.com/cart';
+ assert.equal(evaluate(x,now).qualifies,true);
+});
+test('Costco SameDay domain cannot be used by a different retailer',()=>{
+ const x=base();x.retailer='Amazon';x.host='sameday.costco.com';
+ x.url='https://sameday.costco.com/store/costco/products/123';
+ x.checkoutEvidence.url='https://sameday.costco.com/cart';
+ assert.equal(evaluate(x,now).qualifies,false);
+});
