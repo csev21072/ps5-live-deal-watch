@@ -47,3 +47,11 @@ Do not remove fail-closed gates to force alerts. Do not equate 'Add to Cart' or 
 2. Do not enable any positive alert path until a retailer-specific purchase adapter proves exact current Phoenix fulfillment and NEW model, SKU, seller, storage, controller count, price, and checkout orderability on a genuine current offer.
 3. Add tests for the checkout adapter with negative and positive evidence, and dedup integration.
 4. Keep strict $0 spend.
+
+## Additional free discovery and evidence — same session
+
+- Added `src/discovery.mjs` and eight new tests. It visits each retailer's own public search page to discover up to two additional explicitly Disc/Digital PS5 console/bundle URLs per retailer. Search-page content is **discovery only**; it is never price or stock evidence. It rejects third-party domains, ambiguous editions, PS5 Pro, refurbished, duplicate URLs and tracking parameters.
+- Integrated newly discovered product URLs into the browser scanner while keeping all previously known static product URLs. Discovery coverage is included in the audit.
+- Added bounded GameStop shipping/pickup quote capture for audit diagnostics; quotes are not checkout confirmation.
+- The latest independently verified hosted CI after these changes passed **54/54** tests.
+- A one-time hosted browser smoke scan was triggered for the discovery integration. Inspect the `audit` branch and remove the temporary push trigger when it finishes.
