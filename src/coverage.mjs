@@ -33,8 +33,8 @@ export function summarizeCoverage(records=[],discovery={coverage:[]},retailers=[
     retailersAttempted:results.filter(x=>x.attemptedPages>0).length,
     retailersWithVerifiedOffer:results.filter(x=>x.verifiedOrderableOffers>0).length,
     allRetailersAttempted:results.every(x=>x.attemptedPages>0),
-    allRetailersFullyVerified:false, // No negative checkout proof for every SKU/offer.
-    checkoutVerificationIncomplete:results.some(x=>x.status!=='verified-offer-observed'),
+    // A retailer with one verified offer does not imply complete SKU coverage.
+    retailersWithoutVerifiedOffers:results.filter(x=>x.verifiedOrderableOffers===0).length,
     retailerResults:results
   };
 }
