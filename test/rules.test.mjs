@@ -31,3 +31,10 @@ test('stale cart evidence rejects',()=>{const x=base();x.checkoutEvidence.observ
 test('cart URL on another domain rejects',()=>{const x=base();x.checkoutEvidence.url='https://other.example.com/cart';assert.equal(evaluate(x,now).qualifies,false);});
 test('product URL pretending to be cart rejects',()=>{const x=base();x.checkoutEvidence.url='https://www.example.com/ps5';assert.equal(evaluate(x,now).qualifies,false);});
 test('checkout unavailable text rejects',()=>{const x=base();x.checkoutEvidence.fulfillmentText='Ship to Home Not Available in Phoenix 85001';assert.equal(evaluate(x,now).qualifies,false);});
+
+test('PS5 Pro cannot masquerade as Slim',()=>{const x=base();x.exactModel='Sony PS5 Pro Disc Slim';assert.equal(evaluate(x,now).qualifies,false);});
+test('unverified non-Slim product title rejected',()=>{const x=base();x.exactModel='PlayStation 5 Disc Console';assert.equal(evaluate(x,now).qualifies,false);});
+test('verified model evidence can establish Slim without title keyword',()=>{const x=base();x.exactModel='PlayStation 5 Disc Console';x.slimModelEvidence=true;assert.equal(evaluate(x,now).qualifies,true);});
+test('Amazon first-party sold and shipped can pass with otherwise complete evidence',()=>{const x=base();x.retailer='Amazon';x.seller='Amazon.com';x.shipper='Amazon.com';x.sellerText='Sold by Amazon.com';x.shipperText='Ships from Amazon.com';assert.equal(evaluate(x,now).qualifies,true);});
+test('Amazon third-party offer requires independent approval and reputation',()=>{const x=base();x.retailer='Amazon';x.seller='Unknown Merchant';x.shipper='Unknown Merchant';assert.equal(evaluate(x,now).qualifies,false);});
+test('marketplace seller reputation text alone is not enough',()=>{const x=base();x.retailer='Walmart';x.seller='Unknown Merchant';x.shipper='Unknown Merchant';x.marketplaceReputationEvidence='5 stars';assert.equal(evaluate(x,now).qualifies,false);});
