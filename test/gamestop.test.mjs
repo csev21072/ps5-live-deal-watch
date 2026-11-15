@@ -64,3 +64,24 @@ test('guest cart research never becomes purchase verification',async()=>{
  assert.equal(r.cartEvidence.phoenixZipVisible,true);
  assert.equal(r.cartEvidence.productMentioned,true);
 });
+
+test('disabled cart researches store finder but cannot claim Phoenix pickup',async()=>{
+ let searched=false;
+ const mock={
+  title:async()=> 'Sony PlayStation 5 Slim',
+  locator:selector=>selector==='body'
+    ?{innerText:async()=> 'PS5 Slim New\nShip to Home\nFind a Store\nPhoenix 85001\nPickup available'}
+    :{count:async()=>0,first:()=>({isVisible:async()=>true,fill:async()=>{searched=true;},press:async()=>{}})},
+  getByRole:(role,opts)=>({first:()=>({
+    isVisible:async()=> role==='button' && /find a store/i.test(String(opts?.name)),
+    isEnabled:async()=>false,
+    click:async()=>{}
+  })}),
+  waitForTimeout:async()=>{}
+ };
+ const r=await probeGameStop(mock,product,{status:'candidate-needs-fulfillment-verification'});
+ assert.equal(r.status,'cart-not-orderable');
+ assert.equal(r.verifiedPurchase,false);
+ assert.equal(searched,true);
+ assert.equal(r.pickupResearch.verifiedPickup,false);
+});
