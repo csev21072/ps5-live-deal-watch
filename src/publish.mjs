@@ -42,7 +42,6 @@ async function issueBodies(){
 const previousIssues=alerts.length?await issueBodies():[];
 for(const record of alerts){
   const decision=decisions.find(x=>x.id===record.id);
-  const old=previous[record.id]??{};
   const verdict=evaluate(record);
   if(!verdict.qualifies)throw new Error('Offer became stale or invalid before publishing');
   const issue=buildVerifiedIssue(record,verdict,decision,previous,repo);
