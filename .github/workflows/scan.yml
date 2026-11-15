@@ -3,14 +3,6 @@ on:
   schedule:
     - cron: '32 * * * *'
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - '.github/workflows/scan.yml'
-      - 'src/**'
-      - 'test/**'
-      - 'scripts/**'
-      - 'package.json'
 permissions:
   contents: write
   issues: write
