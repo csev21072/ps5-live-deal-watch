@@ -1,4 +1,4 @@
-import {exactSkuInText,selectedFulfillmentMatches} from './evidence-checks.mjs';
+import {exactSkuInText,selectedFulfillmentMatches,exactItemPriceInText} from './evidence-checks.mjs';
 // Read-only cart DOM capture for retailer-specific adapter development.
 // Never enters personal information, clicks checkout, or marks an offer verified.
 export function assessCartControls(observation={},expected={}) {
@@ -12,6 +12,7 @@ export function assessCartControls(observation={},expected={}) {
   const selectedShipping=(observation.fulfillmentOptions??[]).filter(x=>x.selected===true);
   const missing=[];
   if(matches.length!==1)missing.push('exactly one selected console cart row');
+  if(Number.isFinite(expected.price) && !matches.some(x=>exactItemPriceInText(x.text,expected.price)))missing.push('exact item-row price matches selected console offer');
   if(!observation.checkoutControl?.enabled)missing.push('enabled checkout control');
   if(selectedShipping.length!==1)missing.push('unambiguous selected shipping/pickup method');
   if(!selectedShipping.some(x=>selectedFulfillmentMatches(x.text,'85001')))
@@ -23,7 +24,7 @@ export function assessCartControls(observation={},expected={}) {
     missing,
     // Public audit may be visible to anyone: never persist cart row text,
     // address fragments, account identifiers, phone numbers or email addresses.
-    matchingRows:matches.slice(0,2).map(x=>({skuMatched:sku.length>=5?exactSkuInText(x.text,sku):false,newCondition:/\bnew\b/i.test(x.text??'')&&!/\b(used|pre.?owned|refurbished|open.?box)\b/i.test(x.text??'')})),
+    matchingRows:matches.slice(0,2).map(x=>({skuMatched:sku.length>=5?exactSkuInText(x.text,sku):false,itemPriceMatched:Number.isFinite(expected.price)?exactItemPriceInText(x.text,expected.price):false,newCondition:/\bnew\b/i.test(x.text??'')&&!/\b(used|pre.?owned|refurbished|open.?box)\b/i.test(x.text??'')})),
     selectedFulfillment:selectedShipping.slice(0,2).map(x=>({phoenixZipMatched:selectedFulfillmentMatches(x.text,'85001')})),
     checkoutControlEnabled:observation.checkoutControl?.enabled===true,
     verifiedPurchase:false
