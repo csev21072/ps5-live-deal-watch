@@ -85,3 +85,16 @@ Do not remove fail-closed gates to force alerts. Do not equate 'Add to Cart' or 
 
 ### Next development focus
 Use future hourly audits to identify a genuinely orderable product whose retailer-owned cart shows exact SKU, price, NEW condition, seller, and Phoenix ZIP-specific shipping or reservable pickup. Then implement a narrow retailer-specific positive adapter and validate it with real evidence and adversarial regression fixtures. Never synthesize positive checkout evidence from search, product titles, generic Add to Cart, store lists, or a browser's geolocation.
+
+## Nov 15 — New condition inspection, official Sony pages, and CI race fix
+
+- Investigated actual hosted GameStop audit: both tested listings displayed a price but no actionable Add to Cart control, no confirmed selected NEW condition, and Phoenix store-finder interaction was blocked. This is **not** evidence of a purchasable offer. Rather than alert, the scanner now captures disabled/selected condition controls and attempts only an unambiguous exact NEW option, verifying the selection afterward before any cart interaction.
+- Fixed CI health audit branch race: GitHub-hosted tests passed but one older run failed while pushing `ci-health` because concurrent writers updated the same ref. Added serialized CI writer concurrency to prevent this failure.
+- Replaced PlayStation Direct's two duplicate category URLs with the official individual console purchase pages:
+  - `https://direct.playstation.com/en-us/buy-consoles/playstation5-console-1-tb`
+  - `https://direct.playstation.com/en-us/buy-consoles/playstation5-digital-edition-console-825-gb`
+  These are product URLs, **not verified current prices or stock**.
+- Changed official Sony discovery to its console catalog, expanded `buy-consoles` product-path support, and excluded PS5-compatible accessories/faceplates from URL discovery after a prior scan picked up an accessory as a false candidate.
+- Added `src/probes/playstation-direct.mjs` and tests to inspect manufacturer-owned console model, storage, drive, and included-controller hints without asserting NEW condition, price, or Phoenix checkout. This is research-only until independent retailer-owned checkout is validated.
+- Added bundle-credit safety tests: only one additional genuine DualSense may receive the $55 credit automatically; implausible multi-controller counts fail closed.
+- Triggered a one-time free hosted smoke scan for the new Sony product URLs; inspect the next `audit:evidence/latest.json` and remove the temporary push trigger after completion.
