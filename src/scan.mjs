@@ -20,8 +20,9 @@ async function extractCandidate(page,product) {
     const visible=(el)=>{if(!el)return false;const s=getComputedStyle(el);return s.display!=='none'&&s.visibility!=='hidden'&&!!el.getClientRects().length;};
     let priceText='';
     for(const selector of selectors){try{const el=[...document.querySelectorAll(selector)].find(visible);if(el){priceText=(el.textContent||'').trim();if(priceText)break;}}catch{}}
-    const headings=[...document.querySelectorAll('h1,h2')].filter(visible).slice(0,15).map(el=>(el.innerText||'').slice(0,180));
-    const labels=[...document.querySelectorAll('button,[role="button"],label')].filter(visible).slice(0,45).map(el=>(el.innerText||el.getAttribute('aria-label')||'').slice(0,120));
+    const productRoot=document.querySelector('main')||document.querySelector('[role="main"]')||document;
+    const headings=[...productRoot.querySelectorAll('h1,h2')].filter(visible).slice(0,15).map(el=>(el.innerText||'').slice(0,180));
+    const labels=[...productRoot.querySelectorAll('button,[role="button"],label')].filter(visible).slice(0,60).map(el=>(el.innerText||el.getAttribute('aria-label')||'').slice(0,120));
     return {title:document.title,body:(document.body?.innerText||'').slice(0,50000),priceText,headings,labels};
   },priceSelectors[product.retailer]||[]);
   const diagnostic=extractVisibleSignals(observed,product);
