@@ -47,3 +47,26 @@ test('captured DOM controls are not upgraded to verified checkout',async()=>{
  assert.equal(r.status,'research-fields-observed-needs-live-review');
  assert.equal(r.verifiedPurchase,false);
 });
+
+test('substring SKU collision does not match selected console',()=>{
+ const r=assessCartControls({...observation,rows:[{text:'Sony PlayStation 5 Slim Disc SKU 1422135 Condition New $449.00'}]},expected);
+ assert.equal(r.status,'incomplete-cart-controls');
+ assert.equal(r.matchingRows.length,0);
+});
+test('ZIP digit collision does not count as Phoenix shipping',()=>{
+ const r=assessCartControls({...observation,fulfillmentOptions:[{selected:true,text:'Shipping to 185001'}]},expected);
+ assert.equal(r.status,'incomplete-cart-controls');
+ assert.ok(r.missing.some(x=>x.includes('Phoenix')));
+});
+test('public cart diagnostics never retain names, emails or addresses',()=>{
+ const sensitive='Jane Example jane@example.org 123 Main Street 85001';
+ const r=assessCartControls({
+  ...observation,
+  rows:[{text:observation.rows[0].text+' '+sensitive}],
+  fulfillmentOptions:[{selected:true,text:'Shipping to Phoenix 85001 '+sensitive}]
+ },expected);
+ assert.equal(r.status,'research-fields-observed-needs-live-review');
+ assert.ok(!JSON.stringify(r).includes('Jane'));
+ assert.ok(!JSON.stringify(r).includes('Main Street'));
+ assert.ok(!JSON.stringify(r).includes('example.org'));
+});
