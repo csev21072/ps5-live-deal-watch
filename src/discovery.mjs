@@ -75,8 +75,8 @@ export async function discoverProducts(browser,existing,timeoutMs=9000){
       const observed=await page.evaluate(()=>({
         title:document.title,
         body:(document.body?.innerText||'').slice(0,2500),
-        links:[...document.querySelectorAll('a[href]')].slice(0,350).map(a=>({
-          href:a.href,text:(a.innerText||a.getAttribute('aria-label')||'').slice(0,250)
+        links:[...document.querySelectorAll('a[href]')].slice(0,1000).map(a=>({
+          href:a.href,text:(a.innerText?.trim()||a.getAttribute('aria-label')||a.querySelector('img[alt]')?.getAttribute('alt')||'').slice(0,250)
         }))
       }));
       const pageStatus=classifyDiscoveryPage(observed);
