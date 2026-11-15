@@ -23,10 +23,12 @@ else
 fi
 node src/audit-history.mjs "${RUNNER_TEMP:-/tmp}/ps5-previous-history.json" "${RUNNER_TEMP:-/tmp}/ps5-evidence.json" "${RUNNER_TEMP:-/tmp}/ps5-history.json"
 node src/public-audit.mjs "${RUNNER_TEMP:-/tmp}/ps5-evidence.json" "${RUNNER_TEMP:-/tmp}/ps5-public-evidence.json"
+node src/reliability.mjs "${RUNNER_TEMP:-/tmp}/ps5-history.json" "${RUNNER_TEMP:-/tmp}/ps5-reliability.json"
 git switch -C audit origin/audit
 mkdir -p evidence
 cp "${RUNNER_TEMP:-/tmp}/ps5-public-evidence.json" evidence/latest.json
 cp "${RUNNER_TEMP:-/tmp}/ps5-history.json" evidence/history.json
+cp "${RUNNER_TEMP:-/tmp}/ps5-reliability.json" evidence/reliability.json
 if [[ -s "${RUNNER_TEMP:-/tmp}/ps5-alert-state.json" ]]; then
   cp "${RUNNER_TEMP:-/tmp}/ps5-alert-state.json" evidence/alert-state.json
 fi
@@ -35,7 +37,7 @@ if [[ -s "${RUNNER_TEMP:-/tmp}/ps5-summary.md" ]]; then
 fi
 git config user.name "github-actions[bot]"
 git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-git add evidence/latest.json evidence/latest.md evidence/alert-state.json evidence/history.json
+git add evidence/latest.json evidence/latest.md evidence/alert-state.json evidence/history.json evidence/reliability.json
 if git diff --cached --quiet; then
   echo "Audit evidence unchanged."
   exit 0
