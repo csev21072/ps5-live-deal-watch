@@ -9,8 +9,14 @@ export async function probeGameStop(page, product, diagnostic) {
   if(!/playstation|ps5/i.test(title))
     return {status:'product-not-confirmed'};
   const before=(await page.locator('body').innerText({timeout:5000}).catch(()=>''))||'';
-  if(/ship to home\s*[:\-]?\s*not available|\bnot available\b|\bout of stock\b/i.test(before))
-    return {status:'shipping-unavailable'};
+  const shippingUnavailable=/ship to home\s*[:\-]?\s*not available|same day delivery\s*[:\-]?\s*not available/i.test(before);
+  const pickupUnavailable=/(?:pick up in.store|pickup)\s*[:\-]?\s*not available/i.test(before);
+  if(shippingUnavailable && pickupUnavailable)
+    return {status:'all-fulfillment-unavailable'};
+  if(shippingUnavailable)
+    return {status:'shipping-unavailable-pickup-unverified'};
+  if(/\bout of stock\b/i.test(before))
+    return {status:'stock-unavailable-pickup-unverified'};
   // A location selector may be absent or require a full address/sign-in.
   // Never assume a browser's geo setting proves Phoenix shipping.
   const zipField=page.locator('input[placeholder*="ZIP" i],input[aria-label*="zip" i],input[name*="postal" i]');
