@@ -45,3 +45,13 @@ test('search page discovery does not count as product checkout',()=>{
  assert.equal(s.retailerResults[0].status,'not-checked');
  assert.equal(s.retailerResults[0].discoveryStatus,'attempted');
 });
+
+test('one verified offer does not conceal other blocked pages at the same retailer',()=>{
+ const s=summarizeCoverage([
+  record('Target',{verdict:{qualifies:true}}),
+  record('Target',{source:'unreadable',blocked:true,diagnostic:{status:'unreadable'},productEvidence:null})
+ ],{},['Target']);
+ assert.equal(s.retailerResults[0].status,'verified-offer-observed-partial-coverage');
+ assert.equal(s.retailersWithVerifiedOffer,1);
+ assert.equal(s.retailerResults[0].unreadablePages,1);
+});
