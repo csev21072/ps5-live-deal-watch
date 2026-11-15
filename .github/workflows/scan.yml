@@ -1,0 +1,39 @@
+name: PS5 hourly live retailer scan
+on:
+  schedule:
+    - cron: '32 * * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+  issues: write
+concurrency:
+  group: ps5-hourly-scan
+  cancel-in-progress: false
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install pinned Playwright
+        run: npm install --no-audit --no-fund
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Unit tests
+        run: npm test
+      - name: Scan live retailer pages (fail closed)
+        run: npm run scan
+      - name: Open GitHub issue ONLY for fully verified deals
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npm run publish
+      - name: Save audit artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ps5-scan-evidence
+          path: out/
+          retention-days: 7
