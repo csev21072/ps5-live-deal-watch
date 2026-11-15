@@ -46,3 +46,16 @@ test('fractional widget requires matching fractional currency context',()=>{
  const r=parseSonyPriceEvidence({...widget,priceText:'449.99',priceContext:'$449.00'});
  assert.equal(r.price,null);
 });
+
+test('separated cents in Sony widget context must be 00 for integer price',()=>{
+ const r=parseSonyPriceEvidence({...widget,priceText:'649',priceContext:'$\n649\n99'});
+ assert.equal(r.price,null);
+});
+test('separated 00 cents in Sony widget context confirms integer price',()=>{
+ const r=parseSonyPriceEvidence({...widget,priceText:'649',priceContext:'$\n649\n00'});
+ assert.equal(r.price,649);
+});
+test('fractional Sony widget price must match separated cents',()=>{
+ const r=parseSonyPriceEvidence({...widget,priceText:'449.99',priceContext:'$ 449 99'});
+ assert.equal(r.price,449.99);
+});
