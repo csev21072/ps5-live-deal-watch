@@ -29,6 +29,7 @@ jobs:
           node --check src/alerts/state.mjs
           node --check src/probes/gamestop.mjs
           node --check src/evidence/cart.mjs
+          node --check src/probes/gamestop-pickup.mjs
           node --check src/evidence/product.mjs
       - name: Unit tests
         run: npm test
