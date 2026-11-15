@@ -3,7 +3,7 @@ import {createHash} from 'node:crypto';
 // These pages are used to find product URLs only. They are never price,
 // seller, condition or fulfillment evidence.
 export const searchPages=[
-  {retailer:'PlayStation Direct',url:'https://direct.playstation.com/en-us/search?q=ps5%20slim',hosts:['direct.playstation.com']},
+  {retailer:'PlayStation Direct',url:'https://direct.playstation.com/en-us/hardware/ps5',hosts:['direct.playstation.com']},
   {retailer:'Best Buy',url:'https://www.bestbuy.com/site/searchpage.jsp?st=ps5+slim',hosts:['www.bestbuy.com']},
   {retailer:'Target',url:'https://www.target.com/s?searchTerm=ps5+slim',hosts:['www.target.com']},
   {retailer:'Walmart',url:'https://www.walmart.com/search?q=ps5+slim',hosts:['www.walmart.com']},
@@ -12,7 +12,7 @@ export const searchPages=[
   {retailer:'Costco',url:'https://www.costco.com/s?keyword=ps5+slim',hosts:['www.costco.com','sameday.costco.com']}
 ];
 const pathPatterns={
-  'PlayStation Direct': /\/(?:product|hardware\/ps5\/)[^?#]+/i,
+  'PlayStation Direct': /\/(?:buy-consoles|product|hardware\/ps5\/)[^?#]+/i,
   'Best Buy': /\/(?:site\/[^?#]+\/\d+\.p|product\/[^?#]+)/i,
   'Target': /\/p\/[^?#]+/i,
   'Walmart': /\/ip\/[^?#]+/i,
@@ -28,6 +28,7 @@ export function discoverFromLinks(searchPage,links,existingUrls=[],limit=2){
     if(!/(?:playstation\s*5|ps5)/i.test(text))continue;
     if(!/\b(console|bundle|slim|disc edition|digital edition)\b/i.test(text))continue;
     if(/\b(refurbished|pre-owned|preowned|used|open.box|ps5 pro|playstation 5 pro|controller only|case only)\b/i.test(text))continue;
+    if(/\b(compatible with|replacement|face\s*plates?|cover\s*plates?|shell\s*case|skin|charging station|stand|cooling fan|carrying case|accessor(?:y|ies)|empty box|console cover|controller skin|protective case|for ps5|for playstation 5)\b/i.test(text))continue;
     const digital=/\b(digital|all-digital)\b/i.test(text);
     const disc=/\b(disc|disk)\b/i.test(text);
     if(digital===disc)continue; // Explicit edition needed; never guess.
