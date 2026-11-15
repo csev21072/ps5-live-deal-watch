@@ -13,6 +13,7 @@ import {publicRetailerUrl} from './evidence/url.mjs';
 import {summarizeCoverage} from './coverage.mjs';
 import {inspectProductControls} from './probes/product-controls.mjs';
 import {validateRetailerOrigin} from './checkout/origin.mjs';
+import {inspectTargetPriceHint} from './probes/target-price.mjs';
 const outdir='out';
 await mkdir(outdir,{recursive:true});
 const browser=await chromium.launch({headless:true});
@@ -85,6 +86,9 @@ try {
       }
       if(!['PlayStation Direct','GameStop'].includes(product.retailer)){
         record.probe=await inspectProductControls(page,product,record.productEvidence);
+      }
+      if(product.retailer==='Target'){
+        record.priceHint=await inspectTargetPriceHint(page,record.productEvidence?.productHeading);
       }
       if(product.retailer==='GameStop'){
         const probeLimit=product.kind==='disc'?550:500;
