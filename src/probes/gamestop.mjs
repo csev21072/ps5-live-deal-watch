@@ -1,3 +1,4 @@
+import {inspectPickupFinder} from './gamestop-pickup.mjs';
 import {inspectCartText} from '../evidence/cart.mjs';
 // GameStop guest-cart research probe. It never authorizes a purchase alert.
 // A cart confirmation without verified NEW condition, seller, exact SKU, price,
@@ -26,8 +27,10 @@ export async function probeGameStop(page, product, diagnostic, candidatePriceTex
   const pickupUnavailable=/(?:pick up in.store|pickup)\s*[:\-]?\s*not available/i.test(before);
   if(shippingUnavailable && pickupUnavailable)
     return {status:'all-fulfillment-unavailable',observedFulfillment};
-  if(shippingUnavailable)
-    return {status:'shipping-unavailable-pickup-unverified',observedFulfillment};
+  if(shippingUnavailable){
+    const pickupResearch=await inspectPickupFinder(page);
+    return {status:'shipping-unavailable-pickup-unverified',observedFulfillment,pickupResearch};
+  }
   if(/\bout of stock\b/i.test(before))
     return {status:'stock-unavailable-pickup-unverified',observedFulfillment};
   // A location selector may be absent or require a full address/sign-in.
