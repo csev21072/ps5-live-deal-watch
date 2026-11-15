@@ -49,8 +49,10 @@ export async function probeGameStop(page, product, diagnostic, candidatePriceTex
     }catch{location='location-entry-blocked';}
   }
   const add=page.getByRole('button',{name:/^add to cart$/i}).first();
-  if(!(await add.isVisible().catch(()=>false)) || !(await add.isEnabled().catch(()=>false)))
-    return {status:'cart-not-orderable',location,observedFulfillment};
+  if(!(await add.isVisible().catch(()=>false)) || !(await add.isEnabled().catch(()=>false))){
+    const pickupResearch=await inspectPickupFinder(page);
+    return {status:'cart-not-orderable',location,observedFulfillment,pickupResearch,verifiedPurchase:false};
+  }
   try {
     await add.click({timeout:5000});
     await page.waitForTimeout(750);
