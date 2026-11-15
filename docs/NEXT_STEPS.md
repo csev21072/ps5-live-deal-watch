@@ -148,3 +148,12 @@ A real positive purchase verification has **not** been demonstrated. The system 
 2. Validate a real retailer-specific positive checkout path on a qualifying offer without purchasing, logging in with payment details, or bypassing anti-bot protections.
 3. Test the verified-offer GitHub Issue notification and dedup against a real positive checkout event, never a fabricated live deal.
 4. Continue with zero paid services and conservative bundle math.
+
+## November 15 — Offline end-to-end alert validation (no real notifications)
+
+- Extracted the pure GitHub verified-deal Issue formatter into `src/alerts/issue.mjs`; production `src/publish.mjs` uses it after re-evaluating the live evidence.
+- Added `test/fixtures/fictional-offer.mjs` and `scripts/simulate-offers.mjs` for an explicitly fictional, **zero-network** scenario sequence: first verified offer, unchanged duplicate, wrong Phoenix ZIP, seller mismatch, CAPTCHA, SKU/ZIP-specific sold out, verified restock, material price drop, unchanged lower price.
+- Added `test/helpers/mock-github.mjs` and `test/publisher-mock.test.mjs`: the real publisher subprocess runs with **every** GitHub API request intercepted. It validates one owner-assigned Issue, suppression of an already existing event key, no requests for an unverified offer, no state advancement on API 500, and one fallback retry without assignee on API 422. These are tests only: no actual GitHub Issue, retailer request, or purchase.
+- Hosted CI run `43774164078` passed **203/203 tests** and executed the fictional simulation separately, confirming `githubApiCalls: 0`, `retailerRequests: 0`, `purchases: 0`.
+- Hardened the production checkout gate further: a cart must corroborate the exact PS5 SKU in its selected item text, selected NEW condition, seller, fulfillment method, and enabled checkout control. Updated fictional and regression fixtures and added negative tests. This work still needs its own latest hosted CI confirmation.
+- **Still missing:** a real retailer-specific adapter that can supply all these fields from a genuinely orderable Phoenix checkout. The offline test proves code paths and fail-closed behavior, not real-world orderability. Do not send simulated deal alerts.
