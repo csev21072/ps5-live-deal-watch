@@ -18,6 +18,8 @@ export function confirmedUnavailable(r) {
     && r?.source==='live-retailer-purchase-surface'
     && r?.diagnostic?.status==='unavailable'
     && r?.probe?.status==='all-fulfillment-unavailable'
+    && r?.probe?.fulfillmentSkuVerified===true
+    && r?.probe?.fulfillmentContextZip==='85001'
     && r?.retailer==='GameStop'
     && Boolean(r.id);
 }
