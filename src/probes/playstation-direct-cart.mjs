@@ -4,12 +4,15 @@ import {inspectCartText} from '../evidence/cart.mjs';
 
 // Research-only guest-cart probe for official NEW console product pages.
 // It never logs in, purchases, submits checkout, or marks fulfillment verified.
-export async function probeSonyCart(page,product,sonyFacts,priceText) {
+export async function probeSonyCart(page,product,sonyFacts,priceText,sonyPriceEvidence=null) {
   const result={status:'unverified',verifiedPurchase:false,checkoutVerified:false};
   if(product.retailer!=='PlayStation Direct')return {...result,status:'not-applicable'};
   if(!sonyFacts?.officialProductPage || sonyFacts.status!=='product-facts-observed-checkout-unverified'
     || !sonyFacts.slimModelHint || sonyFacts.editionHint!==product.kind)
     return {...result,status:'product-facts-incomplete'};
+  if(sonyPriceEvidence?.status!=='retailer-price-widget-observed' ||
+     sonyPriceEvidence.priceText!==priceText)
+    return {...result,status:'retailer-price-widget-unverified'};
   const price=priceFromText(priceText);
   const threshold=product.kind==='disc'?500:450;
   if(price===null)return {...result,status:'price-not-readable'};
