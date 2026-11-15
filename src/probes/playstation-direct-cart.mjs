@@ -43,7 +43,7 @@ export async function probeSonyCart(page,product,sonyFacts,priceText,sonyPriceEv
     const cartText=(await page.locator('body').innerText({timeout:6000}).catch(()=>''));
     if(/captcha|verify you are human|access denied/i.test(cartText))
       return {...result,status:'cart-blocked'};
-    const domControls=await captureCartControls(page,{productName:sonyFacts.productHeading});
+    const domControls=await captureCartControls(page,{productName:sonyFacts.productHeading,price});
     const match=inspectCartText({
       cartUrl,cartText,productUrl:product.url,
       productHeading:sonyFacts.productHeading,priceText
