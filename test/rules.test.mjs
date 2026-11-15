@@ -38,3 +38,7 @@ test('verified model evidence can establish Slim without title keyword',()=>{con
 test('Amazon first-party sold and shipped can pass with otherwise complete evidence',()=>{const x=base();x.retailer='Amazon';x.seller='Amazon.com';x.shipper='Amazon.com';x.sellerText='Sold by Amazon.com';x.shipperText='Ships from Amazon.com';assert.equal(evaluate(x,now).qualifies,true);});
 test('Amazon third-party offer requires independent approval and reputation',()=>{const x=base();x.retailer='Amazon';x.seller='Unknown Merchant';x.shipper='Unknown Merchant';assert.equal(evaluate(x,now).qualifies,false);});
 test('marketplace seller reputation text alone is not enough',()=>{const x=base();x.retailer='Walmart';x.seller='Unknown Merchant';x.shipper='Unknown Merchant';x.marketplaceReputationEvidence='5 stars';assert.equal(evaluate(x,now).qualifies,false);});
+
+test('seller identity must appear in retailer-owned seller text',()=>{const x=base();x.seller='Example';x.sellerText='Sold by Different Merchant';assert.equal(evaluate(x,now).qualifies,false);});
+test('shipper identity must appear in retailer-owned shipper text',()=>{const x=base();x.shipper='Example';x.shipperText='Shipped by Different Merchant';assert.equal(evaluate(x,now).qualifies,false);});
+test('first-party claim cannot override contradictory seller text',()=>{const x=base();x.retailer='Amazon';x.seller='Amazon.com';x.shipper='Amazon.com';x.sellerText='Sold by Third Party';x.shipperText='Ships from Amazon.com';assert.equal(evaluate(x,now).qualifies,false);});
