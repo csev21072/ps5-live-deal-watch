@@ -27,12 +27,7 @@ async function extractCandidate(page,product) {
   },priceSelectors[product.retailer]||[]);
   const diagnostic=extractVisibleSignals(observed,product);
   const productEvidence=summarizeProductEvidence(observed,product);
-  // PlayStation Direct URL is a multi-SKU catalog. An unavailable badge may
-  // belong to another product, so it is not evidence that this SKU is sold out.
-  if(product.retailer==='PlayStation Direct' && !diagnostic.blocked){
-    diagnostic.status='multi-product-page-unverified';
-    diagnostic.unavailable=false;
-  }
+  // PlayStation Direct static URLs now point to individual console pages.
   const {blocked,unavailable}=diagnostic;
   const price=priceFromText(observed.priceText);
   // Diagnostic observations are NOT purchase evidence. Fulfillment is always
