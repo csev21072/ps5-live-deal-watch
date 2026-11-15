@@ -3,6 +3,7 @@ import {mkdir,writeFile} from 'node:fs/promises';
 import {products,priceSelectors,ZIP} from './config.mjs';
 import {priceFromText,evaluate} from './rules.mjs';
 import {extractVisibleSignals,summarize} from './diagnostics.mjs';
+import {probeGameStop} from './probes/gamestop.mjs';
 const outdir='out';
 await mkdir(outdir,{recursive:true});
 const browser=await chromium.launch({headless:true});
@@ -37,6 +38,12 @@ try {
       await page.goto(product.url,{waitUntil:'domcontentloaded',timeout:25000});
       await page.waitForTimeout(1800);
       record=await extractCandidate(page,product);
+      if(product.retailer==='GameStop'){
+        const probeLimit=product.kind==='disc'?550:500;
+        record.probe=record.price!==null && record.price<=probeLimit
+          ? await probeGameStop(page,product,record.diagnostic)
+          : {status:'skipped',reason:'price unknown or outside bounded probe range'};
+      }
     }catch(e){record={id:product.id,retailer:product.retailer,url:product.url,host:product.host,kind:product.kind,checkedAt:new Date().toISOString(),source:'unreadable',blocked:true,diagnostic:{status:'unreadable',evidence:[]},scanNote:String(e).slice(0,400)};}
     record.verdict=evaluate(record);
     records.push(record);
