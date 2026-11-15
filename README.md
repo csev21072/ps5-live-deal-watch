@@ -7,9 +7,10 @@ This project is a **free GitHub Actions + Playwright browser-scanning prototype*
 - Attempts 12 retailer-owned URLs across PlayStation Direct, Best Buy, Target, Walmart, Amazon, GameStop, and Costco once per hour (GitHub schedules may be delayed).
 - Uses a real headless Chromium browser, not shopping feeds or search snippets, and saves an audit artifact for each run.
 - Detects CAPTCHA blocks, explicitly unavailable shipping, missing prices, and mismatched pages; extracts candidate prices for internal review only.
-- Runs 29 local regression tests (as of this update), including wrong-ZIP, unavailable shipping, ambiguous prices, and unverified controller credits.
+- Runs 45 hosted safety tests (latest confirmed), including wrong-ZIP, unavailable shipping, ambiguous prices, unverified controller credits, alert deduplication, and restock transitions.
 - Performs a bounded GameStop guest-cart research probe for potentially qualifying listings; **the probe does not generate alerts or assert checkout verification**.
 - Writes the latest non-alerting scanner audit to the separate `audit` branch when GitHub Actions runs successfully; the `ci-health` branch records a passing test-run witness. These branch files may be absent until hosted workflows complete.
+- Stores durable alert history in `audit:evidence/alert-state.json` and suppresses unchanged offers, small price fluctuations, and false restock signals from CAPTCHAs or unconfirmed pickup. The publisher is wired but **no scanner path currently produces verified checkout evidence**, so no issues/alerts should be generated.
 - Applies strict NEW, seller, price, model, bundle, Phoenix ZIP 85001, and orderability rules. Extra genuine standard DualSense controllers are valued at $55 each; games default to $0 unless defensible sale-value evidence is supplied.
 - **Does not currently issue alerts from these scans** because the retailer-specific checkout + Phoenix fulfillment adapters have not been implemented and validated. That is intentional: it prevents false positives.
 
@@ -35,3 +36,7 @@ Public GitHub-hosted standard Actions runners are normally free, subject to GitH
 ## Development status and next verification gate
 
 The initial free scanner and test suite are committed, but **GitHub-hosted workflow execution has not yet been confirmed** until an actual Actions run completes and its audit witness appears. The GameStop probe may observe a cart interaction but is deliberately incapable of asserting full Phoenix fulfillment. Next: inspect real hosted scan evidence, fix blocked selectors, and implement a complete retailer-owned checkout evidence path for a genuinely orderable offer. No search-result, screenshot-only, or incomplete-cart observation may become a notification.
+
+## Alert history rules
+
+An initial fully verified orderable offer can create a GitHub Issue. An unchanged verified offer does not. A price change must be at least $5 from the last alerted price; a seller or material condition change can alert regardless of price. A restock may alert only after product-specific retailer-owned evidence confirms **all relevant fulfillment options unavailable**, not merely shipping unavailable while pickup is unknown. CAPTCHA, failed page loads, and missing prices preserve the previous state without creating alerts. A missing audit state file causes the scan to fail closed rather than reset history. The implementation is testable but **has not yet generated any real verified checkout alert**.
