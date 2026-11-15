@@ -175,3 +175,14 @@ A real positive purchase verification has **not** been demonstrated. The system 
 - Hosted safety CI run `43774591192`: **218/218 tests passed**, including the real publisher with intercepted GitHub API, offline fictional scenario simulation, read-only cart DOM observations, and a regression guard against importing fictional fixtures into the production scanner.
 - The temporary push trigger was removed; the live scan remains hourly plus manual, and all added infrastructure uses free public GitHub Actions.
 - **Remaining external validation:** a genuinely qualifying NEW PS5 with real retailer-owned cart/checkout evidence for Phoenix ZIP 85001. No current adapter may assert that complete proof; do not turn research-only cart signals into a verified deal.
+
+## November 15 — exact cart evidence, five-retailer diagnostics, and Target price research
+
+- Fixed a genuine cart-parser syntax regression found by hosted CI. Rebuilt `src/evidence/cart.mjs` from a clean source and added explicit SKU, price and ZIP boundary checks in `src/checkout/evidence-checks.mjs`. Positive checkout evidence must now match the exact SKU token, the console's own item-row price (not a cart subtotal), and a selected shipping/pickup label with exact Phoenix ZIP 85001.
+- Removed raw cart item and shipping excerpts from public audit objects. Read-only cart diagnostics now emit bounded booleans rather than potential account names, emails or addresses. New tests reject SKU substring collisions, ZIP collisions, wrong cents, subtotal confusion and PII leakage.
+- Added `src/checkout/origin.mjs` to refuse redirects to a different retailer host, login or challenge page before price extraction or any guest-cart action.
+- Added `src/probes/product-controls.mjs` for read-only purchase controls on Best Buy, Target, Walmart, Amazon and Costco. A subsequent live audit revealed that Target's Pickup/Delivery/Shipping buttons had initially been counted as actionable cart controls; fixed this by separating **actual Add to Cart/Buy Now actions** from mere fulfillment navigation. These diagnostics never assert orderability.
+- Added `src/probes/target-price.mjs` to read only exact-heading Target product JSON-LD USD price hints. Structured metadata is research only and is never substituted for a live checkout price or used to issue an alert.
+- Latest independently confirmed hosted CI run `43775838801`: **258/258 tests passed**, zero failures.
+- A one-time free hosted browser smoke run was requested for Target price hints and corrected cart-action status. Confirm the scan/audit outcome before declaring success; remove the temporary push trigger afterward.
+- **Remaining blocker:** No real retailer-owned positive checkout has yet established exact NEW console SKU, item price, seller, and selected orderable Phoenix fulfillment. Do not notify from metadata, generic buttons, or cart research alone.
