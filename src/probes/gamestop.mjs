@@ -54,9 +54,34 @@ export async function probeGameStop(page, product, diagnostic) {
     if(/captcha|robot or human|press\s*&\s*hold|access denied/i.test(after))
       return {status:'blocked-after-cart',location,observedFulfillment};
     const cartVisible=/added to (your )?cart|view cart|shopping cart/i.test(after);
-    return {status:cartVisible?'cart-action-observed-needs-checkout':'cart-result-unconfirmed',location,
-      // Deliberately no verified price, seller or fulfillment claims.
-      verifiedPurchase:false,observedFulfillment};
+    if(!cartVisible)
+      return {status:'cart-result-unconfirmed',location,observedFulfillment,verifiedPurchase:false};
+    // This is a research-only guest-cart inspection. A cart page alone cannot
+    // prove checkout availability, and this never sets checkoutEvidence.
+    try{
+      const viewCart=page.getByRole('link',{name:/view cart|shopping cart/i}).first();
+      if(await viewCart.isVisible().catch(()=>false))
+        await viewCart.click({timeout:6000});
+      else
+        await page.goto('https://www.gamestop.com/cart/',{waitUntil:'domcontentloaded',timeout:12000});
+      const cartBody=(await page.locator('body').innerText({timeout:6000}).catch(()=>''))||'';
+      const cartUrl=page.url();
+      if(new URL(cartUrl).hostname!=='www.gamestop.com')
+        return {status:'cart-redirected-off-retailer',location,verifiedPurchase:false};
+      if(/captcha|robot or human|press\s*&\s*hold|access denied/i.test(cartBody))
+        return {status:'cart-blocked',location,verifiedPurchase:false};
+      const cartEvidence={
+        url:cartUrl,
+        checkedAt:new Date().toISOString(),
+        phoenixZipVisible:/\b85001\b/.test(cartBody),
+        productMentioned:/playstation\s*5|ps5/i.test(cartBody),
+        priceMentions:[...cartBody.matchAll(/\$\s*[\d,]+(?:\.\d{2})?/g)].slice(0,4).map(x=>x[0]),
+        fulfillmentText:fulfillmentEvidence(cartBody)
+      };
+      return {status:'cart-inspected-unverified',location,observedFulfillment,cartEvidence,verifiedPurchase:false};
+    }catch(e){
+      return {status:'cart-navigation-blocked',location,observedFulfillment,verifiedPurchase:false,reason:String(e).slice(0,120)};
+    }
   } catch(e) {
     return {status:'cart-click-blocked',location,observedFulfillment,reason:String(e).slice(0,120)};
   }
