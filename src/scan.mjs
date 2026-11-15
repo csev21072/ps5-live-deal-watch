@@ -11,6 +11,7 @@ import {probeSonyCart} from './probes/playstation-direct-cart.mjs';
 import {parseSonyPriceEvidence} from './evidence/sony-price.mjs';
 import {publicRetailerUrl} from './evidence/url.mjs';
 import {summarizeCoverage} from './coverage.mjs';
+import {inspectProductControls} from './probes/product-controls.mjs';
 const outdir='out';
 await mkdir(outdir,{recursive:true});
 const browser=await chromium.launch({headless:true});
@@ -78,6 +79,9 @@ try {
       record=await extractCandidate(page,product);
       if(product.retailer==='PlayStation Direct'){
         record.probe=await probeSonyCart(page,product,record.sonyFacts,record.priceText,record.sonyPrice);
+      }
+      if(!['PlayStation Direct','GameStop'].includes(product.retailer)){
+        record.probe=await inspectProductControls(page,product,record.productEvidence);
       }
       if(product.retailer==='GameStop'){
         const probeLimit=product.kind==='disc'?550:500;
