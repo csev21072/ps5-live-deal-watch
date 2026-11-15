@@ -1,3 +1,5 @@
+import {readFile,writeFile} from 'node:fs/promises';
+import {pathToFileURL} from 'node:url';
 import {publicRetailerUrl} from './evidence/url.mjs';
 
 // Explicit allowlist for the PUBLIC audit branch. Raw browser evidence stays
@@ -60,4 +62,12 @@ export function publicAudit(raw){
     coverage:raw.coverage??null,
     records
   };
+}
+
+if(process.argv[1] && import.meta.url===pathToFileURL(process.argv[1]).href){
+  const [input,output]=process.argv.slice(2);
+  if(!input||!output)throw new Error('Usage: node src/public-audit.mjs input.json output.json');
+  const raw=JSON.parse(await readFile(input,'utf8'));
+  await writeFile(output,JSON.stringify(publicAudit(raw),null,2)+'\n');
+  console.log('Saved status-only public audit without raw cart or browser text');
 }
