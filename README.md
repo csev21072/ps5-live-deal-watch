@@ -99,3 +99,9 @@ The purchase gate now requires exact SKU boundaries, the **console item-row pric
 For Best Buy, Target, Walmart, Amazon and Costco, read-only diagnostics distinguish genuine Add to Cart/Buy Now controls from pickup/delivery/shipping navigation. Target JSON-LD prices are captured as **research hints only**, never substituted for a checkout price. This avoids mistaking a visible pickup button or structured-data price for a purchasable deal.
 
 Latest independently verified hosted safety suite: **261/261 passed**. A separate hosted live browser smoke run for Target research is still being evaluated. No real positive Phoenix checkout verification has been demonstrated; verified-deal notifications remain gated.
+
+### Public audit privacy and reliability (November 15)
+
+The latest audit now publishes only explicitly allowlisted product status, price, and coverage fields. Raw page text, cart contents, addresses, account data, and browser exception strings are not included in **new** public audit commits or downloadable workflow artifacts. Earlier Git history is unchanged. See [latest status-only audit](https://github.com/csev21072/ps5-live-deal-watch/blob/audit/evidence/latest.json), [seven-day history](https://github.com/csev21072/ps5-live-deal-watch/blob/audit/evidence/history.json), and [observed reliability metrics](https://github.com/csev21072/ps5-live-deal-watch/blob/audit/evidence/reliability.json).
+
+The live browser smoke test completed successfully with the new redaction and history pipeline. Global GameStop sold-out text is no longer interpreted as exact NEW SKU / Phoenix-specific restock evidence. **277/277 hosted tests passed** at the latest confirmed checkpoint. No qualifying real checkout has yet been independently verified, so no deal notifications were issued. Hourly and manual scans remain configured with no paid services.
