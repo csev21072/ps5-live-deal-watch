@@ -1,3 +1,4 @@
+import {publicRetailerUrl} from './url.mjs';
 // Research-only cart matching. Never creates checkoutEvidence or sets
 // fulfillment.confirmed. Do not confuse unrelated cart items or subtotal with
 // the selected console's price. A matching cart row is NOT an orderable checkout.
@@ -13,7 +14,7 @@ export function expectedSkuFromProductUrl(url){
 }
 export function inspectCartText({cartUrl,cartText,productUrl,productHeading,priceText,zip='85001'}){
   const result={
-    status:'unverified',url:cartUrl??null,
+    status:'unverified',url:publicRetailerUrl(cartUrl,new URL(productUrl).hostname),
     skuExpected:expectedSkuFromProductUrl(productUrl),
     skuFoundInCart:false,exactProductTitleFound:false,
     productPriceMatched:false,zipInShippingContext:false,
