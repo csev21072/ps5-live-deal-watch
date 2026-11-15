@@ -96,10 +96,9 @@ try {
         record.probe=record.price!==null && record.price<=probeLimit && editionConfirmed
           ? await probeGameStop(page,product,record.diagnostic,record.priceText,record.productEvidence?.productHeading)
           : {status:'skipped',reason:!editionConfirmed?'exact product edition not independently identified':'price unknown or outside bounded probe range'};
-        if(record.probe.status==='all-fulfillment-unavailable'){
-          record.unavailable=true;
-          record.diagnostic.status='unavailable';
-          record.scanNote='shipping-and-pickup-unavailable-confirmed';
+        if(record.probe.status==='all-fulfillment-unavailable-unscoped'){
+          record.diagnostic.status='unscoped-unavailability';
+          record.scanNote='shipping-and-pickup-unavailable-not-sku-zip-verified';
         }else if(record.probe.status==='shipping-unavailable-pickup-unverified'){
           record.diagnostic.status='shipping-unavailable-pickup-unknown';
           record.scanNote='shipping-unavailable-pickup-unknown';
