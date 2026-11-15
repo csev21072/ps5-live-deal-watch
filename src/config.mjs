@@ -1,5 +1,14 @@
 // Public retailer-owned pages only. No affiliate, feed, or scraped price URLs.
 // Update these URLs when a retailer replaces a product/SKU.
+export const RETAILER_HOSTS=Object.freeze({
+  'PlayStation Direct':['direct.playstation.com'],
+  'Best Buy':['www.bestbuy.com'],
+  'Target':['www.target.com'],
+  'Walmart':['www.walmart.com'],
+  'Amazon':['www.amazon.com'],
+  'GameStop':['www.gamestop.com'],
+  'Costco':['www.costco.com','sameday.costco.com']
+});
 export const ZIP = '85001';
 export const MAX_AGE_MS = 10 * 60 * 1000;
 export const products = [
