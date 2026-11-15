@@ -26,6 +26,14 @@ jobs:
         run: npx playwright install --with-deps chromium
       - name: Scan live retailer pages (fail closed)
         run: npm run scan
+      - name: Restore durable alert history (never infer from missing audit)
+        run: |
+          git fetch --no-tags origin audit
+          if git cat-file -e origin/audit:evidence/alert-state.json 2>/dev/null; then
+            git show origin/audit:evidence/alert-state.json > out/previous-alert-state.json
+          else
+            printf '{}\n' > out/previous-alert-state.json
+          fi
       - name: Open GitHub issue ONLY for fully verified deals
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
