@@ -35,6 +35,7 @@ jobs:
           node --check src/checkout/cart-controls.mjs
           node --check src/checkout/evidence-checks.mjs
           node --check src/probes/product-controls.mjs
+          node --check src/checkout/origin.mjs
           node --check src/alerts/issue.mjs
           node --check scripts/simulate-offers.mjs
           node --check src/coverage.mjs
