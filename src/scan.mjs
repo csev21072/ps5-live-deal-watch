@@ -10,6 +10,7 @@ import {inspectSonyProductFacts} from './probes/playstation-direct.mjs';
 import {probeSonyCart} from './probes/playstation-direct-cart.mjs';
 import {parseSonyPriceEvidence} from './evidence/sony-price.mjs';
 import {publicRetailerUrl} from './evidence/url.mjs';
+import {summarizeCoverage} from './coverage.mjs';
 const outdir='out';
 await mkdir(outdir,{recursive:true});
 const browser=await chromium.launch({headless:true});
@@ -99,8 +100,9 @@ try {
     await page.close();
   }
 }finally{await browser.close();}
-await writeFile(`${outdir}/evidence.json`,JSON.stringify({checkedAt:new Date().toISOString(),zip:ZIP,discovery,records},null,2));
+const coverage=summarizeCoverage(records,discovery,[...new Set(products.map(p=>p.retailer))]);
+await writeFile(`${outdir}/evidence.json`,JSON.stringify({checkedAt:new Date().toISOString(),zip:ZIP,discovery,coverage,records},null,2));
 const stats=summarize(records);
-const summary=['# PS5 free browser scan',`Checked ${records.length} retailer-owned product URLs across ${new Set(records.map(r=>r.retailer)).size} retailers.`, `Discovery attempts: ${discovery.coverage.length}; newly found URLs: ${discovery.candidates.length} (discovery alone is NEVER purchase evidence).`,`Verified qualifying offers: ${stats.confirmedPurchaseOffers}.`, `Readability: ${JSON.stringify(stats.statusCounts)}.`,'A successful scan does **not** mean all retailers were readable or Phoenix checkout was confirmed.','','| Retailer | Product | Status |','|---|---|---|',...records.map(r=>`| ${r.retailer} | ${r.id} | ${r.verdict.qualifies?'Verified':'No alert: '+(r.diagnostic?.status||r.scanNote||'incomplete').replaceAll('|','/')} |`)];
+const summary=['# PS5 free browser scan',`Checked ${records.length} retailer-owned product URLs across ${new Set(records.map(r=>r.retailer)).size} retailers.`, `Discovery attempts: ${discovery.coverage.length}; newly found URLs: ${discovery.candidates.length} (discovery alone is NEVER purchase evidence).`,`Verified qualifying offers: ${stats.confirmedPurchaseOffers}.`, `Readability: ${JSON.stringify(stats.statusCounts)}.`,`Retailer coverage: ${coverage.retailersAttempted}/${coverage.expectedRetailers} attempted; ${coverage.retailersWithVerifiedOffer} with a fully verified orderable offer.`, `Incomplete retailers: ${coverage.retailerResults.filter(r=>r.status!=='verified-offer-observed').map(r=>r.retailer+': '+r.status).join('; ')}.`,'A successful scan does **not** mean all retailers were readable or Phoenix checkout was confirmed.','','| Retailer | Product | Status |','|---|---|---|',...records.map(r=>`| ${r.retailer} | ${r.id} | ${r.verdict.qualifies?'Verified':'No alert: '+(r.diagnostic?.status||r.scanNote||'incomplete').replaceAll('|','/')} |`)];
 await writeFile(`${outdir}/summary.md`,summary.join('\n'));
 if(process.env.GITHUB_STEP_SUMMARY)await writeFile(process.env.GITHUB_STEP_SUMMARY,summary.join('\n')+'\n',{flag:'a'});
