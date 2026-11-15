@@ -55,3 +55,12 @@ Do not remove fail-closed gates to force alerts. Do not equate 'Add to Cart' or 
 - Added bounded GameStop shipping/pickup quote capture for audit diagnostics; quotes are not checkout confirmation.
 - The latest independently verified hosted CI after these changes passed **54/54** tests.
 - A one-time hosted browser smoke scan was triggered for the discovery integration. Inspect the `audit` branch and remove the temporary push trigger when it finishes.
+
+## Verified hosted smoke checkpoint (2026-11-15 22:02 UTC)
+
+- GitHub Actions browser run `43766815287` completed **successfully**, including browser installation, full scan, state restore, publisher, artifact, and audit push.
+- 7 retailer-owned search pages attempted; 14 product URLs scanned (12 static, 2 newly discovered Amazon URLs). Readability and checkout completeness vary; no candidate passed every checkout requirement.
+- `audit:evidence/latest.json` records the 14 attempts and discovery metadata; `audit:evidence/alert-state.json` contains 14 durable non-alerting state entries.
+- Independent hosted safety suite: **66/66 passed**. Added `node --check` to both workflows after fixing a publisher syntax bug, and subprocess integration tests to catch broken publish behavior.
+- Removed temporary push-triggered browser scans after the successful smoke run. The scanner is now **hourly + manual** only; the lightweight safety suite remains push-triggered.
+- No real verified positive checkout path exists yet. **Next engineering priority remains a retailer-specific cart/checkout adapter**, not loosening any rule.
