@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {discoverFromLinks,searchPages} from '../src/discovery.mjs';
+import {discoverFromLinks,searchPages,classifyDiscoveryPage} from '../src/discovery.mjs';
 const store=(name)=>searchPages.find(x=>x.retailer===name);
 test('only direct retailer-owned product URLs are candidates',()=>{
  const links=[
@@ -83,4 +83,15 @@ test('PS5 cooling accessories cannot be mistaken for bundles',()=>{
   text:'PS5 Digital Edition Console Cooling Fan Accessories Bundle'
  }]);
  assert.equal(r.length,0);
+});
+
+test('CAPTCHA search page is blocked even if it has product-looking links',()=>{
+ const r=classifyDiscoveryPage({title:'Verify you are human',body:'Press & hold',links:[{href:'https://www.amazon.com/dp/B0FRGTYSL5',text:'PS5 Disc Console'}]});
+ assert.equal(r,'blocked');
+});
+test('retailer search page with no readable links is not considered inspected',()=>{
+ assert.equal(classifyDiscoveryPage({title:'Search',body:'Loading',links:[]}), 'no-readable-links');
+});
+test('ordinary retailer search page with links can be inspected',()=>{
+ assert.equal(classifyDiscoveryPage({title:'PS5',body:'Search results',links:[{href:'https://www.amazon.com/dp/B0FRGTYSL5'}]}),'inspected');
 });
