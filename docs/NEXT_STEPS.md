@@ -64,3 +64,10 @@ Do not remove fail-closed gates to force alerts. Do not equate 'Add to Cart' or 
 - Independent hosted safety suite: **66/66 passed**. Added `node --check` to both workflows after fixing a publisher syntax bug, and subprocess integration tests to catch broken publish behavior.
 - Removed temporary push-triggered browser scans after the successful smoke run. The scanner is now **hourly + manual** only; the lightweight safety suite remains push-triggered.
 - No real verified positive checkout path exists yet. **Next engineering priority remains a retailer-specific cart/checkout adapter**, not loosening any rule.
+
+## Latest engineering follow-up (2026-11-15 22:04 UTC)
+
+- Strengthened `src/rules.mjs`: a verified alert now requires a separate retailer-owned cart/checkout URL, matching exact SKU, price, Phoenix ZIP 85001, orderability text, and fresh timestamp. A product page plus Add to Cart is never enough.
+- Added publisher subprocess integration tests: no-alert state writing, invalid-history fail-closed, and no GitHub credential/no notification behavior.
+- Extended the GameStop probe to inspect the guest cart only when a cart action is observed, capturing bounded research evidence. It **always** marks `verifiedPurchase:false` until a separately validated full checkout adapter exists.
+- Independent hosted safety suite: **67/67 passed**. GitHub Actions browser workflow remains hourly/manual-only. ChatGPT hourly task also remains enabled with a strict zero-spend override.
