@@ -30,8 +30,11 @@ export async function probeGameStop(page, product, diagnostic, candidatePriceTex
   let controls=await inspectGameStopControls(page);
   const shippingUnavailable=/ship to home\s*[:\-]?\s*not available/i.test(before);
   const pickupUnavailable=/(?:pick up in.store|pickup)\s*[:\-]?\s*not available/i.test(before);
+  // These labels can refer to the wrong condition, SKU or location.
+  // Without SKU-scoped NEW and Phoenix-specific evidence they cannot create
+  // a restock baseline, even when both options say Not Available.
   if(shippingUnavailable && pickupUnavailable)
-    return {status:'all-fulfillment-unavailable',observedFulfillment,controls,verifiedPurchase:false};
+    return {status:'all-fulfillment-unavailable-unscoped',observedFulfillment,controls,fulfillmentSkuVerified:false,fulfillmentContextZip:null,verifiedPurchase:false};
   if(shippingUnavailable){
     const pickupResearch=await inspectPickupFinder(page);
     return {status:'shipping-unavailable-pickup-unverified',observedFulfillment,pickupResearch,controls,verifiedPurchase:false};
