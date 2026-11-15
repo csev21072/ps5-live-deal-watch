@@ -1,3 +1,4 @@
+import {exactSkuInText,selectedFulfillmentMatches,exactItemPriceInText} from '../checkout/evidence-checks.mjs';
 import {publicRetailerUrl} from './url.mjs';
 // Research-only cart matching. Never creates checkoutEvidence or sets
 // fulfillment.confirmed. Do not confuse unrelated cart items or subtotal with
@@ -18,7 +19,7 @@ export function inspectCartText({cartUrl,cartText,productUrl,productHeading,pric
     skuExpected:expectedSkuFromProductUrl(productUrl),
     skuFoundInCart:false,exactProductTitleFound:false,
     productPriceMatched:false,zipInShippingContext:false,
-    blocked:false,unavailable:false,matchedExcerpt:null,
+    blocked:false,unavailable:false,
     verifiedCheckout:false
   };
   let cart;
@@ -34,7 +35,7 @@ export function inspectCartText({cartUrl,cartText,productUrl,productHeading,pric
   const heading=normalize(productHeading);
   const lines=text.split(/\r?\n/).map(normalize).filter(Boolean);
   const sku=result.skuExpected;
-  const skuLine=sku?lines.findIndex(line=>new RegExp('(^|\\D)'+sku+'(\\D|$)').test(line)):-1;
+  const skuLine=sku?lines.findIndex(line=>exactSkuInText(line,sku)):-1;
   const titleLine=heading.length>=15?lines.findIndex(line=>line.includes(heading)):-1;
   const itemIndex=skuLine>=0?skuLine:titleLine;
   result.skuFoundInCart=skuLine>=0;
@@ -42,10 +43,18 @@ export function inspectCartText({cartUrl,cartText,productUrl,productHeading,pric
   if(itemIndex<0)return {...result,status:'item-not-found'};
   // Inspect a bounded row-like text window. Never match unrelated subtotal.
   const context=lines.slice(Math.max(0,itemIndex-2),Math.min(lines.length,itemIndex+5)).join(' | ').slice(0,500);
-  result.matchedExcerpt=context;
+  // Do not persist raw cart rows: they may contain account or address data.
   const expectedPrices=[...String(priceText??'').matchAll(price)].map(m=>m[0].replace(/\s/g,''));
   const observedPrices=[...context.matchAll(price)].map(m=>m[0].replace(/\s/g,''));
-  result.productPriceMatched=expectedPrices.length===1 && observedPrices.length===1 && expectedPrices[0]===observedPrices[0];
+  result.productPriceMatched=expectedPrices.length===1 && observedPrices.length===1 && exactItemPriceInText(context,Number(expectedPrices[0].replace('
+  result.unavailable=/\b(not available|unavailable|sold out|out of stock)\b/i.test(context);
+  // Require ZIP near a shipping/delivery label. A random ZIP in the cart is not proof.
+  const shippingLines=lines.filter(line=>/\b(ship|shipping|deliver|delivery|arrives)\b/i.test(line));
+  result.zipInShippingContext=shippingLines.some(line=>selectedFulfillmentMatches(line,zip));
+  result.status=result.unavailable?'item-unavailable':result.productPriceMatched?'item-price-seen-not-checkout':'item-price-unverified';
+  return result;
+}
+,'').replaceAll(',','')));
   result.unavailable=/\b(not available|unavailable|sold out|out of stock)\b/i.test(context);
   // Require ZIP near a shipping/delivery label. A random ZIP in the cart is not proof.
   const shippingLines=lines.filter(line=>/\b(ship|shipping|deliver|delivery|arrives)\b/i.test(line));
