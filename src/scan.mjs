@@ -22,7 +22,7 @@ async function extractCandidate(page,product) {
     for(const selector of selectors){try{const el=[...document.querySelectorAll(selector)].find(visible);if(el){priceText=(el.textContent||'').trim();if(priceText)break;}}catch{}}
     const productRoot=document.querySelector('main')||document.querySelector('[role="main"]')||document;
     const headings=[...productRoot.querySelectorAll('h1,h2')].filter(visible).slice(0,15).map(el=>(el.innerText||'').slice(0,180));
-    const labels=[...productRoot.querySelectorAll('button,[role="button"],label')].filter(visible).slice(0,60).map(el=>(el.innerText||el.getAttribute('aria-label')||'').slice(0,120));
+    const labels=[...productRoot.querySelectorAll('button,[role="button"],label')].filter(visible).map(el=>(el.innerText||el.getAttribute('aria-label')||'').trim().slice(0,120)).filter(x=>/^(?:new|pre.?owned|used|add to cart|not available|ship to home|pick up|pickup|find a store|same day delivery|buy now|check availability|select store|delivery|shipping|checkout|select condition)\b/i.test(x)).slice(0,40);
     return {title:document.title,body:(document.body?.innerText||'').slice(0,50000),priceText,headings,labels};
   },priceSelectors[product.retailer]||[]);
   const diagnostic=extractVisibleSignals(observed,product);
