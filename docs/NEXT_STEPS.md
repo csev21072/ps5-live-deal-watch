@@ -157,3 +157,12 @@ A real positive purchase verification has **not** been demonstrated. The system 
 - Hosted CI run `43774164078` passed **203/203 tests** and executed the fictional simulation separately, confirming `githubApiCalls: 0`, `retailerRequests: 0`, `purchases: 0`.
 - Hardened the production checkout gate further: a cart must corroborate the exact PS5 SKU in its selected item text, selected NEW condition, seller, fulfillment method, and enabled checkout control. Updated fictional and regression fixtures and added negative tests. This work still needs its own latest hosted CI confirmation.
 - **Still missing:** a real retailer-specific adapter that can supply all these fields from a genuinely orderable Phoenix checkout. The offline test proves code paths and fail-closed behavior, not real-world orderability. Do not send simulated deal alerts.
+
+## November 15 — Actual cart DOM observation groundwork
+
+- Added `src/checkout/cart-controls.mjs`: a read-only Playwright DOM observation of retailer cart item rows, selected shipping/pickup options and checkout button. The pure assessor requires exactly one matching product row, an explicit selected Phoenix ZIP 85001 fulfillment option, an enabled checkout control, and NEW rather than pre-owned/refurbished text. **It always returns `verifiedPurchase:false`** pending retailer-specific live validation.
+- Integrated these bounded research observations into both the PlayStation Direct and GameStop guest-cart probes, without clicking checkout, signing in, submitting an address or purchasing.
+- Added nine negative/positive research tests covering SKU mismatch, multiple rows, wrong ZIP, unselected shipping, disabled checkout, pre-owned units, unreadable DOM and no false positive.
+- Hardened `src/rules.mjs` so the final deal gate requires matching selected cart SKU/item text, NEW condition, seller, fulfillment method and enabled checkout control in addition to the existing product, price, seller, Phoenix and freshness evidence. This is still not sufficient to claim a real positive until a live adapter can produce the evidence.
+- Hosted safety CI run `43774396398`: **217/217 tests passed**. A one-time free hosted browser smoke scan was triggered to check that the new cart probes do not break unattended scans; check its outcome before claiming completion and remove the temporary push trigger.
+- The fictional end-to-end publisher test remains zero-network: it does not open real GitHub Issues or place orders.
