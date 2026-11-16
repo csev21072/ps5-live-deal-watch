@@ -42,6 +42,7 @@ jobs:
           node --check src/coverage.mjs
           node --check src/audit-history.mjs
           node --check src/public-audit.mjs
+          node --check src/candidates.mjs
           node --check src/reliability.mjs
           node --check src/evidence/product.mjs
       - name: Run safety regression tests without paid services
