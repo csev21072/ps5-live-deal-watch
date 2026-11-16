@@ -220,3 +220,13 @@ A real positive purchase verification has **not** been demonstrated. The system 
 - Added scan trigger provenance (`schedule`, `workflow_dispatch`, `push`, `local`) to the scan evidence and seven-day history. Reliability reporting now separates **actual scheduled scans** from development push and manual runs. Previous entries without trigger metadata remain unknown rather than being counted as proof of hourly scheduling.
 - Hosted CI run `43780906754`: **298/298 tests passed**. The earlier failed intermediate commits were repaired; do not infer any successful live checkout from unit tests.
 - A one-time hosted browser smoke scan for these changes is the next verification step. Restore hourly/manual-only triggers after starting it.
+
+## Verified hosted milestone — 2026-11-16 00:34 UTC
+
+- GitHub Actions browser run `43780965869` completed successfully, including Chromium scan, verified-only Issue publisher, sanitized audit artifact, and durable history/reliability publication.
+- New audit `2026-11-16T00:33:52Z` includes `triggerType: push`, 14 product pages across all seven retailers, and zero independently verified orderable offers. The status-only candidate research queue identifies GameStop Digital bundle $374.99 and GameStop Disc bundle $449.99 as **attractive-price-but-not-orderable**. Neither has a usable guest cart; neither is a verified deal or notification.
+- Reliability report now correctly distinguishes actual scheduled runs from development runs. Six historical scans are observed, but **zero have verified `triggerType: schedule`** so far (earlier entries lack provenance). Do not claim proven unattended hourly execution from these development runs. Wait for the next genuine GitHub cron event.
+- Verified Issue formatting no longer publishes raw checkout text, shipping addresses, email addresses or tracking/session query parameters. The first implementation had a syntax error and then a three-test failure caused by wording; both were fixed. Final hosted CI run `43781129277`: **300/300 tests passed**, 0 failed.
+- Scanner now isolates browser page creation/closure errors per retailer so a single page failure need not abort the entire scan. Public audits reject unapproved retailer host pairs.
+- Temporary development push trigger is removed. Hourly cron at minute 32 and manual dispatch remain configured; zero paid services.
+- **Still blocked:** a positive real retailer-owned checkout showing exact NEW SKU, seller, item price, and selected orderable Phoenix ZIP 85001 fulfillment. Do not enable price-only notifications or claim the two GameStop prices are purchasable.
