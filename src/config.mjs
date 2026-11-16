@@ -22,6 +22,9 @@ export const products = [
   {id:'amazon-disc',retailer:'Amazon',kind:'disc',url:'https://www.amazon.com/dp/B0FRGTYSL5',host:'www.amazon.com'},
   {id:'gamestop-disc-bundle',retailer:'GameStop',kind:'disc',url:'https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/sony-playstation-5-console-disc-edition---astro-bot-bundle/422135.html',host:'www.gamestop.com'},
   {id:'gamestop-digital-bundle',retailer:'GameStop',kind:'digital',url:'https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/sony-playstation-5-slim-digital-edition---fortnite-cobalt-star-bundle/20016240.html',host:'www.gamestop.com'},
+  // Direct GameStop product URLs discovered 2026-11-16; discovery does not imply availability.
+  {id:'gamestop-disc-cobalt-star',retailer:'GameStop',kind:'disc',url:'https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/sony-playstation-5-slim-console-disc-edition---fortnite-cobalt-star-bundle/20016239.html',host:'www.gamestop.com'},
+  {id:'gamestop-digital-flowering-chaos',retailer:'GameStop',kind:'digital',url:'https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/sony-playstation-5-slim-console-digital-edition---fortnite-flowering-chaos-bundle/20028327.html',host:'www.gamestop.com'},
   {id:'costco-disc-two-controller',retailer:'Costco',kind:'disc',url:'https://sameday.costco.com/store/costco/products/83457876-sony-playstation-5-slim-disc-console-dualsense-controller-bundle',host:'sameday.costco.com'},
   {id:'costco-digital-two-controller',retailer:'Costco',kind:'digital',url:'https://sameday.costco.com/store/costco/products/94684554-sony-playstation-5-digital-slim-console-dualsense-controller-bundle',host:'sameday.costco.com'}
 ];
