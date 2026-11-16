@@ -2,6 +2,7 @@ import {readFile,writeFile} from 'node:fs/promises';
 import {pathToFileURL} from 'node:url';
 import {publicRetailerUrl} from './evidence/url.mjs';
 import {RETAILER_HOSTS} from './config.mjs';
+import {candidateReadiness} from './candidates.mjs';
 const safeStatus=value=>/^[a-z][a-z0-9-]{0,99}$/.test(String(value??''))?value:'unknown';
 const safeRetailer=value=>Object.hasOwn(RETAILER_HOSTS,value)?value:'unknown';
 const safeKind=value=>['disc','digital'].includes(value)?value:'unknown';
@@ -81,7 +82,8 @@ export function publicAudit(raw){
         discoveryStatus:safeStatus(x.discoveryStatus)
       }))
     }:null,
-    records
+    records,
+    candidateResearch:candidateReadiness(records)
   };
 }
 
