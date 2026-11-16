@@ -38,7 +38,7 @@ export function buildVerifiedIssue(record,verdict,decision,previous={},repositor
     '- Storage: '+publicLabel(record.storage),
     '- Disc drive: '+(record.discDrive?'Yes':'No'),
     '- Controllers: '+record.controllers,
-    '- Fulfillment: '+record.fulfillment.method+' in ZIP '+record.fulfillment.zip,
+    '- Fulfillment: '+record.fulfillment.method+' in Phoenix '+record.fulfillment.zip,
     '- Checkout: exact item, selected NEW condition, seller, price and Phoenix fulfillment independently verified',
     '- Membership required: '+(record.membershipRequired===true?'Yes':'Not indicated'),
     '- Effective price: $'+verdict.effectivePrice.toFixed(2)+' = $'+record.price.toFixed(2)+' - $'+verdict.extraControllerCredit+' extra-controller allowance - $'+verdict.gameCredit+' documented game allowance',
