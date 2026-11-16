@@ -1,0 +1,58 @@
+{
+  "runLocalTime": "2026-11-16T16:56:09-07:00",
+  "evidenceScope": "status-only; current automation check; no retailer-owned purchase state verified",
+  "spend": "zero paid or metered verification tools invoked",
+  "freeDiscovery": "search-engine discovery only; never used as price/availability proof",
+  "interactiveBrowser": "BROWSER NOT AVAILABLE: connected browser requires originating browser context; no interactive purchase-state inspection occurred",
+  "retailers": [
+    {
+      "retailer": "PlayStation Direct",
+      "discoveryAttempted": true,
+      "retailerCheckoutInspected": false,
+      "status": "discovery-only; no verified checkout"
+    },
+    {
+      "retailer": "Best Buy",
+      "discoveryAttempted": true,
+      "retailerCheckoutInspected": false,
+      "status": "discovery-only; no verified checkout"
+    },
+    {
+      "retailer": "Target",
+      "discoveryAttempted": true,
+      "retailerCheckoutInspected": false,
+      "status": "discovery attempted; no retailer purchase state confirmed"
+    },
+    {
+      "retailer": "Walmart",
+      "discoveryAttempted": true,
+      "retailerCheckoutInspected": false,
+      "status": "discovery-only; no verified checkout"
+    },
+    {
+      "retailer": "Amazon",
+      "discoveryAttempted": true,
+      "retailerCheckoutInspected": false,
+      "status": "discovery attempted; robots-blocked retailer content; no checkout"
+    },
+    {
+      "retailer": "GameStop",
+      "discoveryAttempted": true,
+      "retailerCheckoutInspected": false,
+      "status": "discovery attempted; no retailer purchase state confirmed"
+    },
+    {
+      "retailer": "Costco",
+      "discoveryAttempted": true,
+      "retailerCheckoutInspected": false,
+      "status": "discovery-only; member checkout not verified"
+    }
+  ],
+  "priorAudit": {
+    "checkedAt": "2026-11-16T18:48:27.360Z",
+    "allRetailersAttempted": true,
+    "verifiedOffers": 0,
+    "note": "Older GitHub-hosted scan; not evidence of current purchase availability"
+  },
+  "result": "COVERAGE INCOMPLETE — no fully verified orderable offer; no alert"
+}
