@@ -12,6 +12,7 @@ export function appendAuditHistory(previous, latest, maxEntries=168) {
   const uniqueRetailers=[...new Set(rows.map(r=>r.retailer).filter(Boolean))];
   const item={
     checkedAt:at,
+    triggerType:['schedule','workflow_dispatch','push','local'].includes(latest.triggerType)?latest.triggerType:'unknown',
     attemptedPages:rows.length,
     retailersAttempted:uniqueRetailers.length,
     readableProductPages:rows.filter(r=>r.source==='live-retailer-purchase-surface' &&
