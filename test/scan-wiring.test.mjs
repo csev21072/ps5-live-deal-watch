@@ -51,3 +51,8 @@ test('public Actions logs never print raw browser exception details',()=>{
  assert.doesNotMatch(source,/scanNote:String\(e\)/);
  assert.match(source,/scanNote:'navigation-or-product-unreadable'/);
 });
+
+test('individual browser page failures cannot abort every remaining retailer',()=>{
+ assert.match(source,/let page=null,record;\s*try\s*\{\s*page=await browser\.newPage/);
+ assert.match(source,/if\(page\)await page\.close\(\)\.catch\(\(\)=>\{\}\)/);
+});
