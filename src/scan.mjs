@@ -14,6 +14,9 @@ import {summarizeCoverage} from './coverage.mjs';
 import {inspectProductControls} from './probes/product-controls.mjs';
 import {validateRetailerOrigin} from './checkout/origin.mjs';
 import {inspectTargetPriceHint} from './probes/target-price.mjs';
+const eventName=process.env.GITHUB_EVENT_NAME;
+const triggerType=['schedule','workflow_dispatch','push'].includes(eventName)?eventName:
+  eventName?'unknown':'local';
 const outdir='out';
 await mkdir(outdir,{recursive:true});
 const browser=await chromium.launch({headless:true});
@@ -112,7 +115,7 @@ try {
   }
 }finally{await browser.close();}
 const coverage=summarizeCoverage(records,discovery,[...new Set(products.map(p=>p.retailer))]);
-await writeFile(`${outdir}/evidence.json`,JSON.stringify({checkedAt:new Date().toISOString(),zip:ZIP,discovery,coverage,records},null,2));
+await writeFile(`${outdir}/evidence.json`,JSON.stringify({checkedAt:new Date().toISOString(),triggerType,zip:ZIP,discovery,coverage,records},null,2));
 const stats=summarize(records);
 const summary=['# PS5 free browser scan',`Checked ${records.length} retailer-owned product URLs across ${new Set(records.map(r=>r.retailer)).size} retailers.`, `Discovery attempts: ${discovery.coverage.length}; newly found URLs: ${discovery.candidates.length} (discovery alone is NEVER purchase evidence).`,`Verified qualifying offers: ${stats.confirmedPurchaseOffers}.`, `Readability: ${JSON.stringify(stats.statusCounts)}.`,`Retailer coverage: ${coverage.retailersAttempted}/${coverage.expectedRetailers} attempted; ${coverage.retailersWithVerifiedOffer} with a fully verified orderable offer.`, `Incomplete retailers: ${coverage.retailerResults.filter(r=>r.status!=='verified-offer-observed').map(r=>r.retailer+': '+r.status).join('; ')}.`,'A successful scan does **not** mean all retailers were readable or Phoenix checkout was confirmed.','','| Retailer | Product | Status |','|---|---|---|',...records.map(r=>`| ${r.retailer} | ${r.id} | ${r.verdict.qualifies?'Verified':'No alert: '+(r.diagnostic?.status||r.scanNote||'incomplete').replaceAll('|','/')} |`)];
 await writeFile(`${outdir}/summary.md`,summary.join('\n'));
