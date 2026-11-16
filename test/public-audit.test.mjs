@@ -57,3 +57,10 @@ test('public audit never invents a verified checkout from a research probe',()=>
  }}]});
  assert.equal(audit.records[0].probe.verifiedPurchase,false);
 });
+
+test('public candidate research queue never asserts checkout from a price',()=>{
+ const audit=publicAudit(raw);
+ assert.equal(audit.candidateResearch.verifiedOrderable,0);
+ assert.equal(audit.candidateResearch.candidates[0].alertEligible,false);
+ assert.match(audit.candidateResearch.note,/Diagnostic-only/);
+});
