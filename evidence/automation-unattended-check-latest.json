@@ -1,0 +1,57 @@
+{
+  "runLocalTime": "2026-11-15T22:18:55-07:00",
+  "runType": "unattended-free-discovery",
+  "primaryPurchaseVerification": "not performed—interactive connected browser unavailable in automation context; static public pages are not qualifying purchase evidence",
+  "cost": "no paid tools or metered browser calls",
+  "priorHostedBrowserAuditAt": "2026-11-16T03:38:59.364Z",
+  "priorHostedBrowserAuditAge": "not contemporaneous with this run",
+  "retailerAttempts": [
+    {
+      "retailer": "PlayStation Direct",
+      "discovery": "attempted",
+      "page": "public page readable, cart/fulfillment not observed",
+      "status": "CHECKOUT_UNVERIFIED"
+    },
+    {
+      "retailer": "Best Buy",
+      "discovery": "attempted",
+      "page": "linked SKU returned 404",
+      "status": "UNREADABLE"
+    },
+    {
+      "retailer": "Target",
+      "discovery": "attempted",
+      "page": "linked SKU inaccessible via free page reader",
+      "status": "UNREADABLE"
+    },
+    {
+      "retailer": "Walmart",
+      "discovery": "attempted",
+      "page": "public SKU page readable, location-specific purchase state/seller not confirmed",
+      "status": "CHECKOUT_UNVERIFIED"
+    },
+    {
+      "retailer": "Amazon",
+      "discovery": "attempted",
+      "page": "page snapshot stale, checkout and seller not confirmed",
+      "status": "STALE_UNVERIFIED"
+    },
+    {
+      "retailer": "GameStop",
+      "discovery": "attempted",
+      "page": "public page readable, local cart/fulfillment not confirmed; prior hosted scan had cart-not-orderable",
+      "status": "CHECKOUT_UNVERIFIED"
+    },
+    {
+      "retailer": "Costco",
+      "discovery": "attempted",
+      "page": "same-day two-controller bundle page readable, local delivery and actual checkout not confirmed",
+      "status": "CHECKOUT_UNVERIFIED"
+    }
+  ],
+  "communityDiscovery": "Slickdeals PS5 scan attempted; no contemporaneously verified retailer-owned purchase evidence obtained",
+  "verifiedQualifyingOffers": 0,
+  "coverageComplete": false,
+  "notificationDecision": "SILENT",
+  "notes": "All seven retailers attempted for discovery/public page inspection. Browser connector failed (requires originating interactive browser context). Do not treat public HTML, source snippets, or old hosted audit as current orderable proof."
+}
