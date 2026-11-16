@@ -1,0 +1,99 @@
+{
+  "schema": "ps5_supplemental_zero_spend_review_v1",
+  "reviewContextLocal": "2026-11-16T15:15:56-07:00",
+  "location": "Phoenix, AZ 85001",
+  "scope": "discovery-only external check; NOT a live retailer checkout confirmation",
+  "interactiveBrowserStatus": "BROWSER NOT AVAILABLE (read-only browser interface does not support selected fulfillment/cart confirmation)",
+  "paidToolsInvoked": false,
+  "purchaseOrPaymentAttempted": false,
+  "retailersAttempted": 7,
+  "verificationCoverageIncomplete": true,
+  "confirmedOrderableQualifyingOffers": 0,
+  "noDealConclusion": "UNKNOWN — full retailer-owned checkout and Phoenix fulfillment not established; not a finding that all offers are unavailable",
+  "alertAllowed": false,
+  "notificationPublished": false,
+  "observations": [
+    {
+      "retailer": "PlayStation Direct",
+      "status": "discovery-page-visible; checkout unverified",
+      "page": "https://direct.playstation.com/en-us/buy-consoles/playstation5-console-1-tb",
+      "verificationFailed": [
+        "exact current price on active purchase flow",
+        "selected NEW item with seller confirmation",
+        "Phoenix 85001 fulfillment",
+        "retailer cart/checkout evidence"
+      ]
+    },
+    {
+      "retailer": "Best Buy",
+      "status": "indexed product-page discovery only; not fresh orderability",
+      "page": "https://www.bestbuy.com/product/playstation-5-slim-console/6646419",
+      "verificationFailed": [
+        "fresh price",
+        "cart and selected fulfillment for Phoenix",
+        "exact current seller/NEW condition for final offer"
+      ],
+      "sourceCrawlAge": "approximately two weeks"
+    },
+    {
+      "retailer": "Target",
+      "status": "product-page discovery only",
+      "page": "https://www.target.com/p/-/A-90188801",
+      "verificationFailed": [
+        "fresh price",
+        "cart, fulfillment selection and Phoenix shipping/pickup"
+      ],
+      "sourceCrawlAge": "approximately two months"
+    },
+    {
+      "retailer": "Walmart",
+      "status": "two-controller candidate URL discovered; live purchase verification not established",
+      "page": "https://www.walmart.com/ip/20768802816",
+      "verificationFailed": [
+        "active purchase price",
+        "current seller and shipper",
+        "condition and full bundle reconciliation",
+        "Phoenix checkout fulfillment"
+      ],
+      "sourceCrawlAge": "approximately three days"
+    },
+    {
+      "retailer": "Amazon",
+      "status": "BLOCKED — retailer page inaccessible to free web retrieval (robots.txt)",
+      "page": null,
+      "verificationFailed": [
+        "all live retailer-owned purchase prerequisites"
+      ]
+    },
+    {
+      "retailer": "GameStop",
+      "status": "category/product-page discovery only",
+      "page": "https://www.gamestop.com/consoles-hardware/playstation-5",
+      "verificationFailed": [
+        "fresh selected-condition price",
+        "exact SKU/cart item",
+        "Phoenix fulfillment and checkout"
+      ],
+      "sourceCrawlAge": "approximately one week"
+    },
+    {
+      "retailer": "Costco",
+      "status": "retailer page read; fulfillment control explicitly unavailable, price unconfirmed",
+      "page": "https://www.costco.com/p/-/4000360868",
+      "retailerOwnedVisibleFulfillment": "How To Get It: Unavailable; item may be available at local warehouse, not independently confirmed",
+      "verificationFailed": [
+        "current price",
+        "Phoenix orderable fulfillment",
+        "local warehouse reservation"
+      ],
+      "sourceCrawlAge": "today"
+    }
+  ],
+  "previouslyPublishedAudit": {
+    "file": "evidence/latest.json",
+    "checkedAt": "2026-11-16T18:48:27.360Z",
+    "verifiedCheckoutCount": 0,
+    "note": "Prior automated scan, not evidence of current fulfillment or orderability"
+  },
+  "policy": "No notification or issue unless all purchase and fulfillment proof can be established on fresh retailer-owned live interactive purchase surfaces. Search and indexed retailer text used strictly as discovery."
+}
