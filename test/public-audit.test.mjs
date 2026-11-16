@@ -70,3 +70,11 @@ test('public audit keeps only allowlisted scan trigger types',()=>{
  assert.equal(publicAudit({...raw,triggerType:'push'}).triggerType,'push');
  assert.equal(publicAudit({...raw,triggerType:'email@example.org'}).triggerType,'unknown');
 });
+
+test('public audit rejects URLs from unapproved retailer host pairs',()=>{
+ const a=publicAudit({...raw,records:[{...raw.records[0],
+   host:'evil.example',url:'https://evil.example/ps5?secret=token'}]});
+ assert.equal(a.records[0].url,null);
+ assert.equal(a.records[0].diagnostic.status,'invalid-public-url');
+ assert.ok(!JSON.stringify(a).includes('evil.example'));
+});
