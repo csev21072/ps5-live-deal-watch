@@ -1,0 +1,106 @@
+{
+  "checkedAt": "2026-11-16T15:49:24Z",
+  "inspectionMethod": "free web static retailer page reads; no interactive browser/cart access",
+  "interactiveBrowser": "BROWSER NOT AVAILABLE",
+  "zeroSpend": true,
+  "expectedRetailers": 7,
+  "attemptedRetailers": 7,
+  "fullyVerifiedOrderableOffers": 0,
+  "verificationCoverage": "incomplete",
+  "notificationEligible": false,
+  "disclaimer": "Static retailer HTML, search snippets, cached markup and buttons are not proof of exact current NEW price, seller, and Phoenix-specific orderability. No deal alert authorized.",
+  "retailerResults": [
+    {
+      "retailer": "PlayStation Direct",
+      "status": "product-page-read;live-checkout-unverified",
+      "urls": [
+        "https://direct.playstation.com/en-us/buy-consoles/playstation5-console-1-tb"
+      ],
+      "missing": [
+        "live-cart-or-checkout",
+        "Phoenix-fulfillment",
+        "price-on-current-orderable-checkout"
+      ]
+    },
+    {
+      "retailer": "Best Buy",
+      "status": "product-page-fetch-404",
+      "urls": [
+        "https://www.bestbuy.com/product/playstation-5-slim-console/JXHQ3CCTYR/sku/6566039"
+      ],
+      "missing": [
+        "readable-current-product-page",
+        "checkout",
+        "Phoenix-fulfillment"
+      ]
+    },
+    {
+      "retailer": "Target",
+      "status": "product-page-read;live-checkout-unverified",
+      "urls": [
+        "https://www.target.com/p/playstation-5-nba-2k26-disc-bundle-console/-/A-94907150"
+      ],
+      "missing": [
+        "exact-orderable-item-in-cart",
+        "Phoenix-fulfillment"
+      ]
+    },
+    {
+      "retailer": "Walmart",
+      "status": "site-fetch-blocked",
+      "urls": [
+        "https://www.walmart.com/search?q=playstation+5+slim+disc+console"
+      ],
+      "missing": [
+        "current-retailer-product-page",
+        "seller-and-shipper",
+        "checkout",
+        "Phoenix-fulfillment"
+      ]
+    },
+    {
+      "retailer": "Amazon",
+      "status": "source-crawled-last-week;stale-and-not-verifiable",
+      "urls": [
+        "https://www.amazon.com/dp/B0FRGTYSL5"
+      ],
+      "missing": [
+        "current-retailer-product-page",
+        "seller-and-shipper",
+        "checkout",
+        "Phoenix-fulfillment"
+      ]
+    },
+    {
+      "retailer": "GameStop",
+      "status": "one-product-page-read;one-fetch-403;live-checkout-unverified",
+      "urls": [
+        "https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/sony-playstation-5-slim-digital-edition---fortnite-cobalt-star-bundle/20016240.html"
+      ],
+      "missing": [
+        "matching-live-cart-item",
+        "selected-NEW-condition",
+        "Phoenix-fulfillment"
+      ]
+    },
+    {
+      "retailer": "Costco",
+      "status": "product-search-fetch-inaccessible",
+      "urls": [
+        "https://www.costco.com/CatalogSearch?keyword=playstation+5"
+      ],
+      "missing": [
+        "readable-current-product-page",
+        "membership-price",
+        "checkout",
+        "Phoenix-fulfillment"
+      ]
+    }
+  ],
+  "freeCommunityDiscovery": {
+    "site": "Slickdeals",
+    "status": "scanned-for-candidate-URLs-only",
+    "url": "https://slickdeals.net/deals/ps5-deals/"
+  },
+  "sourceAuditBeforeRun": "2026-11-16T08:19:00.852Z"
+}
