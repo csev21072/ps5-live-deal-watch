@@ -47,6 +47,7 @@ jobs:
           node --check src/reliability.mjs
           node --check src/evidence/product.mjs
           node --check src/public-audit.mjs
+          node --check src/publish-candidates.mjs
       - name: Unit tests
         run: npm test
       - name: Install pinned Playwright
@@ -63,6 +64,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npm run publish
+      - name: Notify owner of below-target unverified price leads
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node src/publish-candidates.mjs
       - name: Build public-safe evidence artifact
         if: always()
         run: |
