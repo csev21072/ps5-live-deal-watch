@@ -30,3 +30,15 @@ test('exact item price refuses unrelated totals and wrong cents',()=>{
  assert.equal(exactItemPriceInText('PS5 $449.99 Subtotal $899.98',449.99),false);
  assert.equal(exactItemPriceInText('PS5 $1,049.99',1049.99),true);
 });
+
+test('negative Phoenix fulfillment eligibility language is rejected',()=>{
+ for(const label of [
+  'Shipping to Phoenix 85001 is not eligible',
+  'Delivery to 85001 not supported',
+  'Ship to Home 85001 not offered',
+  'Pickup in 85001 not orderable',
+  'Unable to ship to Phoenix 85001',
+  'No delivery to Phoenix 85001',
+  'Shipping to 85001 restricted'
+ ])assert.equal(selectedFulfillmentMatches(label,'85001'),false,label);
+});
