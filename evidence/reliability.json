@@ -1,12 +1,19 @@
 {
   "status": "observational-only",
-  "latestCompletedAt": "2026-11-15T23:52:21.644Z",
-  "observedRuns": 5,
-  "observedRunsWithin24HoursOfLatest": 5,
+  "latestCompletedAt": "2026-11-16T00:33:52.202Z",
+  "observedRuns": 6,
+  "observedRunsWithin24HoursOfLatest": 6,
   "longObservedGaps": 0,
-  "maxObservedGapHours": 0.36,
-  "fullyAttemptedSevenRetailers": 5,
+  "maxObservedGapHours": 0.69,
+  "fullyAttemptedSevenRetailers": 6,
   "runsWithPartialRetailerAttempts": 0,
   "verifiedOffersObserved": 0,
-  "caveat": "These are completed scan observations, not proof of on-time scheduling or full checkout coverage."
+  "scheduledRuns": 0,
+  "developmentPushRuns": 1,
+  "manualRuns": 0,
+  "unknownTriggerRuns": 5,
+  "lastScheduledAt": null,
+  "scheduledLongObservedGaps": 0,
+  "scheduledMaxObservedGapHours": null,
+  "caveat": "Development/manual scans are NOT evidence of hourly scheduled execution. Gaps between completed scheduled runs are observational, not proof of skipped jobs or full checkout coverage."
 }
