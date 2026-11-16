@@ -9,8 +9,16 @@ export function summarizeReliability(history=[]){
     .sort((a,b)=>Date.parse(a.checkedAt)-Date.parse(b.checkedAt));
   if(rows.length===0)return {status:'no-history',observedRuns:0,latestCompletedAt:null,
     longObservedGaps:0,maxObservedGapHours:null,fullyAttemptedSevenRetailers:0,
-    verifiedOffersObserved:0};
+    verifiedOffersObserved:0,scheduledRuns:0,developmentPushRuns:0,manualRuns:0,
+    lastScheduledAt:null,scheduledLongObservedGaps:0,scheduledMaxObservedGapHours:null};
   const last=rows.at(-1);
+  const scheduled=rows.filter(x=>x.triggerType==='schedule');
+  let scheduledLongObservedGaps=0,scheduledMaxGap=0;
+  for(let i=1;i<scheduled.length;i++){
+    const hours=(Date.parse(scheduled[i].checkedAt)-Date.parse(scheduled[i-1].checkedAt))/3600000;
+    scheduledMaxGap=Math.max(scheduledMaxGap,hours);
+    if(hours>1.5)scheduledLongObservedGaps++;
+  }
   let longObservedGaps=0,maxGap=0;
   for(let i=1;i<rows.length;i++){
     const hours=(Date.parse(rows[i].checkedAt)-Date.parse(rows[i-1].checkedAt))/3600000;
@@ -31,7 +39,14 @@ export function summarizeReliability(history=[]){
     fullyAttemptedSevenRetailers:attempted,
     runsWithPartialRetailerAttempts:rows.length-attempted,
     verifiedOffersObserved:verified,
-    caveat:'These are completed scan observations, not proof of on-time scheduling or full checkout coverage.'
+    scheduledRuns:scheduled.length,
+    developmentPushRuns:rows.filter(x=>x.triggerType==='push').length,
+    manualRuns:rows.filter(x=>x.triggerType==='workflow_dispatch').length,
+    unknownTriggerRuns:rows.filter(x=>!['schedule','push','workflow_dispatch'].includes(x.triggerType)).length,
+    lastScheduledAt:scheduled.at(-1)?.checkedAt??null,
+    scheduledLongObservedGaps,
+    scheduledMaxObservedGapHours:scheduled.length>1?Math.round(scheduledMaxGap*100)/100:null,
+    caveat:'Development/manual scans are NOT evidence of hourly scheduled execution. Gaps between completed scheduled runs are observational, not proof of skipped jobs or full checkout coverage.'
   };
 }
 if(process.argv[1] && import.meta.url===pathToFileURL(process.argv[1]).href){
