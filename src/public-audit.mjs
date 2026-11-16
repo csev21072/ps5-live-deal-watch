@@ -19,7 +19,7 @@ export function publicAudit(raw){
       id:/^[a-z0-9-]{1,100}$/.test(String(r.id??''))?r.id:'unknown',
       retailer:safeRetailer(r.retailer),
       kind:safeKind(r.kind),
-      url:publicRetailerUrl(r.url,r.host),
+      url:RETAILER_HOSTS[r.retailer]?.includes(r.host)?publicRetailerUrl(r.url,r.host):null,
       checkedAt:r.checkedAt??null,
       source:['live-retailer-purchase-surface','unreadable'].includes(r.source)?r.source:'unknown',
       blocked:r.blocked===true,
