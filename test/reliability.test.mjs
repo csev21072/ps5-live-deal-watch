@@ -37,3 +37,32 @@ test('a long gap is not inferred with only one completed run',()=>{
  assert.equal(r.maxObservedGapHours,null);
  assert.equal(r.longObservedGaps,0);
 });
+
+test('development push scans do not count as unattended hourly schedule proof',()=>{
+ const runs=[row(8),row(9),row(10)].map(x=>({...x,triggerType:'push'}));
+ const r=summarizeReliability(runs);
+ assert.equal(r.observedRuns,3);
+ assert.equal(r.scheduledRuns,0);
+ assert.equal(r.developmentPushRuns,3);
+ assert.equal(r.lastScheduledAt,null);
+ assert.equal(r.scheduledMaxObservedGapHours,null);
+});
+test('scheduled gaps are computed from scheduled runs only',()=>{
+ const r=summarizeReliability([
+  {...row(8),triggerType:'schedule'},
+  {...row(9),triggerType:'push'},
+  {...row(10),triggerType:'schedule'},
+  {...row(11),triggerType:'workflow_dispatch'},
+  {...row(12),triggerType:'schedule'}
+ ]);
+ assert.equal(r.scheduledRuns,3);
+ assert.equal(r.manualRuns,1);
+ assert.equal(r.developmentPushRuns,1);
+ assert.equal(r.scheduledLongObservedGaps,2);
+ assert.equal(r.scheduledMaxObservedGapHours,2);
+});
+test('legacy entries with no trigger type remain unknown, not scheduled',()=>{
+ const r=summarizeReliability([row(8),row(9)]);
+ assert.equal(r.unknownTriggerRuns,2);
+ assert.equal(r.scheduledRuns,0);
+});
