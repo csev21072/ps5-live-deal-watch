@@ -1,0 +1,78 @@
+{
+  "checkedAt": "2026-11-16T11:46:40Z",
+  "type": "automated-free-discovery-supplement",
+  "source": "free-public-web-search-discovery-only",
+  "geographicContext": "Phoenix, Arizona, United States",
+  "verificationMethod": "No authorized interactive browser in this scheduled run",
+  "interactiveBrowser": "BROWSER NOT AVAILABLE",
+  "checkoutState": "UNKNOWN",
+  "coverage": "INCOMPLETE - no live checkout verification",
+  "retailers": [
+    {
+      "retailer": "PlayStation Direct",
+      "discoveryAttempted": true,
+      "liveRetailerPurchaseStateVerified": false,
+      "checkoutConfirmed": false,
+      "verifiedOffers": 0,
+      "status": "DISCOVERY ONLY; PURCHASE NOT VERIFIED"
+    },
+    {
+      "retailer": "Best Buy",
+      "discoveryAttempted": true,
+      "liveRetailerPurchaseStateVerified": false,
+      "checkoutConfirmed": false,
+      "verifiedOffers": 0,
+      "status": "DISCOVERY ONLY; PURCHASE NOT VERIFIED"
+    },
+    {
+      "retailer": "Target",
+      "discoveryAttempted": true,
+      "liveRetailerPurchaseStateVerified": false,
+      "checkoutConfirmed": false,
+      "verifiedOffers": 0,
+      "status": "DISCOVERY ONLY; PURCHASE NOT VERIFIED"
+    },
+    {
+      "retailer": "Walmart",
+      "discoveryAttempted": true,
+      "liveRetailerPurchaseStateVerified": false,
+      "checkoutConfirmed": false,
+      "verifiedOffers": 0,
+      "status": "DISCOVERY ONLY; PURCHASE NOT VERIFIED"
+    },
+    {
+      "retailer": "Amazon",
+      "discoveryAttempted": true,
+      "liveRetailerPurchaseStateVerified": false,
+      "checkoutConfirmed": false,
+      "verifiedOffers": 0,
+      "status": "DISCOVERY ONLY; PURCHASE NOT VERIFIED"
+    },
+    {
+      "retailer": "GameStop",
+      "discoveryAttempted": true,
+      "liveRetailerPurchaseStateVerified": false,
+      "checkoutConfirmed": false,
+      "verifiedOffers": 0,
+      "status": "DISCOVERY ONLY; PURCHASE NOT VERIFIED"
+    },
+    {
+      "retailer": "Costco",
+      "discoveryAttempted": true,
+      "liveRetailerPurchaseStateVerified": false,
+      "checkoutConfirmed": false,
+      "verifiedOffers": 0,
+      "status": "DISCOVERY ONLY; PURCHASE NOT VERIFIED"
+    }
+  ],
+  "communitySupplement": {
+    "site": "Slickdeals",
+    "attempted": true,
+    "evidenceUse": "candidate URL discovery only; excluded from price and availability verification"
+  },
+  "lastSeparatelyAuditedScan": "2026-11-16T08:19:00.852Z",
+  "lastAuditedScanVerifiedOrderable": 0,
+  "alertTriggered": false,
+  "zeroSpend": true,
+  "dataPolicy": "No inferred orderable offers, search prices, account data or raw location text published. No retailer met required checkout evidence in this run."
+}
