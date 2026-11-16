@@ -1,0 +1,66 @@
+{
+  "observedAt": "2026-11-16T21:31:12.656Z",
+  "timezone": "America/Phoenix",
+  "type": "unattended-free-discovery-and-retailer-page-review",
+  "browser": "BROWSER NOT AVAILABLE — connected browser requires originating interactive context; no paid browser invoked",
+  "cost": "zero spend; no paid/metred API/monitor/browser invoked",
+  "retailerAttempts": [
+    {
+      "retailer": "PlayStation Direct",
+      "discovery": "attempted",
+      "liveProductThisRun": "not inspected",
+      "checkout": "not verified",
+      "status": "coverage incomplete"
+    },
+    {
+      "retailer": "Best Buy",
+      "discovery": "attempted",
+      "liveProductThisRun": "not inspected",
+      "checkout": "not verified",
+      "status": "coverage incomplete"
+    },
+    {
+      "retailer": "Target",
+      "discovery": "attempted",
+      "liveProductThisRun": "not inspected",
+      "checkout": "not verified",
+      "status": "coverage incomplete"
+    },
+    {
+      "retailer": "Walmart",
+      "discovery": "attempted",
+      "liveProductThisRun": "not inspected",
+      "checkout": "not verified",
+      "status": "coverage incomplete"
+    },
+    {
+      "retailer": "Amazon",
+      "discovery": "attempted; web source blocked by robots",
+      "liveProductThisRun": "unreadable",
+      "checkout": "not verified",
+      "status": "blocked"
+    },
+    {
+      "retailer": "GameStop",
+      "discovery": "attempted",
+      "liveProductThisRun": "retailer-owned product page read by web text extraction",
+      "checkout": "not verified; no Phoenix cart/pickup state",
+      "status": "partial retailer page inspection; fails checkout gate"
+    },
+    {
+      "retailer": "Costco",
+      "discovery": "attempted",
+      "liveProductThisRun": "retailer category page read; exact SKU not inspected",
+      "checkout": "not verified",
+      "status": "coverage incomplete"
+    }
+  ],
+  "communityDiscovery": "Slickdeals search attempted; discovery only",
+  "independentScanLatestAt": "2026-11-16T18:48:27.360Z",
+  "independentScanVerifiedOffers": 0,
+  "independentScanRetailerCoverage": "7 retailer attempts, but incomplete checkout coverage",
+  "qualifyingFullyVerifiedOffers": 0,
+  "alert": false,
+  "reason": "No offer met exact NEW seller/price/Phoenix checkout validation; do not notify.",
+  "repoChange": "Added GameStop Cobalt Star disc and Flowering Chaos digital direct product URLs to future zero-spend scans, commit c27d5aa30dfd7fa0302251ec873fc74b0768e079"
+}
