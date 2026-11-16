@@ -47,7 +47,6 @@ jobs:
           node --check src/reliability.mjs
           node --check src/evidence/product.mjs
           node --check src/public-audit.mjs
-          node --check src/publish-candidates.mjs
       - name: Unit tests
         run: npm test
       - name: Install pinned Playwright
