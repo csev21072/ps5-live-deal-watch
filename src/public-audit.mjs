@@ -62,6 +62,7 @@ export function publicAudit(raw){
   }));
   return {
     checkedAt:raw.checkedAt??null,
+    triggerType:['schedule','workflow_dispatch','push','local'].includes(raw.triggerType)?raw.triggerType:'unknown',
     zip:'85001',
     note:'Public status-only audit. No cart, checkout, address, account or raw page text.',
     discovery:{coverage:discoveryCoverage},
