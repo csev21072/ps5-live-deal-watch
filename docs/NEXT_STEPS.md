@@ -210,3 +210,13 @@ A real positive purchase verification has **not** been demonstrated. The system 
 - Latest independently confirmed hosted CI run `43777137891`: **277/277 tests passed**; subsequent minor log-redaction tests need their own final CI confirmation.
 - The temporary push-triggered browser scan has been removed; hourly/manual-only remains configured. No paid or metered services used.
 - **Remaining actual blocker:** a genuinely qualifying NEW PS5 with independently verified retailer-owned checkout and selected orderable Phoenix ZIP 85001 fulfillment. Current probes remain research-only and cannot emit a verified purchase alert. Do not loosen this gate or manufacture a positive result.
+
+## November 15 follow-on — checkout negatives, diagnostic candidates, and schedule provenance
+
+- Hardened `selectedFulfillmentMatches` to reject additional explicit shipping/pickup denials, including "not eligible", "not supported", "not orderable", "unable to ship", and "restricted" for Phoenix ZIP 85001.
+- Added `src/checkout/seller.mjs`: the live purchase gate now requires positive retailer-owned "Sold by" / "Seller:" and "Shipped by" / "Ships from" labels, rather than trusting an arbitrary substring that could appear in a negation or unrelated merchant description.
+- Added `src/candidates.mjs`: a **diagnostic-only**, non-alerting price research queue in public `audit:evidence/latest.json`. It distinguishes prices below the base Disc $500 / Digital $450 targets from actual orderability, including explicit "attractive-price-but-not-orderable" statuses. It never claims stock from a displayed price.
+- Hardened the public GitHub verified-deal Issue formatter to remove raw cart/shipping text, full addresses, arbitrary seller labels and retailer URL query/session parameters. It preserves Phoenix ZIP and verified seller/model/price details. The first edit introduced a syntax error and the repair initially changed the expected "Phoenix 85001" wording; both regressions were caught by hosted tests and corrected.
+- Added scan trigger provenance (`schedule`, `workflow_dispatch`, `push`, `local`) to the scan evidence and seven-day history. Reliability reporting now separates **actual scheduled scans** from development push and manual runs. Previous entries without trigger metadata remain unknown rather than being counted as proof of hourly scheduling.
+- Hosted CI run `43780906754`: **298/298 tests passed**. The earlier failed intermediate commits were repaired; do not infer any successful live checkout from unit tests.
+- A one-time hosted browser smoke scan for these changes is the next verification step. Restore hourly/manual-only triggers after starting it.
