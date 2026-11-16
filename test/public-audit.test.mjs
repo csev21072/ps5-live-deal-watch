@@ -64,3 +64,9 @@ test('public candidate research queue never asserts checkout from a price',()=>{
  assert.equal(audit.candidateResearch.candidates[0].alertEligible,false);
  assert.match(audit.candidateResearch.note,/Diagnostic-only/);
 });
+
+test('public audit keeps only allowlisted scan trigger types',()=>{
+ assert.equal(publicAudit({...raw,triggerType:'schedule'}).triggerType,'schedule');
+ assert.equal(publicAudit({...raw,triggerType:'push'}).triggerType,'push');
+ assert.equal(publicAudit({...raw,triggerType:'email@example.org'}).triggerType,'unknown');
+});
