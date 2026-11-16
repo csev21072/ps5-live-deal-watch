@@ -1,0 +1,65 @@
+{
+  "checkedAt": "2026-11-16T06:41:52.189Z",
+  "runMode": "unattended-free-discovery-and-retailer-url-attempts",
+  "cost": "zero-paid-or-metered-tools-invoked",
+  "verificationMethod": "Free web retrieval of retailer URLs and product discovery; retrieved HTML/crawl is NOT live checkout verification",
+  "interactivePurchaseVerification": "Not available in this execution; read-only browser tools cannot set Phoenix checkout context",
+  "allSevenRetailersAttempted": true,
+  "allSevenRetailersVerified": false,
+  "verifiedOrderableOffers": 0,
+  "notification": "NONE",
+  "coverageStatus": "INCOMPLETE_VERIFICATION",
+  "retailers": [
+    {
+      "retailer": "PlayStation Direct",
+      "attempted": true,
+      "url": "https://direct.playstation.com/en-us/buy-consoles/playstation5-console-1-tb",
+      "result": "Retailer page text accessible; dynamic current price and Phoenix cart fulfillment not independently confirmed",
+      "purchaseEvidence": "UNVERIFIED"
+    },
+    {
+      "retailer": "Best Buy",
+      "attempted": true,
+      "url": "https://www.bestbuy.com/product/playstation-5-slim-console/JXHQ3CCTYR/sku/6566039",
+      "result": "Retailer page returned 404 in free retrieval; no usable purchase surface",
+      "purchaseEvidence": "BLOCKED"
+    },
+    {
+      "retailer": "Target",
+      "attempted": true,
+      "url": "https://www.target.com/p/playstation-5-nba-2k26-disc-bundle-console/-/A-94907150",
+      "result": "Free retailer URL retrieval inaccessible; no current checkout evidence",
+      "purchaseEvidence": "BLOCKED"
+    },
+    {
+      "retailer": "Walmart",
+      "attempted": true,
+      "url": "https://www.walmart.com/ip/20768802816",
+      "result": "Returned text is a three-day-old crawl with non-Phoenix fulfillment; no current Phoenix checkout confirmation",
+      "purchaseEvidence": "STALE_LOCATION_UNVERIFIED"
+    },
+    {
+      "retailer": "Amazon",
+      "attempted": true,
+      "url": "https://www.amazon.com/dp/B0FRGTYSL5",
+      "result": "Returned text is a week-old no-JS crawl; seller and Phoenix purchase-state not confirmed",
+      "purchaseEvidence": "STALE_UNVERIFIED"
+    },
+    {
+      "retailer": "GameStop",
+      "attempted": true,
+      "url": "https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/sony-playstation-5-console-1tb-disc-edition---astro-bot-bundle/422135.html",
+      "additionalUrl": "https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/sony-playstation-5-slim-digital-edition---fortnite-cobalt-star-bundle/20016240.html",
+      "result": "Both inspected retailer texts contain unavailable location/fulfillment state; no actively orderable Phoenix cart confirmed",
+      "purchaseEvidence": "UNAVAILABLE_OR_UNVERIFIED"
+    },
+    {
+      "retailer": "Costco",
+      "attempted": true,
+      "url": "https://www.costco.com/p/-/4000360868",
+      "result": "Retailer product page describes two-controller digital bundle, but explicitly shows unavailable; no price or Phoenix checkout",
+      "purchaseEvidence": "UNAVAILABLE"
+    }
+  ],
+  "note": "This is a status-only non-alerting internal audit. No offers should be published or notified from these observations."
+}
