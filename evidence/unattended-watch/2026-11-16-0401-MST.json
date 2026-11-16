@@ -1,0 +1,65 @@
+{
+  "schema": "unattended-free-discovery-v1",
+  "runStartedLocal": "2026-11-16T04:01:35-07:00",
+  "runType": "scheduled discovery supplement; not a verified retailer checkout scan",
+  "strictZeroSpend": true,
+  "paidOrMeteredToolsInvoked": false,
+  "freeDiscoverySource": "public web search for retailer-specific PS5 Slim console/bundle URLs, plus Slickdeals discovery",
+  "discoveryAttemptedForRetailers": [
+    {
+      "retailer": "PlayStation Direct",
+      "discoverySearchAttempted": true,
+      "retailerOwnedLiveCheckoutConfirmed": false,
+      "verificationResult": "UNKNOWN — current retailer-owned checkout/fulfillment not established"
+    },
+    {
+      "retailer": "Best Buy",
+      "discoverySearchAttempted": true,
+      "retailerOwnedLiveCheckoutConfirmed": false,
+      "verificationResult": "UNKNOWN — current retailer-owned checkout/fulfillment not established"
+    },
+    {
+      "retailer": "Target",
+      "discoverySearchAttempted": true,
+      "retailerOwnedLiveCheckoutConfirmed": false,
+      "verificationResult": "UNKNOWN — current retailer-owned checkout/fulfillment not established"
+    },
+    {
+      "retailer": "Walmart",
+      "discoverySearchAttempted": true,
+      "retailerOwnedLiveCheckoutConfirmed": false,
+      "verificationResult": "UNKNOWN — current retailer-owned checkout/fulfillment not established"
+    },
+    {
+      "retailer": "Amazon",
+      "discoverySearchAttempted": true,
+      "retailerOwnedLiveCheckoutConfirmed": false,
+      "verificationResult": "UNKNOWN — current retailer-owned checkout/fulfillment not established"
+    },
+    {
+      "retailer": "GameStop",
+      "discoverySearchAttempted": true,
+      "retailerOwnedLiveCheckoutConfirmed": false,
+      "verificationResult": "UNKNOWN — current retailer-owned checkout/fulfillment not established"
+    },
+    {
+      "retailer": "Costco",
+      "discoverySearchAttempted": true,
+      "retailerOwnedLiveCheckoutConfirmed": false,
+      "verificationResult": "UNKNOWN — current retailer-owned checkout/fulfillment not established"
+    }
+  ],
+  "browserStatus": "BROWSER NOT AVAILABLE — connected Browser tool requires an originating browser context",
+  "freeInteractiveVerificationPerformed": false,
+  "latestReadHostedAudit": {
+    "checkedAt": "2026-11-16T08:19:00.852Z",
+    "retailersAttempted": 7,
+    "verifiedOrderableOffers": 0,
+    "coverageIncomplete": true
+  },
+  "confirmedQualifyingOffers": 0,
+  "notificationAllowed": false,
+  "coverageStatus": "INCOMPLETE — discovery-only sources cannot establish present orderability",
+  "pricingRule": "No search/shopping-feed price or availability was promoted to purchase evidence",
+  "detail": "No user-facing listing or no-deal recap authorized. No product purchases, payment interaction or wallet-backed browser calls."
+}
