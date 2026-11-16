@@ -76,9 +76,10 @@ async function extractCandidate(page,product) {
 }
 try {
   for(const product of allProducts){
-    const page=await browser.newPage({locale:'en-US',timezoneId:'America/Phoenix',geolocation:{latitude:33.4484,longitude:-112.0740},permissions:['geolocation']});
-    let record;
+    let page=null,record;
     try {
+      page=await browser.newPage({locale:'en-US',timezoneId:'America/Phoenix',geolocation:{latitude:33.4484,longitude:-112.0740},permissions:['geolocation']});
+      page.setDefaultTimeout(7000);
       await page.goto(product.url,{waitUntil:'domcontentloaded',timeout:25000});
       const origin=validateRetailerOrigin(page.url(),product);
       if(!origin.valid)throw new Error(origin.reason);
@@ -111,9 +112,9 @@ try {
     record.verdict=evaluate(record);
     records.push(record);
     console.log(`${product.id}: ${record.verdict.qualifies?'VERIFIED':'NO ALERT'} — ${record.scanNote}`);
-    await page.close();
+    if(page)await page.close().catch(()=>{});
   }
-}finally{await browser.close();}
+}finally{await browser.close().catch(()=>{});}
 const coverage=summarizeCoverage(records,discovery,[...new Set(products.map(p=>p.retailer))]);
 await writeFile(`${outdir}/evidence.json`,JSON.stringify({checkedAt:new Date().toISOString(),triggerType,zip:ZIP,discovery,coverage,records},null,2));
 const stats=summarize(records);
