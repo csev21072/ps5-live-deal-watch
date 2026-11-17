@@ -1,0 +1,91 @@
+{
+  "type": "zero-spend-read-only-discovery-audit",
+  "checkedAt": "2026-11-17T09:15:17.839Z",
+  "localHour": "2026-11-17 02:00 America/Phoenix",
+  "method": "free web read of retailer pages; no interactive cart or checkout; browser connector unavailable in scheduled runtime",
+  "sourceCaveat": "Read-only web snapshots can be cached or lack dynamic fulfillment; never use these observations for alerts",
+  "userFacingNotifications": 0,
+  "retailersAttempted": 7,
+  "verifiedOrderableOffers": 0,
+  "coverage": "incomplete-verification",
+  "discoverySupplement": "Slickdeals PS5 page inspected for URL discovery only, not purchase evidence",
+  "retailers": [
+    {
+      "retailer": "PlayStation Direct",
+      "url": "https://direct.playstation.com/en-us/buy-consoles/playstation5-console-1-tb",
+      "pageRead": "yes",
+      "priceObserved": null,
+      "condition": "unknown",
+      "seller": "unknown",
+      "checkout": "not-observed",
+      "fulfillment": "unverified",
+      "reason": "price widget and selected Phoenix fulfillment unavailable in read-only page"
+    },
+    {
+      "retailer": "Best Buy",
+      "url": "https://www.bestbuy.com/product/playstation-5-slim-console/JXHQ3CCTYR/sku/6566039",
+      "pageRead": "no",
+      "priceObserved": null,
+      "condition": "unknown",
+      "seller": "unknown",
+      "checkout": "not-observed",
+      "fulfillment": "unverified",
+      "reason": "read-only URL attempt returned 404; no current purchase-state evidence"
+    },
+    {
+      "retailer": "Target",
+      "url": "https://www.target.com/p/playstation-5-nba-2k26-disc-bundle-console/-/A-94907150",
+      "pageRead": "yes",
+      "priceObserved": 549.99,
+      "condition": "unknown",
+      "seller": "unknown",
+      "checkout": "not-observed",
+      "fulfillment": "unverified",
+      "reason": "price-only page observation; no exact Phoenix checkout verification, no safe qualifying game-value credit"
+    },
+    {
+      "retailer": "Walmart",
+      "url": "https://www.walmart.com/ip/17816601985",
+      "pageRead": "yes",
+      "priceObserved": 829.99,
+      "condition": "NEW option displayed",
+      "seller": "Entrotek (marketplace); observed text only",
+      "checkout": "not-observed",
+      "fulfillment": "unverified",
+      "reason": "above base threshold, no interactive exact checkout; marketplace seller"
+    },
+    {
+      "retailer": "Amazon",
+      "url": "https://www.amazon.com/dp/B0FRGTYSL5",
+      "pageRead": "stale-source",
+      "priceObserved": null,
+      "condition": "unknown",
+      "seller": "unknown",
+      "checkout": "not-observed",
+      "fulfillment": "unverified",
+      "reason": "web read surfaced last-week snapshot/HTML only; no current live product purchase state"
+    },
+    {
+      "retailer": "GameStop",
+      "url": "https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/sony-playstation-5-slim-console-disc-edition---fortnite-cobalt-star-bundle/20016239.html",
+      "pageRead": "yes",
+      "priceObserved": 424.99,
+      "condition": "NEW option displayed",
+      "seller": "unknown",
+      "checkout": "not-observed",
+      "fulfillment": "unverified",
+      "reason": "fulfillment text includes unavailable and lacks confirmed selected Phoenix method; no guest-cart verification"
+    },
+    {
+      "retailer": "Costco",
+      "url": "https://sameday.costco.com/store/costco/products/83457876-sony-playstation-5-slim-disc-console-dualsense-controller-bundle",
+      "pageRead": "yes",
+      "priceObserved": 712.99,
+      "condition": "unknown",
+      "seller": "unknown",
+      "checkout": "not-observed",
+      "fulfillment": "out-of-stock (web page)",
+      "reason": "two-controller bundle displayed but over threshold and out of stock; no membership/checkout confirmation"
+    }
+  ]
+}
