@@ -1,0 +1,104 @@
+{
+  "checkWindow": "2026-11-16 23:11 America/Phoenix (automation invocation time; individual page fetch timestamps not independently available)",
+  "origin": "chatgpt-hourly-automation-free-web-only",
+  "interactiveBrowser": "BROWSER NOT AVAILABLE — connected browser denied automation-origin access; no live cart or checkout interaction",
+  "paidServicesUsed": false,
+  "retailerCoverageComplete": false,
+  "verifiedOrderableOffers": 0,
+  "noNotificationReason": "No offer passed all verification requirements. Unverified price sightings are not deals.",
+  "lastGithubHostedScan": {
+    "checkedAt": "2026-11-17T02:36:09.258Z",
+    "source": "audit/evidence/latest.json",
+    "inspectedRetailers": 7,
+    "fullyVerifiedOffers": 0,
+    "caveat": "Prior hosted scan, not current-run verification; retailer coverage incomplete."
+  },
+  "retailerAttempts": [
+    {
+      "retailer": "PlayStation Direct",
+      "status": "HTTP product surface readable; interactive checkout unverified",
+      "url": "https://direct.playstation.com/en-us/buy-consoles/playstation5-console-1-tb",
+      "known": "disc model/1TB readable; product page not a verified cart or Phoenix fulfillment",
+      "pass": false,
+      "failed": [
+        "current exact price in selected cart",
+        "Phoenix fulfillment"
+      ]
+    },
+    {
+      "retailer": "Best Buy",
+      "status": "direct product URL returned 404",
+      "url": "https://www.bestbuy.com/product/playstation-5-slim-console/JXHQ3CCTYR/sku/6566039",
+      "pass": false,
+      "failed": [
+        "live product inspection",
+        "price",
+        "seller",
+        "condition",
+        "fulfillment"
+      ]
+    },
+    {
+      "retailer": "Target",
+      "status": "product URL inaccessible by free page reader",
+      "url": "https://www.target.com/p/playstation-5-nba-2k26-disc-bundle-console/-/A-94907150",
+      "pass": false,
+      "failed": [
+        "live product inspection",
+        "price",
+        "seller",
+        "condition",
+        "fulfillment"
+      ]
+    },
+    {
+      "retailer": "Walmart",
+      "status": "retailer product surface readable, non-qualifying; checkout not attempted",
+      "url": "https://www.walmart.com/ip/17816601985",
+      "observed": "NEW model at $829.99, marketplace seller Entrotek, Phoenix shipping text shown on page",
+      "pass": false,
+      "failed": [
+        "price above target",
+        "interactive matching checkout confirmation"
+      ]
+    },
+    {
+      "retailer": "Amazon",
+      "status": "only stale page crawl retrieved, not current live orderability",
+      "url": "https://www.amazon.com/dp/B0FRGTYSL5",
+      "pass": false,
+      "failed": [
+        "current retailer purchase state",
+        "price",
+        "selected seller/shipper",
+        "Phoenix shipping",
+        "cart confirmation"
+      ]
+    },
+    {
+      "retailer": "GameStop",
+      "status": "retailer product surface readable; condition/price visible but fulfillment unresolved",
+      "url": "https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/sony-playstation-5-slim-console-disc-edition---fortnite-cobalt-star-bundle/20016239.html",
+      "observed": "Fortnite Cobalt Star disc slim, NEW text, $424.99, 1 TB, one DualSense; page also displays 'unavailable' and 'Select Condition For Availability'",
+      "pass": false,
+      "failed": [
+        "matching orderable ship-to-home or Phoenix pickup",
+        "live checkout proof"
+      ]
+    },
+    {
+      "retailer": "Costco",
+      "status": "Costco SameDay product page readable but out of stock",
+      "url": "https://sameday.costco.com/store/costco/products/83457876-sony-playstation-5-slim-disc-console-dualsense-controller-bundle",
+      "observed": "Disc slim plus extra DualSense, $712.99, explicitly 'Out of stock'; location context not verified",
+      "pass": false,
+      "failed": [
+        "currently in stock",
+        "price threshold after $55 extra-controller allowance",
+        "Phoenix checkout"
+      ]
+    }
+  ],
+  "discoverySupplement": "Queried public Slickdeals/retailer search listings for candidate URLs only. No listing or search result was used as evidence of availability.",
+  "specialConditions": "Zero-spend observed; no purchase, account sign-in, CAPTCHA interaction, or user notification."
+}
