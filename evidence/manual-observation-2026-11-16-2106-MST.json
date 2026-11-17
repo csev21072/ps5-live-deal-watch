@@ -1,0 +1,181 @@
+{
+  "kind": "supplemental-free-noninteractive-check",
+  "checkedAt": "2026-11-16T21:06:16-07:00",
+  "schedule": "hourly",
+  "environment": {
+    "freeOnly": true,
+    "retailerOwnedPagesViewedWith": "noninteractive web rendering (not a verified live purchase session)",
+    "interactiveCheckoutAvailable": false,
+    "interactiveCheckoutUnavailableReason": "The available free tools cannot establish Phoenix-selected interactive checkout for the exact SKU. No metered TinyFish, paid proxy, paid browser, or paid API was called.",
+    "verifiedLiveCheckout": false,
+    "paidSpendUSD": 0
+  },
+  "expectedRetailers": 7,
+  "attemptedRetailers": 7,
+  "qualifyingOrderableOffers": 0,
+  "verificationCoverageIncomplete": true,
+  "classification": "VERIFICATION_COVERAGE_INCOMPLETE_NOT_PROVEN_NO_DEALS",
+  "publicAlertPermitted": false,
+  "retailerAttempts": [
+    {
+      "retailer": "PlayStation Direct",
+      "attempted": true,
+      "readability": "readable product details on disc and digital pages",
+      "verification": "active price/ship-to-home and matching Phoenix checkout unconfirmed",
+      "url": "https://direct.playstation.com/en-us/buy-consoles/playstation5-console-1-tb"
+    },
+    {
+      "retailer": "Best Buy",
+      "attempted": true,
+      "readability": "disc URL returned 404 in this web reader; digital page readable",
+      "verification": "Phoenix store/shipping selection and cart not confirmed",
+      "url": "https://www.bestbuy.com/product/playstation-5-slim-console-digital-edition-825gb/JXHQ37TYYL"
+    },
+    {
+      "retailer": "Target",
+      "attempted": true,
+      "readability": "disc NBA 2K26 page inaccessible; digital NBA 2K25 page readable",
+      "verification": "displayed Add to cart and generic In Stock do not prove Phoenix fulfillment",
+      "url": "https://www.target.com/p/-/A-93150909"
+    },
+    {
+      "retailer": "Walmart",
+      "attempted": true,
+      "readability": "disc page readable",
+      "verification": "page displays nonqualifying $829.99 third-party seller and Phoenix shipping text; no interactive purchase evidence",
+      "url": "https://www.walmart.com/ip/17816601985"
+    },
+    {
+      "retailer": "Amazon",
+      "attempted": true,
+      "readability": "raw HTML appears last crawled a week earlier",
+      "verification": "stale/not live purchase evidence; no current seller and Phoenix checkout",
+      "url": "https://www.amazon.com/dp/B0FRGTYSL5"
+    },
+    {
+      "retailer": "GameStop",
+      "attempted": true,
+      "readability": "four console bundle product pages accessible",
+      "verification": "one product explicitly says not available online; other bundle product pages did not establish Phoenix pickup or confirmed ship-to-home",
+      "url": "https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/sony-playstation-5-console-disc-edition---astro-bot-bundle/422135.html"
+    },
+    {
+      "retailer": "Costco",
+      "attempted": true,
+      "readability": "two two-controller bundle pages readable",
+      "verification": "both pages explicitly out of stock; location-specific inventory unconfirmed",
+      "url": "https://sameday.costco.com/store/costco/products/83457876-sony-playstation-5-slim-disc-console-dualsense-controller-bundle"
+    }
+  ],
+  "candidateReview": [
+    {
+      "retailer": "GameStop",
+      "id": "422135",
+      "product": "PS5 Slim Disc ASTRO BOT bundle",
+      "url": "https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/sony-playstation-5-console-disc-edition---astro-bot-bundle/422135.html",
+      "observedProductPagePriceUSD": 449.99,
+      "observedCondition": "NEW option on page",
+      "observedFulfillmentText": "This item is currently not available online; pickup Phoenix not established",
+      "gates": {
+        "model": "PS5 slim/1TB mentioned on retailer product page",
+        "newCondition": "NEW option appears, but exact selected checkout item not independently confirmed",
+        "currentRetailerPrice": "product page displays $449.99, but not reverified in an orderable cart",
+        "seller": "not independently verified",
+        "shippingAndFulfillment": "failed: explicitly unavailable online; Phoenix pickup unproven",
+        "liveCartCheckout": "not observed",
+        "bundleContents": "not independently verified"
+      }
+    },
+    {
+      "retailer": "GameStop",
+      "id": "20016239",
+      "product": "PS5 Slim Disc Fortnite Cobalt Star bundle",
+      "url": "https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/sony-playstation-5-slim-console-disc-edition---fortnite-cobalt-star-bundle/20016239.html",
+      "observedProductPagePriceUSD": 424.99,
+      "observedCondition": "not confirmed selected cart",
+      "gates": {
+        "model": "product title indicates PS5 Slim Disc",
+        "newCondition": "not independently verified",
+        "currentRetailerPrice": "diagnostic price from prior live scan; no orderable selected cart this run",
+        "seller": "not independently verified",
+        "shippingAndFulfillment": "failed: prior Playwright probe reported cart-not-orderable; still no Phoenix orderability confirmation",
+        "liveCartCheckout": "not observed",
+        "bundleContents": "not independently verified"
+      }
+    },
+    {
+      "retailer": "GameStop",
+      "id": "20028327",
+      "product": "PS5 Slim Digital Fortnite Flowering Chaos bundle",
+      "url": "https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/sony-playstation-5-slim-console-digital-edition---fortnite-flowering-chaos-bundle/20028327.html",
+      "observedProductPagePriceUSD": 399.99,
+      "observedCondition": "not confirmed selected cart",
+      "gates": {
+        "model": "product title indicates PS5 Slim Digital",
+        "newCondition": "not independently verified",
+        "currentRetailerPrice": "diagnostic price from prior live scan; no orderable selected cart this run",
+        "seller": "not independently verified",
+        "shippingAndFulfillment": "failed: prior Playwright probe reported cart-not-orderable; still no Phoenix orderability confirmation",
+        "liveCartCheckout": "not observed",
+        "bundleContents": "not independently verified"
+      }
+    },
+    {
+      "retailer": "GameStop",
+      "id": "20016240",
+      "product": "PS5 Slim Digital Fortnite Cobalt Star bundle",
+      "url": "https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/sony-playstation-5-slim-digital-edition---fortnite-cobalt-star-bundle/20016240.html",
+      "observedProductPagePriceUSD": 374.99,
+      "observedCondition": "not confirmed selected cart",
+      "gates": {
+        "model": "title indicates PS5 Slim Digital",
+        "newCondition": "not independently verified",
+        "currentRetailerPrice": "diagnostic price from prior live scan; no orderable selected cart this run",
+        "seller": "not independently verified",
+        "shippingAndFulfillment": "failed: prior Playwright probe reported cart-not-orderable; still no Phoenix orderability confirmation",
+        "liveCartCheckout": "not observed",
+        "bundleContents": "not independently verified"
+      }
+    },
+    {
+      "retailer": "Costco",
+      "id": "1792105",
+      "product": "PS5 Slim Disc plus extra DualSense",
+      "url": "https://sameday.costco.com/store/costco/products/83457876-sony-playstation-5-slim-disc-console-dualsense-controller-bundle",
+      "observedProductPagePriceUSD": 712.99,
+      "conservativeExtraDualSenseUSD": 55,
+      "provisionalEffectiveUSD": 657.99,
+      "observedFulfillmentText": "Out of stock",
+      "gates": {
+        "model": "retailer product page names Slim Disc",
+        "newCondition": "not positively confirmed selected NEW checkout",
+        "currentRetailerPrice": "page displays $712.99; above effective target even after $55 extra controller credit",
+        "seller": "not independently verified",
+        "shippingAndFulfillment": "failed: Out of stock",
+        "liveCartCheckout": "not observed",
+        "bundleContents": "not independently verified"
+      }
+    },
+    {
+      "retailer": "Costco",
+      "id": "1791815",
+      "product": "PS5 Slim Digital plus extra DualSense",
+      "url": "https://sameday.costco.com/store/costco/products/94684554-sony-playstation-5-digital-slim-console-dualsense-controller-bundle",
+      "observedProductPagePriceUSD": 662.99,
+      "conservativeExtraDualSenseUSD": 55,
+      "provisionalEffectiveUSD": 607.99,
+      "observedFulfillmentText": "Out of stock",
+      "gates": {
+        "model": "retailer product page names Slim Digital",
+        "newCondition": "not positively confirmed selected NEW checkout",
+        "currentRetailerPrice": "page displays $662.99; above effective target even after $55 extra controller credit",
+        "seller": "not independently verified",
+        "shippingAndFulfillment": "failed: Out of stock",
+        "liveCartCheckout": "not observed",
+        "bundleContents": "not independently verified"
+      }
+    }
+  ],
+  "discoverySupplement": "Reviewed freely accessible Slickdeals PS5 category for candidate discovery only; no unverified post was used as primary live purchase evidence.",
+  "notes": "No user-facing deal alert or no-deal recap. Next scheduled hosted scan may use free Playwright to confirm SKU-specific orderability; do not assume browser status from this noninteractive check."
+}
