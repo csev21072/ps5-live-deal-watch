@@ -1,106 +1,87 @@
 {
-  "checkedAt": "2026-11-16T15:49:24Z",
-  "inspectionMethod": "free web static retailer page reads; no interactive browser/cart access",
-  "interactiveBrowser": "BROWSER NOT AVAILABLE",
-  "zeroSpend": true,
-  "expectedRetailers": 7,
-  "attemptedRetailers": 7,
-  "fullyVerifiedOrderableOffers": 0,
-  "verificationCoverage": "incomplete",
-  "notificationEligible": false,
-  "disclaimer": "Static retailer HTML, search snippets, cached markup and buttons are not proof of exact current NEW price, seller, and Phoenix-specific orderability. No deal alert authorized.",
+  "checkedAt": "2026-11-17T23:34:56.027Z",
+  "locationContext": "Phoenix, AZ, US, ZIP 85001",
+  "runMethod": "free web discovery queries plus read-only GitHub scanner audit",
+  "interactiveBrowser": "BROWSER NOT AVAILABLE: connected browser refused access in this unattended run",
+  "paidToolsUsed": false,
+  "searchResultAsPriceEvidence": false,
+  "retailerDiscoveryAttempts": 7,
+  "retailerOwnedOrderabilityConfirmed": 0,
+  "verifiedQualifyingOffers": 0,
+  "verificationCoverageIncomplete": true,
+  "noAlertReason": "Every offer lacks independently observed current retailer-owned checkout with exact NEW seller, price, SKU and Phoenix fulfillment",
   "retailerResults": [
     {
       "retailer": "PlayStation Direct",
-      "status": "product-page-read;live-checkout-unverified",
-      "urls": [
-        "https://direct.playstation.com/en-us/buy-consoles/playstation5-console-1-tb"
-      ],
-      "missing": [
-        "live-cart-or-checkout",
-        "Phoenix-fulfillment",
-        "price-on-current-orderable-checkout"
-      ]
+      "discoveryAttempted": true,
+      "discoveryResult": "official-console-pages-found",
+      "retailerOwnedInteractivePurchaseVerified": false,
+      "unverifiedReason": "No independent current checkout price, seller, NEW condition and Phoenix fulfillment capture in this run"
     },
     {
       "retailer": "Best Buy",
-      "status": "product-page-fetch-404",
-      "urls": [
-        "https://www.bestbuy.com/product/playstation-5-slim-console/JXHQ3CCTYR/sku/6566039"
-      ],
-      "missing": [
-        "readable-current-product-page",
-        "checkout",
-        "Phoenix-fulfillment"
-      ]
+      "discoveryAttempted": true,
+      "discoveryResult": "search-attempted-no-reliable-current-product-page",
+      "retailerOwnedInteractivePurchaseVerified": false,
+      "unverifiedReason": "No readable current retailer-owned purchase or checkout confirmation"
     },
     {
       "retailer": "Target",
-      "status": "product-page-read;live-checkout-unverified",
-      "urls": [
-        "https://www.target.com/p/playstation-5-nba-2k26-disc-bundle-console/-/A-94907150"
-      ],
-      "missing": [
-        "exact-orderable-item-in-cart",
-        "Phoenix-fulfillment"
-      ]
+      "discoveryAttempted": true,
+      "discoveryResult": "indexed-retailer-pages-found-discovery-only",
+      "retailerOwnedInteractivePurchaseVerified": false,
+      "unverifiedReason": "No live ZIP-specific cart or checkout proof; indexed Add to Cart discarded"
     },
     {
       "retailer": "Walmart",
-      "status": "site-fetch-blocked",
-      "urls": [
-        "https://www.walmart.com/search?q=playstation+5+slim+disc+console"
-      ],
-      "missing": [
-        "current-retailer-product-page",
-        "seller-and-shipper",
-        "checkout",
-        "Phoenix-fulfillment"
-      ]
+      "discoveryAttempted": true,
+      "discoveryResult": "indexed-retailer-bundles-found-discovery-only",
+      "retailerOwnedInteractivePurchaseVerified": false,
+      "unverifiedReason": "No live seller, exact qualifying price or Phoenix orderability verification"
     },
     {
       "retailer": "Amazon",
-      "status": "source-crawled-last-week;stale-and-not-verifiable",
-      "urls": [
-        "https://www.amazon.com/dp/B0FRGTYSL5"
-      ],
-      "missing": [
-        "current-retailer-product-page",
-        "seller-and-shipper",
-        "checkout",
-        "Phoenix-fulfillment"
-      ]
+      "discoveryAttempted": true,
+      "discoveryResult": "robots-blocked-for-current-direct-access",
+      "retailerOwnedInteractivePurchaseVerified": false,
+      "unverifiedReason": "Browser unavailable and Amazon source blocked; no cart price/fulfillment"
     },
     {
       "retailer": "GameStop",
-      "status": "one-product-page-read;one-fetch-403;live-checkout-unverified",
-      "urls": [
-        "https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/sony-playstation-5-slim-digital-edition---fortnite-cobalt-star-bundle/20016240.html"
-      ],
-      "missing": [
-        "matching-live-cart-item",
-        "selected-NEW-condition",
-        "Phoenix-fulfillment"
-      ]
+      "discoveryAttempted": true,
+      "discoveryResult": "search-attempted-no-new-qualifying-live-checkout-evidence",
+      "retailerOwnedInteractivePurchaseVerified": false,
+      "unverifiedReason": "Previous product observations have no new independent orderable-cart proof"
     },
     {
       "retailer": "Costco",
-      "status": "product-search-fetch-inaccessible",
-      "urls": [
-        "https://www.costco.com/CatalogSearch?keyword=playstation+5"
-      ],
-      "missing": [
-        "readable-current-product-page",
-        "membership-price",
-        "checkout",
-        "Phoenix-fulfillment"
-      ]
+      "discoveryAttempted": true,
+      "discoveryResult": "official-two-controller-product-pages-found-discovery-only",
+      "retailerOwnedInteractivePurchaseVerified": false,
+      "unverifiedReason": "No presently verified membership price or Phoenix-specific cart fulfillment"
     }
   ],
-  "freeCommunityDiscovery": {
-    "site": "Slickdeals",
-    "status": "scanned-for-candidate-URLs-only",
-    "url": "https://slickdeals.net/deals/ps5-deals/"
-  },
-  "sourceAuditBeforeRun": "2026-11-16T08:19:00.852Z"
+  "discoveryCandidates": [
+    {
+      "retailer": "Costco",
+      "url": "https://www.costco.com/p/-/4000360868",
+      "evidence": "discovery-only official two-controller digital bundle",
+      "candidateVerification": "FAILED: current price, membership and Phoenix fulfillment not verified"
+    },
+    {
+      "retailer": "Costco",
+      "url": "https://sameday.costco.com/store/costco/products/83457876-sony-playstation-5-slim-disc-console-dualsense-controller-bundle",
+      "evidence": "discovery-only official two-controller disc bundle",
+      "candidateVerification": "FAILED: current price, membership and Phoenix fulfillment not verified"
+    },
+    {
+      "retailer": "PlayStation Direct",
+      "url": "https://direct.playstation.com/en-us/buy-consoles/playstation5-digital-edition-console-825-gb",
+      "evidence": "official product page found",
+      "candidateVerification": "FAILED: live checkout price and Phoenix fulfillment not verified"
+    }
+  ],
+  "priorAutomatedScannerLatest": "2026-11-17T21:13:53.454Z",
+  "priorScannerStatus": "completed successfully but checkout coverage incomplete, zero qualifying alerts",
+  "userFacingNotification": false
 }
