@@ -1,0 +1,525 @@
+{
+  "schema": "ps5-assisted-automation-scan-v1",
+  "startedAt": "2026-11-17T14:33:59Z",
+  "finishedAt": "2026-11-17T14:38:39.897Z",
+  "timezone": "America/Phoenix",
+  "zip": "85001",
+  "costUsd": 0,
+  "notes": [
+    "All seven retailers attempted via free search/direct-page reads; this is not seven-retailer checkout verification.",
+    "No interactive browser available: connected browser returned 'Browser access requires the originating browser context'; no paid or metered browser was invoked.",
+    "Web page readers may serve crawled content; prices are discovery/diagnostic observations only, never verified live checkout prices.",
+    "Slickdeals public deal feed checked for free discovery; no newly verified candidate emerged; historical offers ignored.",
+    "No paid operations; no purchases or payment details; no GitHub alert issue created."
+  ],
+  "browserStatus": "BROWSER NOT AVAILABLE",
+  "merchantCoverage": [
+    {
+      "retailer": "PlayStation Direct",
+      "attempted": true,
+      "retailerOwnedPagesRead": 2,
+      "status": "retailer-owned page text read, no Phoenix cart confirmation",
+      "purchaseStateConfirmed": false,
+      "fullyVerifiedOffers": 0
+    },
+    {
+      "retailer": "Best Buy",
+      "attempted": true,
+      "retailerOwnedPagesRead": 2,
+      "status": "retailer-owned page text read, no Phoenix cart confirmation",
+      "purchaseStateConfirmed": false,
+      "fullyVerifiedOffers": 0
+    },
+    {
+      "retailer": "Target",
+      "attempted": true,
+      "retailerOwnedPagesRead": 3,
+      "status": "retailer-owned page text read, no Phoenix cart confirmation",
+      "purchaseStateConfirmed": false,
+      "fullyVerifiedOffers": 0
+    },
+    {
+      "retailer": "Walmart",
+      "attempted": true,
+      "retailerOwnedPagesRead": 1,
+      "status": "stale/unscoped retailer page read",
+      "purchaseStateConfirmed": false,
+      "fullyVerifiedOffers": 0
+    },
+    {
+      "retailer": "Amazon",
+      "attempted": true,
+      "retailerOwnedPagesRead": 1,
+      "status": "BLOCKED — needs human interaction or dynamic JS",
+      "purchaseStateConfirmed": false,
+      "fullyVerifiedOffers": 0
+    },
+    {
+      "retailer": "GameStop",
+      "attempted": true,
+      "retailerOwnedPagesRead": 4,
+      "status": "retailer-owned page text read, no Phoenix cart confirmation",
+      "purchaseStateConfirmed": false,
+      "fullyVerifiedOffers": 0
+    },
+    {
+      "retailer": "Costco",
+      "attempted": true,
+      "retailerOwnedPagesRead": 1,
+      "status": "member pricing and Phoenix availability unreadable",
+      "purchaseStateConfirmed": false,
+      "fullyVerifiedOffers": 0
+    }
+  ],
+  "candidates": [
+    {
+      "retailer": "PlayStation Direct",
+      "status": "retailer-owned catalogue read; above thresholds; no interactive checkout",
+      "url": "https://direct.playstation.com/en-us/hardware/ps5",
+      "edition": "disc",
+      "sku": "1 TB",
+      "priceText": "$649.00",
+      "observedText": "PlayStation 5 Console - 1 TB $649.00",
+      "pageRead": "web first-party text fetched during run",
+      "checks": {
+        "exactModelSku": true,
+        "newCondition": true,
+        "livePrice": false,
+        "sellerIdentity": false,
+        "selectedFulfillment": false,
+        "phoenixOrderability": false,
+        "noConflict": true,
+        "verifiedTimestamp": true
+      },
+      "failReasons": [
+        "above $500 base target",
+        "no observed Phoenix checkout"
+      ],
+      "controllers": 1,
+      "storage": "1TB",
+      "discDrive": true,
+      "observedAt": "2026-11-17T14:38:39.897Z",
+      "checkoutEvidence": null,
+      "qualifies": false,
+      "alert": false
+    },
+    {
+      "retailer": "PlayStation Direct",
+      "status": "retailer-owned catalogue read; above thresholds; no interactive checkout",
+      "url": "https://direct.playstation.com/en-us/hardware/ps5",
+      "edition": "digital",
+      "sku": "825 GB",
+      "priceText": "$599.00",
+      "observedText": "PlayStation 5 Digital Edition Console - 825 GB $599.00",
+      "pageRead": "web first-party text fetched during run",
+      "checks": {
+        "exactModelSku": true,
+        "newCondition": true,
+        "livePrice": false,
+        "sellerIdentity": false,
+        "selectedFulfillment": false,
+        "phoenixOrderability": false,
+        "noConflict": true,
+        "verifiedTimestamp": true
+      },
+      "failReasons": [
+        "above $450 base target",
+        "no observed Phoenix checkout"
+      ],
+      "controllers": 1,
+      "storage": "825GB",
+      "discDrive": false,
+      "observedAt": "2026-11-17T14:38:39.897Z",
+      "checkoutEvidence": null,
+      "qualifies": false,
+      "alert": false
+    },
+    {
+      "retailer": "Best Buy",
+      "status": "retailer-owned product page text read; base console above thresholds",
+      "url": "https://www.bestbuy.com/product/playstation-5-slim-console-digital-edition-825gb-playstation-5/6646420",
+      "edition": "digital",
+      "sku": "6646420",
+      "priceText": "$599.99",
+      "observedText": "Sold by Best Buy; PS5 Slim Digital Edition Console 825GB; $599.99; Add to cart",
+      "pageRead": "web first-party text fetched during run; NOT a checkout",
+      "checks": {
+        "exactModelSku": true,
+        "newCondition": true,
+        "livePrice": false,
+        "sellerIdentity": true,
+        "selectedFulfillment": false,
+        "phoenixOrderability": false,
+        "noConflict": true,
+        "verifiedTimestamp": true
+      },
+      "failReasons": [
+        "above $450 base target",
+        "cart and Phoenix shipping not verified"
+      ],
+      "controllers": 1,
+      "storage": "825GB",
+      "discDrive": false,
+      "observedAt": "2026-11-17T14:38:39.897Z",
+      "checkoutEvidence": null,
+      "qualifies": false,
+      "alert": false
+    },
+    {
+      "retailer": "Best Buy",
+      "status": "retailer-owned product page text read; base console above thresholds",
+      "url": "https://www.bestbuy.com/product/playstation-5-slim-console-1tb-playstation-5/6646419",
+      "edition": "disc",
+      "sku": "6646419",
+      "priceText": "$649.99",
+      "observedText": "Sold by Best Buy; PS5 Slim Console 1TB; $649.99; Add to cart",
+      "pageRead": "web first-party text fetched during run; NOT a checkout",
+      "checks": {
+        "exactModelSku": true,
+        "newCondition": true,
+        "livePrice": false,
+        "sellerIdentity": true,
+        "selectedFulfillment": false,
+        "phoenixOrderability": false,
+        "noConflict": true,
+        "verifiedTimestamp": true
+      },
+      "failReasons": [
+        "above $500 base target",
+        "cart and Phoenix shipping not verified"
+      ],
+      "controllers": 1,
+      "storage": "1TB",
+      "discDrive": true,
+      "observedAt": "2026-11-17T14:38:39.897Z",
+      "checkoutEvidence": null,
+      "qualifies": false,
+      "alert": false
+    },
+    {
+      "retailer": "Target",
+      "status": "retailer-owned product page text read; base console above thresholds",
+      "url": "https://www.target.com/p/-/A-90188801",
+      "edition": "disc",
+      "sku": "90188801",
+      "priceText": "$649.99",
+      "observedText": "PlayStation 5 Console (Slim); $649.99; In Stock; Add to cart",
+      "pageRead": "web first-party text fetched during run; not checkout verified",
+      "checks": {
+        "exactModelSku": true,
+        "newCondition": true,
+        "livePrice": false,
+        "sellerIdentity": false,
+        "selectedFulfillment": false,
+        "phoenixOrderability": false,
+        "noConflict": true,
+        "verifiedTimestamp": true
+      },
+      "failReasons": [
+        "above $500 base target",
+        "no Phoenix fulfillment validation"
+      ],
+      "controllers": 1,
+      "storage": "1TB",
+      "discDrive": true,
+      "observedAt": "2026-11-17T14:38:39.897Z",
+      "checkoutEvidence": null,
+      "qualifies": false,
+      "alert": false
+    },
+    {
+      "retailer": "Target",
+      "status": "retailer-owned product page text read; base console above thresholds",
+      "url": "https://www.target.com/p/-/A-94961316",
+      "edition": "digital",
+      "sku": "94961316",
+      "priceText": "$599.99",
+      "observedText": "PlayStation 5 Console - Digital Edition; $599.99; In Stock; Add to cart",
+      "pageRead": "web first-party text fetched during run; not checkout verified",
+      "checks": {
+        "exactModelSku": true,
+        "newCondition": true,
+        "livePrice": false,
+        "sellerIdentity": false,
+        "selectedFulfillment": false,
+        "phoenixOrderability": false,
+        "noConflict": true,
+        "verifiedTimestamp": true
+      },
+      "failReasons": [
+        "above $450 base target",
+        "no Phoenix fulfillment validation"
+      ],
+      "controllers": 1,
+      "storage": "825GB",
+      "discDrive": false,
+      "observedAt": "2026-11-17T14:38:39.897Z",
+      "checkoutEvidence": null,
+      "qualifies": false,
+      "alert": false
+    },
+    {
+      "retailer": "Target",
+      "status": "retailer-owned product page read; bundle valuation insufficient and no checkout",
+      "url": "https://www.target.com/p/-/A-93150909",
+      "edition": "digital",
+      "sku": "93150909",
+      "priceText": "$499.99",
+      "observedText": "PS5 Digital Console Slim NBA 2K25 Bundle; $499.99; In Stock; Add to cart",
+      "pageRead": "web first-party text fetched during run; NOT Phoenix-specific checkout",
+      "checks": {
+        "exactModelSku": true,
+        "newCondition": true,
+        "livePrice": false,
+        "sellerIdentity": false,
+        "selectedFulfillment": false,
+        "phoenixOrderability": false,
+        "noConflict": true,
+        "verifiedTimestamp": true
+      },
+      "failReasons": [
+        "value of included game not established at contemporaneous retail sale; cannot assume $49.99 credit",
+        "cart and Phoenix fulfillment not verified"
+      ],
+      "controllers": 1,
+      "storage": "unknown",
+      "discDrive": false,
+      "observedAt": "2026-11-17T14:38:39.897Z",
+      "checkoutEvidence": null,
+      "qualifies": false,
+      "alert": false
+    },
+    {
+      "retailer": "Walmart",
+      "status": "first-party retailer text readable but indexed/crawled three days ago; no live checkout",
+      "url": "https://www.walmart.com/ip/20888517730",
+      "edition": "digital",
+      "sku": "20888517730",
+      "priceText": "$673.88",
+      "observedText": "PS5 Digital + DualSense Black $673.88; Add to cart; selected delivery context not Phoenix",
+      "pageRead": "web text dated 3 days old; stale for current verification",
+      "checks": {
+        "exactModelSku": true,
+        "newCondition": false,
+        "livePrice": false,
+        "sellerIdentity": false,
+        "selectedFulfillment": false,
+        "phoenixOrderability": false,
+        "noConflict": false,
+        "verifiedTimestamp": false
+      },
+      "failReasons": [
+        "effective $618.88 ($673.88 less one extra controller $55) exceeds $450",
+        "seller/shipper and Phoenix checkout not verified",
+        "web page crawl not live current"
+      ],
+      "controllers": 2,
+      "storage": "825GB",
+      "discDrive": false,
+      "observedAt": "2026-11-17T14:38:39.897Z",
+      "checkoutEvidence": null,
+      "qualifies": false,
+      "alert": false
+    },
+    {
+      "retailer": "Amazon",
+      "status": "fresh dynamic purchase view blocked/unreadable; cached page one week old",
+      "url": "https://www.amazon.com/dp/B0FRGTYSL5",
+      "edition": "disc",
+      "sku": "B0FRGTYSL5",
+      "priceText": null,
+      "observedText": "no reliable current price, seller, condition or Phoenix fulfillment",
+      "pageRead": "web reader returned stale HTML; search blocked by robots.txt",
+      "checks": {
+        "exactModelSku": false,
+        "newCondition": false,
+        "livePrice": false,
+        "sellerIdentity": false,
+        "selectedFulfillment": false,
+        "phoenixOrderability": false,
+        "noConflict": false,
+        "verifiedTimestamp": false
+      },
+      "failReasons": [
+        "BROWSER NOT AVAILABLE",
+        "fresh page and cart inaccessible",
+        "price and seller unknown",
+        "Phoenix shipping unknown"
+      ],
+      "controllers": null,
+      "storage": "1TB",
+      "discDrive": true,
+      "observedAt": "2026-11-17T14:38:39.897Z",
+      "checkoutEvidence": null,
+      "qualifies": false,
+      "alert": false
+    },
+    {
+      "retailer": "GameStop",
+      "status": "first-party product text says not available online; no verified Phoenix pickup",
+      "url": "https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/sony-playstation-5-console-1tb-disc-edition---astro-bot-bundle/422135.html",
+      "edition": "disc",
+      "sku": "422135",
+      "priceText": "$449.99",
+      "observedText": "Condition New $449.99; Unavailable; This item is currently not available online; store location unavailable",
+      "pageRead": "web first-party text fetched during run; no interactive selection",
+      "checks": {
+        "exactModelSku": true,
+        "newCondition": true,
+        "livePrice": false,
+        "sellerIdentity": false,
+        "selectedFulfillment": false,
+        "phoenixOrderability": false,
+        "noConflict": true,
+        "verifiedTimestamp": true
+      },
+      "failReasons": [
+        "expressly not available online",
+        "Phoenix pickup not verified",
+        "cart orderability not proven"
+      ],
+      "controllers": 1,
+      "storage": "1TB",
+      "discDrive": true,
+      "observedAt": "2026-11-17T14:38:39.897Z",
+      "checkoutEvidence": null,
+      "qualifies": false,
+      "alert": false
+    },
+    {
+      "retailer": "GameStop",
+      "status": "retailer-owned page says local stock unavailable; no Phoenix checkout",
+      "url": "https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/sony-playstation-5-slim-digital-edition---fortnite-cobalt-star-bundle/20016240.html",
+      "edition": "digital",
+      "sku": "20016240",
+      "priceText": "$374.99",
+      "observedText": "Condition New $374.99; Limited Stock at unavailable; Please provide your address to verify you are within our delivery area",
+      "pageRead": "web first-party text fetched during run; no interactive selected fulfillment",
+      "checks": {
+        "exactModelSku": true,
+        "newCondition": true,
+        "livePrice": false,
+        "sellerIdentity": false,
+        "selectedFulfillment": false,
+        "phoenixOrderability": false,
+        "noConflict": true,
+        "verifiedTimestamp": true
+      },
+      "failReasons": [
+        "local stock displayed unavailable",
+        "Phoenix shipping/pickup unverified",
+        "cart orderability not proven"
+      ],
+      "controllers": 1,
+      "storage": "unknown",
+      "discDrive": false,
+      "observedAt": "2026-11-17T14:38:39.897Z",
+      "checkoutEvidence": null,
+      "qualifies": false,
+      "alert": false
+    },
+    {
+      "retailer": "GameStop",
+      "status": "retailer-owned page says local stock unavailable; no Phoenix checkout",
+      "url": "https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/sony-playstation-5-slim-console-disc-edition---fortnite-cobalt-star-bundle/20016239.html",
+      "edition": "disc",
+      "sku": "20016239",
+      "priceText": "$424.99",
+      "observedText": "Condition New $424.99; Limited Stock at unavailable; Please provide your address to verify you are within our delivery area",
+      "pageRead": "web first-party text fetched during run; no interactive selected fulfillment",
+      "checks": {
+        "exactModelSku": true,
+        "newCondition": true,
+        "livePrice": false,
+        "sellerIdentity": false,
+        "selectedFulfillment": false,
+        "phoenixOrderability": false,
+        "noConflict": true,
+        "verifiedTimestamp": true
+      },
+      "failReasons": [
+        "local stock displayed unavailable",
+        "Phoenix shipping/pickup unverified",
+        "cart orderability not proven"
+      ],
+      "controllers": 1,
+      "storage": "unknown",
+      "discDrive": true,
+      "observedAt": "2026-11-17T14:38:39.897Z",
+      "checkoutEvidence": null,
+      "qualifies": false,
+      "alert": false
+    },
+    {
+      "retailer": "GameStop",
+      "status": "retailer-owned page says unavailable online; Phoenix pickup not verified",
+      "url": "https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/sony-playstation-5-slim-console-digital-edition---fortnite-flowering-chaos-bundle/433979.html",
+      "edition": "digital",
+      "sku": "433979",
+      "priceText": "$399.99",
+      "observedText": "Condition New $399.99; This item is currently not available online; limited local stock unavailable",
+      "pageRead": "web first-party text fetched during run; no interactive selected fulfillment",
+      "checks": {
+        "exactModelSku": true,
+        "newCondition": true,
+        "livePrice": false,
+        "sellerIdentity": false,
+        "selectedFulfillment": false,
+        "phoenixOrderability": false,
+        "noConflict": true,
+        "verifiedTimestamp": true
+      },
+      "failReasons": [
+        "not available online",
+        "Phoenix pickup not verified",
+        "cart orderability not proven"
+      ],
+      "controllers": 1,
+      "storage": "825GB",
+      "discDrive": false,
+      "observedAt": "2026-11-17T14:38:39.897Z",
+      "checkoutEvidence": null,
+      "qualifies": false,
+      "alert": false
+    },
+    {
+      "retailer": "Costco",
+      "status": "retailer-owned product listing read; live member price and Phoenix checkout not observed",
+      "url": "https://www.costco.com/p/-/4000360868",
+      "edition": "digital",
+      "sku": "1791815",
+      "priceText": null,
+      "observedText": "Sony PlayStation 5 825GB Digital Slim Console + Extra DualSense; item may be available in local warehouse; limit two per membership per 24h",
+      "pageRead": "web first-party text fetched during run; live price absent",
+      "checks": {
+        "exactModelSku": true,
+        "newCondition": true,
+        "livePrice": false,
+        "sellerIdentity": false,
+        "selectedFulfillment": false,
+        "phoenixOrderability": false,
+        "noConflict": true,
+        "verifiedTimestamp": true
+      },
+      "failReasons": [
+        "member price not displayed",
+        "Phoenix store and shipping not verified",
+        "possible same-day indexed price $662.99 is not current checkout evidence"
+      ],
+      "controllers": 2,
+      "storage": "825GB",
+      "discDrive": false,
+      "observedAt": "2026-11-17T14:38:39.897Z",
+      "checkoutEvidence": null,
+      "qualifies": false,
+      "alert": false
+    }
+  ],
+  "overall": {
+    "retailersAttempted": 7,
+    "retailersWithConfirmedPhoenixCart": 0,
+    "verifiedQualifyingOffers": 0,
+    "coverageQuality": "INCOMPLETE_VERIFICATION",
+    "notificationRequired": false
+  }
+}
