@@ -1,0 +1,154 @@
+{
+  "kind": "unattended-free-only-supplementary-manual-discovery-and-retailer-text-review",
+  "startedAt": "2026-11-17T19:33:47Z",
+  "recordedAt": "2026-11-17T19:36:04.112Z",
+  "strictZeroSpend": true,
+  "spend": "$0; no metered browser/tools invoked",
+  "retailersAttempted": 7,
+  "interactiveCheckoutBrowser": "BROWSER NOT AVAILABLE for interactive navigation in this scheduled run",
+  "evidenceLevel": "search and retailer-owned web snapshots; not live interactive retailer purchase state",
+  "verifiedOrderableOffers": 0,
+  "coverageComplete": false,
+  "classification": "VERIFICATION COVERAGE INCOMPLETE — do not infer no deals across all retailers",
+  "notifyUser": false,
+  "reason": "Every inspected candidate lacks at least one current exact NEW, seller, price, and Phoenix-specific checkout fulfillment requirement; some explicitly show unavailable.",
+  "retailerRecords": [
+    {
+      "retailer": "PlayStation Direct",
+      "attempted": true,
+      "pageStatus": "readable retailer product text; interactive cart unavailable",
+      "url": "https://direct.playstation.com/en-us/buy-consoles/playstation5-console-1-tb",
+      "checks": {
+        "sku": "unknown",
+        "condition": "unconfirmed",
+        "price": "unknown-current",
+        "seller": "not-independently-proven",
+        "controllers": "unconfirmed",
+        "storage": "page mentions 1 TB",
+        "discDrive": "page says yes",
+        "fulfillment": "unknown; no Phoenix checkout"
+      },
+      "result": "FAIL — no current checkout proof"
+    },
+    {
+      "retailer": "Best Buy",
+      "attempted": true,
+      "pageStatus": "URL returned 404",
+      "url": "https://www.bestbuy.com/product/playstation-5-slim-console/JXHQ3CCTYR/sku/6566039",
+      "checks": {
+        "sku": "unconfirmed",
+        "condition": "unknown",
+        "price": "unknown",
+        "seller": "unknown",
+        "controllers": "unknown",
+        "storage": "unknown",
+        "discDrive": "unknown",
+        "fulfillment": "unknown"
+      },
+      "result": "FAIL — product page inaccessible"
+    },
+    {
+      "retailer": "Target",
+      "attempted": true,
+      "pageStatus": "retailer product URL inaccessible",
+      "url": "https://www.target.com/p/playstation-5-nba-2k26-disc-bundle-console/-/A-94907150",
+      "checks": {
+        "sku": "unconfirmed",
+        "condition": "unknown",
+        "price": "unknown",
+        "seller": "unknown",
+        "controllers": "unknown",
+        "storage": "unknown",
+        "discDrive": "unknown",
+        "fulfillment": "unknown"
+      },
+      "result": "FAIL — purchase state unreadable"
+    },
+    {
+      "retailer": "Walmart",
+      "attempted": true,
+      "pageStatus": "retailer page content accessible only as 5-day-old snapshot, showing Des Moines ZIP 50307, not Phoenix",
+      "url": "https://www.walmart.com/ip/20768802816",
+      "checks": {
+        "sku": "page identified a two-controller digital bundle, SKU unverified live",
+        "condition": "NEW unconfirmed current",
+        "price": "nonqualifying snapshot, not a verified price",
+        "seller": "snapshot labels Entrotek, current seller unconfirmed",
+        "controllers": "two claimed by listing",
+        "storage": "825GB product details",
+        "discDrive": "no",
+        "fulfillment": "snapshot not for Phoenix 85001; checkout not read"
+      },
+      "result": "FAIL — stale location and checkout; no current seller or fulfillment proof"
+    },
+    {
+      "retailer": "Amazon",
+      "attempted": true,
+      "pageStatus": "last-week product-text snapshot, not interactive cart",
+      "url": "https://www.amazon.com/dp/B0FRGTYSL5",
+      "checks": {
+        "sku": "ASIN B0FRGTYSL5",
+        "condition": "not confirmed in active cart",
+        "price": "unknown",
+        "seller": "unknown",
+        "controllers": "unknown",
+        "storage": "page says 1TB",
+        "discDrive": "yes",
+        "fulfillment": "unknown for Phoenix; sign-in/cart inaccessible"
+      },
+      "result": "FAIL — live offer and checkout unreadable"
+    },
+    {
+      "retailer": "GameStop",
+      "attempted": true,
+      "pageStatus": "four retailer product pages crawled today, static text only; no selected Phoenix cart",
+      "urls": [
+        "https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/sony-playstation-5-console-1tb-disc-edition---astro-bot-bundle/422135.html",
+        "https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/sony-playstation-5-slim-digital-edition---fortnite-cobalt-star-bundle/20016240.html",
+        "https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/sony-playstation-5-slim-console-disc-edition---fortnite-cobalt-star-bundle/20016239.html",
+        "https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/sony-playstation-5-slim-console-digital-edition---fortnite-flowering-chaos-bundle/20028327.html"
+      ],
+      "checks": {
+        "sku": "four named model/bundle URLs, exact cart SKU unverified",
+        "condition": "each page displays New but selected cart condition not proven",
+        "price": "page text shows $449.99, $374.99, $424.99, $399.99 respectively; unverified for checkout",
+        "seller": "no selected cart seller proof",
+        "controllers": "unverified in cart",
+        "storage": "not independently checked in cart",
+        "discDrive": "edition named on pages only",
+        "fulfillment": "four pages display 'unavailable'; no positive ship-to-home or 85001 pickup proof"
+      },
+      "result": "FAIL — checkout not orderable; no alert",
+      "sourceEvidence": "Each page showed 'Limited Stock at unavailable' in shipping/pickup section"
+    },
+    {
+      "retailer": "Costco",
+      "attempted": true,
+      "pageStatus": "retailer bundle page readable; live member price/cart hidden",
+      "url": "https://www.costco.com/p/-/4000360868",
+      "checks": {
+        "sku": "Costco item 1791815",
+        "condition": "unconfirmed in cart",
+        "price": "unknown current price",
+        "seller": "not verified in cart",
+        "controllers": "product description says two total",
+        "storage": "product page says 825GB",
+        "discDrive": "no",
+        "fulfillment": "warehouse or member-specific stock not proven Phoenix"
+      },
+      "result": "FAIL — member price and orderability unknown"
+    }
+  ],
+  "communityDiscovery": {
+    "attempted": true,
+    "status": "free Slickdeals search returned only historical/expired postings; not used to assert live offers"
+  },
+  "lastAutomatedScanner": {
+    "checkedAt": "2026-11-17T12:18:17.295Z",
+    "expectedRetailers": 7,
+    "retailersAttempted": 7,
+    "verifiedOffers": 0,
+    "incompleteCoverage": true,
+    "note": "Existing scanner evidence not treated as current checkout proof."
+  }
+}
