@@ -1,0 +1,147 @@
+{
+  "startedAtLocal": "2026-11-16T18:08:48-07:00",
+  "recordedAtUtc": "2026-11-17T01:10:28.800Z",
+  "scope": "Manual supplementary free discovery and retailer-page reading during scheduled zero-spend check",
+  "basis": "Direct retailer URLs read with noninteractive web tool; this is NOT an interactive cart/checkout audit",
+  "interactiveBrowser": "BROWSER NOT AVAILABLE (read-only browser connector; no interactive retailer checkout)",
+  "paidServicesUsed": false,
+  "communityDiscovery": "Slickdeals PS5 deals page examined for candidate discovery only, never pricing or stock evidence",
+  "attemptedRetailers": [
+    {
+      "retailer": "PlayStation Direct",
+      "status": "retailer-product-pages-read-but-live-price-or-checkout-not-confirmed",
+      "attempted": [
+        "https://direct.playstation.com/en-us/buy-consoles/playstation5-console-1-tb",
+        "https://direct.playstation.com/en-us/buy-consoles/playstation5-digital-edition-console-825-gb"
+      ],
+      "verifiedOrderable": 0
+    },
+    {
+      "retailer": "Best Buy",
+      "status": "digital-product-page-read-price-above-threshold; disc-direct-URL-404; no-Phoenix-checkout",
+      "attempted": [
+        "https://www.bestbuy.com/product/playstation-5-slim-console/JXHQ3CCTYR/sku/6566039",
+        "https://www.bestbuy.com/product/playstation-5-slim-console-digital-edition-825gb/JXHQ37TYYL"
+      ],
+      "verifiedOrderable": 0
+    },
+    {
+      "retailer": "Target",
+      "status": "retailer-product-pages-read-no-Phoenix-cart-confirmation; observed-prices-above-base-target",
+      "attempted": [
+        "https://www.target.com/p/playstation-5-nba-2k26-disc-bundle-console/-/A-94907150",
+        "https://www.target.com/p/-/A-93150909"
+      ],
+      "verifiedOrderable": 0
+    },
+    {
+      "retailer": "Walmart",
+      "status": "retailer-item-page-inaccessible; feed-used-for-discovery-only; no-retailer-checkout",
+      "attempted": [
+        "https://www.walmart.com/ip/PlayStation-5-Slim-Disc-1TB-SSD-Fortnite-Flowering-Chaos-Bundle-Two-Controllers-White-Midnight-Black-DualSense-Mytrix-Dual-Controller-Charger-PS5-Edi/18681252503"
+      ],
+      "verifiedOrderable": 0
+    },
+    {
+      "retailer": "Amazon",
+      "status": "retailer-page-returned-week-old-cached-markup; no-current-purchase-state; unverified",
+      "attempted": [
+        "https://www.amazon.com/dp/B0FRGTYSL5"
+      ],
+      "verifiedOrderable": 0
+    },
+    {
+      "retailer": "GameStop",
+      "status": "two-product-pages-read; delivery-pickup-orderability-not-confirmed; one-page-says-not-available-online",
+      "attempted": [
+        "https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/sony-playstation-5-console-1tb-disc-edition---astro-bot-bundle/422135.html",
+        "https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/sony-playstation-5-slim-digital-edition---fortnite-cobalt-star-bundle/20016240.html"
+      ],
+      "verifiedOrderable": 0
+    },
+    {
+      "retailer": "Costco",
+      "status": "same-day-landing-page-readable-but-requires-membership; product-search-URL-unreadable; no-specific-item",
+      "attempted": [
+        "https://sameday.costco.com/",
+        "https://www.costco.com/CatalogSearch?keyword=ps5%20slim"
+      ],
+      "verifiedOrderable": 0
+    }
+  ],
+  "retailerCountAttempted": 7,
+  "qualifiedVerifiedOrderable": 0,
+  "coverageCompleteForVerification": false,
+  "assessment": "verification-coverage-incomplete-not-no-deals-after-full-check",
+  "candidates": [
+    {
+      "id": "gamestop-disc-bundle",
+      "retailer": "GameStop",
+      "url": "https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/sony-playstation-5-console-1tb-disc-edition---astro-bot-bundle/422135.html",
+      "kind": "disc",
+      "model": "Sony PlayStation 5 Console 1TB Disc Edition - ASTRO BOT Bundle",
+      "sku": "422135",
+      "observedVisiblePrice": "$449.99",
+      "priceSource": "retailer-owned product page rendered text",
+      "priceAndFulfillmentVisibleText": [
+        "Condition New; New $449.99",
+        "Pick up in-store; Same Day Delivery; Ship to Home; Limited Stock at unavailable",
+        "This item is currently not available online"
+      ],
+      "newCondition": "present-as-product-option-not-cart-confirmed",
+      "seller": null,
+      "controllers": null,
+      "storage": "1 TB",
+      "discDrive": true,
+      "checkoutPhoenixFulfillment": null,
+      "checkoutObserved": false,
+      "checklist": {
+        "exactSku": "product-url-sku-only",
+        "newCondition": "product-option-only",
+        "price": "visible-product-page",
+        "seller": "unknown",
+        "exactFulfillment": "FAIL",
+        "PhoenixContext": "FAIL",
+        "contradictionsResolved": "FAIL",
+        "contemporaneousCart": "FAIL"
+      },
+      "qualifies": false,
+      "reason": "No exact orderable Phoenix shipping/pickup; explicit unavailable signals; no checkout."
+    },
+    {
+      "id": "gamestop-digital-bundle",
+      "retailer": "GameStop",
+      "url": "https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/sony-playstation-5-slim-digital-edition---fortnite-cobalt-star-bundle/20016240.html",
+      "kind": "digital",
+      "model": "Sony PlayStation 5 Slim Digital Edition - Fortnite Cobalt Star Bundle",
+      "sku": "20016240",
+      "observedVisiblePrice": "$374.99",
+      "priceSource": "retailer-owned product page rendered text",
+      "priceAndFulfillmentVisibleText": [
+        "Condition New; New $374.99",
+        "Pick up in-store; Same Day Delivery; Ship to Home; Limited Stock at unavailable",
+        "Please provide your address to verify you are within our delivery area"
+      ],
+      "newCondition": "present-as-product-option-not-cart-confirmed",
+      "seller": null,
+      "controllers": null,
+      "storage": null,
+      "discDrive": false,
+      "checkoutPhoenixFulfillment": null,
+      "checkoutObserved": false,
+      "checklist": {
+        "exactSku": "product-url-sku-only",
+        "newCondition": "product-option-only",
+        "price": "visible-product-page",
+        "seller": "unknown",
+        "exactFulfillment": "FAIL",
+        "PhoenixContext": "FAIL",
+        "contradictionsResolved": "FAIL",
+        "contemporaneousCart": "FAIL"
+      },
+      "qualifies": false,
+      "reason": "No confirmed Phoenix delivery/pickup or retailer-owned checkout."
+    }
+  ],
+  "action": "NO ALERT"
+}
