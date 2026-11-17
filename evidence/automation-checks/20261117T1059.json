@@ -1,0 +1,137 @@
+{
+  "schema": "ps5-zero-spend-check-v1",
+  "observedAtUTC": "2026-11-17T10:59:14.194Z",
+  "observedTimezone": "America/Phoenix",
+  "mode": "free noninteractive retailer-page read; no paid sessions or checkout interaction",
+  "isLiveInteractiveCheckout": false,
+  "retailersExpected": 7,
+  "retailersAttempted": 7,
+  "allRetailersFullyVerified": false,
+  "coverageIncomplete": true,
+  "verifiedOrderable": 0,
+  "verifiedAlertsCreated": 0,
+  "decision": "NO_ALERT",
+  "reason": "No offer proved exact NEW seller/price/SKU and Phoenix ship-to-home or local pickup with retailer-owned live orderable checkout",
+  "priorHostedAuditCheckedAtUTC": "2026-11-17T02:36:09.258Z",
+  "hostedAuditVerifiedOffers": 0,
+  "retailers": [
+    {
+      "retailer": "PlayStation Direct",
+      "url": "https://direct.playstation.com/en-us/hardware/ps5",
+      "status": "retailer-page-readable; no qualifying checkout proven",
+      "observedPagePriceText": "Disc $649; Digital $599 (retrieved page; not checkout-verified)",
+      "reason": "Prices above base targets; no Phoenix cart/fulfillment verification",
+      "prerequisites": {
+        "exactSkuOrBundle": "partial-or-unverified",
+        "newCondition": "unknown",
+        "priceLiveCheckout": "unknown",
+        "seller": "unknown-or-unverified",
+        "phoenixOrderableFulfillment": "not-confirmed",
+        "contradictionsResolved": "not-established"
+      },
+      "qualifies": false
+    },
+    {
+      "retailer": "Best Buy",
+      "url": "https://www.bestbuy.com/product/playstation-5-slim-console-1tb-playstation-5/6646419",
+      "status": "retailer-page-readable; no qualifying checkout proven",
+      "observedPagePriceText": "$649.99 (retrieved page; not checkout-verified)",
+      "reason": "Above base target; no Phoenix cart/fulfillment verification",
+      "prerequisites": {
+        "exactSkuOrBundle": "partial-or-unverified",
+        "newCondition": "unknown",
+        "priceLiveCheckout": "unknown",
+        "seller": "unknown-or-unverified",
+        "phoenixOrderableFulfillment": "not-confirmed",
+        "contradictionsResolved": "not-established"
+      },
+      "qualifies": false
+    },
+    {
+      "retailer": "Target",
+      "url": "https://www.target.com/p/-/A-90188801",
+      "status": "retailer-page-readable; no qualifying checkout proven",
+      "observedPagePriceText": "$649.99 (retrieved page; not checkout-verified)",
+      "reason": "Above base target; no Phoenix cart/fulfillment verification",
+      "prerequisites": {
+        "exactSkuOrBundle": "partial-or-unverified",
+        "newCondition": "unknown",
+        "priceLiveCheckout": "unknown",
+        "seller": "unknown-or-unverified",
+        "phoenixOrderableFulfillment": "not-confirmed",
+        "contradictionsResolved": "not-established"
+      },
+      "qualifies": false
+    },
+    {
+      "retailer": "Walmart",
+      "url": "https://www.walmart.com/ip/20768802816",
+      "status": "retailer-page-retrieved; wrong destination ZIP and seller not first-party",
+      "observedPagePriceText": "$699.99 (retrieved page; not checkout-verified)",
+      "reason": "Two-controller bundle price above threshold after $55 allowance; site displayed shipping to Des Moines 50307, not Phoenix; marketplace seller Entrotek; no cart verification",
+      "prerequisites": {
+        "exactSkuOrBundle": "partial-or-unverified",
+        "newCondition": "unknown",
+        "priceLiveCheckout": "unknown",
+        "seller": "unknown-or-unverified",
+        "phoenixOrderableFulfillment": "not-confirmed",
+        "contradictionsResolved": "not-established"
+      },
+      "qualifies": false
+    },
+    {
+      "retailer": "Amazon",
+      "url": "https://www.amazon.com/dp/B0FRGTYSL5",
+      "status": "retrieved stale/partial HTML; live checkout unreadable",
+      "observedPagePriceText": null,
+      "reason": "No trusted current price or Phoenix-specific purchase fulfillment; cannot infer from HTML",
+      "prerequisites": {
+        "exactSkuOrBundle": "partial-or-unverified",
+        "newCondition": "unknown",
+        "priceLiveCheckout": "unknown",
+        "seller": "unknown-or-unverified",
+        "phoenixOrderableFulfillment": "not-confirmed",
+        "contradictionsResolved": "not-established"
+      },
+      "qualifies": false
+    },
+    {
+      "retailer": "GameStop",
+      "url": "https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/sony-playstation-5-slim-digital-edition---fortnite-cobalt-star-bundle/20016240.html",
+      "status": "retailer-page-readable; checkout unverified",
+      "observedPagePriceText": "$374.99 (retrieved page, not live checkout)",
+      "reason": "Retailer page shows unavailable stock and requires address to confirm delivery area; exact Phoenix orderable checkout not established",
+      "prerequisites": {
+        "exactSkuOrBundle": "partial-or-unverified",
+        "newCondition": "unknown",
+        "priceLiveCheckout": "unknown",
+        "seller": "unknown-or-unverified",
+        "phoenixOrderableFulfillment": "not-confirmed",
+        "contradictionsResolved": "not-established"
+      },
+      "qualifies": false
+    },
+    {
+      "retailer": "Costco",
+      "url": "https://www.costco.com/p/-/4000360868",
+      "status": "two-controller bundle page readable; price and live checkout not established",
+      "observedPagePriceText": null,
+      "reason": "Member pricing/current cart/warehouse-specific orderability unknown; no checkout verification",
+      "prerequisites": {
+        "exactSkuOrBundle": "partial-or-unverified",
+        "newCondition": "unknown",
+        "priceLiveCheckout": "unknown",
+        "seller": "unknown-or-unverified",
+        "phoenixOrderableFulfillment": "not-confirmed",
+        "contradictionsResolved": "not-established"
+      },
+      "qualifies": false
+    }
+  ],
+  "discovery": {
+    "publicCommunityDealQuery": "attempted Slickdeals no accessible results; discovery-only",
+    "shoppingFeeds": "used for URL discovery only, never current price or stock"
+  },
+  "cashSpendUSD": 0,
+  "notificationIssued": false
+}
