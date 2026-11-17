@@ -2,62 +2,62 @@
   "psdirect-disc": {
     "status": "unknown",
     "lastAlert": null,
-    "lastCheckedAt": "2026-11-17T02:35:06.831Z"
+    "lastCheckedAt": "2026-11-17T12:17:26.158Z"
   },
   "psdirect-digital": {
     "status": "unknown",
     "lastAlert": null,
-    "lastCheckedAt": "2026-11-17T02:35:09.874Z"
+    "lastCheckedAt": "2026-11-17T12:17:28.803Z"
   },
   "bestbuy-disc": {
     "status": "unknown",
     "lastAlert": null,
-    "lastCheckedAt": "2026-11-17T02:35:10.007Z"
+    "lastCheckedAt": "2026-11-17T12:17:28.896Z"
   },
   "bestbuy-digital": {
     "status": "unknown",
     "lastAlert": null,
-    "lastCheckedAt": "2026-11-17T02:35:10.106Z"
+    "lastCheckedAt": "2026-11-17T12:17:28.968Z"
   },
   "target-disc-bundle": {
     "status": "unknown",
     "lastAlert": null,
-    "lastCheckedAt": "2026-11-17T02:35:13.952Z"
+    "lastCheckedAt": "2026-11-17T12:17:32.394Z"
   },
   "target-digital-bundle": {
     "status": "unknown",
     "lastAlert": null,
-    "lastCheckedAt": "2026-11-17T02:35:17.984Z"
+    "lastCheckedAt": "2026-11-17T12:17:36.568Z"
   },
   "walmart-disc": {
     "status": "unknown",
     "lastAlert": null,
-    "lastCheckedAt": "2026-11-17T02:35:21.229Z"
+    "lastCheckedAt": "2026-11-17T12:17:39.775Z"
   },
   "amazon-disc": {
     "status": "unknown",
     "lastAlert": null,
-    "lastCheckedAt": "2026-11-17T02:35:25.195Z"
+    "lastCheckedAt": "2026-11-17T12:17:41.832Z"
   },
   "gamestop-disc-bundle": {
     "status": "unknown",
     "lastAlert": null,
-    "lastCheckedAt": "2026-11-17T02:35:28.329Z"
+    "lastCheckedAt": "2026-11-17T12:17:44.480Z"
   },
   "gamestop-digital-bundle": {
     "status": "unknown",
     "lastAlert": null,
-    "lastCheckedAt": "2026-11-17T02:35:35.725Z"
+    "lastCheckedAt": "2026-11-17T12:17:52.080Z"
   },
   "costco-disc-two-controller": {
     "status": "unknown",
     "lastAlert": null,
-    "lastCheckedAt": "2026-11-17T02:35:58.374Z"
+    "lastCheckedAt": "2026-11-17T12:18:14.559Z"
   },
   "costco-digital-two-controller": {
     "status": "unknown",
     "lastAlert": null,
-    "lastCheckedAt": "2026-11-17T02:36:01.725Z"
+    "lastCheckedAt": "2026-11-17T12:18:17.261Z"
   },
   "discovered-amazon-b11a5fefec": {
     "status": "unknown",
@@ -132,12 +132,12 @@
   "gamestop-disc-cobalt-star": {
     "status": "unknown",
     "lastAlert": null,
-    "lastCheckedAt": "2026-11-17T02:35:43.275Z"
+    "lastCheckedAt": "2026-11-17T12:17:59.486Z"
   },
   "gamestop-digital-flowering-chaos": {
     "status": "unknown",
     "lastAlert": null,
-    "lastCheckedAt": "2026-11-17T02:35:50.818Z"
+    "lastCheckedAt": "2026-11-17T12:18:07.116Z"
   },
   "discovered-amazon-8767db2652": {
     "status": "unknown",
