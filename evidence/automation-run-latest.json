@@ -1,0 +1,92 @@
+{
+  "runCheckedAtUtc": "2026-11-18T10:08:39Z",
+  "localTimeZone": "America/Phoenix",
+  "scanClassification": "verification-incomplete",
+  "verifiedOrderableOffers": 0,
+  "userDealAlerts": 0,
+  "costsIncurredUsd": 0,
+  "paidOrMeteredToolsInvoked": false,
+  "attempts": {
+    "retailersExpected": 7,
+    "retailersAttempted": 7,
+    "coverageMethod": "free public webpage retrieval plus site-specific discovery; web extraction is not interactive purchase verification"
+  },
+  "interactiveBrowser": {
+    "status": "BROWSER NOT AVAILABLE",
+    "details": "Connected browser requires an originating interactive browser context; automation did not have it. Free container HTTP requests also failed DNS resolution."
+  },
+  "provenance": {
+    "independentCurrentCheckoutVerification": false,
+    "webRetailerPageText": "retrieval/crawl, not a user-address-specific checkout",
+    "priorHostedScan": "evidence/latest.json checkedAt 2026-11-18T03:03:47.444Z, not fresh enough to substitute for this run"
+  },
+  "retailers": [
+    {
+      "retailer": "PlayStation Direct",
+      "inspected": true,
+      "status": "product-page-readable-checkout-unverified",
+      "url": "https://direct.playstation.com/en-us/buy-consoles/playstation5-console-1-tb",
+      "observedPrice": null,
+      "reason": "Public product page says See Price; live cart price and shipping to Phoenix not established"
+    },
+    {
+      "retailer": "Best Buy",
+      "inspected": false,
+      "attempted": true,
+      "status": "unreadable",
+      "url": "https://www.bestbuy.com/product/playstation-5-slim-console/JXHQ3CCTYR/sku/6566039",
+      "observedPrice": null,
+      "reason": "Direct page extraction failed with 404; search results are discovery-only"
+    },
+    {
+      "retailer": "Target",
+      "inspected": true,
+      "status": "checkout-unverified",
+      "url": "https://www.target.com/p/playstation-5-nba-2k26-disc-bundle-console/-/A-94907150",
+      "observedPrice": 549.99,
+      "priceText": "$549.99",
+      "reason": "Retailer public page observed, but interactive Phoenix checkout unverified; bundled game value not independently corroborated"
+    },
+    {
+      "retailer": "Walmart",
+      "inspected": true,
+      "status": "wrong-location-context-checkout-unverified",
+      "url": "https://www.walmart.com/ip/17816601985",
+      "observedPrice": 649,
+      "priceText": "Current price is USD$649.00",
+      "sellerText": "Sold and shipped by Walmart.com",
+      "reason": "Public page showed shipping to San Antonio 78288 rather than Phoenix; no eligible effective price or Phoenix checkout"
+    },
+    {
+      "retailer": "Amazon",
+      "inspected": false,
+      "attempted": true,
+      "status": "stale-or-unreadable",
+      "url": "https://www.amazon.com/dp/B0FRGTYSL5",
+      "observedPrice": null,
+      "reason": "Fetched result crawled two weeks earlier; no current purchase-state or Phoenix seller/fulfillment evidence"
+    },
+    {
+      "retailer": "GameStop",
+      "inspected": true,
+      "status": "unavailable-or-unverified-checkout",
+      "url": "https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/sony-playstation-5-slim-console-disc-edition---fortnite-cobalt-star-bundle/20016239.html",
+      "observedPrice": 424.99,
+      "priceText": "$424.99",
+      "conditionText": "Condition New",
+      "availabilityText": "Limited Stock at unavailable; address required to verify delivery area",
+      "reason": "No Phoenix-selected cart/checkout, and public page indicates unavailable stock"
+    },
+    {
+      "retailer": "Costco",
+      "inspected": true,
+      "status": "location-and-checkout-unverified",
+      "url": "https://sameday.costco.com/store/costco/products/83457876-sony-playstation-5-slim-disc-console-dualsense-controller-bundle",
+      "observedPrice": 712.99,
+      "priceText": "$712.99 1 each",
+      "reason": "Public product page only; no Phoenix checkout, and even a $55 extra-controller credit would exceed Disc target"
+    }
+  ],
+  "alertingDecision": "NO ALERT; none meets exact new condition, item, seller, current checkout price and Phoenix fulfillment gate together. This is incomplete verification, not proof there are no offers.",
+  "discoverySupplement": "Ran free retailer-specific and Slickdeals site discovery searches; did not accept any discovery price as purchase evidence"
+}
