@@ -1,0 +1,59 @@
+{
+  "type": "supplemental-discovery-only",
+  "checkedAt": "2026-11-18T11:27:33-07:00",
+  "source": "free-search-and-public-retailer-page-reader",
+  "browser": "BROWSER NOT AVAILABLE",
+  "interactivePurchaseVerification": false,
+  "priceEvidenceAccepted": false,
+  "checkoutEvidenceAccepted": false,
+  "qualifiedVerifiedOffers": 0,
+  "coverageConclusion": "INCOMPLETE - no live Phoenix checkout/fulfillment verification",
+  "retailers": [
+    {
+      "name": "PlayStation Direct",
+      "discoveryAttempted": true,
+      "retailerPageAttempted": true,
+      "inspection": "product-page-readable-checkout-unverified"
+    },
+    {
+      "name": "Best Buy",
+      "discoveryAttempted": true,
+      "retailerPageAttempted": true,
+      "inspection": "retailer-page-404-or-unreadable"
+    },
+    {
+      "name": "Target",
+      "discoveryAttempted": true,
+      "retailerPageAttempted": true,
+      "inspection": "retailer-page-inaccessible"
+    },
+    {
+      "name": "Walmart",
+      "discoveryAttempted": true,
+      "retailerPageAttempted": true,
+      "inspection": "retailer-page-inaccessible"
+    },
+    {
+      "name": "Amazon",
+      "discoveryAttempted": true,
+      "retailerPageAttempted": true,
+      "inspection": "stale-page-content-not-valid-live-evidence"
+    },
+    {
+      "name": "GameStop",
+      "discoveryAttempted": true,
+      "retailerPageAttempted": true,
+      "inspection": "page-readable-no-phoenix-orderability"
+    },
+    {
+      "name": "Costco",
+      "discoveryAttempted": true,
+      "retailerPageAttempted": true,
+      "inspection": "category-page-only-no-confirmed-item"
+    }
+  ],
+  "freeCommunityDiscoveryAttempted": true,
+  "action": "NO_ALERT",
+  "purchaseOrPaymentAttempted": false,
+  "meteredBrowserInvoked": false
+}
