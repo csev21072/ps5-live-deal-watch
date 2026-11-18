@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "description": "Public safety-only watch health; never a deal feed",
+  "updatedAt": "2026-11-18T02:11:39Z",
+  "runs": [
+    {
+      "observedAt": "2026-11-18T02:11:39Z",
+      "localTime": "2026-11-17 19:11 America/Phoenix",
+      "purpose": "Unattended no-spend PS5 Slim Disc/Digital price watch",
+      "evidencePolicy": "No notification without a currently verified retailer-owned cart/checkout for exact NEW seller, SKU, price and Phoenix fulfillment",
+      "freeInteractiveBrowser": "BROWSER NOT AVAILABLE — connected Browser requires originating browser context",
+      "paidBrowserUsed": false,
+      "retailerAttempts": [
+        {
+          "retailer": "PlayStation Direct",
+          "status": "discovery-page-read; purchase-fulfillment-NOT-verified",
+          "candidateDiscoveryURL": "https://direct.playstation.com/en-us/buy-consoles/playstation5-console-1-tb"
+        },
+        {
+          "retailer": "Best Buy",
+          "status": "discovery-page-read; purchase-fulfillment-NOT-verified",
+          "candidateDiscoveryURL": "https://www.bestbuy.com/product/playstation-5-slim-console/6646419"
+        },
+        {
+          "retailer": "Target",
+          "status": "discovery-page-read; purchase-fulfillment-NOT-verified",
+          "candidateDiscoveryURL": "https://www.target.com/p/-/A-90188801"
+        },
+        {
+          "retailer": "Walmart",
+          "status": "discovery-page-read; purchase-fulfillment-NOT-verified",
+          "candidateDiscoveryURL": "https://www.walmart.com/ip/20732122396"
+        },
+        {
+          "retailer": "Amazon",
+          "status": "discovery-attempt-blocked-by-robots; purchase-fulfillment-NOT-verified",
+          "candidateDiscoveryURL": null
+        },
+        {
+          "retailer": "GameStop",
+          "status": "discovery-page-read; purchase-fulfillment-NOT-verified",
+          "candidateDiscoveryURL": "https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/sony-playstation-5-slim-disc-edition-nba-2k26-bundle/20025915.html"
+        },
+        {
+          "retailer": "Costco",
+          "status": "discovery-page-read; purchase-fulfillment-NOT-verified",
+          "candidateDiscoveryURL": "https://www.costco.com/p/-/4000360868"
+        }
+      ],
+      "githubFreeBrowserScan": {
+        "lastCompletedAt": "2026-11-17T21:13:53.454Z",
+        "retailersAttempted": 7,
+        "verifiedOrderable": 0,
+        "coverageIncomplete": true,
+        "source": "evidence/latest.json on audit branch"
+      },
+      "outcome": "COVERAGE INCOMPLETE — no qualifying live orderable offer verified",
+      "userFacingAlert": false,
+      "notes": "Web search and page retrieval only for discovery, never present discovery/cached prices as verified. No login, checkout submission, purchases, account use or metered browser."
+    }
+  ]
+}
