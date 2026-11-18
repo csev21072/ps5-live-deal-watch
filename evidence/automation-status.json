@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "last_automation_discovery_at": "2026-11-18T23:26:31Z",
+  "run_type": "free-discovery-and-prior-hosted-audit-review",
+  "all_seven_retailers_discovery_attempted": true,
+  "discovery_sources": [
+    "free public web search for each retailer",
+    "public community announcement search"
+  ],
+  "discovery_is_purchase_evidence": false,
+  "live_interactive_browser_status": "BROWSER NOT AVAILABLE — requires originating interactive browser context",
+  "latest_confirmed_hosted_scan_at": "2026-11-18T20:59:25.247Z",
+  "hosted_scan_retailers_attempted": 7,
+  "hosted_scan_has_complete_checkout_coverage": false,
+  "retailer_statuses": [
+    {
+      "retailer": "PlayStation Direct",
+      "discovery_attempted": true,
+      "current_run_checkout_inspected": false,
+      "latest_hosted_status": "product-pages-inspected-checkout-unverified"
+    },
+    {
+      "retailer": "Best Buy",
+      "discovery_attempted": true,
+      "current_run_checkout_inspected": false,
+      "latest_hosted_status": "all-pages-unreadable-or-blocked"
+    },
+    {
+      "retailer": "Target",
+      "discovery_attempted": true,
+      "current_run_checkout_inspected": false,
+      "latest_hosted_status": "product-pages-inspected-checkout-unverified"
+    },
+    {
+      "retailer": "Walmart",
+      "discovery_attempted": true,
+      "current_run_checkout_inspected": false,
+      "latest_hosted_status": "all-pages-unreadable-or-blocked"
+    },
+    {
+      "retailer": "Amazon",
+      "discovery_attempted": true,
+      "current_run_checkout_inspected": false,
+      "latest_hosted_status": "product-pages-inspected-checkout-unverified"
+    },
+    {
+      "retailer": "GameStop",
+      "discovery_attempted": true,
+      "current_run_checkout_inspected": false,
+      "latest_hosted_status": "product-pages-inspected-checkout-unverified"
+    },
+    {
+      "retailer": "Costco",
+      "discovery_attempted": true,
+      "current_run_checkout_inspected": false,
+      "latest_hosted_status": "no-product-confirmed"
+    }
+  ],
+  "verified_orderable_offers": 0,
+  "action": "NO ALERT — checkout, seller, current price, condition and Phoenix fulfillment not jointly verified",
+  "user_notification": false,
+  "cost_paid_usd": 0,
+  "notes": "This record distinguishes a current discovery attempt from the latest preceding hosted Playwright scan. No live cart or checkout was accessible in this automation context. Search excerpts cannot support price or availability claims."
+}
