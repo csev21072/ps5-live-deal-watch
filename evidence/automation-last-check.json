@@ -1,87 +1,76 @@
 {
-  "checkedAt": "2026-11-17T23:34:56.027Z",
-  "locationContext": "Phoenix, AZ, US, ZIP 85001",
-  "runMethod": "free web discovery queries plus read-only GitHub scanner audit",
-  "interactiveBrowser": "BROWSER NOT AVAILABLE: connected browser refused access in this unattended run",
+  "checkedAt": "2026-11-18T16:23:21.589Z",
+  "locationContext": "Phoenix, AZ, United States; ZIP 85001",
+  "runMethod": "free web discovery of all seven named retailers, read-only GitHub scanner audit, free browser connector attempt",
+  "interactiveBrowser": "BROWSER NOT AVAILABLE: connector requires originating browser context; noninteractive scheduled run cannot access it",
   "paidToolsUsed": false,
+  "paidBrowserCalls": 0,
   "searchResultAsPriceEvidence": false,
   "retailerDiscoveryAttempts": 7,
   "retailerOwnedOrderabilityConfirmed": 0,
   "verifiedQualifyingOffers": 0,
   "verificationCoverageIncomplete": true,
-  "noAlertReason": "Every offer lacks independently observed current retailer-owned checkout with exact NEW seller, price, SKU and Phoenix fulfillment",
+  "priorAutomatedScannerLatest": "2026-11-18T12:03:51.112Z",
+  "priorScannerCoverage": "7/7 retailers attempted, but Best Buy unreadable, Walmart blocked, and no checkout verified",
+  "verification": "Exact model, NEW condition, live price, exact seller/shipper, exact matching SKU cart, and Phoenix shipping/pickup must ALL be confirmed. Any unknown means fail; no candidates passed.",
+  "noAlertReason": "No independently observed contemporaneous retailer-owned full checkout orderability confirmation; no qualifying offer established",
   "retailerResults": [
     {
       "retailer": "PlayStation Direct",
       "discoveryAttempted": true,
-      "discoveryResult": "official-console-pages-found",
+      "discoveryResult": "free web search attempted; official retailer page surfaced but no current cart proof",
+      "priorScannerResult": "2 product pages read; no checkout proof",
       "retailerOwnedInteractivePurchaseVerified": false,
-      "unverifiedReason": "No independent current checkout price, seller, NEW condition and Phoenix fulfillment capture in this run"
+      "unverifiedReason": "Current selected SKU, NEW condition, seller, checkout price and Phoenix fulfillment not proven together"
     },
     {
       "retailer": "Best Buy",
       "discoveryAttempted": true,
-      "discoveryResult": "search-attempted-no-reliable-current-product-page",
+      "discoveryResult": "free web search attempted; no independently verified current purchase surface",
+      "priorScannerResult": "2 pages blocked or unreadable",
       "retailerOwnedInteractivePurchaseVerified": false,
-      "unverifiedReason": "No readable current retailer-owned purchase or checkout confirmation"
+      "unverifiedReason": "Current selected SKU, NEW condition, seller, checkout price and Phoenix fulfillment not proven together"
     },
     {
       "retailer": "Target",
       "discoveryAttempted": true,
-      "discoveryResult": "indexed-retailer-pages-found-discovery-only",
+      "discoveryResult": "free web search attempted; no independently verified current purchase surface",
+      "priorScannerResult": "2 product pages read; no checkout proof",
       "retailerOwnedInteractivePurchaseVerified": false,
-      "unverifiedReason": "No live ZIP-specific cart or checkout proof; indexed Add to Cart discarded"
+      "unverifiedReason": "Current selected SKU, NEW condition, seller, checkout price and Phoenix fulfillment not proven together"
     },
     {
       "retailer": "Walmart",
       "discoveryAttempted": true,
-      "discoveryResult": "indexed-retailer-bundles-found-discovery-only",
+      "discoveryResult": "free web search attempted; no independently verified current purchase surface",
+      "priorScannerResult": "1 page blocked",
       "retailerOwnedInteractivePurchaseVerified": false,
-      "unverifiedReason": "No live seller, exact qualifying price or Phoenix orderability verification"
+      "unverifiedReason": "Current selected SKU, NEW condition, seller, checkout price and Phoenix fulfillment not proven together"
     },
     {
       "retailer": "Amazon",
       "discoveryAttempted": true,
-      "discoveryResult": "robots-blocked-for-current-direct-access",
+      "discoveryResult": "free web search attempted; direct retrieval blocked by robots.txt",
+      "priorScannerResult": "1 page attempted; product and checkout unconfirmed",
       "retailerOwnedInteractivePurchaseVerified": false,
-      "unverifiedReason": "Browser unavailable and Amazon source blocked; no cart price/fulfillment"
+      "unverifiedReason": "Current selected SKU, NEW condition, seller, checkout price and Phoenix fulfillment not proven together"
     },
     {
       "retailer": "GameStop",
       "discoveryAttempted": true,
-      "discoveryResult": "search-attempted-no-new-qualifying-live-checkout-evidence",
+      "discoveryResult": "free web search attempted; no independently verified current purchase surface",
+      "priorScannerResult": "4 product pages read; no checkout proof",
       "retailerOwnedInteractivePurchaseVerified": false,
-      "unverifiedReason": "Previous product observations have no new independent orderable-cart proof"
+      "unverifiedReason": "Current selected SKU, NEW condition, seller, checkout price and Phoenix fulfillment not proven together"
     },
     {
       "retailer": "Costco",
       "discoveryAttempted": true,
-      "discoveryResult": "official-two-controller-product-pages-found-discovery-only",
+      "discoveryResult": "free web search attempted; no independently verified member purchase state",
+      "priorScannerResult": "2 pages attempted; products unconfirmed",
       "retailerOwnedInteractivePurchaseVerified": false,
-      "unverifiedReason": "No presently verified membership price or Phoenix-specific cart fulfillment"
+      "unverifiedReason": "Current selected SKU, NEW condition, seller, checkout price and Phoenix fulfillment not proven together"
     }
   ],
-  "discoveryCandidates": [
-    {
-      "retailer": "Costco",
-      "url": "https://www.costco.com/p/-/4000360868",
-      "evidence": "discovery-only official two-controller digital bundle",
-      "candidateVerification": "FAILED: current price, membership and Phoenix fulfillment not verified"
-    },
-    {
-      "retailer": "Costco",
-      "url": "https://sameday.costco.com/store/costco/products/83457876-sony-playstation-5-slim-disc-console-dualsense-controller-bundle",
-      "evidence": "discovery-only official two-controller disc bundle",
-      "candidateVerification": "FAILED: current price, membership and Phoenix fulfillment not verified"
-    },
-    {
-      "retailer": "PlayStation Direct",
-      "url": "https://direct.playstation.com/en-us/buy-consoles/playstation5-digital-edition-console-825-gb",
-      "evidence": "official product page found",
-      "candidateVerification": "FAILED: live checkout price and Phoenix fulfillment not verified"
-    }
-  ],
-  "priorAutomatedScannerLatest": "2026-11-17T21:13:53.454Z",
-  "priorScannerStatus": "completed successfully but checkout coverage incomplete, zero qualifying alerts",
   "userFacingNotification": false
 }
