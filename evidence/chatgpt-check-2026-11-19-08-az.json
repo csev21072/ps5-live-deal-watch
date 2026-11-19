@@ -1,0 +1,99 @@
+{
+  "kind": "zero-spend-discovery-only-supplement",
+  "dateLocal": "2026-11-19",
+  "localTimeWindow": "08:09-08:25 America/Phoenix (approximate; not a checkout timestamp)",
+  "recordedAtUtc": "2026-11-19T15:12:13.652Z",
+  "currentRetailerOwnedCheckoutVerified": false,
+  "browserVerification": "BROWSER NOT AVAILABLE — connected read-only browser returned missing originating context",
+  "method": "Free web-based retailer page retrieval; results can include cached crawls and are not live orderability proof",
+  "retailers": [
+    {
+      "retailer": "PlayStation Direct",
+      "url": "https://direct.playstation.com/en-us/buy-consoles/playstation5-digital-edition-console-825-gb",
+      "attempted": true,
+      "checkoutVerified": false,
+      "qualifyingVerifiedOffer": false,
+      "status": "retailer-page-read-no-checkout",
+      "price": null,
+      "reason": "Retailer current purchase-state and Phoenix fulfillment not established; other catalog snapshots above thresholds"
+    },
+    {
+      "retailer": "Best Buy",
+      "url": "https://www.bestbuy.com/product/playstation-5-slim-console-digital-edition-825gb/JXHQ37TYYL",
+      "attempted": true,
+      "checkoutVerified": false,
+      "qualifyingVerifiedOffer": false,
+      "status": "retailer-page-read-account-required",
+      "price": null,
+      "reason": "No Phoenix checkout verification, sign-in required to purchase; cannot use static page"
+    },
+    {
+      "retailer": "Target",
+      "url": "https://www.target.com/p/-/A-93150909",
+      "attempted": true,
+      "checkoutVerified": false,
+      "qualifyingVerifiedOffer": false,
+      "status": "retailer-page-read-no-checkout",
+      "price": null,
+      "reason": "Digital NBA 2K25 listing page displayed $499.99, above unadjusted $450 target; Phoenix checkout not observed"
+    },
+    {
+      "retailer": "Walmart",
+      "url": "https://www.walmart.com/ip/17816601985",
+      "attempted": true,
+      "checkoutVerified": false,
+      "qualifyingVerifiedOffer": false,
+      "status": "retailer-page-read-no-checkout",
+      "price": null,
+      "reason": "Disc product page showed third-party Entrotek offer far above target and location context outside Phoenix; not verified orderable for Phoenix"
+    },
+    {
+      "retailer": "Amazon",
+      "url": "https://www.amazon.com/dp/B0FRGTYSL5",
+      "attempted": true,
+      "checkoutVerified": false,
+      "qualifyingVerifiedOffer": false,
+      "status": "retailer-page-crawl-stale",
+      "price": null,
+      "reason": "Amazon snapshot is about two weeks old; live seller/cart, condition and Phoenix fulfillment unverified"
+    },
+    {
+      "retailer": "GameStop",
+      "url": "https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/sony-playstation-5-slim-console-digital-edition---fortnite-flowering-chaos-bundle/20028327.html",
+      "attempted": true,
+      "checkoutVerified": false,
+      "qualifyingVerifiedOffer": false,
+      "status": "retailer-page-read-availability-not-confirmed",
+      "price": null,
+      "reason": "GameStop Digital Flowering Chaos page shows $399.99 NEW and unavailable fulfillment; no Phoenix selectable orderability/cart; do not alert"
+    },
+    {
+      "retailer": "Costco",
+      "url": "https://sameday.costco.com/store/costco/products/94684554-sony-playstation-5-digital-slim-console-dualsense-controller-bundle",
+      "attempted": true,
+      "checkoutVerified": false,
+      "qualifyingVerifiedOffer": false,
+      "status": "retailer-page-read-no-checkout",
+      "price": null,
+      "reason": "Same-day Digital two-controller page showed $662.99, above conservative $450 + $55 allowance; Phoenix/club checkout unverified"
+    }
+  ],
+  "verificationGate": {
+    "exactCurrentPrice": false,
+    "condition": false,
+    "seller": false,
+    "selectedPhoenixFulfillment": false,
+    "selectedCartItem": false
+  },
+  "alertIssued": false,
+  "reason": "Verification coverage incomplete; no candidate passed all mandatory retailer-owned active-checkout conditions. No external purchase actions or paid/metered tools.",
+  "evidenceRefs": [
+    "turn652796view0",
+    "turn652796view1",
+    "turn652796view2",
+    "turn652796view3",
+    "turn652796view4",
+    "turn652796view5",
+    "turn652796view6"
+  ]
+}
