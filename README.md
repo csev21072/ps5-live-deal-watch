@@ -4,7 +4,7 @@ A $0 GitHub Actions + Playwright tracker for NEW PS5 Slim consoles, with strict 
 
 ## Current status — November 19, 2026
 
-- Local baseline: 302 tests passed. Current development: 315 tests passed plus the offline notification simulation. Hosted validation of this revision must be checked separately in Actions.
+- Baseline: 302 tests passed. Revision `76f5d7c` passed **315/315 hosted tests** and the offline simulation in [CI run 44559093287](https://github.com/csev21072/ps5-live-deal-watch/actions/runs/44559093287).
 - The latest inspected audit (November 19, 12:00 UTC / 5:00 AM Phoenix) attempted 16 product pages across seven retailers. It recorded **zero verified offers** and zero completed cart inspections.
 - The seven-day audit contained 18 completed scan entries, 12 labeled scheduled, and a longest scheduled-completion gap of **10.49 hours**. The Actions list returned 11 distinct scheduled run IDs; audit entries are not a count of unique Actions runs.
 - Cron is configured hourly at minute 32. **Observed execution has not been reliably hourly.** Successful runs alone do not establish coverage, orderability, notification delivery, or the cause of scheduling gaps.
@@ -42,6 +42,8 @@ The scan's **Run workflow** form offers `sony_cart_research`: `none` (default), 
 - The entire research run is barred from deal alerts, both in the verdict and the workflow publisher step.
 - No checkout button is clicked, address entered, login attempted, payment supplied, or order placed. Cart interaction uses an isolated browser context discarded when the run ends.
 - Public evidence retains only status, counts, and booleans about matching cart rows, enabled checkout, and selected Phoenix fulfillment. No raw cart, address, account, cookies, or browser exception text is published.
+
+The first manual research run is **not yet launched**. Browser-session failures and a changing foreground window prevented a reliable dispatch; the Actions API confirmed no manual run was created. Launch via the existing workflow form when browser control is stable.
 
 This removes the need to wait for a sale to investigate Sony's cart structure. It does **not** implement or validate a positive checkout adapter. Missing seller, condition, SKU, or Phoenix fulfillment still needs real observed evidence before any alert path is enabled.
 
