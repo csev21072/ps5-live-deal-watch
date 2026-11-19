@@ -39,9 +39,10 @@ export async function probeSonyCart(page,product,sonyFacts,priceText,sonyPriceEv
     const body=(await page.locator('body').innerText({timeout:5000}).catch(()=>''));
     if(/captcha|verify you are human|access denied|press\s*&\s*hold/i.test(body))
       return {...result,status:'blocked-after-cart'};
-    if(await cartReview.count().catch(()=>0)!==1 || !(await cartReview.isVisible().catch(()=>false)))
-      return {...result,status:'cart-add-unconfirmed'};
-    const href=await cartReview.getAttribute('href');
+    const reviewVisible=await cartReview.count().catch(()=>0)===1 && await cartReview.isVisible().catch(()=>false);
+    // The hosted browser may not render the slide-out cart. Its absence does
+    // not prove addition or failure: inspect the live-observed cart route.
+    const href=reviewVisible?await cartReview.getAttribute('href'):'/en-us/checkout?tab=cart';
     const reviewUrl=new URL(href??'',product.url);
     // This observed route is the CART review tab; never navigate to shipping/payment.
     if(reviewUrl.origin!=='https://direct.playstation.com'||reviewUrl.pathname!=='/en-us/checkout'||
@@ -59,7 +60,7 @@ export async function probeSonyCart(page,product,sonyFacts,priceText,sonyPriceEv
       cartUrl,cartText,productUrl:product.url,
       productHeading:sonyFacts.productHeading,priceText
     });
-    return {...result,status:'cart-inspected-unverified',
+    return {...result,status:domControls.matchingRows?.length===1?'cart-inspected-unverified':'cart-inspected-item-unconfirmed',
       cartResearch:{
         url:publicRetailerUrl(cartUrl,'direct.playstation.com'),checkedAt:new Date().toISOString(),
         itemMatch:match,

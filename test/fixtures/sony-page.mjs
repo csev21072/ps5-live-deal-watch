@@ -12,7 +12,7 @@ export function sonyPage(options={}) {
     getByRole:(role)=>role==='heading'?{}:review,
     goto:async url=>{calls.urls.push(url);stage=2;},
     url:()=>options.redirect??'https://direct.playstation.com/en-us/checkout?tab=cart',
-    evaluate:async()=>options.observation??{rows:[],checkoutEnabled:true}
+    evaluate:async()=>options.observation??{rows:[{sku:'1000049888',title:'PlayStation 5 Console - 1 TB',priceText:'$449.00',quantity:'1'}],checkoutEnabled:true}
   };
   return {page,calls};
 }

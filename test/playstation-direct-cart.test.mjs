@@ -66,7 +66,14 @@ test('cart navigation cannot reach payment, shipping, or another host',async()=>
  for(const href of ['/en-us/checkout?tab=payment','/en-us/checkout?tab=shipping','https://example.org/en-us/checkout?tab=cart','/en-us/checkout?tab=cart&token=secret']){
  const {page,calls}=sonyPage({href});assert.equal((await probe(page,product,facts,'$449.00')).status,'cart-review-url-unexpected');assert.equal(calls.urls.length,0);}
 });
-test('CAPTCHA or unconfirmed cart never advances',async()=>{
- for(const options of [{blocked:true},{confirmed:false}]){const {page,calls}=sonyPage(options);
- const r=await probe(page,product,facts,'$449.00');assert.ok(['blocked-after-cart','cart-add-unconfirmed'].includes(r.status));assert.equal(calls.urls.length,0);}
+test('CAPTCHA never advances to cart',async()=>{
+ const {page,calls}=sonyPage({blocked:true});
+ const r=await probe(page,product,facts,'$449.00');assert.equal(r.status,'blocked-after-cart');assert.equal(calls.urls.length,0);
+});
+test('missing slide-out cart falls back to observed cart route, never claims addition',async()=>{
+ const {page,calls}=sonyPage({confirmed:false,observation:{rows:[],checkoutEnabled:false}});
+ const r=await probe(page,product,facts,'$449.00');
+ assert.deepEqual(calls.urls,['https://direct.playstation.com/en-us/checkout?tab=cart']);
+ assert.equal(calls.clicks,1);assert.equal(r.status,'cart-inspected-item-unconfirmed');
+ assert.equal(r.verifiedPurchase,false);assert.equal(r.cartResearch.domControls.matchingRows.length,0);
 });
