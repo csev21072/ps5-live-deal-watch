@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "runStartedAt": "2026-11-19T10:26:19-07:00",
+  "purpose": "Silent fail-closed supplemental PS5 price/availability research; not a verified deal record",
+  "browserAccess": "BROWSER NOT AVAILABLE — connected browser requires an originating browser context; no interactive cart or Phoenix fulfillment verification was possible",
+  "costlyToolsUsed": false,
+  "cashSpent": false,
+  "discoveryOnlySourcesUsed": true,
+  "latestIndependentScanner": {
+    "checkedAt": "2026-11-19T16:49:03.200Z",
+    "scanRunId": "44569779509",
+    "retailersAttempted": 7,
+    "verifiedOrderableOffers": 0,
+    "incompleteCoverage": true
+  },
+  "independentChecks": [
+    {
+      "retailer": "PlayStation Direct",
+      "attempted": true,
+      "status": "INSPECTED — holiday page readable; no retailer-owned interactive checkout corroboration",
+      "retailerUrl": "https://direct.playstation.com/en-us/deals/black-friday",
+      "candidateResult": "UNVERIFIED — no verified matching checkout"
+    },
+    {
+      "retailer": "Best Buy",
+      "attempted": true,
+      "status": "UNREADABLE — directly attempted recorded console URL, 404",
+      "retailerUrl": "https://www.bestbuy.com/product/playstation-5-slim-console/JXHQ3CCTYR/sku/6566039",
+      "candidateResult": "UNKNOWN — no live fulfillment proof"
+    },
+    {
+      "retailer": "Target",
+      "attempted": true,
+      "status": "INSPECTED — retailer product page readable; live cart/Phoenix shipping unverified",
+      "retailerUrl": "https://www.target.com/p/playstation-5-nba-2k26-disc-bundle-console/-/A-94907150",
+      "candidateResult": "FAIL — bundle not independently demonstrated below effective-price threshold and checkout unverified"
+    },
+    {
+      "retailer": "Walmart",
+      "attempted": true,
+      "status": "BLOCKED — direct retailer search URL inaccessible; indexed/search results never count",
+      "retailerUrl": "https://www.walmart.com/search?q=playstation%205%20slim%20two%20controller",
+      "candidateResult": "UNKNOWN — no current verified price, seller, or fulfillment"
+    },
+    {
+      "retailer": "Amazon",
+      "attempted": true,
+      "status": "STALE/UNREADABLE — retailer-owned URL returned 2-week-old content; no live cart",
+      "retailerUrl": "https://www.amazon.com/dp/B0CL61F39H",
+      "candidateResult": "UNKNOWN — no current seller/price/Phoenix fulfillment proof"
+    },
+    {
+      "retailer": "GameStop",
+      "attempted": true,
+      "status": "INSPECTED — current page displayed NEW but fulfillment locality and cart unconfirmed; retailer text includes unavailable",
+      "retailerUrl": "https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/sony-playstation-5-slim-console-disc-edition---fortnite-cobalt-star-bundle/20016239.html",
+      "candidateResult": "FAIL — Phoenix ship-to-home/pickup/orderable cart not verified"
+    },
+    {
+      "retailer": "Costco",
+      "attempted": true,
+      "status": "UNREADABLE — retailer search URL inaccessible",
+      "retailerUrl": "https://www.costco.com/CatalogSearch?dept=All&keyword=ps5",
+      "candidateResult": "UNKNOWN — membership/current price/checkout unverified"
+    }
+  ],
+  "freeCommunityDiscovery": {
+    "status": "ATTEMPTED — public Slickdeals query inaccessible",
+    "url": "https://slickdeals.net/newsearch.php?q=PS5+slim+controller&searcharea=deals&searchin=first&sort=newest"
+  },
+  "checklist": {
+    "sku": "unknown or failed for all candidates",
+    "newCondition": "not independently established for all candidates",
+    "exactLivePrice": "partial only; no qualifying verified cart price",
+    "seller": "not independently established for all",
+    "phoenixFulfillment": "not proven",
+    "matchingLiveCart": "not proven",
+    "availabilityConflicts": "unresolved",
+    "conservativeBundleValue": "no qualifying bundle value independently proven"
+  },
+  "result": "VERIFICATION COVERAGE INCOMPLETE — not an adequately verified no-deals market conclusion",
+  "qualifyingVerifiedOffers": 0,
+  "alertIssued": false,
+  "explanation": "No candidate met all necessary live retailer checkout, NEW condition, seller, price, and Phoenix fulfillment requirements; no paid services or purchase actions used."
+}
