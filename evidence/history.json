@@ -209,5 +209,17 @@
     "verifiedOffers": 0,
     "incompleteCoverage": true,
     "gapSincePreviousHours": 9.21
+  },
+  {
+    "checkedAt": "2026-11-19T16:33:40.204Z",
+    "triggerType": "workflow_dispatch",
+    "attemptedPages": 16,
+    "retailersAttempted": 7,
+    "readableProductPages": 10,
+    "blockedPages": 3,
+    "unreadablePages": 2,
+    "verifiedOffers": 0,
+    "incompleteCoverage": true,
+    "gapSincePreviousHours": 4.56
   }
 ]
