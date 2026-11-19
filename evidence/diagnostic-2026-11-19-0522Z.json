@@ -1,0 +1,101 @@
+{
+  "checkedAt": "2026-11-19T05:22:44Z",
+  "checker": "free-web-diagnostic",
+  "locationContext": "Phoenix 85001 requested; no browser-session location selection or checkout proof",
+  "standard": "No deal alert without current retailer-owned item-specific cart/checkout evidence and Phoenix orderable fulfillment. Web text is diagnostic only.",
+  "zeroSpend": true,
+  "browserCheckoutAvailable": false,
+  "retailers": [
+    {
+      "retailer": "PlayStation Direct",
+      "url": "https://direct.playstation.com/en-us/buy-consoles/playstation5-console-1-tb",
+      "attempted": true,
+      "readable": true,
+      "status": "product-page-no-current-checkout-verified",
+      "source": "web open turn172745view0",
+      "priceVerified": false,
+      "fulfillmentVerified": false,
+      "qualifies": false
+    },
+    {
+      "retailer": "Best Buy",
+      "url": "https://www.bestbuy.com/product/playstation-5-slim-console/JXHQ3CCTYR/sku/6566039",
+      "attempted": true,
+      "readable": false,
+      "status": "404-or-unreadable",
+      "source": "web open turn172745view1",
+      "priceVerified": false,
+      "fulfillmentVerified": false,
+      "qualifies": false
+    },
+    {
+      "retailer": "Target",
+      "url": "https://www.target.com/p/playstation-5-nba-2k26-disc-bundle-console/-/A-94907150",
+      "attempted": true,
+      "readable": false,
+      "status": "not-accessible-via-free-web-tool",
+      "source": "web open turn172745view2",
+      "priceVerified": false,
+      "fulfillmentVerified": false,
+      "qualifies": false
+    },
+    {
+      "retailer": "Walmart",
+      "url": "https://www.walmart.com/ip/17816601985",
+      "attempted": true,
+      "readable": true,
+      "status": "retailer-text-price-above-threshold-and-non-Phoenix-location",
+      "source": "web open turn172745view3; find turn678732view2",
+      "observedPagePrice": 849.99,
+      "observedSeller": "Entrotek third party",
+      "locationObserved": "Sacramento 95829, not Phoenix",
+      "fulfillmentVerified": false,
+      "qualifies": false
+    },
+    {
+      "retailer": "Amazon",
+      "url": "https://www.amazon.com/dp/B0FRGTYSL5",
+      "attempted": true,
+      "readable": false,
+      "status": "cached-two-week-old-html-not-live-purchase-state",
+      "source": "web open turn172745view4",
+      "priceVerified": false,
+      "fulfillmentVerified": false,
+      "qualifies": false
+    },
+    {
+      "retailer": "GameStop",
+      "url": "https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/sony-playstation-5-slim-console-disc-edition---fortnite-cobalt-star-bundle/20016239.html",
+      "attempted": true,
+      "readable": true,
+      "status": "product-page-says-unavailable-and-no-Phoenix-checkout-confirmation",
+      "source": "web open turn172745view5; find turn678732view0",
+      "observedPagePrice": 424.99,
+      "observedCondition": "New",
+      "fulfillmentVerified": false,
+      "qualifies": false
+    },
+    {
+      "retailer": "Costco",
+      "url": "https://sameday.costco.com/store/costco/products/83457876-sony-playstation-5-slim-disc-console-dualsense-controller-bundle",
+      "attempted": true,
+      "readable": true,
+      "status": "displayed-two-controller-price-above-threshold-and-checkout-not-confirmed",
+      "source": "web open turn172745view6",
+      "observedPagePrice": 712.99,
+      "extraDualSenseCreditCap": 55,
+      "fulfillmentVerified": false,
+      "qualifies": false
+    }
+  ],
+  "freeCommunityDiscovery": {
+    "source": "https://slickdeals.net/deals/ps5-deals/",
+    "status": "inspected-free-community-page-no-console-candidate-established",
+    "usedForPriceProof": false
+  },
+  "result": {
+    "verifiedOrderableOffers": 0,
+    "coverageIncomplete": true,
+    "notify": false
+  }
+}
