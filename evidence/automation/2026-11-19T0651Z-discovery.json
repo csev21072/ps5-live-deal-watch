@@ -1,0 +1,128 @@
+{
+  "schema": "ps5-discovery-only-watch-v1",
+  "runStartedAtUTC": "2026-11-19T06:49:49Z",
+  "recordedAtUTC": "2026-11-19T06:52:23.226Z",
+  "strictZeroSpend": true,
+  "paidBrowserOperationsUsed": false,
+  "method": "Free indexed URL discovery only; no search result, feed, cache, snippet, or product URL accepted as current purchase evidence.",
+  "interactiveBrowser": "BROWSER NOT AVAILABLE — read-only connected browser requires originating browser context; not available in unattended run.",
+  "coverage": {
+    "retailersExpected": 7,
+    "retailersDiscoveryAttempted": 7,
+    "retailersWithVerifiedActivePhoenixCheckout": 0,
+    "incompletePurchaseStateCoverage": true,
+    "retailers": [
+      {
+        "retailer": "PlayStation Direct",
+        "discoveryAttempted": true,
+        "liveProductPageCheckout": false,
+        "disposition": "Public product pages found; no current retailer-owned cart/checkout and Phoenix fulfillment for a qualifying new console",
+        "sourceUrls": [
+          "https://direct.playstation.com/en-us/hardware/ps5",
+          "https://direct.playstation.com/en-us/buy-consoles/playstation5-console-1-tb",
+          "https://direct.playstation.com/en-us/buy-consoles/playstation5-digital-edition-console-825-gb"
+        ]
+      },
+      {
+        "retailer": "Best Buy",
+        "discoveryAttempted": true,
+        "liveProductPageCheckout": false,
+        "disposition": "Retailer product pages surfaced by public search, but indexed content and non-Phoenix location are not current Phoenix checkout verification",
+        "sourceUrls": [
+          "https://www.bestbuy.com/product/playstation-5-slim-console/6646419",
+          "https://www.bestbuy.com/product/playstation-5-slim-console-digital-edition-825gb-playstation-5/6646420"
+        ]
+      },
+      {
+        "retailer": "Target",
+        "discoveryAttempted": true,
+        "liveProductPageCheckout": false,
+        "disposition": "Retailer-targeted discovery attempted; no eligible SKU with complete first-party current checkout and Phoenix fulfillment confirmed",
+        "sourceUrls": []
+      },
+      {
+        "retailer": "Walmart",
+        "discoveryAttempted": true,
+        "liveProductPageCheckout": false,
+        "disposition": "Public indexed Walmart listing located but stale and not a retailer-owned active Phoenix checkout; seller and fulfillment not validated",
+        "sourceUrls": [
+          "https://www.walmart.com/ip/17816601985"
+        ]
+      },
+      {
+        "retailer": "Amazon",
+        "discoveryAttempted": true,
+        "liveProductPageCheckout": false,
+        "disposition": "Amazon console URLs found but interactive retailer cart/current price/seller/NEW condition/Phoenix fulfillment not readable in this run; sign-in surfaced",
+        "sourceUrls": [
+          "https://www.amazon.com/dp/B0FRGMYJMG"
+        ]
+      },
+      {
+        "retailer": "GameStop",
+        "discoveryAttempted": true,
+        "liveProductPageCheckout": false,
+        "disposition": "Public retailer-owned pages show attractive listed amounts but availability is unconfirmed or explicitly unavailable; checkout in Phoenix unverified",
+        "sourceUrls": [
+          "https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/sony-playstation-5-slim-digital-edition-825gb---fortnite-cobalt-star-bundle/417155.html",
+          "https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/sony-playstation-5-slim-console-disc-edition---fortnite-cobalt-star-bundle/417154.html"
+        ]
+      },
+      {
+        "retailer": "Costco",
+        "discoveryAttempted": true,
+        "liveProductPageCheckout": false,
+        "disposition": "Retailer-targeted discovery attempted; no qualifying two-controller bundle with verifiable membership price and Phoenix checkout",
+        "sourceUrls": []
+      }
+    ]
+  },
+  "lastRepositoryScannerAudit": {
+    "checkedAtUTC": "2026-11-19T02:47:42.020Z",
+    "verifiedOffers": 0,
+    "retailersAttempted": 7,
+    "incompleteCoverage": true,
+    "source": "audit branch evidence/latest.json; not a verification performed by this run"
+  },
+  "candidates": [
+    {
+      "retailer": "GameStop",
+      "sourceUrl": "https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/sony-playstation-5-slim-console-disc-edition---fortnite-cobalt-star-bundle/417154.html",
+      "edition": "disc",
+      "bundle": "Fortnite Cobalt Star",
+      "sku": "417154",
+      "observedIndexedPriceText": "$424.99 (not current price verification)",
+      "currentRetailerPriceVerified": false,
+      "newConditionText": "Condition New (indexed retailer page; not checkout-confirmed)",
+      "sellerVerified": false,
+      "controllersObserved": 1,
+      "storageObserved": "1 TB",
+      "discDriveObserved": true,
+      "phoenixFulfillmentVerified": false,
+      "checkoutObserved": false,
+      "result": "FAIL — retailer-owned indexed text explicitly says item currently not available online; no selected Phoenix pickup/checkout; seller unverified",
+      "alert": false
+    },
+    {
+      "retailer": "GameStop",
+      "sourceUrl": "https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/sony-playstation-5-slim-digital-edition-825gb---fortnite-cobalt-star-bundle/417155.html",
+      "edition": "digital",
+      "bundle": "Fortnite Cobalt Star",
+      "sku": "417155",
+      "observedIndexedPriceText": "$374.99 (not current price verification)",
+      "currentRetailerPriceVerified": false,
+      "newConditionText": "Condition New (indexed retailer page; not checkout-confirmed)",
+      "sellerVerified": false,
+      "controllersObserved": 1,
+      "storageObserved": "825 GB (page sections inconsistent)",
+      "discDriveObserved": false,
+      "phoenixFulfillmentVerified": false,
+      "checkoutObserved": false,
+      "result": "FAIL — location availability and active Phoenix checkout unverified; shipping/pickup not positively confirmed",
+      "alert": false
+    }
+  ],
+  "alertsTriggered": 0,
+  "notifyUser": false,
+  "verificationResult": "COVERAGE INCOMPLETE — NO QUALIFIED, LIVE ORDERABLE DEAL PROVEN"
+}
