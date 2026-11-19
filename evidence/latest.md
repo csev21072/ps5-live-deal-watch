@@ -24,4 +24,4 @@ A successful scan does **not** mean all retailers were readable or Phoenix check
 | Costco | costco-disc-two-controller | No alert: product-not-confirmed |
 | Costco | costco-digital-two-controller | No alert: product-not-confirmed |
 | Amazon | discovered-amazon-6a53b6951e | No alert: price-unreadable |
-| Amazon | discovered-amazon-b87edc0988 | No alert: price-unreadable |
+| Amazon | discovered-amazon-f12ef92ed5 | No alert: price-unreadable |
