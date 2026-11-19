@@ -1,0 +1,82 @@
+{
+  "checkedAt": "2026-11-19T10:15:09.813Z",
+  "localRunHour": "2026-11-19 03 America/Phoenix",
+  "zeroSpend": true,
+  "interactiveBrowser": "BROWSER NOT AVAILABLE — originating browser context required",
+  "verificationMethod": "free read-only official webpage retrieval, not interactive checkout",
+  "coverage": {
+    "retailersAttempted": 7,
+    "retailersFullyVerified": 0,
+    "complete": false,
+    "notes": "Attempts do not prove successful retailer coverage"
+  },
+  "retailers": [
+    {
+      "retailer": "PlayStation Direct",
+      "url": "https://direct.playstation.com/en-us/buy-consoles/playstation5-console-1-tb",
+      "status": "retailer-page-readable-but-dynamic-price-and-phoenix-fulfillment-unverified",
+      "livePhoenixPurchaseVerified": false,
+      "qualifyingOffers": 0
+    },
+    {
+      "retailer": "Best Buy",
+      "url": "https://www.bestbuy.com/product/playstation-5-slim-console/JXHQ3CCTYR/sku/6566039",
+      "status": "product-url-unavailable-to-reader-404",
+      "livePhoenixPurchaseVerified": false,
+      "qualifyingOffers": 0
+    },
+    {
+      "retailer": "Target",
+      "url": "https://www.target.com/p/playstation-5-nba-2k26-disc-bundle-console/-/A-94907150",
+      "status": "retailer-page-unreadable",
+      "livePhoenixPurchaseVerified": false,
+      "qualifyingOffers": 0
+    },
+    {
+      "retailer": "Walmart",
+      "url": "https://www.walmart.com/search?q=playstation%205%20slim%20console",
+      "status": "retailer-page-unreadable",
+      "livePhoenixPurchaseVerified": false,
+      "qualifyingOffers": 0
+    },
+    {
+      "retailer": "Amazon",
+      "url": "https://www.amazon.com/dp/B0FRGTYSL5",
+      "status": "page-retrieval-only-stale-cached-two-weeks",
+      "livePhoenixPurchaseVerified": false,
+      "qualifyingOffers": 0
+    },
+    {
+      "retailer": "GameStop",
+      "url": "https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/sony-playstation-5-slim-console-disc-edition---fortnite-cobalt-star-bundle/20016239.html",
+      "status": "retailer-page-readable-new-price-present-but-fulfillment-shows-unavailable-without-phoenix-context",
+      "livePhoenixPurchaseVerified": false,
+      "qualifyingOffers": 0
+    },
+    {
+      "retailer": "Costco",
+      "url": "https://www.costco.com/CatalogSearch?keyword=PlayStation%205%20slim",
+      "status": "retailer-page-unreadable",
+      "livePhoenixPurchaseVerified": false,
+      "qualifyingOffers": 0
+    }
+  ],
+  "candidateChecks": [
+    {
+      "retailer": "GameStop",
+      "url": "https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/sony-playstation-5-slim-console-disc-edition---fortnite-cobalt-star-bundle/20016239.html",
+      "observedRetailerPagePrice": "$424.99",
+      "conditionText": "New",
+      "model": "Sony PlayStation 5 Slim Console Disc Edition – Fortnite Cobalt Star Bundle",
+      "sellerVerified": false,
+      "storageVerified": false,
+      "controllersVerified": false,
+      "phoenixFulfillmentVerified": false,
+      "checkoutVerified": false,
+      "pageDeliveryText": "Limited Stock at unavailable; please provide your address to verify delivery area",
+      "decision": "REJECT — no Phoenix orderability proof; product price alone insufficient"
+    }
+  ],
+  "result": "INCOMPLETE VERIFICATION COVERAGE — no fully verified orderable offer; no alert authorized",
+  "sources": "Free search used only for discovery. Current official page reads were not interactive checkout; previous GitHub audit was not reused as live evidence."
+}
