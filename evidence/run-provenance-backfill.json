@@ -1,0 +1,125 @@
+{
+  "method": "Unique schedule scan completion contained in a successful GitHub run-attempt interval; only runId and runAttempt added to matching history rows.",
+  "mappings": [
+    {
+      "checkedAt": "2026-11-16T01:18:42.055Z",
+      "runId": "43785314907",
+      "runAttempt": 1,
+      "event": "schedule",
+      "start": "2026-11-16T01:16:43Z",
+      "end": "2026-11-16T01:18:50Z",
+      "conclusion": "success",
+      "source": "https://api.github.com/repos/csev21072/ps5-live-deal-watch/actions/runs/43785314907/attempts/1"
+    },
+    {
+      "checkedAt": "2026-11-16T03:38:59.364Z",
+      "runId": "43785314907",
+      "runAttempt": 2,
+      "event": "schedule",
+      "start": "2026-11-16T03:37:20Z",
+      "end": "2026-11-16T03:39:06Z",
+      "conclusion": "success",
+      "source": "https://api.github.com/repos/csev21072/ps5-live-deal-watch/actions/runs/43785314907/attempts/2"
+    },
+    {
+      "checkedAt": "2026-11-16T08:19:00.852Z",
+      "runId": "43830029334",
+      "runAttempt": 1,
+      "event": "schedule",
+      "start": "2026-11-16T08:17:23Z",
+      "end": "2026-11-16T08:19:07Z",
+      "conclusion": "success",
+      "source": "https://api.github.com/repos/csev21072/ps5-live-deal-watch/actions/runs/43830029334/attempts/1"
+    },
+    {
+      "checkedAt": "2026-11-16T18:48:27.360Z",
+      "runId": "43932352908",
+      "runAttempt": 1,
+      "event": "schedule",
+      "start": "2026-11-16T18:46:27Z",
+      "end": "2026-11-16T18:48:35Z",
+      "conclusion": "success",
+      "source": "https://api.github.com/repos/csev21072/ps5-live-deal-watch/actions/runs/43932352908/attempts/1"
+    },
+    {
+      "checkedAt": "2026-11-17T02:36:09.258Z",
+      "runId": "44003898460",
+      "runAttempt": 1,
+      "event": "schedule",
+      "start": "2026-11-17T02:33:42Z",
+      "end": "2026-11-17T02:36:16Z",
+      "conclusion": "success",
+      "source": "https://api.github.com/repos/csev21072/ps5-live-deal-watch/actions/runs/44003898460/attempts/1"
+    },
+    {
+      "checkedAt": "2026-11-17T12:18:17.295Z",
+      "runId": "44081624368",
+      "runAttempt": 1,
+      "event": "schedule",
+      "start": "2026-11-17T12:16:40Z",
+      "end": "2026-11-17T12:18:22Z",
+      "conclusion": "success",
+      "source": "https://api.github.com/repos/csev21072/ps5-live-deal-watch/actions/runs/44081624368/attempts/1"
+    },
+    {
+      "checkedAt": "2026-11-17T21:13:53.454Z",
+      "runId": "44177300477",
+      "runAttempt": 1,
+      "event": "schedule",
+      "start": "2026-11-17T21:12:08Z",
+      "end": "2026-11-17T21:13:58Z",
+      "conclusion": "success",
+      "source": "https://api.github.com/repos/csev21072/ps5-live-deal-watch/actions/runs/44177300477/attempts/1"
+    },
+    {
+      "checkedAt": "2026-11-18T03:03:47.444Z",
+      "runId": "44227491984",
+      "runAttempt": 1,
+      "event": "schedule",
+      "start": "2026-11-18T03:01:53Z",
+      "end": "2026-11-18T03:03:52Z",
+      "conclusion": "success",
+      "source": "https://api.github.com/repos/csev21072/ps5-live-deal-watch/actions/runs/44227491984/attempts/1"
+    },
+    {
+      "checkedAt": "2026-11-18T12:03:51.112Z",
+      "runId": "44300104280",
+      "runAttempt": 1,
+      "event": "schedule",
+      "start": "2026-11-18T12:02:14Z",
+      "end": "2026-11-18T12:03:56Z",
+      "conclusion": "success",
+      "source": "https://api.github.com/repos/csev21072/ps5-live-deal-watch/actions/runs/44300104280/attempts/1"
+    },
+    {
+      "checkedAt": "2026-11-18T20:59:25.247Z",
+      "runId": "44394776010",
+      "runAttempt": 1,
+      "event": "schedule",
+      "start": "2026-11-18T20:47:55Z",
+      "end": "2026-11-18T20:59:33Z",
+      "conclusion": "success",
+      "source": "https://api.github.com/repos/csev21072/ps5-live-deal-watch/actions/runs/44394776010/attempts/1"
+    },
+    {
+      "checkedAt": "2026-11-19T02:47:42.020Z",
+      "runId": "44446317940",
+      "runAttempt": 1,
+      "event": "schedule",
+      "start": "2026-11-19T02:42:58Z",
+      "end": "2026-11-19T02:47:47Z",
+      "conclusion": "success",
+      "source": "https://api.github.com/repos/csev21072/ps5-live-deal-watch/actions/runs/44446317940/attempts/1"
+    },
+    {
+      "checkedAt": "2026-11-19T12:00:16.164Z",
+      "runId": "44519558078",
+      "runAttempt": 1,
+      "event": "schedule",
+      "start": "2026-11-19T11:58:25Z",
+      "end": "2026-11-19T12:00:22Z",
+      "conclusion": "success",
+      "source": "https://api.github.com/repos/csev21072/ps5-live-deal-watch/actions/runs/44519558078/attempts/1"
+    }
+  ]
+}

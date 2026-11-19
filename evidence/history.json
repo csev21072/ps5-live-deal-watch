@@ -76,7 +76,9 @@
     "unreadablePages": 2,
     "verifiedOffers": 0,
     "incompleteCoverage": true,
-    "gapSincePreviousHours": 0.75
+    "gapSincePreviousHours": 0.75,
+    "runId": "43785314907",
+    "runAttempt": 1
   },
   {
     "checkedAt": "2026-11-16T03:38:59.364Z",
@@ -88,7 +90,9 @@
     "unreadablePages": 2,
     "verifiedOffers": 0,
     "incompleteCoverage": true,
-    "gapSincePreviousHours": 2.34
+    "gapSincePreviousHours": 2.34,
+    "runId": "43785314907",
+    "runAttempt": 2
   },
   {
     "checkedAt": "2026-11-16T08:19:00.852Z",
@@ -100,7 +104,9 @@
     "unreadablePages": 2,
     "verifiedOffers": 0,
     "incompleteCoverage": true,
-    "gapSincePreviousHours": 4.67
+    "gapSincePreviousHours": 4.67,
+    "runId": "43830029334",
+    "runAttempt": 1
   },
   {
     "checkedAt": "2026-11-16T18:48:27.360Z",
@@ -112,7 +118,9 @@
     "unreadablePages": 2,
     "verifiedOffers": 0,
     "incompleteCoverage": true,
-    "gapSincePreviousHours": 10.49
+    "gapSincePreviousHours": 10.49,
+    "runId": "43932352908",
+    "runAttempt": 1
   },
   {
     "checkedAt": "2026-11-17T02:36:09.258Z",
@@ -124,7 +132,9 @@
     "unreadablePages": 2,
     "verifiedOffers": 0,
     "incompleteCoverage": true,
-    "gapSincePreviousHours": 7.79
+    "gapSincePreviousHours": 7.79,
+    "runId": "44003898460",
+    "runAttempt": 1
   },
   {
     "checkedAt": "2026-11-17T12:18:17.295Z",
@@ -136,7 +146,9 @@
     "unreadablePages": 2,
     "verifiedOffers": 0,
     "incompleteCoverage": true,
-    "gapSincePreviousHours": 9.7
+    "gapSincePreviousHours": 9.7,
+    "runId": "44081624368",
+    "runAttempt": 1
   },
   {
     "checkedAt": "2026-11-17T21:13:53.454Z",
@@ -148,7 +160,9 @@
     "unreadablePages": 2,
     "verifiedOffers": 0,
     "incompleteCoverage": true,
-    "gapSincePreviousHours": 8.93
+    "gapSincePreviousHours": 8.93,
+    "runId": "44177300477",
+    "runAttempt": 1
   },
   {
     "checkedAt": "2026-11-18T03:03:47.444Z",
@@ -160,7 +174,9 @@
     "unreadablePages": 2,
     "verifiedOffers": 0,
     "incompleteCoverage": true,
-    "gapSincePreviousHours": 5.83
+    "gapSincePreviousHours": 5.83,
+    "runId": "44227491984",
+    "runAttempt": 1
   },
   {
     "checkedAt": "2026-11-18T12:03:51.112Z",
@@ -172,7 +188,9 @@
     "unreadablePages": 2,
     "verifiedOffers": 0,
     "incompleteCoverage": true,
-    "gapSincePreviousHours": 9
+    "gapSincePreviousHours": 9,
+    "runId": "44300104280",
+    "runAttempt": 1
   },
   {
     "checkedAt": "2026-11-18T20:59:25.247Z",
@@ -184,7 +202,9 @@
     "unreadablePages": 2,
     "verifiedOffers": 0,
     "incompleteCoverage": true,
-    "gapSincePreviousHours": 8.93
+    "gapSincePreviousHours": 8.93,
+    "runId": "44394776010",
+    "runAttempt": 1
   },
   {
     "checkedAt": "2026-11-19T02:47:42.020Z",
@@ -196,7 +216,9 @@
     "unreadablePages": 2,
     "verifiedOffers": 0,
     "incompleteCoverage": true,
-    "gapSincePreviousHours": 5.8
+    "gapSincePreviousHours": 5.8,
+    "runId": "44446317940",
+    "runAttempt": 1
   },
   {
     "checkedAt": "2026-11-19T12:00:16.164Z",
@@ -208,7 +230,9 @@
     "unreadablePages": 2,
     "verifiedOffers": 0,
     "incompleteCoverage": true,
-    "gapSincePreviousHours": 9.21
+    "gapSincePreviousHours": 9.21,
+    "runId": "44519558078",
+    "runAttempt": 1
   },
   {
     "checkedAt": "2026-11-19T16:33:40.204Z",
