@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
+import {sonyPage} from './fixtures/sony-page.mjs';
 import {sonyResearchMode} from '../src/research-mode.mjs';
 import {probeSonyCart} from '../src/probes/playstation-direct-cart.mjs';
 import {evaluate} from '../src/rules.mjs';
@@ -18,18 +19,9 @@ test('manual research requires an explicit valid edition',()=>{
  assert.throws(()=>sonyResearchMode({GITHUB_EVENT_NAME:'workflow_dispatch',PS5_SONY_CART_RESEARCH:'all'}));
 });
 test('manual research reaches above-target guest cart but cannot verify a purchase',async()=>{
- let stage=0,clicks=0;
- const page={
-  getByRole:role=>({count:async()=>1,first:()=>role==='button'?{
-   isVisible:async()=>true,isEnabled:async()=>true,click:async()=>{clicks++;stage=1;}
-  }:{isVisible:async()=>false}}),
-  waitForTimeout:async()=>{},goto:async()=>{stage=2;},
-  url:()=> 'https://direct.playstation.com/en-us/cart',
-  locator:()=>({innerText:async()=>stage===1?'Added to Cart. View Cart.':'Shopping Cart\nPlayStation 5 Console - 1 TB\n$649.00'}),
-  evaluate:async()=>({rows:[],fulfillmentOptions:[],checkoutControl:{enabled:false}})
- };
+ const {page,calls}=sonyPage();
  const result=await probeSonyCart(page,product,facts,'$649.00',widget('$649.00'),{researchOnly:true});
- assert.equal(clicks,1);assert.equal(result.status,'cart-inspected-unverified');
+ assert.equal(calls.clicks,1);assert.equal(result.status,'cart-inspected-unverified');
  assert.equal(result.verifiedPurchase,false);assert.equal(result.checkoutVerified,false);
  assert.equal(result.cartResearch.domControls.status,'incomplete-cart-controls');
 });
@@ -38,7 +30,7 @@ test('research preserves model, price evidence, ceiling and disabled-button gate
  assert.equal((await probeSonyCart(null,product,facts,'$801.00',widget('$801.00'),options)).status,'research-price-above-ceiling');
  assert.equal((await probeSonyCart(null,product,facts,'$649.00',null,options)).status,'retailer-price-widget-unverified');
  assert.equal((await probeSonyCart(null,product,{...facts,slimModelHint:false},'$649.00',widget('$649.00'),options)).status,'product-facts-incomplete');
- const page={getByRole:()=>({count:async()=>1,first:()=>({isVisible:async()=>true,isEnabled:async()=>false,click:async()=>{throw new Error('must not click');}})})};
+ const {page}=sonyPage({enabled:false});
  assert.equal((await probeSonyCart(page,product,facts,'$649.00',widget('$649.00'),options)).status,'cart-button-unavailable');
 });
 test('even a complete below-target fixture cannot alert during research',()=>{

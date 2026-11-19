@@ -50,6 +50,8 @@ jobs:
           node --check src/audit-history.mjs
           node --check src/public-audit.mjs
           node --check src/candidates.mjs
+          node --check src/run-provenance.mjs
+          node --check src/probes/sony-cart-controls.mjs
           node --check src/reliability.mjs
           node --check src/research-mode.mjs
           node --check src/evidence/product.mjs

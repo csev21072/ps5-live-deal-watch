@@ -95,3 +95,21 @@ test('cart research exposes only counts and boolean observations',()=>{
  assert.equal(r.probe.verifiedPurchase,false);
  assert.ok(!JSON.stringify(audit).includes(sensitive));
 });
+
+test('run provenance projects only numeric identifiers and positive attempts',()=>{
+ const valid=publicAudit({...raw,runId:'43785314907',runAttempt:2});
+ assert.equal(valid.runId,'43785314907');assert.equal(valid.runAttempt,2);
+ for(const values of [{runId:'email@example.org',runAttempt:'secret'}, {runId:'0',runAttempt:0}, {runId:'12?token=secret',runAttempt:-1}]){
+ const safe=publicAudit({...raw,...values});assert.equal(safe.runId,null);assert.equal(safe.runAttempt,null);
+ }
+});
+
+test('Sony item identity evidence exports booleans without raw cart data',()=>{
+ const audit=publicAudit({...raw,records:[{...raw.records[0],probe:{cartResearch:{domControls:{
+ matchingRows:[{skuMatched:true,itemPriceMatched:true,quantityOne:true,text:'private@example.org'}]
+ }}}}]});
+ assert.equal(audit.records[0].probe.cartItemSkuMatched,true);
+ assert.equal(audit.records[0].probe.cartItemPriceMatched,true);
+ assert.equal(audit.records[0].probe.cartQuantityOne,true);
+ assert.ok(!JSON.stringify(audit).includes('private@example.org'));
+});

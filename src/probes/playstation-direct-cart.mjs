@@ -1,7 +1,7 @@
 import {publicRetailerUrl} from '../evidence/url.mjs';
 import {priceFromText} from '../rules.mjs';
 import {inspectCartText} from '../evidence/cart.mjs';
-import {captureCartControls} from '../checkout/cart-controls.mjs';
+import {captureSonyCartControls} from './sony-cart-controls.mjs';
 
 // Research-only guest-cart probe for official NEW console product pages.
 // It never logs in, purchases, submits checkout, or marks fulfillment verified.
@@ -20,31 +20,41 @@ export async function probeSonyCart(page,product,sonyFacts,priceText,sonyPriceEv
   if(price>threshold && options.researchOnly!==true)return {...result,status:'price-above-target'};
   if(price>800)return {...result,status:'research-price-above-ceiling'};
   try {
-    const button=page.getByRole('button',{name:/^add to cart$/i});
+    // Observed 2026-11-19: accessory recommendations have their own Add buttons.
+    // Bind the action to the product hero containing the exact console heading.
+    const hero=page.locator('.productHero-info').filter({has:page.getByRole('heading',{level:1,name:sonyFacts.productHeading,exact:true})});
+    if(await hero.count().catch(()=>0)!==1)return {...result,status:'product-hero-not-unique'};
+    const button=hero.getByRole('button',{name:/^add to cart$/i});
     if(await button.count().catch(()=>0)!==1)
       return {...result,status:'cart-button-not-unique'};
     const add=button.first();
     if(!(await add.isVisible().catch(()=>false))||!(await add.isEnabled().catch(()=>false)))
       return {...result,status:'cart-button-unavailable'};
+    const sku=await add.getAttribute('data-product-code').catch(()=>null);
+    if(!/^[0-9]{8,12}$/.test(sku??''))return {...result,status:'product-sku-unreadable'};
     await add.click({timeout:6000});
-    await page.waitForTimeout(600);
+    // Wait for the actual mini-cart control, not a fixed 600ms delay.
+    const cartReview=page.getByRole('button',{name:'Edit and Checkout',exact:true});
+    await cartReview.waitFor({state:'visible',timeout:8000}).catch(()=>{});
     const body=(await page.locator('body').innerText({timeout:5000}).catch(()=>''));
     if(/captcha|verify you are human|access denied|press\s*&\s*hold/i.test(body))
       return {...result,status:'blocked-after-cart'};
-    if(!/added to (your )?cart|view cart|shopping cart/i.test(body))
+    if(await cartReview.count().catch(()=>0)!==1 || !(await cartReview.isVisible().catch(()=>false)))
       return {...result,status:'cart-add-unconfirmed'};
-    const cartLink=page.getByRole('link',{name:/view cart|shopping cart/i}).first();
-    if(await cartLink.isVisible().catch(()=>false))
-      await cartLink.click({timeout:6000});
-    else
-      await page.goto('https://direct.playstation.com/en-us/cart',{waitUntil:'domcontentloaded',timeout:15000});
+    const href=await cartReview.getAttribute('href');
+    const reviewUrl=new URL(href??'',product.url);
+    // This observed route is the CART review tab; never navigate to shipping/payment.
+    if(reviewUrl.origin!=='https://direct.playstation.com'||reviewUrl.pathname!=='/en-us/checkout'||
+       reviewUrl.search!=='?tab=cart'||reviewUrl.hash)
+      return {...result,status:'cart-review-url-unexpected'};
+    await page.goto(reviewUrl.href,{waitUntil:'domcontentloaded',timeout:15000});
     const cartUrl=page.url();
-    if(new URL(cartUrl).hostname!=='direct.playstation.com')
-      return {...result,status:'cart-redirected-off-retailer'};
+    if(cartUrl!==reviewUrl.href)return {...result,status:'cart-redirected-off-retailer'};
+    await page.locator('.cart-physical-item').first().waitFor({state:'visible',timeout:8000}).catch(()=>{});
     const cartText=(await page.locator('body').innerText({timeout:6000}).catch(()=>''));
     if(/captcha|verify you are human|access denied/i.test(cartText))
       return {...result,status:'cart-blocked'};
-    const domControls=await captureCartControls(page,{productName:sonyFacts.productHeading,price});
+    const domControls=await captureSonyCartControls(page,{productName:sonyFacts.productHeading,price,sku});
     const match=inspectCartText({
       cartUrl,cartText,productUrl:product.url,
       productHeading:sonyFacts.productHeading,priceText

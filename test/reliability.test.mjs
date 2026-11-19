@@ -82,7 +82,7 @@ test('new schedule evidence cannot prematurely establish hourly reliability',()=
  assert.equal(r.cadence.health,'collecting-evidence');
 });
 test('a fully observed day can establish historical cadence only',()=>{
- const history=Array.from({length:25},(_,i)=>({...row(i),triggerType:'schedule'}));
+ const history=Array.from({length:25},(_,i)=>({...row(i),triggerType:'schedule',runId:String(100+i),runAttempt:1}));
  const r=summarizeReliability(history,Date.parse(row(24).checkedAt));
  assert.equal(r.cadence.health,'hourly-cadence-observed');
  assert.equal(r.cadence.scheduledCompletionsLast24Hours,24);
@@ -106,4 +106,27 @@ test('reliability snapshot ages even when no additional run has finished',()=>{
  assert.equal(summarizeReliability(history,Date.parse(row(11).checkedAt)).cadence.health,'collecting-evidence');
  assert.equal(summarizeReliability(history,Date.parse(row(12).checkedAt)).cadence.health,'degraded');
  assert.throws(()=>summarizeReliability(history,'invalid'),/Invalid/);
+});
+
+test('rerunning an old scheduled job cannot refresh schedule health',()=>{
+ const history=[{...row(0),triggerType:'schedule',runId:'100',runAttempt:1},
+ {...row(10),triggerType:'schedule',runId:'100',runAttempt:2}];
+ const r=summarizeReliability(history,Date.parse(row(10).checkedAt));
+ assert.equal(r.scheduledRuns,1);
+ assert.equal(r.scheduledCompletionEntries,2);
+ assert.equal(r.scheduledRerunEntries,1);
+ assert.equal(r.cadence.lastScheduledAgeHours,10);
+ assert.equal(r.cadence.health,'degraded');
+});
+test('duplicate run identifiers cannot inflate scheduled frequency',()=>{
+ const history=[0,1,2].map(i=>({...row(i),triggerType:'schedule',runId:'100',runAttempt:1}));
+ const r=summarizeReliability(history,Date.parse(row(2).checkedAt));
+ assert.equal(r.scheduledRuns,1);
+ assert.equal(r.cadence.scheduledCompletionsLast24Hours,1);
+});
+test('legacy completion rows cannot prove unattended hourly execution',()=>{
+ const history=Array.from({length:25},(_,i)=>({...row(i),triggerType:'schedule'}));
+ const r=summarizeReliability(history,Date.parse(row(24).checkedAt));
+ assert.equal(r.cadence.health,'collecting-evidence');
+ assert.equal(r.scheduledEntriesWithoutRunIdentity,25);
 });

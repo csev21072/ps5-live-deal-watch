@@ -1,3 +1,4 @@
+import {runProvenance} from './run-provenance.mjs';
 import {readFile,writeFile} from 'node:fs/promises';
 import {pathToFileURL} from 'node:url';
 
@@ -12,6 +13,7 @@ export function appendAuditHistory(previous, latest, maxEntries=168) {
   const uniqueRetailers=[...new Set(rows.map(r=>r.retailer).filter(Boolean))];
   const item={
     checkedAt:at,
+    ...runProvenance(latest),
     triggerType:['schedule','workflow_dispatch','push','local'].includes(latest.triggerType)?latest.triggerType:'unknown',
     attemptedPages:rows.length,
     retailersAttempted:uniqueRetailers.length,
@@ -41,3 +43,4 @@ if(process.argv[1] && import.meta.url===pathToFileURL(process.argv[1]).href){
   await writeFile(outputPath,JSON.stringify(history,null,2)+'\n');
   console.log('Saved '+history.length+' non-alerting hourly audit history entries');
 }
+

@@ -1,3 +1,4 @@
+import {runProvenance} from './run-provenance.mjs';
 import {readFile,writeFile} from 'node:fs/promises';
 import {pathToFileURL} from 'node:url';
 import {publicRetailerUrl} from './evidence/url.mjs';
@@ -41,6 +42,9 @@ export function publicAudit(raw){
         checkoutResearchObserved:Boolean(r.probe?.cartEvidence||r.probe?.cartResearch),
         cartControlsStatus:safeStatus((r.probe?.cartResearch??r.probe?.cartEvidence)?.domControls?.status??'not-observed'),
         matchingCartRows:Math.min(2,(r.probe?.cartResearch??r.probe?.cartEvidence)?.domControls?.matchingRows?.length??0),
+        cartItemSkuMatched:(r.probe?.cartResearch??r.probe?.cartEvidence)?.domControls?.matchingRows?.length===1 && (r.probe?.cartResearch??r.probe?.cartEvidence)?.domControls?.matchingRows[0]?.skuMatched===true,
+        cartItemPriceMatched:(r.probe?.cartResearch??r.probe?.cartEvidence)?.domControls?.matchingRows?.length===1 && (r.probe?.cartResearch??r.probe?.cartEvidence)?.domControls?.matchingRows[0]?.itemPriceMatched===true,
+        cartQuantityOne:(r.probe?.cartResearch??r.probe?.cartEvidence)?.domControls?.matchingRows?.length===1 && (r.probe?.cartResearch??r.probe?.cartEvidence)?.domControls?.matchingRows[0]?.quantityOne===true,
         checkoutControlEnabled:(r.probe?.cartResearch??r.probe?.cartEvidence)?.domControls?.checkoutControlEnabled===true,
         selectedPhoenixFulfillment:(r.probe?.cartResearch??r.probe?.cartEvidence)?.domControls?.selectedFulfillment?.some(x=>x.phoenixZipMatched===true)===true,
         verifiedPurchase:false
@@ -67,6 +71,7 @@ export function publicAudit(raw){
   }));
   return {
     checkedAt:raw.checkedAt??null,
+    ...runProvenance(raw),
     triggerType:['schedule','workflow_dispatch','push','local'].includes(raw.triggerType)?raw.triggerType:'unknown',
     zip:'85001',
     note:'Public status-only audit. No cart, checkout, address, account or raw page text.',

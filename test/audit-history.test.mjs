@@ -35,3 +35,9 @@ test('historical gaps preserve chronological order',()=>{
  assert.equal(h[0].checkedAt,'2026-11-15T22:00:00Z');
  assert.equal(h[1].gapSincePreviousHours,1);
 });
+
+
+test('audit history retains public run identity and rerun attempt',()=>{
+ const h=appendAuditHistory([],{...evidence('2026-11-15T22:00:00Z'),runId:'43785314907',runAttempt:2});
+ assert.equal(h[0].runId,'43785314907');assert.equal(h[0].runAttempt,2);
+});

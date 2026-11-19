@@ -31,7 +31,7 @@ Fully verified offers can eventually create GitHub Issues assigned to the reposi
 - [Seven-day history](https://github.com/csev21072/ps5-live-deal-watch/blob/audit/evidence/history.json)
 - [Reliability snapshot](https://github.com/csev21072/ps5-live-deal-watch/blob/audit/evidence/reliability.json)
 
-The reliability snapshot includes `cadence.evaluatedAt`, scheduled-run age, scheduled completions during the preceding 24 hours, and recent gaps. A fresh manual run cannot conceal a stale schedule. Read the timestamp: a saved report does not refresh itself between runs. `hourly-cadence-observed` describes only the measured past day and does not promise future timing.
+The reliability snapshot includes `cadence.evaluatedAt`, scheduled-run age, scheduled completions during the preceding 24 hours, and recent gaps. A fresh manual run cannot conceal a stale schedule. New audits record numeric GitHub run IDs and attempt numbers; known reruns are excluded from schedule cadence. Legacy entries without that metadata remain explicitly uncertain and cannot establish a full day of verified hourly cadence. Read the timestamp: a saved report does not refresh itself between runs. `hourly-cadence-observed` describes only the measured past day and does not promise future timing.
 
 ## Manual Sony guest-cart research
 
@@ -43,7 +43,9 @@ The scan's **Run workflow** form offers `sony_cart_research`: `none` (default), 
 - No checkout button is clicked, address entered, login attempted, payment supplied, or order placed. Cart interaction uses an isolated browser context discarded when the run ends.
 - Public evidence retains only status, counts, and booleans about matching cart rows, enabled checkout, and selected Phoenix fulfillment. No raw cart, address, account, cookies, or browser exception text is published.
 
-The first manual research run is **not yet launched**. Browser-session failures and a changing foreground window prevented a reliable dispatch; the Actions API confirmed no manual run was created. Launch via the existing workflow form when browser control is stable.
+The first manual research run [44566651736](https://github.com/csev21072/ps5-live-deal-watch/actions/runs/44566651736) completed successfully at 16:33 UTC on November 19; its alert publisher was skipped. It exposed multiple Add to Cart controls, so the old probe stopped before adding a console. A separate live browser inspection then reached the genuine Sony guest cart: Disc SKU `1000049888`, quantity 1, line price $649, with shipping calculated at the next step. The research item was removed and the cart was confirmed empty.
+
+The updated probe scopes the action to the exact product hero, follows the observed `/en-us/checkout?tab=cart` route, and matches the cart item's SKU, title, price and quantity independently of recommendations or totals. This update has 330 passing local tests; hosted validation is pending. The cart page alone does not establish Phoenix delivery, selected NEW condition, or selected seller/shipper evidence.
 
 This removes the need to wait for a sale to investigate Sony's cart structure. It does **not** implement or validate a positive checkout adapter. Missing seller, condition, SKU, or Phoenix fulfillment still needs real observed evidence before any alert path is enabled.
 

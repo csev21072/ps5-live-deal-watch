@@ -1,3 +1,4 @@
+import {runProvenance,scheduledFirstAttempts} from './run-provenance.mjs';
 import {readFile,writeFile} from 'node:fs/promises';
 import {pathToFileURL} from 'node:url';
 
@@ -12,10 +13,11 @@ export function summarizeReliability(history=[], now=Date.now()){
     .sort((a,b)=>Date.parse(a.checkedAt)-Date.parse(b.checkedAt));
   if(rows.length===0)return {status:'no-history',observedRuns:0,latestCompletedAt:null,
     longObservedGaps:0,maxObservedGapHours:null,fullyAttemptedSevenRetailers:0,
-    verifiedOffersObserved:0,scheduledRuns:0,developmentPushRuns:0,manualRuns:0,
+    verifiedOffersObserved:0,scheduledCompletionEntries:0,scheduledRerunEntries:0,scheduledEntriesWithoutRunIdentity:0,scheduledRuns:0,developmentPushRuns:0,manualRuns:0,
     lastScheduledAt:null,scheduledLongObservedGaps:0,scheduledMaxObservedGapHours:null,cadence};
   const last=rows.at(-1);
-  const scheduled=rows.filter(x=>x.triggerType==='schedule');
+  const scheduled=scheduledFirstAttempts(rows);
+  const scheduledEntries=rows.filter(x=>x.triggerType==='schedule');
   let scheduledLongObservedGaps=0,scheduledMaxGap=0;
   for(let i=1;i<scheduled.length;i++){
     const hours=(Date.parse(scheduled[i].checkedAt)-Date.parse(scheduled[i-1].checkedAt))/3600000;
@@ -44,6 +46,9 @@ export function summarizeReliability(history=[], now=Date.now()){
     runsWithPartialRetailerAttempts:rows.length-attempted,
     verifiedOffersObserved:verified,
     scheduledRuns:scheduled.length,
+    scheduledCompletionEntries:scheduledEntries.length,
+    scheduledRerunEntries:scheduledEntries.filter(x=>runProvenance(x).runAttempt>1).length,
+    scheduledEntriesWithoutRunIdentity:scheduledEntries.filter(x=>!runProvenance(x).runId||runProvenance(x).runAttempt===null).length,
     developmentPushRuns:rows.filter(x=>x.triggerType==='push').length,
     manualRuns:rows.filter(x=>x.triggerType==='workflow_dispatch').length,
     unknownTriggerRuns:rows.filter(x=>!['schedule','push','workflow_dispatch'].includes(x.triggerType)).length,
@@ -56,7 +61,9 @@ export function summarizeReliability(history=[], now=Date.now()){
 // Measured against the report clock, not the latest successful run. A manual
 // run cannot hide a stalled schedule. This snapshot must be read with evaluatedAt.
 export function summarizeCadence(history, now=Date.now()) {
-  const times=[...new Set(history.filter(x=>x?.triggerType==='schedule')
+  const eligible=history.filter(x=>x&&Number.isFinite(Date.parse(x.checkedAt))&&Date.parse(x.checkedAt)<=now);
+  const scheduled=scheduledFirstAttempts(eligible);
+  const times=[...new Set(scheduled
     .map(x=>Date.parse(x.checkedAt)).filter(t=>Number.isFinite(t)&&t<=now))].sort((a,b)=>a-b);
   const recent=times.filter(t=>t>now-24*3600000);
   const last=times.at(-1);
@@ -71,14 +78,14 @@ export function summarizeCadence(history, now=Date.now()) {
   let health='collecting-evidence';
   if(!times.length)health='no-scheduled-evidence';
   else if(age>1.5 || (maxGap!==null&&maxGap>1.5))health='degraded';
-  else if(observedHours>=24&&recent.length>=23)health='hourly-cadence-observed';
+  else if(observedHours>=24&&recent.length>=23&&scheduled.filter(x=>Date.parse(x.checkedAt)>now-24*3600000&&runProvenance(x).runId&&runProvenance(x).runAttempt===1).length>=23)health='hourly-cadence-observed';
   return {health,evaluatedAt:new Date(now).toISOString(),
     targetIntervalMinutes:60,gapToleranceMinutes:90,
     lastScheduledAgeHours:age===null?null:Math.round(age*100)/100,
     scheduledCompletionsLast24Hours:recent.length,
     observationWindowHours:Math.round(observedHours*100)/100,
     maxScheduledGapInWindowHours:maxGap===null?null:Math.round(maxGap*100)/100,
-    caveat:'Snapshot at evaluatedAt; recompute to assess current staleness. Completion gaps do not establish the cause or guarantee future checks.'};
+    caveat:'Snapshot at evaluatedAt; recompute to assess current staleness. Known reruns are excluded; legacy entries without run identity may contain reruns. Completion gaps do not establish the cause or guarantee future checks.'};
 }
 if(process.argv[1] && import.meta.url===pathToFileURL(process.argv[1]).href){
   const [historyPath,outputPath]=process.argv.slice(2);

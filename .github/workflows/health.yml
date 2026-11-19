@@ -43,6 +43,8 @@ jobs:
           node --check src/audit-history.mjs
           node --check src/public-audit.mjs
           node --check src/candidates.mjs
+          node --check src/run-provenance.mjs
+          node --check src/probes/sony-cart-controls.mjs
           node --check src/reliability.mjs
           node --check src/evidence/product.mjs
       - name: Run safety regression tests without paid services
@@ -66,3 +68,4 @@ jobs:
             git commit -m "audit: record successful safety tests [skip ci]"
             git push origin ci-health
           fi
+
