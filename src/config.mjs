@@ -15,6 +15,8 @@ export const products = [
   {id:'psdirect-disc',retailer:'PlayStation Direct',kind:'disc',url:'https://direct.playstation.com/en-us/buy-consoles/playstation5-console-1-tb',host:'direct.playstation.com'},
   {id:'psdirect-digital',retailer:'PlayStation Direct',kind:'digital',url:'https://direct.playstation.com/en-us/buy-consoles/playstation5-digital-edition-console-825-gb',host:'direct.playstation.com'},
   {id:'bestbuy-disc',retailer:'Best Buy',kind:'disc',url:'https://www.bestbuy.com/product/playstation-5-slim-console/JXHQ3CCTYR/sku/6566039',host:'www.bestbuy.com'},
+  // Current-generation alternative SKU; discovery-only until retailer-owned checkout proves Phoenix orderability.
+  {id:'bestbuy-disc-6646419',retailer:'Best Buy',kind:'disc',url:'https://www.bestbuy.com/product/playstation-5-slim-console-1tb/6646419',host:'www.bestbuy.com'},
   {id:'bestbuy-digital',retailer:'Best Buy',kind:'digital',url:'https://www.bestbuy.com/product/playstation-5-slim-console-digital-edition-825gb/JXHQ37TYYL',host:'www.bestbuy.com'},
   {id:'target-disc-bundle',retailer:'Target',kind:'disc',url:'https://www.target.com/p/playstation-5-nba-2k26-disc-bundle-console/-/A-94907150',host:'www.target.com'},
   {id:'target-digital-bundle',retailer:'Target',kind:'digital',url:'https://www.target.com/p/-/A-93150909',host:'www.target.com'},
