@@ -16,6 +16,7 @@ export function evaluate(record, now = Date.now()) {
   try {u=new URL(record.url);} catch {reject('invalid URL');}
   if (!u || u.protocol!=='https:' || u.hostname!==record.host) reject('not the exact HTTPS retailer-owned host');
   if (!RETAILER_HOSTS[record.retailer]?.includes(record.host)) reject('retailer and host are not an approved exact retailer-owned pair');
+  if (record.researchOnly===true) reject('manual cart research cannot generate a deal alert');
   if (record.source !== 'live-retailer-purchase-surface') reject('not live retailer purchase evidence');
   if (record.unavailable===true) reject('retailer reported unavailable');
   if (!Number.isFinite(Date.parse(record.checkedAt)) || Math.abs(now-Date.parse(record.checkedAt))>MAX_AGE_MS) reject('missing or stale verification timestamp');
@@ -89,3 +90,4 @@ export function evaluate(record, now = Date.now()) {
   if (effective!==null && effective>(record.kind==='disc'?500:450)) reject('effective price above target');
   return {qualifies:reasons.length===0,reasons,effectivePrice:effective,extraControllerCredit,gameCredit};
 }
+

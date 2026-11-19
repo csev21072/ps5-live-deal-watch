@@ -14,6 +14,8 @@ import {summarizeCoverage} from './coverage.mjs';
 import {inspectProductControls} from './probes/product-controls.mjs';
 import {validateRetailerOrigin} from './checkout/origin.mjs';
 import {inspectTargetPriceHint} from './probes/target-price.mjs';
+import {sonyResearchMode} from './research-mode.mjs';
+const researchEdition=sonyResearchMode(process.env);
 const eventName=process.env.GITHUB_EVENT_NAME;
 const triggerType=['schedule','workflow_dispatch','push'].includes(eventName)?eventName:
   eventName?'unknown':'local';
@@ -86,7 +88,7 @@ try {
       await page.waitForTimeout(1800);
       record=await extractCandidate(page,product);
       if(product.retailer==='PlayStation Direct'){
-        record.probe=await probeSonyCart(page,product,record.sonyFacts,record.priceText,record.sonyPrice);
+        record.probe=await probeSonyCart(page,product,record.sonyFacts,record.priceText,record.sonyPrice,{researchOnly:researchEdition===product.kind});
       }
       if(!['PlayStation Direct','GameStop'].includes(product.retailer)){
         record.probe=await inspectProductControls(page,product,record.productEvidence);
@@ -109,6 +111,7 @@ try {
         }
       }
     }catch(e){record={id:product.id,retailer:product.retailer,url:product.url,host:product.host,kind:product.kind,checkedAt:new Date().toISOString(),source:'unreadable',blocked:true,diagnostic:{status:'unreadable',evidence:[]},scanNote:'navigation-or-product-unreadable'};}
+    record.researchOnly=researchEdition!==null;
     record.verdict=evaluate(record);
     records.push(record);
     console.log(`${product.id}: ${record.verdict.qualifies?'VERIFIED':'NO ALERT'} — ${record.scanNote}`);
@@ -121,3 +124,4 @@ const stats=summarize(records);
 const summary=['# PS5 free browser scan',`Checked ${records.length} retailer-owned product URLs across ${new Set(records.map(r=>r.retailer)).size} retailers.`, `Discovery attempts: ${discovery.coverage.length}; newly found URLs: ${discovery.candidates.length} (discovery alone is NEVER purchase evidence).`,`Verified qualifying offers: ${stats.confirmedPurchaseOffers}.`, `Readability: ${JSON.stringify(stats.statusCounts)}.`,`Retailer coverage: ${coverage.retailersAttempted}/${coverage.expectedRetailers} attempted; ${coverage.retailersWithVerifiedOffer} with a fully verified orderable offer.`, `Incomplete retailers: ${coverage.retailerResults.filter(r=>r.status!=='verified-offer-observed').map(r=>r.retailer+': '+r.status).join('; ')}.`,'A successful scan does **not** mean all retailers were readable or Phoenix checkout was confirmed.','','| Retailer | Product | Status |','|---|---|---|',...records.map(r=>`| ${r.retailer} | ${r.id} | ${r.verdict.qualifies?'Verified':'No alert: '+(r.diagnostic?.status||r.scanNote||'incomplete').replaceAll('|','/')} |`)];
 await writeFile(`${outdir}/summary.md`,summary.join('\n'));
 if(process.env.GITHUB_STEP_SUMMARY)await writeFile(process.env.GITHUB_STEP_SUMMARY,summary.join('\n')+'\n',{flag:'a'});
+

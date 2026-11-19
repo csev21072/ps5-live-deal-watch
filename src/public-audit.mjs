@@ -22,6 +22,7 @@ export function publicAudit(raw){
       url:RETAILER_HOSTS[r.retailer]?.includes(r.host)?publicRetailerUrl(r.url,r.host):null,
       checkedAt:r.checkedAt??null,
       source:['live-retailer-purchase-surface','unreadable'].includes(r.source)?r.source:'unknown',
+      researchOnly:r.researchOnly===true,
       blocked:r.blocked===true,
       unavailable:r.unavailable===true,
       diagnostic:{status:safeStatus(r.diagnostic?.status)},
@@ -34,10 +35,14 @@ export function publicAudit(raw){
       },
       probe:{
         status:safeStatus(r.probe?.status??'not-run'),
-        cartActionCount:Number.isInteger(r.probe?.cartActionCount)?r.probe.cartActionCount:0,
-        enabledCartActions:Number.isInteger(r.probe?.enabledCartActions)?r.probe.enabledCartActions:0,
+        cartActionCount:Number.isInteger(r.probe?.cartActionCount)?r.probe.cartActionCount:(Number.isInteger(r.probe?.controls?.cartControlCount)?r.probe.controls.cartControlCount:0),
+        enabledCartActions:Number.isInteger(r.probe?.enabledCartActions)?r.probe.enabledCartActions:(Number.isInteger(r.probe?.controls?.enabledCartControls)?r.probe.controls.enabledCartControls:0),
         fulfillmentNavigationCount:Number.isInteger(r.probe?.fulfillmentNavigationCount)?r.probe.fulfillmentNavigationCount:0,
         checkoutResearchObserved:Boolean(r.probe?.cartEvidence||r.probe?.cartResearch),
+        cartControlsStatus:safeStatus((r.probe?.cartResearch??r.probe?.cartEvidence)?.domControls?.status??'not-observed'),
+        matchingCartRows:Math.min(2,(r.probe?.cartResearch??r.probe?.cartEvidence)?.domControls?.matchingRows?.length??0),
+        checkoutControlEnabled:(r.probe?.cartResearch??r.probe?.cartEvidence)?.domControls?.checkoutControlEnabled===true,
+        selectedPhoenixFulfillment:(r.probe?.cartResearch??r.probe?.cartEvidence)?.domControls?.selectedFulfillment?.some(x=>x.phoenixZipMatched===true)===true,
         verifiedPurchase:false
       },
       priceHint:{status:safeStatus(r.priceHint?.status??'not-run')},
@@ -95,3 +100,4 @@ if(process.argv[1] && import.meta.url===pathToFileURL(process.argv[1]).href){
   await writeFile(output,JSON.stringify(publicAudit(raw),null,2)+'\n');
   console.log('Saved status-only public audit without raw cart or browser text');
 }
+

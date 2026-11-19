@@ -78,3 +78,20 @@ test('public audit rejects URLs from unapproved retailer host pairs',()=>{
  assert.equal(a.records[0].diagnostic.status,'invalid-public-url');
  assert.ok(!JSON.stringify(a).includes('evil.example'));
 });
+
+
+test('cart research exposes only counts and boolean observations',()=>{
+ const audit=publicAudit({...raw,records:[{...raw.records[0],researchOnly:true,probe:{
+  status:'cart-inspected-unverified',controls:{cartControlCount:1,enabledCartControls:1},
+  cartResearch:{domControls:{status:'incomplete-cart-controls',missing:[sensitive],
+   matchingRows:[{text:sensitive}],checkoutControlEnabled:true,
+   selectedFulfillment:[{text:sensitive,phoenixZipMatched:false}]}}
+ }}]});
+ const r=audit.records[0];
+ assert.equal(r.researchOnly,true);assert.equal(r.probe.cartActionCount,1);
+ assert.equal(r.probe.enabledCartActions,1);assert.equal(r.probe.matchingCartRows,1);
+ assert.equal(r.probe.checkoutControlEnabled,true);
+ assert.equal(r.probe.selectedPhoenixFulfillment,false);
+ assert.equal(r.probe.verifiedPurchase,false);
+ assert.ok(!JSON.stringify(audit).includes(sensitive));
+});

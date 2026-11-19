@@ -21,7 +21,7 @@ test('GameStop guest cart is guarded by independently confirmed Disc/Digital edi
  assert.match(source,/record\.price<=probeLimit && editionConfirmed/);
 });
 test('Sony guest cart requires independently parsed retailer price widget',()=>{
- assert.match(source,/probeSonyCart\(page,product,record\.sonyFacts,record\.priceText,record\.sonyPrice\)/);
+ assert.match(source,/probeSonyCart\(page,product,record\.sonyFacts,record\.priceText,record\.sonyPrice,\{researchOnly:researchEdition===product\.kind\}\)/);
 });
 
 test('production scanner never imports fictional checkout fixtures or mocked GitHub',()=>{
@@ -56,3 +56,4 @@ test('individual browser page failures cannot abort every remaining retailer',()
  assert.match(source,/let page=null,record;\s*try\s*\{\s*page=await browser\.newPage/);
  assert.match(source,/if\(page\)await page\.close\(\)\.catch\(\(\)=>\{\}\)/);
 });
+

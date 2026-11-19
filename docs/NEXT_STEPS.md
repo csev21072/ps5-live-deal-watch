@@ -1,3 +1,19 @@
+# Current handoff — November 19, 2026
+
+Read the root README first; the older chronological notes below are retained as history, not current instructions or validation claims.
+
+Recovered remote main: `a79add79508b3a69966641dffd2309335a36033c`. Its 302 local tests pass. The current revision has 315 passing local tests and a passing offline simulation; hosted results must be inspected before claiming hosted acceptance.
+
+Current changes: explicit manual-only Sony guest-cart research at above-target prices (maximum $800, no purchase), research-run notification exclusion, public cart observation counts/booleans, and clock-based cadence reporting that exposes stale scheduled execution even after a manual run. No positive checkout adapter has been enabled. Price targets remain Disc $500 / Digital $450.
+
+Live UI inspection on November 19 found the GameStop Flowering Chaos Digital page displaying NEW and disabled Not Available, Ship to Home, same-day delivery, and pickup controls. No cart was added and no notification was sent. This is a rejection observation, not a verified Phoenix restock baseline.
+
+Latest inspected hosted audit: November 19 12:00 UTC, 16 pages/7 retailers, no verified offer or cart inspection. Audit history has 12 schedule-labeled entries but the API lists 11 distinct scheduled run IDs; do not equate them. Longest completed scheduled gap: 10.49 hours. All listed runs succeeded; the cause of the missing hourly cadence is unresolved.
+
+Next: dispatch Sony research, inspect its actual guest-cart evidence, implement the narrowly observed retailer adapter with positive and negative tests, and continue investigating schedule gaps. The existing ChatGPT watch is separate; do not create duplicate watches or change unrelated automations. Never convert price-only candidates into deal alerts.
+
+---
+
 # PS5 $0 tracker — engineering handoff (2026-11-15)
 
 ## Objective
@@ -230,3 +246,4 @@ A real positive purchase verification has **not** been demonstrated. The system 
 - Scanner now isolates browser page creation/closure errors per retailer so a single page failure need not abort the entire scan. Public audits reject unapproved retailer host pairs.
 - Temporary development push trigger is removed. Hourly cron at minute 32 and manual dispatch remain configured; zero paid services.
 - **Still blocked:** a positive real retailer-owned checkout showing exact NEW SKU, seller, item price, and selected orderable Phoenix ZIP 85001 fulfillment. Do not enable price-only notifications or claim the two GameStop prices are purchasable.
+

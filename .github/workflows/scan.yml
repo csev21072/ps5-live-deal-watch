@@ -3,6 +3,12 @@ on:
   schedule:
     - cron: '32 * * * *'
   workflow_dispatch:
+    inputs:
+      sony_cart_research:
+        description: 'Guest-cart research only, including above-target prices; suppresses all deal alerts'
+        type: choice
+        default: none
+        options: [none, disc, digital]
 permissions:
   contents: write
   issues: write
@@ -45,6 +51,7 @@ jobs:
           node --check src/public-audit.mjs
           node --check src/candidates.mjs
           node --check src/reliability.mjs
+          node --check src/research-mode.mjs
           node --check src/evidence/product.mjs
           node --check src/public-audit.mjs
       - name: Unit tests
@@ -54,12 +61,15 @@ jobs:
       - name: Install Chromium
         run: npx playwright install --with-deps chromium
       - name: Scan live retailer pages (zero-spend; fail closed)
+        env:
+          PS5_SONY_CART_RESEARCH: ${{ inputs.sony_cart_research || 'none' }}
         run: npm run scan
       - name: Restore durable alert history (fail if missing)
         run: |
           git fetch --no-tags origin audit
           git show origin/audit:evidence/alert-state.json > out/previous-alert-state.json
       - name: Open GitHub issue ONLY for fully verified deals
+        if: inputs.sony_cart_research == '' || inputs.sony_cart_research == 'none'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npm run publish
@@ -81,3 +91,4 @@ jobs:
       - name: Publish non-alerting audit and seven-day coverage history
         if: always()
         run: bash scripts/save-audit.sh
+

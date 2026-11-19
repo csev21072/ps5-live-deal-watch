@@ -66,3 +66,44 @@ test('legacy entries with no trigger type remain unknown, not scheduled',()=>{
  assert.equal(r.unknownTriggerRuns,2);
  assert.equal(r.scheduledRuns,0);
 });
+
+
+test('fresh manual scan does not hide a ten-hour scheduled gap',()=>{
+ const r=summarizeReliability([
+  {...row(0),triggerType:'schedule'}, {...row(1),triggerType:'schedule'},
+  {...row(11),triggerType:'workflow_dispatch'}
+ ],Date.parse(row(11).checkedAt));
+ assert.equal(r.cadence.health,'degraded');
+ assert.equal(r.cadence.lastScheduledAgeHours,10);
+ assert.equal(r.cadence.scheduledCompletionsLast24Hours,2);
+});
+test('new schedule evidence cannot prematurely establish hourly reliability',()=>{
+ const r=summarizeReliability([{...row(9),triggerType:'schedule'}],Date.parse(row(10).checkedAt));
+ assert.equal(r.cadence.health,'collecting-evidence');
+});
+test('a fully observed day can establish historical cadence only',()=>{
+ const history=Array.from({length:25},(_,i)=>({...row(i),triggerType:'schedule'}));
+ const r=summarizeReliability(history,Date.parse(row(24).checkedAt));
+ assert.equal(r.cadence.health,'hourly-cadence-observed');
+ assert.equal(r.cadence.scheduledCompletionsLast24Hours,24);
+ assert.equal(r.cadence.observationWindowHours,24);
+});
+test('recent completion cannot hide earlier gaps within the same day',()=>{
+ const history=[0,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24].map(i=>({...row(i),triggerType:'schedule'}));
+ const r=summarizeReliability(history,Date.parse(row(24).checkedAt));
+ assert.equal(r.cadence.health,'degraded');
+ assert.equal(r.cadence.maxScheduledGapInWindowHours,10);
+});
+test('future and duplicate times do not inflate cadence evidence',()=>{
+ const entry={...row(10),triggerType:'schedule'};
+ const r=summarizeReliability([entry,entry,{...row(12),triggerType:'schedule'}],Date.parse(row(11).checkedAt));
+ assert.equal(r.cadence.scheduledCompletionsLast24Hours,1);
+ assert.equal(r.cadence.lastScheduledAgeHours,1);
+ assert.equal(r.cadence.health,'collecting-evidence');
+});
+test('reliability snapshot ages even when no additional run has finished',()=>{
+ const history=[{...row(10),triggerType:'schedule'}];
+ assert.equal(summarizeReliability(history,Date.parse(row(11).checkedAt)).cadence.health,'collecting-evidence');
+ assert.equal(summarizeReliability(history,Date.parse(row(12).checkedAt)).cadence.health,'degraded');
+ assert.throws(()=>summarizeReliability(history,'invalid'),/Invalid/);
+});

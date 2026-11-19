@@ -5,7 +5,7 @@ import {captureCartControls} from '../checkout/cart-controls.mjs';
 
 // Research-only guest-cart probe for official NEW console product pages.
 // It never logs in, purchases, submits checkout, or marks fulfillment verified.
-export async function probeSonyCart(page,product,sonyFacts,priceText,sonyPriceEvidence=null) {
+export async function probeSonyCart(page,product,sonyFacts,priceText,sonyPriceEvidence=null,options={}) {
   const result={status:'unverified',verifiedPurchase:false,checkoutVerified:false};
   if(product.retailer!=='PlayStation Direct')return {...result,status:'not-applicable'};
   if(!sonyFacts?.officialProductPage || sonyFacts.status!=='product-facts-observed-checkout-unverified'
@@ -17,7 +17,8 @@ export async function probeSonyCart(page,product,sonyFacts,priceText,sonyPriceEv
   const price=priceFromText(priceText);
   const threshold=product.kind==='disc'?500:450;
   if(price===null)return {...result,status:'price-not-readable'};
-  if(price>threshold)return {...result,status:'price-above-target'};
+  if(price>threshold && options.researchOnly!==true)return {...result,status:'price-above-target'};
+  if(price>800)return {...result,status:'research-price-above-ceiling'};
   try {
     const button=page.getByRole('button',{name:/^add to cart$/i});
     if(await button.count().catch(()=>0)!==1)
@@ -62,3 +63,4 @@ export async function probeSonyCart(page,product,sonyFacts,priceText,sonyPriceEv
     return {...result,status:'cart-interaction-blocked',reason:String(e).slice(0,140)};
   }
 }
+
