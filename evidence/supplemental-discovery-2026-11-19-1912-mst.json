@@ -1,0 +1,64 @@
+{
+  "type": "supplemental-zero-spend-web-discovery-audit",
+  "runStartedAt": "2026-11-19T19:12:36-07:00",
+  "locality": "Phoenix, Arizona (no logged-in ZIP or purchase session)",
+  "verificationMethod": "Non-interactive free web read; not a retailer-owned active cart/checkout",
+  "browser": "BROWSER NOT AVAILABLE for interactive checkout in scheduled runtime",
+  "moneySpentUSD": 0,
+  "allSevenRetailersAttemptedForDiscovery": true,
+  "interactiveRetailerCheckoutVerifications": 0,
+  "fullyVerifiedOrderableOffers": 0,
+  "coverageConclusion": "INCOMPLETE_VERIFICATION_COVERAGE",
+  "note": "No alerts authorized by this supplemental audit. Search/indexed snapshots and static product pages are not checkout or Phoenix availability evidence.",
+  "retailers": [
+    {
+      "retailer": "PlayStation Direct",
+      "discoveryAttempted": true,
+      "page": "https://direct.playstation.com/en-us/buy-consoles/playstation5-console-1-tb",
+      "result": "retailer-page-readable",
+      "blockingPrerequisite": "No current Phoenix shipping/cart/checkout selection observed"
+    },
+    {
+      "retailer": "Best Buy",
+      "discoveryAttempted": true,
+      "page": "https://www.bestbuy.com/product/playstation-5-slim-console/JXHQ3CCTYR/sku/6566039",
+      "result": "retailer-page-404-from-free-reader",
+      "blockingPrerequisite": "Current price and Phoenix fulfillment not verified"
+    },
+    {
+      "retailer": "Target",
+      "discoveryAttempted": true,
+      "page": "https://www.target.com/p/playstation-5-nba-2k26-disc-bundle-console/-/A-94907150",
+      "result": "retailer-page-inaccessible-from-free-reader",
+      "blockingPrerequisite": "Current price, seller and Phoenix fulfillment unknown"
+    },
+    {
+      "retailer": "Walmart",
+      "discoveryAttempted": true,
+      "page": "https://www.walmart.com/ip/20768802816",
+      "result": "retailer-page-index-snapshot-only",
+      "blockingPrerequisite": "Page snapshot is stale and scoped to another ZIP, no current Phoenix checkout"
+    },
+    {
+      "retailer": "Amazon",
+      "discoveryAttempted": true,
+      "page": "https://www.amazon.com/dp/B0FRGTYSL5",
+      "result": "retailer-page-index-snapshot-only",
+      "blockingPrerequisite": "Current live seller, price and Phoenix shipping unverified"
+    },
+    {
+      "retailer": "GameStop",
+      "discoveryAttempted": true,
+      "page": "https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/sony-playstation-5-console-1tb-disc-edition---astro-bot-bundle/422135.html",
+      "result": "retailer-page-inspected",
+      "blockingPrerequisite": "Retailer page states currently not available online; no selected, orderable Phoenix pickup/checkout"
+    },
+    {
+      "retailer": "Costco",
+      "discoveryAttempted": true,
+      "page": "https://www.costco.com/p/-/4000360868",
+      "result": "retailer-page-readable",
+      "blockingPrerequisite": "Warehouse and delivery location not set; no Phoenix-specific stock, current member price or checkout confirmation"
+    }
+  ]
+}
