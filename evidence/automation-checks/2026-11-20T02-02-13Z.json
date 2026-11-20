@@ -1,0 +1,190 @@
+{
+  "checkedAtUtc": "2026-11-20T02:02:13.814Z",
+  "localTimezone": "America/Phoenix",
+  "checkKind": "unattended zero-spend retailer-page and discovery inspection",
+  "browser": "BROWSER NOT AVAILABLE: connected Browser tool requires originating interactive browser context; no interactive retailer cart or checkout performed",
+  "purchaseOrPaymentAttempted": false,
+  "paidOrMeteredToolsInvoked": false,
+  "incurredCostUsd": 0,
+  "discoveryRule": "web searches and shopping candidates used only to discover URLs; not accepted as live purchase evidence",
+  "scope": {
+    "retailersExpected": 7,
+    "retailersAttempted": 7,
+    "storesWithPhoenixCheckoutVerified": 0
+  },
+  "classification": "verification-coverage-incomplete",
+  "verifiedOrderableQualifyingOffers": 0,
+  "userAlertsCreated": 0,
+  "retailerAttempts": [
+    {
+      "retailer": "PlayStation Direct",
+      "attempted": true,
+      "productPageInspected": true,
+      "status": "public retailer page readable; price/checkout not verified",
+      "urls": [
+        "https://direct.playstation.com/en-us/buy-consoles/playstation5-console-1-tb",
+        "https://direct.playstation.com/en-us/buy-consoles/playstation5-digital-edition-console-825-gb"
+      ],
+      "observedEvidence": "Product titles and capacities readable. Retailer page extraction labeled See Price; no guest cart or Phoenix shipping verification.",
+      "prerequisites": {
+        "exactModelOrBundle": "unknown",
+        "newCondition": "not verified at checkout",
+        "currentRetailerCheckoutPrice": null,
+        "sellerAndShipper": "unverified",
+        "controllers": null,
+        "storage": null,
+        "discDrive": null,
+        "fulfillmentFor85001": "NOT VERIFIED",
+        "checkoutOrCartMatch": false,
+        "qualified": false,
+        "reason": "Current cart price, seller/shipper and Phoenix checkout unverified."
+      }
+    },
+    {
+      "retailer": "Best Buy",
+      "attempted": true,
+      "productPageInspected": true,
+      "status": "public product page inspected; above target; non-Phoenix location",
+      "urls": [
+        "https://www.bestbuy.com/product/playstation-5-slim-console-1tb/6646419"
+      ],
+      "observedEvidence": "SKU 6646419, PlayStation 5 Slim Disc 1TB, displayed $649.99. Location Roseville, shipping to 55423. An account required for purchase.",
+      "prerequisites": {
+        "exactModelOrBundle": "Slim Disc SKU 6646419",
+        "newCondition": "product page new-offer context; not checkout-selected",
+        "currentRetailerCheckoutPrice": null,
+        "sellerAndShipper": "unverified",
+        "controllers": null,
+        "storage": "1TB",
+        "discDrive": true,
+        "fulfillmentFor85001": "NOT VERIFIED",
+        "checkoutOrCartMatch": false,
+        "qualified": false,
+        "reason": "Retailer page price above $500 and shipping context is 55423, not Phoenix; do not expend checkout verification."
+      }
+    },
+    {
+      "retailer": "Target",
+      "attempted": true,
+      "productPageInspected": true,
+      "status": "public product pages inspected; above targets; checkout not verified",
+      "urls": [
+        "https://www.target.com/p/playstation-5-console-slim/-/A-90188801",
+        "https://www.target.com/p/playstation-5-console-digital-edition/-/A-94961316"
+      ],
+      "observedEvidence": "Public product pages display $649.99 disc TCIN 90188801, $599.99 digital TCIN 94961316; site says In Stock/Add to cart, not Phoenix-verified checkout.",
+      "prerequisites": {
+        "exactModelOrBundle": "Slim Disc TCIN 90188801, Digital TCIN 94961316",
+        "newCondition": "new retail product pages, checkout condition not proven",
+        "currentRetailerCheckoutPrice": null,
+        "sellerAndShipper": "unverified",
+        "controllers": 1,
+        "storage": null,
+        "discDrive": null,
+        "fulfillmentFor85001": "NOT VERIFIED",
+        "checkoutOrCartMatch": false,
+        "qualified": false,
+        "reason": "Both observed page prices above target and no ZIP-85001 selected orderability."
+      }
+    },
+    {
+      "retailer": "Walmart",
+      "attempted": true,
+      "productPageInspected": true,
+      "status": "non-Phoenix third-party offer; fails conditional price/fulfillment",
+      "urls": [
+        "https://www.walmart.com/ip/17816601985"
+      ],
+      "observedEvidence": "Page contains New $879.99, sold and shipped by Entrotek; shipping location San Antonio 78288, pickup and delivery not available. Public page price text may include other configurations.",
+      "prerequisites": {
+        "exactModelOrBundle": "Slim Disc Walmart item 17816601985",
+        "newCondition": "New shown for some variant but not Phoenix checkout-selected",
+        "currentRetailerCheckoutPrice": null,
+        "sellerAndShipper": "Entrotek third-party shown in public page only",
+        "controllers": null,
+        "storage": null,
+        "discDrive": true,
+        "fulfillmentFor85001": "NOT VERIFIED",
+        "checkoutOrCartMatch": false,
+        "qualified": false,
+        "reason": "Current checkout SKU/price and Phoenix orderability unavailable; multiple surface contexts and above threshold."
+      }
+    },
+    {
+      "retailer": "Amazon",
+      "attempted": true,
+      "productPageInspected": false,
+      "status": "STALE OR BLOCKED; not verified",
+      "urls": [
+        "https://www.amazon.com/dp/B0FRGTYSL5"
+      ],
+      "observedEvidence": "Open returned a two-week-old crawl; product search discovery feed explicitly rejected as evidence.",
+      "prerequisites": {
+        "exactModelOrBundle": "unknown",
+        "newCondition": "not verified at checkout",
+        "currentRetailerCheckoutPrice": null,
+        "sellerAndShipper": "unverified",
+        "controllers": null,
+        "storage": null,
+        "discDrive": null,
+        "fulfillmentFor85001": "NOT VERIFIED",
+        "checkoutOrCartMatch": false,
+        "qualified": false,
+        "reason": "No fresh retailer-owned purchase surface, seller/shipper, current price, condition or Phoenix shipping."
+      }
+    },
+    {
+      "retailer": "GameStop",
+      "attempted": true,
+      "productPageInspected": true,
+      "status": "public pages readable but unavailable or unverified fulfillment",
+      "urls": [
+        "https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/sony-playstation-5-slim-console-disc-edition---fortnite-cobalt-star-bundle/20016239.html",
+        "https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/sony-playstation-5-slim-console-digital-edition---fortnite-flowering-chaos-bundle/20028327.html",
+        "https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/sony-playstation-5-console-disc-edition---astro-bot-bundle/422135.html"
+      ],
+      "observedEvidence": "Public pages show NEW condition and prices, but availability includes 'unavailable', requiring address for delivery, or item itself marked 'Unavailable'; none has cart/checkout confirmation for ZIP 85001.",
+      "prerequisites": {
+        "exactModelOrBundle": "Disc Cobalt Star / Digital Flowering Chaos / Disc Astro Bot SKU paths above",
+        "newCondition": "New text visible, not checkout-confirmed",
+        "currentRetailerCheckoutPrice": null,
+        "sellerAndShipper": "unverified",
+        "controllers": null,
+        "storage": null,
+        "discDrive": null,
+        "fulfillmentFor85001": "NOT VERIFIED",
+        "checkoutOrCartMatch": false,
+        "qualified": false,
+        "reason": "Unavailable or address-dependent fulfillment; no independent Phoenix orderable cart; NO ALERT."
+      }
+    },
+    {
+      "retailer": "Costco",
+      "attempted": true,
+      "productPageInspected": true,
+      "status": "public Same Day pages readable; above effective target; Phoenix availability unverified",
+      "urls": [
+        "https://sameday.costco.com/store/costco/products/83457876-sony-playstation-5-slim-disc-console-dualsense-controller-bundle",
+        "https://sameday.costco.com/store/costco/products/94684554-sony-playstation-5-digital-slim-console-dualsense-controller-bundle"
+      ],
+      "observedEvidence": "Costco Same Day public page prices $712.99 Disc, $662.99 Digital, not location-specific Phoenix checkout. Even a $55 extra standard DualSense credit does not meet thresholds.",
+      "prerequisites": {
+        "exactModelOrBundle": "Slim Disc and Digital extra DualSense member bundles",
+        "newCondition": "not verified at checkout",
+        "currentRetailerCheckoutPrice": null,
+        "sellerAndShipper": "unverified",
+        "controllers": 2,
+        "storage": null,
+        "discDrive": null,
+        "fulfillmentFor85001": "NOT VERIFIED",
+        "checkoutOrCartMatch": false,
+        "qualified": false,
+        "reason": "Above conservative effective target; no member price/cart or Phoenix orderability established."
+      }
+    }
+  ],
+  "bonusDiscovery": "Free web search including Slickdeals attempted; community posts never accepted as current stock/price evidence.",
+  "comparison": "Latest GitHub-hosted scan checked at 2026-11-19T21:00:54.523Z was 0 verified orderable and incomplete retailer checkout coverage; no verified prior qualifying offer to compare.",
+  "userNotificationDecision": "NO NOTIFICATION: zero offers independently satisfied all retailer-owned current checkout plus Phoenix availability requirements.",
+  "urlsAsEvidence": "Web page extraction/crawled-today is evidence of public text only; it does not prove live interactive cart, exact shipping location, or checkout availability."
+}
