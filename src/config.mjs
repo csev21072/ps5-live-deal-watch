@@ -20,7 +20,11 @@ export const products = [
   {id:'bestbuy-digital',retailer:'Best Buy',kind:'digital',url:'https://www.bestbuy.com/product/playstation-5-slim-console-digital-edition-825gb/JXHQ37TYYL',host:'www.bestbuy.com'},
   {id:'target-disc-bundle',retailer:'Target',kind:'disc',url:'https://www.target.com/p/playstation-5-nba-2k26-disc-bundle-console/-/A-94907150',host:'www.target.com'},
   {id:'target-digital-bundle',retailer:'Target',kind:'digital',url:'https://www.target.com/p/-/A-93150909',host:'www.target.com'},
+  {id:'target-disc-flowering-chaos',retailer:'Target',kind:'disc',url:'https://www.target.com/p/-/A-94967680',host:'www.target.com'},
+  {id:'target-digital-flowering-chaos',retailer:'Target',kind:'digital',url:'https://www.target.com/p/-/A-94967679',host:'www.target.com'},
   {id:'walmart-disc',retailer:'Walmart',kind:'disc',url:'https://www.walmart.com/ip/17816601985',host:'www.walmart.com'},
+  // Recheck the selected seller on every visit. Walmart marketplace offers can rotate.
+  {id:'walmart-digital',retailer:'Walmart',kind:'digital',url:'https://www.walmart.com/ip/PlayStation-5-Digital-Console-Slim/17852302051',host:'www.walmart.com'},
   {id:'amazon-disc',retailer:'Amazon',kind:'disc',url:'https://www.amazon.com/dp/B0FRGTYSL5',host:'www.amazon.com'},
   {id:'gamestop-disc-bundle',retailer:'GameStop',kind:'disc',url:'https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/sony-playstation-5-console-disc-edition---astro-bot-bundle/422135.html',host:'www.gamestop.com'},
   {id:'gamestop-digital-bundle',retailer:'GameStop',kind:'digital',url:'https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/sony-playstation-5-slim-digital-edition---fortnite-cobalt-star-bundle/20016240.html',host:'www.gamestop.com'},
