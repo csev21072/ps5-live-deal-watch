@@ -1,8 +1,8 @@
 # PS5 free browser scan
-Checked 15 retailer-owned product URLs across 7 retailers.
+Checked 18 retailer-owned product URLs across 7 retailers.
 Discovery attempts: 7; newly found URLs: 0 (discovery alone is NEVER purchase evidence).
 Verified qualifying offers: 0.
-Readability: {"unscoped-availability-text":2,"unreadable":3,"price-unreadable":2,"blocked":1,"product-not-confirmed":3,"candidate-needs-fulfillment-verification":4}.
+Readability: {"unscoped-availability-text":2,"unreadable":3,"price-unreadable":4,"blocked":2,"product-not-confirmed":3,"candidate-needs-fulfillment-verification":4}.
 Retailer coverage: 7/7 attempted; 0 with a fully verified orderable offer.
 Incomplete retailers: PlayStation Direct: product-pages-inspected-checkout-unverified; Best Buy: all-pages-unreadable-or-blocked; Target: product-pages-inspected-checkout-unverified; Walmart: all-pages-unreadable-or-blocked; Amazon: no-product-confirmed; GameStop: product-pages-inspected-checkout-unverified; Costco: no-product-confirmed.
 A successful scan does **not** mean all retailers were readable or Phoenix checkout was confirmed.
@@ -16,7 +16,10 @@ A successful scan does **not** mean all retailers were readable or Phoenix check
 | Best Buy | bestbuy-digital | No alert: unreadable |
 | Target | target-disc-bundle | No alert: price-unreadable |
 | Target | target-digital-bundle | No alert: price-unreadable |
+| Target | target-disc-flowering-chaos | No alert: price-unreadable |
+| Target | target-digital-flowering-chaos | No alert: price-unreadable |
 | Walmart | walmart-disc | No alert: blocked |
+| Walmart | walmart-digital | No alert: blocked |
 | Amazon | amazon-disc | No alert: product-not-confirmed |
 | GameStop | gamestop-disc-bundle | No alert: candidate-needs-fulfillment-verification |
 | GameStop | gamestop-digital-bundle | No alert: candidate-needs-fulfillment-verification |

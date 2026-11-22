@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-11-22T02:31:10.528Z",
-  "runId": "44976337524",
+  "checkedAt": "2026-11-22T10:10:01.478Z",
+  "runId": "45010919697",
   "runAttempt": 1,
   "triggerType": "schedule",
   "zip": "85001",
@@ -76,10 +76,10 @@
       {
         "retailer": "Target",
         "status": "product-pages-inspected-checkout-unverified",
-        "attemptedPages": 2,
+        "attemptedPages": 4,
         "unreadablePages": 0,
         "blockedPages": 0,
-        "productIdentifiedPages": 2,
+        "productIdentifiedPages": 4,
         "checkoutInspectedPages": 0,
         "verifiedOrderableOffers": 0,
         "discoveryStatus": "inspected-no-matching-products"
@@ -87,9 +87,9 @@
       {
         "retailer": "Walmart",
         "status": "all-pages-unreadable-or-blocked",
-        "attemptedPages": 1,
+        "attemptedPages": 2,
         "unreadablePages": 0,
-        "blockedPages": 1,
+        "blockedPages": 2,
         "productIdentifiedPages": 0,
         "checkoutInspectedPages": 0,
         "verifiedOrderableOffers": 0,
@@ -136,7 +136,7 @@
       "retailer": "PlayStation Direct",
       "kind": "disc",
       "url": "https://direct.playstation.com/en-us/buy-consoles/playstation5-console-1-tb",
-      "checkedAt": "2026-11-22T02:30:23.911Z",
+      "checkedAt": "2026-11-22T10:09:06.177Z",
       "source": "live-retailer-purchase-surface",
       "researchOnly": false,
       "blocked": false,
@@ -187,7 +187,7 @@
       "retailer": "PlayStation Direct",
       "kind": "digital",
       "url": "https://direct.playstation.com/en-us/buy-consoles/playstation5-digital-edition-console-825-gb",
-      "checkedAt": "2026-11-22T02:30:26.291Z",
+      "checkedAt": "2026-11-22T10:09:08.543Z",
       "source": "live-retailer-purchase-surface",
       "researchOnly": false,
       "blocked": false,
@@ -238,7 +238,7 @@
       "retailer": "Best Buy",
       "kind": "disc",
       "url": "https://www.bestbuy.com/product/playstation-5-slim-console/JXHQ3CCTYR/sku/6566039",
-      "checkedAt": "2026-11-22T02:30:26.392Z",
+      "checkedAt": "2026-11-22T10:09:08.607Z",
       "source": "unreadable",
       "researchOnly": false,
       "blocked": true,
@@ -289,7 +289,7 @@
       "retailer": "Best Buy",
       "kind": "disc",
       "url": "https://www.bestbuy.com/product/playstation-5-slim-console-1tb/6646419",
-      "checkedAt": "2026-11-22T02:30:26.479Z",
+      "checkedAt": "2026-11-22T10:09:08.664Z",
       "source": "unreadable",
       "researchOnly": false,
       "blocked": true,
@@ -340,7 +340,7 @@
       "retailer": "Best Buy",
       "kind": "digital",
       "url": "https://www.bestbuy.com/product/playstation-5-slim-console-digital-edition-825gb/JXHQ37TYYL",
-      "checkedAt": "2026-11-22T02:30:26.564Z",
+      "checkedAt": "2026-11-22T10:09:08.757Z",
       "source": "unreadable",
       "researchOnly": false,
       "blocked": true,
@@ -391,7 +391,7 @@
       "retailer": "Target",
       "kind": "disc",
       "url": "https://www.target.com/p/playstation-5-nba-2k26-disc-bundle-console/-/A-94907150",
-      "checkedAt": "2026-11-22T02:30:29.897Z",
+      "checkedAt": "2026-11-22T10:09:11.747Z",
       "source": "live-retailer-purchase-surface",
       "researchOnly": false,
       "blocked": false,
@@ -442,7 +442,7 @@
       "retailer": "Target",
       "kind": "digital",
       "url": "https://www.target.com/p/-/A-93150909",
-      "checkedAt": "2026-11-22T02:30:33.854Z",
+      "checkedAt": "2026-11-22T10:09:15.757Z",
       "source": "live-retailer-purchase-surface",
       "researchOnly": false,
       "blocked": false,
@@ -489,11 +489,164 @@
       }
     },
     {
+      "id": "target-disc-flowering-chaos",
+      "retailer": "Target",
+      "kind": "disc",
+      "url": "https://www.target.com/p/-/A-94967680",
+      "checkedAt": "2026-11-22T10:09:19.570Z",
+      "source": "live-retailer-purchase-surface",
+      "researchOnly": false,
+      "blocked": false,
+      "unavailable": false,
+      "diagnostic": {
+        "status": "price-unreadable"
+      },
+      "price": null,
+      "productEvidence": {
+        "editionHint": "disc",
+        "storageHint": "1TB",
+        "extraControllerHint": false,
+        "productHeadingObserved": true
+      },
+      "probe": {
+        "status": "fulfillment-controls-only",
+        "cartActionCount": 0,
+        "enabledCartActions": 0,
+        "fulfillmentNavigationCount": 4,
+        "checkoutResearchObserved": false,
+        "cartControlsStatus": "not-observed",
+        "matchingCartRows": 0,
+        "cartItemSkuMatched": false,
+        "cartItemPriceMatched": false,
+        "cartQuantityOne": false,
+        "checkoutControlEnabled": false,
+        "selectedPhoenixFulfillment": false,
+        "verifiedPurchase": false
+      },
+      "priceHint": {
+        "status": "price-hint-not-found"
+      },
+      "sonyPrice": {
+        "status": "not-run"
+      },
+      "sonyFacts": {
+        "officialProductPage": false,
+        "editionHint": "unknown",
+        "storageHint": null,
+        "slimModelHint": false
+      },
+      "verdict": {
+        "qualifies": false
+      }
+    },
+    {
+      "id": "target-digital-flowering-chaos",
+      "retailer": "Target",
+      "kind": "digital",
+      "url": "https://www.target.com/p/-/A-94967679",
+      "checkedAt": "2026-11-22T10:09:23.364Z",
+      "source": "live-retailer-purchase-surface",
+      "researchOnly": false,
+      "blocked": false,
+      "unavailable": false,
+      "diagnostic": {
+        "status": "price-unreadable"
+      },
+      "price": null,
+      "productEvidence": {
+        "editionHint": "digital",
+        "storageHint": "825GB",
+        "extraControllerHint": false,
+        "productHeadingObserved": true
+      },
+      "probe": {
+        "status": "fulfillment-controls-only",
+        "cartActionCount": 0,
+        "enabledCartActions": 0,
+        "fulfillmentNavigationCount": 4,
+        "checkoutResearchObserved": false,
+        "cartControlsStatus": "not-observed",
+        "matchingCartRows": 0,
+        "cartItemSkuMatched": false,
+        "cartItemPriceMatched": false,
+        "cartQuantityOne": false,
+        "checkoutControlEnabled": false,
+        "selectedPhoenixFulfillment": false,
+        "verifiedPurchase": false
+      },
+      "priceHint": {
+        "status": "price-hint-not-found"
+      },
+      "sonyPrice": {
+        "status": "not-run"
+      },
+      "sonyFacts": {
+        "officialProductPage": false,
+        "editionHint": "unknown",
+        "storageHint": null,
+        "slimModelHint": false
+      },
+      "verdict": {
+        "qualifies": false
+      }
+    },
+    {
       "id": "walmart-disc",
       "retailer": "Walmart",
       "kind": "disc",
       "url": "https://www.walmart.com/blocked",
-      "checkedAt": "2026-11-22T02:30:36.994Z",
+      "checkedAt": "2026-11-22T10:09:26.689Z",
+      "source": "live-retailer-purchase-surface",
+      "researchOnly": false,
+      "blocked": true,
+      "unavailable": false,
+      "diagnostic": {
+        "status": "blocked"
+      },
+      "price": null,
+      "productEvidence": {
+        "editionHint": "unknown",
+        "storageHint": null,
+        "extraControllerHint": false,
+        "productHeadingObserved": false
+      },
+      "probe": {
+        "status": "edition-not-confirmed",
+        "cartActionCount": 0,
+        "enabledCartActions": 0,
+        "fulfillmentNavigationCount": 0,
+        "checkoutResearchObserved": false,
+        "cartControlsStatus": "not-observed",
+        "matchingCartRows": 0,
+        "cartItemSkuMatched": false,
+        "cartItemPriceMatched": false,
+        "cartQuantityOne": false,
+        "checkoutControlEnabled": false,
+        "selectedPhoenixFulfillment": false,
+        "verifiedPurchase": false
+      },
+      "priceHint": {
+        "status": "not-run"
+      },
+      "sonyPrice": {
+        "status": "not-run"
+      },
+      "sonyFacts": {
+        "officialProductPage": false,
+        "editionHint": "unknown",
+        "storageHint": null,
+        "slimModelHint": false
+      },
+      "verdict": {
+        "qualifies": false
+      }
+    },
+    {
+      "id": "walmart-digital",
+      "retailer": "Walmart",
+      "kind": "digital",
+      "url": "https://www.walmart.com/blocked",
+      "checkedAt": "2026-11-22T10:09:29.078Z",
       "source": "live-retailer-purchase-surface",
       "researchOnly": false,
       "blocked": true,
@@ -544,7 +697,7 @@
       "retailer": "Amazon",
       "kind": "disc",
       "url": "https://www.amazon.com/dp/B0FRGTYSL5",
-      "checkedAt": "2026-11-22T02:30:39.108Z",
+      "checkedAt": "2026-11-22T10:09:30.988Z",
       "source": "live-retailer-purchase-surface",
       "researchOnly": false,
       "blocked": false,
@@ -595,7 +748,7 @@
       "retailer": "GameStop",
       "kind": "disc",
       "url": "https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/sony-playstation-5-console-1tb-disc-edition---astro-bot-bundle/422135.html",
-      "checkedAt": "2026-11-22T02:30:41.815Z",
+      "checkedAt": "2026-11-22T10:09:33.407Z",
       "source": "live-retailer-purchase-surface",
       "researchOnly": false,
       "blocked": false,
@@ -646,7 +799,7 @@
       "retailer": "GameStop",
       "kind": "digital",
       "url": "https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/sony-playstation-5-slim-digital-edition---fortnite-cobalt-star-bundle/20016240.html",
-      "checkedAt": "2026-11-22T02:30:49.192Z",
+      "checkedAt": "2026-11-22T10:09:40.767Z",
       "source": "live-retailer-purchase-surface",
       "researchOnly": false,
       "blocked": false,
@@ -697,7 +850,7 @@
       "retailer": "GameStop",
       "kind": "disc",
       "url": "https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/sony-playstation-5-slim-console-disc-edition---fortnite-cobalt-star-bundle/20016239.html",
-      "checkedAt": "2026-11-22T02:30:56.753Z",
+      "checkedAt": "2026-11-22T10:09:48.923Z",
       "source": "live-retailer-purchase-surface",
       "researchOnly": false,
       "blocked": false,
@@ -748,7 +901,7 @@
       "retailer": "GameStop",
       "kind": "digital",
       "url": "https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/sony-playstation-5-slim-console-digital-edition---fortnite-flowering-chaos-bundle/20028327.html",
-      "checkedAt": "2026-11-22T02:31:04.457Z",
+      "checkedAt": "2026-11-22T10:09:56.009Z",
       "source": "live-retailer-purchase-surface",
       "researchOnly": false,
       "blocked": false,
@@ -799,7 +952,7 @@
       "retailer": "Costco",
       "kind": "disc",
       "url": "https://sameday.costco.com/",
-      "checkedAt": "2026-11-22T02:31:07.697Z",
+      "checkedAt": "2026-11-22T10:09:58.981Z",
       "source": "live-retailer-purchase-surface",
       "researchOnly": false,
       "blocked": false,
@@ -850,7 +1003,7 @@
       "retailer": "Costco",
       "kind": "digital",
       "url": "https://sameday.costco.com/",
-      "checkedAt": "2026-11-22T02:31:10.494Z",
+      "checkedAt": "2026-11-22T10:10:01.452Z",
       "source": "live-retailer-purchase-surface",
       "researchOnly": false,
       "blocked": false,
@@ -967,6 +1120,28 @@
         "alertEligible": false
       },
       {
+        "id": "target-disc-flowering-chaos",
+        "retailer": "Target",
+        "kind": "disc",
+        "price": null,
+        "baseTarget": 500,
+        "priceVsBaseTarget": null,
+        "status": "price-unreadable",
+        "checkoutVerified": false,
+        "alertEligible": false
+      },
+      {
+        "id": "target-digital-flowering-chaos",
+        "retailer": "Target",
+        "kind": "digital",
+        "price": null,
+        "baseTarget": 450,
+        "priceVsBaseTarget": null,
+        "status": "price-unreadable",
+        "checkoutVerified": false,
+        "alertEligible": false
+      },
+      {
         "id": "psdirect-disc",
         "retailer": "PlayStation Direct",
         "kind": "disc",
@@ -1027,6 +1202,17 @@
         "kind": "disc",
         "price": null,
         "baseTarget": 500,
+        "priceVsBaseTarget": null,
+        "status": "product-or-edition-unverified",
+        "checkoutVerified": false,
+        "alertEligible": false
+      },
+      {
+        "id": "walmart-digital",
+        "retailer": "Walmart",
+        "kind": "digital",
+        "price": null,
+        "baseTarget": 450,
         "priceVsBaseTarget": null,
         "status": "product-or-edition-unverified",
         "checkoutVerified": false,
