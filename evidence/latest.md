@@ -2,9 +2,9 @@
 Checked 20 retailer-owned product URLs across 7 retailers.
 Discovery attempts: 7; newly found URLs: 2 (discovery alone is NEVER purchase evidence).
 Verified qualifying offers: 0.
-Readability: {"unscoped-availability-text":2,"unreadable":3,"price-unreadable":5,"blocked":2,"candidate-needs-fulfillment-verification":4,"product-not-confirmed":2,"unavailable":2}.
+Readability: {"unscoped-availability-text":2,"unreadable":3,"price-unreadable":4,"blocked":2,"product-not-confirmed":5,"candidate-needs-fulfillment-verification":4}.
 Retailer coverage: 7/7 attempted; 0 with a fully verified orderable offer.
-Incomplete retailers: PlayStation Direct: product-pages-inspected-checkout-unverified; Best Buy: all-pages-unreadable-or-blocked; Target: product-pages-inspected-checkout-unverified; Walmart: all-pages-unreadable-or-blocked; Amazon: product-pages-inspected-checkout-unverified; GameStop: product-pages-inspected-checkout-unverified; Costco: no-product-confirmed.
+Incomplete retailers: PlayStation Direct: product-pages-inspected-checkout-unverified; Best Buy: all-pages-unreadable-or-blocked; Target: product-pages-inspected-checkout-unverified; Walmart: all-pages-unreadable-or-blocked; Amazon: no-product-confirmed; GameStop: product-pages-inspected-checkout-unverified; Costco: no-product-confirmed.
 A successful scan does **not** mean all retailers were readable or Phoenix checkout was confirmed.
 
 | Retailer | Product | Status |
@@ -20,12 +20,12 @@ A successful scan does **not** mean all retailers were readable or Phoenix check
 | Target | target-digital-flowering-chaos | No alert: price-unreadable |
 | Walmart | walmart-disc | No alert: blocked |
 | Walmart | walmart-digital | No alert: blocked |
-| Amazon | amazon-disc | No alert: price-unreadable |
+| Amazon | amazon-disc | No alert: product-not-confirmed |
 | GameStop | gamestop-disc-bundle | No alert: candidate-needs-fulfillment-verification |
 | GameStop | gamestop-digital-bundle | No alert: candidate-needs-fulfillment-verification |
 | GameStop | gamestop-disc-cobalt-star | No alert: candidate-needs-fulfillment-verification |
 | GameStop | gamestop-digital-flowering-chaos | No alert: candidate-needs-fulfillment-verification |
 | Costco | costco-disc-two-controller | No alert: product-not-confirmed |
 | Costco | costco-digital-two-controller | No alert: product-not-confirmed |
-| Amazon | discovered-amazon-8767db2652 | No alert: unavailable |
-| Amazon | discovered-amazon-c4d8ac8fe3 | No alert: unavailable |
+| Amazon | discovered-amazon-78a7b3e0b1 | No alert: product-not-confirmed |
+| Amazon | discovered-amazon-5abd8996b9 | No alert: product-not-confirmed |
