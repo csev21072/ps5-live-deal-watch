@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-11-22T23:45:00.821Z",
-  "runId": "45084744698",
+  "checkedAt": "2026-11-23T08:00:35.769Z",
+  "runId": "45135003954",
   "runAttempt": 1,
   "triggerType": "schedule",
   "zip": "85001",
@@ -29,8 +29,8 @@
       },
       {
         "retailer": "Amazon",
-        "status": "inspected",
-        "found": 2
+        "status": "inspected-no-matching-products",
+        "found": 0
       },
       {
         "retailer": "GameStop",
@@ -98,13 +98,13 @@
       {
         "retailer": "Amazon",
         "status": "no-product-confirmed",
-        "attemptedPages": 3,
+        "attemptedPages": 1,
         "unreadablePages": 0,
         "blockedPages": 0,
         "productIdentifiedPages": 0,
         "checkoutInspectedPages": 0,
         "verifiedOrderableOffers": 0,
-        "discoveryStatus": "inspected"
+        "discoveryStatus": "inspected-no-matching-products"
       },
       {
         "retailer": "GameStop",
@@ -136,7 +136,7 @@
       "retailer": "PlayStation Direct",
       "kind": "disc",
       "url": "https://direct.playstation.com/en-us/buy-consoles/playstation5-console-1-tb",
-      "checkedAt": "2026-11-22T23:43:55.425Z",
+      "checkedAt": "2026-11-23T07:59:32.077Z",
       "source": "live-retailer-purchase-surface",
       "researchOnly": false,
       "blocked": false,
@@ -187,7 +187,7 @@
       "retailer": "PlayStation Direct",
       "kind": "digital",
       "url": "https://direct.playstation.com/en-us/buy-consoles/playstation5-digital-edition-console-825-gb",
-      "checkedAt": "2026-11-22T23:43:57.986Z",
+      "checkedAt": "2026-11-23T07:59:34.665Z",
       "source": "live-retailer-purchase-surface",
       "researchOnly": false,
       "blocked": false,
@@ -238,7 +238,7 @@
       "retailer": "Best Buy",
       "kind": "disc",
       "url": "https://www.bestbuy.com/product/playstation-5-slim-console/JXHQ3CCTYR/sku/6566039",
-      "checkedAt": "2026-11-22T23:43:58.093Z",
+      "checkedAt": "2026-11-23T07:59:34.799Z",
       "source": "unreadable",
       "researchOnly": false,
       "blocked": true,
@@ -289,7 +289,7 @@
       "retailer": "Best Buy",
       "kind": "disc",
       "url": "https://www.bestbuy.com/product/playstation-5-slim-console-1tb/6646419",
-      "checkedAt": "2026-11-22T23:43:58.179Z",
+      "checkedAt": "2026-11-23T07:59:34.953Z",
       "source": "unreadable",
       "researchOnly": false,
       "blocked": true,
@@ -340,7 +340,7 @@
       "retailer": "Best Buy",
       "kind": "digital",
       "url": "https://www.bestbuy.com/product/playstation-5-slim-console-digital-edition-825gb/JXHQ37TYYL",
-      "checkedAt": "2026-11-22T23:43:58.275Z",
+      "checkedAt": "2026-11-23T07:59:35.077Z",
       "source": "unreadable",
       "researchOnly": false,
       "blocked": true,
@@ -391,7 +391,7 @@
       "retailer": "Target",
       "kind": "disc",
       "url": "https://www.target.com/p/playstation-5-nba-2k26-disc-bundle-console/-/A-94907150",
-      "checkedAt": "2026-11-22T23:44:01.944Z",
+      "checkedAt": "2026-11-23T07:59:38.275Z",
       "source": "live-retailer-purchase-surface",
       "researchOnly": false,
       "blocked": false,
@@ -407,8 +407,8 @@
         "productHeadingObserved": true
       },
       "probe": {
-        "status": "cart-action-disabled",
-        "cartActionCount": 1,
+        "status": "fulfillment-controls-only",
+        "cartActionCount": 0,
         "enabledCartActions": 0,
         "fulfillmentNavigationCount": 4,
         "checkoutResearchObserved": false,
@@ -442,7 +442,7 @@
       "retailer": "Target",
       "kind": "digital",
       "url": "https://www.target.com/p/-/A-93150909",
-      "checkedAt": "2026-11-22T23:44:06.322Z",
+      "checkedAt": "2026-11-23T07:59:42.243Z",
       "source": "live-retailer-purchase-surface",
       "researchOnly": false,
       "blocked": false,
@@ -458,8 +458,8 @@
         "productHeadingObserved": true
       },
       "probe": {
-        "status": "cart-action-disabled",
-        "cartActionCount": 1,
+        "status": "fulfillment-controls-only",
+        "cartActionCount": 0,
         "enabledCartActions": 0,
         "fulfillmentNavigationCount": 4,
         "checkoutResearchObserved": false,
@@ -493,7 +493,7 @@
       "retailer": "Target",
       "kind": "disc",
       "url": "https://www.target.com/p/-/A-94967680",
-      "checkedAt": "2026-11-22T23:44:10.039Z",
+      "checkedAt": "2026-11-23T07:59:46.060Z",
       "source": "live-retailer-purchase-surface",
       "researchOnly": false,
       "blocked": false,
@@ -544,7 +544,7 @@
       "retailer": "Target",
       "kind": "digital",
       "url": "https://www.target.com/p/-/A-94967679",
-      "checkedAt": "2026-11-22T23:44:13.850Z",
+      "checkedAt": "2026-11-23T07:59:49.947Z",
       "source": "live-retailer-purchase-surface",
       "researchOnly": false,
       "blocked": false,
@@ -560,8 +560,8 @@
         "productHeadingObserved": true
       },
       "probe": {
-        "status": "cart-action-disabled",
-        "cartActionCount": 1,
+        "status": "fulfillment-controls-only",
+        "cartActionCount": 0,
         "enabledCartActions": 0,
         "fulfillmentNavigationCount": 4,
         "checkoutResearchObserved": false,
@@ -595,7 +595,7 @@
       "retailer": "Walmart",
       "kind": "disc",
       "url": "https://www.walmart.com/blocked",
-      "checkedAt": "2026-11-22T23:44:16.901Z",
+      "checkedAt": "2026-11-23T07:59:52.833Z",
       "source": "live-retailer-purchase-surface",
       "researchOnly": false,
       "blocked": true,
@@ -646,7 +646,7 @@
       "retailer": "Walmart",
       "kind": "digital",
       "url": "https://www.walmart.com/blocked",
-      "checkedAt": "2026-11-22T23:44:19.537Z",
+      "checkedAt": "2026-11-23T07:59:55.712Z",
       "source": "live-retailer-purchase-surface",
       "researchOnly": false,
       "blocked": true,
@@ -697,7 +697,7 @@
       "retailer": "Amazon",
       "kind": "disc",
       "url": "https://www.amazon.com/dp/B0FRGTYSL5",
-      "checkedAt": "2026-11-22T23:44:21.516Z",
+      "checkedAt": "2026-11-23T07:59:57.749Z",
       "source": "live-retailer-purchase-surface",
       "researchOnly": false,
       "blocked": false,
@@ -748,7 +748,7 @@
       "retailer": "GameStop",
       "kind": "disc",
       "url": "https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/sony-playstation-5-console-1tb-disc-edition---astro-bot-bundle/422135.html",
-      "checkedAt": "2026-11-22T23:44:24.169Z",
+      "checkedAt": "2026-11-23T08:00:02.204Z",
       "source": "live-retailer-purchase-surface",
       "researchOnly": false,
       "blocked": false,
@@ -799,7 +799,7 @@
       "retailer": "GameStop",
       "kind": "digital",
       "url": "https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/sony-playstation-5-slim-digital-edition---fortnite-cobalt-star-bundle/20016240.html",
-      "checkedAt": "2026-11-22T23:44:31.681Z",
+      "checkedAt": "2026-11-23T08:00:10.160Z",
       "source": "live-retailer-purchase-surface",
       "researchOnly": false,
       "blocked": false,
@@ -850,7 +850,7 @@
       "retailer": "GameStop",
       "kind": "disc",
       "url": "https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/sony-playstation-5-slim-console-disc-edition---fortnite-cobalt-star-bundle/20016239.html",
-      "checkedAt": "2026-11-22T23:44:39.194Z",
+      "checkedAt": "2026-11-23T08:00:17.624Z",
       "source": "live-retailer-purchase-surface",
       "researchOnly": false,
       "blocked": false,
@@ -901,7 +901,7 @@
       "retailer": "GameStop",
       "kind": "digital",
       "url": "https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/sony-playstation-5-slim-console-digital-edition---fortnite-flowering-chaos-bundle/20028327.html",
-      "checkedAt": "2026-11-22T23:44:46.544Z",
+      "checkedAt": "2026-11-23T08:00:25.083Z",
       "source": "live-retailer-purchase-surface",
       "researchOnly": false,
       "blocked": false,
@@ -952,7 +952,7 @@
       "retailer": "Costco",
       "kind": "disc",
       "url": "https://sameday.costco.com/",
-      "checkedAt": "2026-11-22T23:44:54.257Z",
+      "checkedAt": "2026-11-23T08:00:32.859Z",
       "source": "live-retailer-purchase-surface",
       "researchOnly": false,
       "blocked": false,
@@ -1003,109 +1003,7 @@
       "retailer": "Costco",
       "kind": "digital",
       "url": "https://sameday.costco.com/",
-      "checkedAt": "2026-11-22T23:44:57.028Z",
-      "source": "live-retailer-purchase-surface",
-      "researchOnly": false,
-      "blocked": false,
-      "unavailable": false,
-      "diagnostic": {
-        "status": "product-not-confirmed"
-      },
-      "price": null,
-      "productEvidence": {
-        "editionHint": "unknown",
-        "storageHint": null,
-        "extraControllerHint": false,
-        "productHeadingObserved": false
-      },
-      "probe": {
-        "status": "edition-not-confirmed",
-        "cartActionCount": 0,
-        "enabledCartActions": 0,
-        "fulfillmentNavigationCount": 0,
-        "checkoutResearchObserved": false,
-        "cartControlsStatus": "not-observed",
-        "matchingCartRows": 0,
-        "cartItemSkuMatched": false,
-        "cartItemPriceMatched": false,
-        "cartQuantityOne": false,
-        "checkoutControlEnabled": false,
-        "selectedPhoenixFulfillment": false,
-        "verifiedPurchase": false
-      },
-      "priceHint": {
-        "status": "not-run"
-      },
-      "sonyPrice": {
-        "status": "not-run"
-      },
-      "sonyFacts": {
-        "officialProductPage": false,
-        "editionHint": "unknown",
-        "storageHint": null,
-        "slimModelHint": false
-      },
-      "verdict": {
-        "qualifies": false
-      }
-    },
-    {
-      "id": "discovered-amazon-78a7b3e0b1",
-      "retailer": "Amazon",
-      "kind": "digital",
-      "url": "https://www.amazon.com/PS5-Digital-Ragnar%C3%B6k-Bundle-PlayStation-5/dp/B0BHBWSJN3/ref=sr_1_2",
-      "checkedAt": "2026-11-22T23:44:58.916Z",
-      "source": "live-retailer-purchase-surface",
-      "researchOnly": false,
-      "blocked": false,
-      "unavailable": false,
-      "diagnostic": {
-        "status": "product-not-confirmed"
-      },
-      "price": null,
-      "productEvidence": {
-        "editionHint": "unknown",
-        "storageHint": null,
-        "extraControllerHint": false,
-        "productHeadingObserved": false
-      },
-      "probe": {
-        "status": "edition-not-confirmed",
-        "cartActionCount": 0,
-        "enabledCartActions": 0,
-        "fulfillmentNavigationCount": 0,
-        "checkoutResearchObserved": false,
-        "cartControlsStatus": "not-observed",
-        "matchingCartRows": 0,
-        "cartItemSkuMatched": false,
-        "cartItemPriceMatched": false,
-        "cartQuantityOne": false,
-        "checkoutControlEnabled": false,
-        "selectedPhoenixFulfillment": false,
-        "verifiedPurchase": false
-      },
-      "priceHint": {
-        "status": "not-run"
-      },
-      "sonyPrice": {
-        "status": "not-run"
-      },
-      "sonyFacts": {
-        "officialProductPage": false,
-        "editionHint": "unknown",
-        "storageHint": null,
-        "slimModelHint": false
-      },
-      "verdict": {
-        "qualifies": false
-      }
-    },
-    {
-      "id": "discovered-amazon-5abd8996b9",
-      "retailer": "Amazon",
-      "kind": "digital",
-      "url": "https://www.amazon.com/PS5-Playstation-Digital-Wireless-Controller/dp/B0966NLTZS/ref=sr_1_7",
-      "checkedAt": "2026-11-22T23:45:00.789Z",
+      "checkedAt": "2026-11-23T08:00:35.740Z",
       "source": "live-retailer-purchase-surface",
       "researchOnly": false,
       "blocked": false,
@@ -1345,28 +1243,6 @@
       {
         "id": "costco-digital-two-controller",
         "retailer": "Costco",
-        "kind": "digital",
-        "price": null,
-        "baseTarget": 450,
-        "priceVsBaseTarget": null,
-        "status": "product-or-edition-unverified",
-        "checkoutVerified": false,
-        "alertEligible": false
-      },
-      {
-        "id": "discovered-amazon-78a7b3e0b1",
-        "retailer": "Amazon",
-        "kind": "digital",
-        "price": null,
-        "baseTarget": 450,
-        "priceVsBaseTarget": null,
-        "status": "product-or-edition-unverified",
-        "checkoutVerified": false,
-        "alertEligible": false
-      },
-      {
-        "id": "discovered-amazon-5abd8996b9",
-        "retailer": "Amazon",
         "kind": "digital",
         "price": null,
         "baseTarget": 450,
