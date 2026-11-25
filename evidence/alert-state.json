@@ -2,62 +2,62 @@
   "psdirect-disc": {
     "status": "unknown",
     "lastAlert": null,
-    "lastCheckedAt": "2026-11-24T16:08:26.802Z"
+    "lastCheckedAt": "2026-11-25T00:58:39.857Z"
   },
   "psdirect-digital": {
     "status": "unknown",
     "lastAlert": null,
-    "lastCheckedAt": "2026-11-24T16:08:29.404Z"
+    "lastCheckedAt": "2026-11-25T00:58:42.537Z"
   },
   "bestbuy-disc": {
     "status": "unknown",
     "lastAlert": null,
-    "lastCheckedAt": "2026-11-24T16:08:29.509Z"
+    "lastCheckedAt": "2026-11-25T00:58:42.715Z"
   },
   "bestbuy-digital": {
     "status": "unknown",
     "lastAlert": null,
-    "lastCheckedAt": "2026-11-24T16:08:29.733Z"
+    "lastCheckedAt": "2026-11-25T00:58:43.012Z"
   },
   "target-disc-bundle": {
     "status": "unknown",
     "lastAlert": null,
-    "lastCheckedAt": "2026-11-24T16:08:32.847Z"
+    "lastCheckedAt": "2026-11-25T00:58:46.200Z"
   },
   "target-digital-bundle": {
     "status": "unknown",
     "lastAlert": null,
-    "lastCheckedAt": "2026-11-24T16:08:36.663Z"
+    "lastCheckedAt": "2026-11-25T00:58:50.369Z"
   },
   "walmart-disc": {
     "status": "unknown",
     "lastAlert": null,
-    "lastCheckedAt": "2026-11-24T16:08:47.492Z"
+    "lastCheckedAt": "2026-11-25T00:59:01.032Z"
   },
   "amazon-disc": {
     "status": "unknown",
     "lastAlert": null,
-    "lastCheckedAt": "2026-11-24T16:08:53.417Z"
+    "lastCheckedAt": "2026-11-25T00:59:07.287Z"
   },
   "gamestop-disc-bundle": {
     "status": "unknown",
     "lastAlert": null,
-    "lastCheckedAt": "2026-11-24T16:08:56.117Z"
+    "lastCheckedAt": "2026-11-25T00:59:10.033Z"
   },
   "gamestop-digital-bundle": {
     "status": "unknown",
     "lastAlert": null,
-    "lastCheckedAt": "2026-11-24T16:09:03.856Z"
+    "lastCheckedAt": "2026-11-25T00:59:17.540Z"
   },
   "costco-disc-two-controller": {
     "status": "unknown",
     "lastAlert": null,
-    "lastCheckedAt": "2026-11-24T16:09:26.306Z"
+    "lastCheckedAt": "2026-11-25T00:59:40.112Z"
   },
   "costco-digital-two-controller": {
     "status": "unknown",
     "lastAlert": null,
-    "lastCheckedAt": "2026-11-24T16:09:29.125Z"
+    "lastCheckedAt": "2026-11-25T00:59:42.948Z"
   },
   "discovered-amazon-b11a5fefec": {
     "status": "unknown",
@@ -132,12 +132,12 @@
   "gamestop-disc-cobalt-star": {
     "status": "unknown",
     "lastAlert": null,
-    "lastCheckedAt": "2026-11-24T16:09:11.294Z"
+    "lastCheckedAt": "2026-11-25T00:59:25.184Z"
   },
   "gamestop-digital-flowering-chaos": {
     "status": "unknown",
     "lastAlert": null,
-    "lastCheckedAt": "2026-11-24T16:09:18.767Z"
+    "lastCheckedAt": "2026-11-25T00:59:32.522Z"
   },
   "discovered-amazon-8767db2652": {
     "status": "unknown",
@@ -187,7 +187,7 @@
   "bestbuy-disc-6646419": {
     "status": "unknown",
     "lastAlert": null,
-    "lastCheckedAt": "2026-11-24T16:08:29.639Z"
+    "lastCheckedAt": "2026-11-25T00:58:42.851Z"
   },
   "discovered-amazon-6d4334f55e": {
     "status": "unknown",
@@ -202,7 +202,7 @@
   "discovered-amazon-9e393ac216": {
     "status": "unknown",
     "lastAlert": null,
-    "lastCheckedAt": "2026-11-21T16:56:15.947Z"
+    "lastCheckedAt": "2026-11-25T00:59:49.661Z"
   },
   "discovered-amazon-c5ed6a51bf": {
     "status": "unknown",
@@ -217,17 +217,17 @@
   "target-disc-flowering-chaos": {
     "status": "unknown",
     "lastAlert": null,
-    "lastCheckedAt": "2026-11-24T16:08:40.470Z"
+    "lastCheckedAt": "2026-11-25T00:58:54.175Z"
   },
   "target-digital-flowering-chaos": {
     "status": "unknown",
     "lastAlert": null,
-    "lastCheckedAt": "2026-11-24T16:08:44.219Z"
+    "lastCheckedAt": "2026-11-25T00:58:57.980Z"
   },
   "walmart-digital": {
     "status": "unknown",
     "lastAlert": null,
-    "lastCheckedAt": "2026-11-24T16:08:49.823Z"
+    "lastCheckedAt": "2026-11-25T00:59:03.626Z"
   },
   "discovered-amazon-c4d8ac8fe3": {
     "status": "unknown",
@@ -253,5 +253,10 @@
     "status": "unknown",
     "lastAlert": null,
     "lastCheckedAt": "2026-11-24T16:09:32.647Z"
+  },
+  "discovered-amazon-83c4e1e0e5": {
+    "status": "unknown",
+    "lastAlert": null,
+    "lastCheckedAt": "2026-11-25T00:59:46.446Z"
   }
 }

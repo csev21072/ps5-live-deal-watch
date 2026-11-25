@@ -27,5 +27,5 @@ A successful scan does **not** mean all retailers were readable or Phoenix check
 | GameStop | gamestop-digital-flowering-chaos | No alert: candidate-needs-fulfillment-verification |
 | Costco | costco-disc-two-controller | No alert: product-not-confirmed |
 | Costco | costco-digital-two-controller | No alert: product-not-confirmed |
-| Amazon | discovered-amazon-7600389a29 | No alert: unavailable |
-| Amazon | discovered-amazon-c5ed6a51bf | No alert: unavailable |
+| Amazon | discovered-amazon-83c4e1e0e5 | No alert: unavailable |
+| Amazon | discovered-amazon-9e393ac216 | No alert: unavailable |
