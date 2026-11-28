@@ -623,5 +623,19 @@
     "verifiedOffers": 0,
     "incompleteCoverage": true,
     "gapSincePreviousHours": 8.7
+  },
+  {
+    "checkedAt": "2026-11-28T04:53:19.760Z",
+    "runId": "46109457441",
+    "runAttempt": 1,
+    "triggerType": "schedule",
+    "attemptedPages": 18,
+    "retailersAttempted": 7,
+    "readableProductPages": 10,
+    "blockedPages": 5,
+    "unreadablePages": 3,
+    "verifiedOffers": 0,
+    "incompleteCoverage": true,
+    "gapSincePreviousHours": 6.02
   }
 ]
